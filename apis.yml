@@ -1,0 +1,109 @@
+name: Refinitiv APIs
+description: Refinitiv provides financial market data, infrastructure, and analytics to businesses and financial professionals worldwide
+image: https://www.refinitiv.com/etc/designs/refinitiv/images/refinitiv-logo.svg
+url: https://developers.refinitiv.com
+created: '2024'
+modified: '2024'
+apis:
+- name: Refinitiv Data Platform (RDP) API
+  description: Cloud-enabled API providing access to streaming and non-streaming financial data, news, research, and analytics
+  image: https://www.refinitiv.com/etc/designs/refinitiv/images/refinitiv-logo.svg
+  humanURL: https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
+  baseURL: https://api.refinitiv.com
+  tags:
+  - financial data
+  - market data
+  - streaming
+  - analytics
+  properties:
+  - type: X-documentation
+    url: https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
+  - type: X-openapi
+    url: https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
+  - type: X-authentication
+    url: https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
+  - type: X-pricing
+    url: https://www.refinitiv.com/en/products/refinitiv-data-platform
+- name: Eikon Data API
+  description: Python library providing access to financial data, news, and symbology from Refinitiv Eikon
+  image: https://www.refinitiv.com/etc/designs/refinitiv/images/refinitiv-logo.svg
+  humanURL: https://developers.refinitiv.com/en/api-catalog/eikon/eikon-data-api
+  baseURL: https://api.refinitiv.com
+  tags:
+  - python
+  - eikon
+  - financial data
+  - desktop
+  properties:
+  - type: X-documentation
+    url: https://developers.refinitiv.com/en/api-catalog/eikon/eikon-data-api/documentation
+  - type: X-quick-start
+    url: https://developers.refinitiv.com/en/api-catalog/eikon/eikon-data-api/quick-start
+  - type: X-tutorials
+    url: https://developers.refinitiv.com/en/api-catalog/eikon/eikon-data-api/tutorials
+- name: Refinitiv Real-Time (WebSocket API)
+  description: Low-latency streaming API for real-time market data using WebSocket connections
+  image: https://www.refinitiv.com/etc/designs/refinitiv/images/refinitiv-logo.svg
+  humanURL: https://developers.refinitiv.com/en/api-catalog/refinitiv-real-time-opnsrc/refinitiv-websocket-api
+  baseURL: wss://api.refinitiv.com
+  tags:
+  - websocket
+  - streaming
+  - real-time
+  - market data
+  properties:
+  - type: X-documentation
+    url: https://developers.refinitiv.com/en/api-catalog/refinitiv-real-time-opnsrc/refinitiv-websocket-api/documentation
+  - type: X-quick-start
+    url: https://developers.refinitiv.com/en/api-catalog/refinitiv-real-time-opnsrc/refinitiv-websocket-api/quick-start
+  - type: X-tutorials
+    url: https://developers.refinitiv.com/en/api-catalog/refinitiv-real-time-opnsrc/refinitiv-websocket-api/tutorials
+- name: News API
+  description: Access to comprehensive news content from Refinitiv including real-time and historical news articles
+  image: https://www.refinitiv.com/etc/designs/refinitiv/images/refinitiv-logo.svg
+  humanURL: https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
+  baseURL: https://api.refinitiv.com
+  tags:
+  - news
+  - content
+  - research
+  - media
+  properties:
+  - type: X-documentation
+    url: https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
+  - type: X-tutorials
+    url: https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
+- name: Environmental Social Governance (ESG) API
+  description: Access to ESG data, scores, and analytics for sustainable investing
+  image: https://www.refinitiv.com/etc/designs/refinitiv/images/refinitiv-logo.svg
+  humanURL: https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
+  baseURL: https://api.refinitiv.com
+  tags:
+  - esg
+  - sustainability
+  - analytics
+  - environmental
+  properties:
+  - type: X-documentation
+    url: https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
+  - type: X-pricing
+    url: https://www.refinitiv.com/en/sustainable-finance/esg-data
+common:
+- type: X-portal
+  url: https://developers.refinitiv.com
+- type: X-getting-started
+  url: https://developers.refinitiv.com/en/api-catalog
+- type: X-support
+  url: https://developers.refinitiv.com/en/support
+- type: X-blog
+  url: https://developers.refinitiv.com/en/article-catalog
+- type: X-github
+  url: https://github.com/Refinitiv-API-Samples
+- type: X-terms-of-service
+  url: https://developers.refinitiv.com/en/terms-and-conditions
+- type: X-contact
+  url: https://developers.refinitiv.com/en/contact-us
+maintainers:
+- FN: API Evangelist
+  email: info@apievangelist.com
+  X-twitter: apievangelist
