@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.refinitiv.com/schemas/refinitiv/news-article.json",
+  "title": "Refinitiv News Article",
+  "description": "Represents a news article or headline from the Refinitiv Data Platform News API, including metadata, content, and classification information.",
+  "type": "object",
+  "required": ["storyId", "title", "versionCreated"],
+  "properties": {
+    "storyId": {
+      "type": "string",
+      "description": "Unique identifier for the news story."
+    },
+    "title": {
+      "type": "string",
+      "description": "The headline text of the news article."
+    },
+    "body": {
+      "type": ["string", "null"],
+      "description": "The full text body of the news article, available when retrieving the complete story."
+    },
+    "versionCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the article was originally created or published."
+    },
+    "firstCreated": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Timestamp of the first version of the story."
+    },
+    "sourceCode": {
+      "type": ["string", "null"],
+      "description": "Code identifying the news source such as NS:RTRS for Reuters."
+    },
+    "sourceName": {
+      "type": ["string", "null"],
+      "description": "Human-readable name of the news source."
+    },
+    "language": {
+      "type": ["string", "null"],
+      "description": "ISO 639-1 language code of the article.",
+      "pattern": "^[a-z]{2}$"
+    },
+    "urgency": {
+      "type": ["integer", "null"],
+      "description": "The urgency level of the news, with lower values indicating higher urgency.",
+      "minimum": 1
+    },
+    "subjects": {
+      "type": ["array", "null"],
+      "items": {
+        "type": "string"
+      },
+      "description": "Subject classification codes for the article."
+    },
+    "audiences": {
+      "type": ["array", "null"],
+      "items": {
+        "type": "string"
+      },
+      "description": "Target audience codes for the article."
+    },
+    "instruments": {
+      "type": ["array", "null"],
+      "items": {
+        "type": "object",
+        "properties": {
+          "ric": {
+            "type": "string",
+            "description": "RIC of the related instrument."
+          },
+          "name": {
+            "type": ["string", "null"],
+            "description": "Name of the related instrument."
+          }
+        }
+      },
+      "description": "Financial instruments referenced in the article."
+    },
+    "newsItem": {
+      "type": ["string", "null"],
+      "description": "A reference identifier for the news item."
+    }
+  }
+}

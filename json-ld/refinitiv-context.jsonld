@@ -1,0 +1,304 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "refinitiv": "https://api.refinitiv.com/schemas/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "fibo": "https://spec.edmcouncil.org/fibo/ontology/",
+
+    "FinancialInstrument": {
+      "@id": "refinitiv:FinancialInstrument",
+      "@context": {
+        "ric": {
+          "@id": "refinitiv:ric",
+          "@type": "xsd:string"
+        },
+        "isin": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "cusip": {
+          "@id": "refinitiv:cusip",
+          "@type": "xsd:string"
+        },
+        "sedol": {
+          "@id": "refinitiv:sedol",
+          "@type": "xsd:string"
+        },
+        "ticker": {
+          "@id": "refinitiv:ticker",
+          "@type": "xsd:string"
+        },
+        "permId": {
+          "@id": "refinitiv:permId",
+          "@type": "xsd:string"
+        },
+        "lei": {
+          "@id": "refinitiv:lei",
+          "@type": "xsd:string"
+        },
+        "displayName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "currency": {
+          "@id": "schema:priceCurrency",
+          "@type": "xsd:string"
+        },
+        "exchangeCode": {
+          "@id": "refinitiv:exchangeCode",
+          "@type": "xsd:string"
+        },
+        "exchangeName": {
+          "@id": "refinitiv:exchangeName",
+          "@type": "xsd:string"
+        },
+        "assetClass": {
+          "@id": "refinitiv:assetClass",
+          "@type": "xsd:string"
+        },
+        "country": {
+          "@id": "schema:countryOfOrigin",
+          "@type": "xsd:string"
+        },
+        "status": {
+          "@id": "refinitiv:tradingStatus",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "Organization": {
+      "@id": "schema:Organization",
+      "@context": {
+        "permId": {
+          "@id": "refinitiv:permId",
+          "@type": "xsd:string"
+        },
+        "organizationName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "lei": {
+          "@id": "refinitiv:lei",
+          "@type": "xsd:string"
+        },
+        "primaryRIC": {
+          "@id": "refinitiv:ric",
+          "@type": "xsd:string"
+        },
+        "hasURL": {
+          "@id": "schema:url",
+          "@type": "@id"
+        },
+        "isIncorporatedIn": {
+          "@id": "schema:foundingLocation",
+          "@type": "xsd:string"
+        },
+        "isDomiciledIn": {
+          "@id": "refinitiv:domicile",
+          "@type": "xsd:string"
+        },
+        "orgSubtype": {
+          "@id": "refinitiv:organizationType",
+          "@type": "xsd:string"
+        },
+        "hasActivityStatus": {
+          "@id": "refinitiv:activityStatus",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "PricingData": {
+      "@id": "refinitiv:PricingData",
+      "@context": {
+        "bid": {
+          "@id": "refinitiv:bidPrice",
+          "@type": "xsd:decimal"
+        },
+        "ask": {
+          "@id": "refinitiv:askPrice",
+          "@type": "xsd:decimal"
+        },
+        "last": {
+          "@id": "refinitiv:lastPrice",
+          "@type": "xsd:decimal"
+        },
+        "open": {
+          "@id": "refinitiv:openPrice",
+          "@type": "xsd:decimal"
+        },
+        "high": {
+          "@id": "refinitiv:highPrice",
+          "@type": "xsd:decimal"
+        },
+        "low": {
+          "@id": "refinitiv:lowPrice",
+          "@type": "xsd:decimal"
+        },
+        "close": {
+          "@id": "refinitiv:closePrice",
+          "@type": "xsd:decimal"
+        },
+        "volume": {
+          "@id": "refinitiv:tradingVolume",
+          "@type": "xsd:integer"
+        },
+        "timestamp": {
+          "@id": "dcterms:date",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "ESGScore": {
+      "@id": "refinitiv:ESGScore",
+      "@context": {
+        "instrumentId": {
+          "@id": "refinitiv:instrumentId",
+          "@type": "xsd:string"
+        },
+        "companyName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "periodEndDate": {
+          "@id": "refinitiv:periodEndDate",
+          "@type": "xsd:date"
+        },
+        "esgScore": {
+          "@id": "refinitiv:esgScore",
+          "@type": "xsd:decimal"
+        },
+        "esgCombinedScore": {
+          "@id": "refinitiv:esgCombinedScore",
+          "@type": "xsd:decimal"
+        },
+        "environmentPillarScore": {
+          "@id": "refinitiv:environmentPillarScore",
+          "@type": "xsd:decimal"
+        },
+        "socialPillarScore": {
+          "@id": "refinitiv:socialPillarScore",
+          "@type": "xsd:decimal"
+        },
+        "governancePillarScore": {
+          "@id": "refinitiv:governancePillarScore",
+          "@type": "xsd:decimal"
+        },
+        "esgGrade": {
+          "@id": "refinitiv:esgGrade",
+          "@type": "xsd:string"
+        },
+        "controversiesScore": {
+          "@id": "refinitiv:controversiesScore",
+          "@type": "xsd:decimal"
+        },
+        "co2Emissions": {
+          "@id": "refinitiv:co2Emissions",
+          "@type": "xsd:decimal"
+        },
+        "industry": {
+          "@id": "schema:industry",
+          "@type": "xsd:string"
+        },
+        "country": {
+          "@id": "schema:countryOfOrigin",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "NewsArticle": {
+      "@id": "schema:NewsArticle",
+      "@context": {
+        "storyId": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "title": {
+          "@id": "schema:headline",
+          "@type": "xsd:string"
+        },
+        "body": {
+          "@id": "schema:articleBody",
+          "@type": "xsd:string"
+        },
+        "versionCreated": {
+          "@id": "schema:datePublished",
+          "@type": "xsd:dateTime"
+        },
+        "sourceCode": {
+          "@id": "refinitiv:sourceCode",
+          "@type": "xsd:string"
+        },
+        "sourceName": {
+          "@id": "schema:publisher",
+          "@type": "xsd:string"
+        },
+        "language": {
+          "@id": "schema:inLanguage",
+          "@type": "xsd:string"
+        },
+        "urgency": {
+          "@id": "refinitiv:urgency",
+          "@type": "xsd:integer"
+        }
+      }
+    },
+
+    "ScreeningCase": {
+      "@id": "refinitiv:ScreeningCase",
+      "@context": {
+        "caseSystemId": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "caseId": {
+          "@id": "refinitiv:caseId",
+          "@type": "xsd:string"
+        },
+        "entityType": {
+          "@id": "refinitiv:entityType",
+          "@type": "xsd:string"
+        },
+        "groupId": {
+          "@id": "refinitiv:groupId",
+          "@type": "xsd:string"
+        },
+        "creationDate": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "modificationDate": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "VerificationRecord": {
+      "@id": "refinitiv:VerificationRecord",
+      "@context": {
+        "transactionId": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "countryCode": {
+          "@id": "schema:addressCountry",
+          "@type": "xsd:string"
+        },
+        "recordStatus": {
+          "@id": "refinitiv:verificationStatus",
+          "@type": "xsd:string"
+        },
+        "uploadedDt": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        }
+      }
+    }
+  }
+}

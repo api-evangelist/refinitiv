@@ -1,0 +1,510 @@
+openapi: 3.1.0
+info:
+  title: LSEG DataScope Select REST API
+  description: >-
+    Internet-hosted OData REST API for programmatic access to global pricing,
+    corporate actions, reference data, historical data, cross-reference, and
+    entity data. It provides fully automated extraction workflows and batch
+    processing capabilities for large-scale data retrieval from the DataScope
+    Select platform.
+  version: '1.0.0'
+  contact:
+    name: LSEG Developer Support
+    url: https://developers.lseg.com/en/support
+  termsOfService: https://developers.lseg.com/en/terms-and-conditions
+externalDocs:
+  description: DataScope Select REST API Documentation
+  url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
+servers:
+  - url: https://selectapi.datascope.lseg.com/RestApi/v1
+    description: Production Server
+tags:
+  - name: Authentication
+    description: >-
+      Token-based authentication for obtaining and managing session tokens
+      required by all other API endpoints.
+  - name: Extractions
+    description: >-
+      On-demand and scheduled data extraction operations for retrieving
+      pricing, reference, corporate actions, and historical data.
+  - name: Instruments
+    description: >-
+      Instrument search, validation, and instrument list management
+      operations.
+  - name: Schedules
+    description: >-
+      Schedule management for recurring extraction jobs.
+  - name: Users
+    description: >-
+      User account information and preferences management.
+security:
+  - tokenAuth: []
+paths:
+  /Authentication/RequestToken:
+    post:
+      operationId: requestToken
+      summary: Request authentication token
+      description: >-
+        Authenticates the user and returns a session token that must be
+        included in all subsequent API requests. The token is included in
+        the Authorization header as a Token value.
+      tags:
+        - Authentication
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - Credentials
+              properties:
+                Credentials:
+                  type: object
+                  required:
+                    - Username
+                    - Password
+                  properties:
+                    Username:
+                      type: string
+                      description: >-
+                        The DataScope Select username.
+                    Password:
+                      type: string
+                      description: >-
+                        The DataScope Select password.
+      responses:
+        '200':
+          description: Authentication successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  '@odata.context':
+                    type: string
+                    description: >-
+                      OData context URI.
+                  value:
+                    type: string
+                    description: >-
+                      The session token to use in subsequent requests.
+        '400':
+          description: Invalid credentials
+        '401':
+          description: Authentication failed
+  /Extractions/Extract:
+    post:
+      operationId: extractData
+      summary: Submit on-demand extraction
+      description: >-
+        Submits an on-demand data extraction request. For small result sets,
+        the response is returned synchronously. For larger extractions, the
+        server responds with HTTP 202 Accepted and a Location header for
+        polling the extraction status.
+      tags:
+        - Extractions
+      parameters:
+        - name: Prefer
+          in: header
+          description: >-
+            Set to respond-async to enable asynchronous processing.
+          schema:
+            type: string
+            default: respond-async
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExtractionRequest'
+      responses:
+        '200':
+          description: Extraction completed and data returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExtractionResponse'
+        '202':
+          description: >-
+            Extraction accepted for asynchronous processing. Poll the
+            Location header URL for status.
+          headers:
+            Location:
+              schema:
+                type: string
+              description: >-
+                URL to poll for extraction status and results.
+        '400':
+          description: Invalid extraction request
+        '401':
+          description: Unauthorized
+  /Extractions/ExtractWithNotes:
+    post:
+      operationId: extractWithNotes
+      summary: Extract data with notes
+      description: >-
+        Submits an on-demand extraction request and returns results in JSON
+        format along with extraction notes. Suitable for smaller data sets
+        where JSON output is preferred.
+      tags:
+        - Extractions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExtractionRequest'
+      responses:
+        '200':
+          description: Extraction completed with notes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExtractionWithNotesResponse'
+        '202':
+          description: Extraction accepted for asynchronous processing
+        '400':
+          description: Invalid extraction request
+        '401':
+          description: Unauthorized
+  /Extractions/ExtractRaw:
+    post:
+      operationId: extractRaw
+      summary: Extract raw data
+      description: >-
+        Submits an on-demand extraction request optimized for large data sets.
+        Returns results in CSV format compressed with gzip for bandwidth
+        optimization.
+      tags:
+        - Extractions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExtractionRequest'
+      responses:
+        '200':
+          description: Raw extraction completed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  JobId:
+                    type: string
+                    description: >-
+                      The extraction job identifier.
+                  Notes:
+                    type: array
+                    items:
+                      type: string
+                    description: >-
+                      Extraction processing notes.
+        '202':
+          description: Extraction accepted for asynchronous processing
+        '400':
+          description: Invalid extraction request
+        '401':
+          description: Unauthorized
+  /Extractions/RawExtractionResults('{jobId}')/$value:
+    get:
+      operationId: getRawExtractionResults
+      summary: Download raw extraction results
+      description: >-
+        Downloads the raw extraction results for a completed extraction job.
+        Results are returned as gzip-compressed CSV data.
+      tags:
+        - Extractions
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          description: >-
+            The extraction job identifier.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Raw extraction data
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        '404':
+          description: Job not found or results expired
+        '401':
+          description: Unauthorized
+  /Extractions/InstrumentListGetByName(ListName='{listName}'):
+    get:
+      operationId: getInstrumentListByName
+      summary: Get instrument list by name
+      description: >-
+        Retrieves an instrument list by its name, returning the list
+        metadata and contained instruments.
+      tags:
+        - Instruments
+      parameters:
+        - name: listName
+          in: path
+          required: true
+          description: >-
+            The name of the instrument list.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Instrument list returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstrumentList'
+        '404':
+          description: List not found
+        '401':
+          description: Unauthorized
+  /Extractions/InstrumentLists:
+    get:
+      operationId: listInstrumentLists
+      summary: List instrument lists
+      description: >-
+        Retrieves all instrument lists defined in the user's account.
+      tags:
+        - Instruments
+      responses:
+        '200':
+          description: Instrument lists returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/InstrumentList'
+        '401':
+          description: Unauthorized
+    post:
+      operationId: createInstrumentList
+      summary: Create instrument list
+      description: >-
+        Creates a new instrument list with the specified name and instruments.
+      tags:
+        - Instruments
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InstrumentList'
+      responses:
+        '201':
+          description: Instrument list created successfully
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized
+  /Extractions/Schedules:
+    get:
+      operationId: listSchedules
+      summary: List extraction schedules
+      description: >-
+        Retrieves all extraction schedules defined in the user's account.
+      tags:
+        - Schedules
+      responses:
+        '200':
+          description: Schedules returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Schedule'
+        '401':
+          description: Unauthorized
+  /Users/Users('{userId}'):
+    get:
+      operationId: getUser
+      summary: Get user information
+      description: >-
+        Retrieves user account information for the specified user ID.
+      tags:
+        - Users
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          description: >-
+            The user identifier.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: User information returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: Unauthorized
+        '404':
+          description: User not found
+components:
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: >-
+        Session token obtained from the Authentication/RequestToken endpoint.
+        Include as Token followed by the token value.
+  schemas:
+    ExtractionRequest:
+      type: object
+      properties:
+        ExtractionRequest:
+          type: object
+          properties:
+            '@odata.type':
+              type: string
+              description: >-
+                The OData type of the extraction request such as
+                #DataScope.Select.Api.Extractions.ExtractionRequests.TickHistoryIntradaySummariesExtractionRequest.
+            ContentFieldNames:
+              type: array
+              items:
+                type: string
+              description: >-
+                List of data field names to include in the extraction.
+            IdentifierList:
+              type: object
+              properties:
+                '@odata.type':
+                  type: string
+                  description: >-
+                    The OData type of the identifier list.
+                InstrumentIdentifiers:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      Identifier:
+                        type: string
+                        description: >-
+                          The instrument identifier value.
+                      IdentifierType:
+                        type: string
+                        description: >-
+                          The type of identifier such as Ric, Isin, or Cusip.
+              description: >-
+                The list of instruments to extract data for.
+            Condition:
+              type: object
+              description: >-
+                Extraction conditions such as date range and message filters.
+    ExtractionResponse:
+      type: object
+      properties:
+        '@odata.context':
+          type: string
+          description: >-
+            OData context URI.
+        value:
+          type: array
+          items:
+            type: object
+            description: >-
+              Extracted data rows.
+    ExtractionWithNotesResponse:
+      type: object
+      properties:
+        Contents:
+          type: array
+          items:
+            type: object
+            description: >-
+              Extracted data rows.
+        Notes:
+          type: array
+          items:
+            type: string
+          description: >-
+            Processing notes and warnings from the extraction.
+    InstrumentList:
+      type: object
+      properties:
+        ListId:
+          type: string
+          description: >-
+            The unique identifier of the instrument list.
+        Name:
+          type: string
+          description: >-
+            The name of the instrument list.
+        InstrumentIdentifiers:
+          type: array
+          items:
+            type: object
+            properties:
+              Identifier:
+                type: string
+                description: >-
+                  The instrument identifier value.
+              IdentifierType:
+                type: string
+                description: >-
+                  The type of identifier.
+              Description:
+                type: string
+                description: >-
+                  Description of the instrument.
+    Schedule:
+      type: object
+      properties:
+        ScheduleId:
+          type: string
+          description: >-
+            The unique identifier of the schedule.
+        Name:
+          type: string
+          description: >-
+            The name of the schedule.
+        Trigger:
+          type: object
+          description: >-
+            The schedule trigger configuration.
+        ListId:
+          type: string
+          description: >-
+            The instrument list associated with the schedule.
+        ReportTemplateId:
+          type: string
+          description: >-
+            The report template associated with the schedule.
+    User:
+      type: object
+      properties:
+        UserId:
+          type: string
+          description: >-
+            The unique user identifier.
+        UserName:
+          type: string
+          description: >-
+            The username.
+        Email:
+          type: string
+          description: >-
+            The user's email address.
+        Phone:
+          type: string
+          description: >-
+            The user's phone number.

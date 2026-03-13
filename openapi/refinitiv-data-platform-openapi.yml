@@ -1,0 +1,967 @@
+openapi: 3.1.0
+info:
+  title: Refinitiv Data Platform (RDP) APIs
+  description: >-
+    Cloud-enabled RESTful API providing access to streaming and non-streaming
+    financial data, news, research, and analytics. It serves as the primary
+    programmatic interface to the breadth of Refinitiv content on the LSEG Data
+    Platform, including historical pricing, ESG data, news, quantitative
+    analytics, symbology, and search services.
+  version: '1.0.0'
+  contact:
+    name: LSEG Developer Support
+    url: https://developers.lseg.com/en/support
+  termsOfService: https://developers.lseg.com/en/terms-and-conditions
+externalDocs:
+  description: Refinitiv Data Platform API Documentation
+  url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
+servers:
+  - url: https://api.refinitiv.com
+    description: Production Server
+tags:
+  - name: Authentication
+    description: >-
+      OAuth 2.0 token management for obtaining and refreshing access tokens
+      required by all other API endpoints.
+  - name: Historical Pricing
+    description: >-
+      Access to historical interday and intraday pricing data for financial
+      instruments including summaries, events, and time series.
+  - name: Pricing
+    description: >-
+      Real-time and delayed snapshot pricing data for financial instruments
+      and pricing chains.
+  - name: News
+    description: >-
+      Access to real-time and historical news headlines and stories from
+      Reuters and other sources.
+  - name: ESG
+    description: >-
+      Environmental, Social, and Governance data including scores, measures,
+      carbon emissions, and controversy tracking across thousands of companies.
+  - name: Quantitative Analytics
+    description: >-
+      Instrument Pricing Analytics (IPA) service for pricing financial
+      contracts, calculating risk measures, and running quantitative models.
+  - name: Symbology
+    description: >-
+      Symbol lookup and conversion between different identifier types
+      including RIC, ISIN, CUSIP, SEDOL, and PermID.
+  - name: Search
+    description: >-
+      Discovery and search across organizations, instruments, quotes, and
+      economic indicators.
+  - name: Streaming
+    description: >-
+      Service discovery for streaming connections to real-time pricing
+      and data services.
+security:
+  - bearerAuth: []
+paths:
+  /auth/oauth2/v1/token:
+    post:
+      operationId: getToken
+      summary: Request access token
+      description: >-
+        Obtains an OAuth 2.0 access token using password grant or refresh token
+        grant. The access token is required for all subsequent API calls and is
+        valid for five minutes. The response also includes a refresh token that
+        can be used to obtain new access tokens without re-authenticating.
+      tags:
+        - Authentication
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - client_id
+                - grant_type
+              properties:
+                username:
+                  type: string
+                  description: >-
+                    The user's machine account username. Required for password
+                    grant type.
+                password:
+                  type: string
+                  description: >-
+                    The user's machine account password. Required for password
+                    grant type.
+                client_id:
+                  type: string
+                  description: >-
+                    The application client ID provided during registration.
+                grant_type:
+                  type: string
+                  description: >-
+                    The OAuth 2.0 grant type. Use password for initial
+                    authentication or refresh_token for token renewal.
+                  enum:
+                    - password
+                    - refresh_token
+                refresh_token:
+                  type: string
+                  description: >-
+                    The refresh token from a previous authentication. Required
+                    for refresh_token grant type.
+                scope:
+                  type: string
+                  description: >-
+                    The scope of access requested. Each RDP resource has a
+                    permission scope assigned to it.
+                takeExclusiveSignOnControl:
+                  type: string
+                  description: >-
+                    When set to true, forces sign-on even if another session
+                    exists for the same credentials.
+                  enum:
+                    - 'true'
+                    - 'false'
+      responses:
+        '200':
+          description: Successful authentication
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '400':
+          description: Invalid request parameters
+        '401':
+          description: Invalid credentials
+  /data/historical-pricing/v1/views/interday-summaries/{universe}:
+    get:
+      operationId: getInterdaySummaries
+      summary: Get interday pricing summaries
+      description: >-
+        Retrieves historical interday pricing summaries for a given instrument,
+        including open, high, low, close, and volume data points. Supports
+        date range filtering and adjustments for corporate actions.
+      tags:
+        - Historical Pricing
+      parameters:
+        - $ref: '#/components/parameters/universe'
+        - name: start
+          in: query
+          description: >-
+            Start date for the historical data range in ISO 8601 format.
+          schema:
+            type: string
+            format: date
+        - name: end
+          in: query
+          description: >-
+            End date for the historical data range in ISO 8601 format.
+          schema:
+            type: string
+            format: date
+        - name: count
+          in: query
+          description: >-
+            Maximum number of data points to return.
+          schema:
+            type: integer
+        - name: adjustments
+          in: query
+          description: >-
+            Comma-separated list of adjustment types to apply such as
+            exchangeCorrection and capitalChange.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Historical pricing data returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HistoricalPricingResponse'
+        '400':
+          description: Invalid request parameters
+        '401':
+          description: Unauthorized
+        '404':
+          description: Instrument not found
+  /data/historical-pricing/v1/views/intraday-summaries/{universe}:
+    get:
+      operationId: getIntradaySummaries
+      summary: Get intraday pricing summaries
+      description: >-
+        Retrieves historical intraday pricing summaries for a given instrument
+        at configurable intervals. Returns time-stamped OHLCV bars for the
+        requested period.
+      tags:
+        - Historical Pricing
+      parameters:
+        - $ref: '#/components/parameters/universe'
+        - name: start
+          in: query
+          description: >-
+            Start date-time for the data range in ISO 8601 format.
+          schema:
+            type: string
+            format: date-time
+        - name: end
+          in: query
+          description: >-
+            End date-time for the data range in ISO 8601 format.
+          schema:
+            type: string
+            format: date-time
+        - name: interval
+          in: query
+          description: >-
+            The interval between data points such as PT1M, PT5M, PT1H.
+          schema:
+            type: string
+        - name: count
+          in: query
+          description: >-
+            Maximum number of data points to return.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Intraday pricing data returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HistoricalPricingResponse'
+        '400':
+          description: Invalid request parameters
+        '401':
+          description: Unauthorized
+        '404':
+          description: Instrument not found
+  /data/historical-pricing/v1/views/events/{universe}:
+    get:
+      operationId: getHistoricalPricingEvents
+      summary: Get historical pricing events
+      description: >-
+        Retrieves historical trade and quote events for a given instrument,
+        providing tick-level data for detailed analysis of market activity.
+      tags:
+        - Historical Pricing
+      parameters:
+        - $ref: '#/components/parameters/universe'
+        - name: start
+          in: query
+          description: >-
+            Start date-time for the data range in ISO 8601 format.
+          schema:
+            type: string
+            format: date-time
+        - name: end
+          in: query
+          description: >-
+            End date-time for the data range in ISO 8601 format.
+          schema:
+            type: string
+            format: date-time
+        - name: count
+          in: query
+          description: >-
+            Maximum number of events to return.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Historical pricing events returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HistoricalPricingResponse'
+        '400':
+          description: Invalid request parameters
+        '401':
+          description: Unauthorized
+        '404':
+          description: Instrument not found
+  /data/pricing/snapshots/v1/:
+    get:
+      operationId: getPricingSnapshots
+      summary: Get pricing snapshots
+      description: >-
+        Retrieves real-time or delayed pricing snapshots for one or more
+        financial instruments. Returns the latest available price data
+        including bid, ask, last trade, and volume.
+      tags:
+        - Pricing
+      parameters:
+        - name: universe
+          in: query
+          required: true
+          description: >-
+            Comma-separated list of instrument identifiers such as RICs.
+          schema:
+            type: string
+        - name: fields
+          in: query
+          description: >-
+            Comma-separated list of specific fields to return.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Pricing snapshot data returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PricingSnapshotResponse'
+        '400':
+          description: Invalid request parameters
+        '401':
+          description: Unauthorized
+  /pricing/chains/v1/:
+    get:
+      operationId: getPricingChains
+      summary: Get pricing chains
+      description: >-
+        Retrieves constituent instruments for a pricing chain such as an
+        options chain or futures chain identified by its chain RIC.
+      tags:
+        - Pricing
+      parameters:
+        - name: universe
+          in: query
+          required: true
+          description: >-
+            The chain RIC identifier.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Chain constituents returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      description: >-
+                        Chain constituent data.
+        '400':
+          description: Invalid request parameters
+        '401':
+          description: Unauthorized
+        '404':
+          description: Chain not found
+  /data/news/v1/headlines:
+    get:
+      operationId: getNewsHeadlines
+      summary: Get news headlines
+      description: >-
+        Retrieves news headlines matching the specified query criteria.
+        Supports filtering by topic, instrument, date range, and other
+        parameters. Returns headline text, timestamp, and story identifiers.
+      tags:
+        - News
+      parameters:
+        - name: query
+          in: query
+          required: true
+          description: >-
+            The news search query string supporting keyword search and
+            advanced query syntax.
+          schema:
+            type: string
+        - name: count
+          in: query
+          description: >-
+            Maximum number of headlines to return.
+          schema:
+            type: integer
+        - name: cursor
+          in: query
+          description: >-
+            Pagination cursor for retrieving the next page of results.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: News headlines returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewsHeadlinesResponse'
+        '400':
+          description: Invalid query parameters
+        '401':
+          description: Unauthorized
+  /data/news/v1/stories/{storyId}:
+    get:
+      operationId: getNewsStory
+      summary: Get news story
+      description: >-
+        Retrieves the full text and metadata for a specific news story
+        identified by its story ID.
+      tags:
+        - News
+      parameters:
+        - name: storyId
+          in: path
+          required: true
+          description: >-
+            The unique identifier of the news story.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: News story returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewsStory'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Story not found
+  /data/environmental-social-governance/v1/views/basic:
+    get:
+      operationId: getEsgBasic
+      summary: Get basic ESG scores
+      description: >-
+        Retrieves basic Environmental, Social, and Governance scores for
+        one or more companies. Returns overall ESG scores and individual
+        pillar scores.
+      tags:
+        - ESG
+      parameters:
+        - name: universe
+          in: query
+          required: true
+          description: >-
+            Comma-separated list of instrument identifiers.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ESG scores returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EsgResponse'
+        '400':
+          description: Invalid request parameters
+        '401':
+          description: Unauthorized
+  /data/environmental-social-governance/v1/views/measures-full:
+    get:
+      operationId: getEsgMeasuresFull
+      summary: Get full ESG measures
+      description: >-
+        Retrieves comprehensive ESG measures including detailed environmental,
+        social, and governance metrics, carbon emissions data, green revenue
+        metrics, and controversy tracking for one or more companies.
+      tags:
+        - ESG
+      parameters:
+        - name: universe
+          in: query
+          required: true
+          description: >-
+            Comma-separated list of instrument identifiers.
+          schema:
+            type: string
+        - name: start
+          in: query
+          description: >-
+            Start year for historical ESG data.
+          schema:
+            type: string
+        - name: end
+          in: query
+          description: >-
+            End year for historical ESG data.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ESG measures returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EsgResponse'
+        '400':
+          description: Invalid request parameters
+        '401':
+          description: Unauthorized
+  /data/quantitative-analytics/v1/financial-contracts:
+    post:
+      operationId: calculateFinancialContracts
+      summary: Calculate financial contracts
+      description: >-
+        Submits financial contract definitions to the Instrument Pricing
+        Analytics (IPA) engine for pricing, risk calculation, and
+        quantitative analysis. Supports bonds, swaps, options, and other
+        derivative instruments.
+      tags:
+        - Quantitative Analytics
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FinancialContractRequest'
+      responses:
+        '200':
+          description: Calculation results returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FinancialContractResponse'
+        '400':
+          description: Invalid contract definition
+        '401':
+          description: Unauthorized
+  /discovery/symbology/v1/convert:
+    post:
+      operationId: convertSymbology
+      summary: Convert symbology identifiers
+      description: >-
+        Converts financial instrument identifiers between different symbology
+        types such as RIC, ISIN, CUSIP, SEDOL, ticker, and PermID. Supports
+        batch conversion of multiple identifiers in a single request.
+      tags:
+        - Symbology
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SymbologyConvertRequest'
+      responses:
+        '200':
+          description: Symbology conversion results returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SymbologyConvertResponse'
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized
+  /discovery/search/v1/:
+    post:
+      operationId: searchInstruments
+      summary: Search for instruments
+      description: >-
+        Searches across organizations, instruments, quotes, and economic
+        indicators. Supports complex query expressions and filtering by
+        asset class, exchange, country, and other attributes.
+      tags:
+        - Search
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
+      responses:
+        '200':
+          description: Search results returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+        '400':
+          description: Invalid search query
+        '401':
+          description: Unauthorized
+  /streaming/pricing/v1/:
+    get:
+      operationId: getStreamingEndpoints
+      summary: Discover streaming endpoints
+      description: >-
+        Retrieves available streaming service endpoints for establishing
+        WebSocket connections to real-time pricing data. Returns endpoint
+        URIs and port information for connecting to the Real-Time Optimized
+        streaming service.
+      tags:
+        - Streaming
+      responses:
+        '200':
+          description: Streaming endpoints returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  services:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        endpoint:
+                          type: string
+                          description: >-
+                            The WebSocket endpoint URI.
+                        port:
+                          type: integer
+                          description: >-
+                            The port number for the streaming connection.
+                        provider:
+                          type: string
+                          description: >-
+                            The streaming service provider.
+                        dataFormat:
+                          type: string
+                          description: >-
+                            The data format used by the streaming endpoint.
+        '401':
+          description: Unauthorized
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: >-
+        OAuth 2.0 Bearer token obtained from the /auth/oauth2/v1/token
+        endpoint. Access tokens are valid for five minutes.
+  parameters:
+    universe:
+      name: universe
+      in: path
+      required: true
+      description: >-
+        The instrument identifier, typically a RIC such as IBM.N or AAPL.O.
+      schema:
+        type: string
+  schemas:
+    TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: >-
+            The OAuth 2.0 access token to use in subsequent API requests.
+        refresh_token:
+          type: string
+          description: >-
+            Token used to obtain a new access token without re-authenticating.
+        expires_in:
+          type: integer
+          description: >-
+            The lifetime of the access token in seconds.
+        scope:
+          type: string
+          description: >-
+            The scope of access granted by the token.
+        token_type:
+          type: string
+          description: >-
+            The type of token, typically Bearer.
+    HistoricalPricingResponse:
+      type: object
+      properties:
+        universe:
+          type: object
+          properties:
+            ric:
+              type: string
+              description: >-
+                The RIC identifier for the instrument.
+            displayName:
+              type: string
+              description: >-
+                The display name of the instrument.
+        data:
+          type: array
+          items:
+            type: object
+            description: >-
+              Individual pricing data points with fields such as date,
+              open, high, low, close, volume, and count.
+        headers:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: >-
+                  The field name.
+              type:
+                type: string
+                description: >-
+                  The data type of the field.
+    PricingSnapshotResponse:
+      type: object
+      properties:
+        universe:
+          type: array
+          items:
+            type: object
+            properties:
+              ric:
+                type: string
+                description: >-
+                  The RIC identifier for the instrument.
+              displayName:
+                type: string
+                description: >-
+                  The display name of the instrument.
+              status:
+                type: string
+                description: >-
+                  The status of the pricing data retrieval.
+        headers:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: >-
+                  The field name.
+              type:
+                type: string
+                description: >-
+                  The data type of the field.
+        data:
+          type: array
+          items:
+            type: array
+            items:
+              description: >-
+                Field values corresponding to the headers array.
+    NewsHeadlinesResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/NewsHeadline'
+        meta:
+          type: object
+          properties:
+            count:
+              type: integer
+              description: >-
+                The total number of matching headlines.
+            next:
+              type: string
+              description: >-
+                Pagination cursor for the next page of results.
+    NewsHeadline:
+      type: object
+      properties:
+        storyId:
+          type: string
+          description: >-
+            The unique identifier of the news story.
+        title:
+          type: string
+          description: >-
+            The headline text.
+        newsItem:
+          type: string
+          description: >-
+            A reference identifier for the news item.
+        sourceCode:
+          type: string
+          description: >-
+            The code identifying the news source.
+        versionCreated:
+          type: string
+          format: date-time
+          description: >-
+            The timestamp when the headline was created.
+    NewsStory:
+      type: object
+      properties:
+        storyId:
+          type: string
+          description: >-
+            The unique identifier of the news story.
+        title:
+          type: string
+          description: >-
+            The headline of the story.
+        body:
+          type: string
+          description: >-
+            The full text body of the news story.
+        sourceCode:
+          type: string
+          description: >-
+            The code identifying the news source.
+        versionCreated:
+          type: string
+          format: date-time
+          description: >-
+            The timestamp when the story was published.
+    EsgResponse:
+      type: object
+      properties:
+        headers:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: >-
+                  The field name.
+              title:
+                type: string
+                description: >-
+                  The display title of the field.
+              type:
+                type: string
+                description: >-
+                  The data type of the field.
+        data:
+          type: array
+          items:
+            type: array
+            items:
+              description: >-
+                Field values corresponding to the headers array.
+    FinancialContractRequest:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            type: string
+          description: >-
+            List of output fields to calculate.
+        outputs:
+          type: array
+          items:
+            type: string
+          description: >-
+            List of output types to return.
+        universe:
+          type: array
+          items:
+            type: object
+            properties:
+              instrumentType:
+                type: string
+                description: >-
+                  The type of financial instrument such as Bond or Swap.
+              instrumentDefinition:
+                type: object
+                description: >-
+                  The instrument definition parameters.
+              pricingParameters:
+                type: object
+                description: >-
+                  The pricing parameters for the calculation.
+          description: >-
+            Array of financial contract definitions to price.
+    FinancialContractResponse:
+      type: object
+      properties:
+        headers:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: >-
+                  The output field name.
+              type:
+                type: string
+                description: >-
+                  The data type of the field.
+        data:
+          type: array
+          items:
+            type: array
+            items:
+              description: >-
+                Calculated values corresponding to the headers array.
+    SymbologyConvertRequest:
+      type: object
+      properties:
+        from:
+          type: array
+          items:
+            type: object
+            properties:
+              identifierTypes:
+                type: array
+                items:
+                  type: string
+                description: >-
+                  The source identifier types.
+              values:
+                type: array
+                items:
+                  type: string
+                description: >-
+                  The identifier values to convert.
+          description: >-
+            Source identifiers to convert from.
+        to:
+          type: array
+          items:
+            type: string
+          description: >-
+            Target identifier types to convert to.
+    SymbologyConvertResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            description: >-
+              Conversion results mapping source identifiers to target
+              identifiers.
+    SearchRequest:
+      type: object
+      properties:
+        Query:
+          type: string
+          description: >-
+            The search query string.
+        View:
+          type: string
+          description: >-
+            The search view such as Entities, InstrumentSearch, or
+            QuoteSearch.
+          enum:
+            - Entities
+            - InstrumentSearch
+            - QuoteSearch
+            - IndicatorSearch
+        Filter:
+          type: string
+          description: >-
+            Filter expression to narrow search results.
+        Top:
+          type: integer
+          description: >-
+            Maximum number of results to return.
+        Skip:
+          type: integer
+          description: >-
+            Number of results to skip for pagination.
+        Select:
+          type: string
+          description: >-
+            Comma-separated list of fields to include in results.
+    SearchResponse:
+      type: object
+      properties:
+        Total:
+          type: integer
+          description: >-
+            Total number of matching results.
+        Hits:
+          type: array
+          items:
+            type: object
+            description: >-
+              Individual search result containing the matched entity or
+              instrument data.

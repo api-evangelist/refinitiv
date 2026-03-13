@@ -1,0 +1,485 @@
+openapi: 3.1.0
+info:
+  title: Refinitiv Qual-ID API
+  description: >-
+    RESTful API for automating identity verification and document verification
+    processes. It helps organizations comply with regulations and identify
+    potential financial crime using trusted and vetted data sources with
+    normalized data fields. Supports verification across multiple countries
+    using local data sources for identity matching.
+  version: '1.0.0'
+  contact:
+    name: LSEG Developer Support
+    url: https://developers.lseg.com/en/support
+  termsOfService: https://developers.lseg.com/en/terms-and-conditions
+externalDocs:
+  description: Qual-ID API Documentation
+  url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
+servers:
+  - url: https://api.globaldatacompany.com
+    description: Production Server
+tags:
+  - name: Connection
+    description: >-
+      Connectivity and authentication testing endpoints.
+  - name: Configuration
+    description: >-
+      Configuration retrieval for country codes, fields, consents, and
+      test entities required for verification requests.
+  - name: Verification
+    description: >-
+      Identity and document verification submission and transaction
+      record retrieval.
+security:
+  - basicAuth: []
+paths:
+  /connection/v1/sayhello/{name}:
+    get:
+      operationId: sayHello
+      summary: Test connectivity
+      description: >-
+        Tests connectivity to the API server. This endpoint does not require
+        authentication and returns a greeting with the provided name.
+      tags:
+        - Connection
+      security: []
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: >-
+            A name to include in the greeting response.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Connectivity test successful
+          content:
+            text/plain:
+              schema:
+                type: string
+  /connection/v1/testauthentication:
+    get:
+      operationId: testAuthentication
+      summary: Test authentication
+      description: >-
+        Tests that the provided credentials are valid by returning a greeting
+        with the authenticated username.
+      tags:
+        - Connection
+      responses:
+        '200':
+          description: Authentication successful
+          content:
+            text/plain:
+              schema:
+                type: string
+        '401':
+          description: Invalid credentials
+  /configuration/v1/countrycodes/{configurationName}:
+    get:
+      operationId: getCountryCodes
+      summary: Get supported country codes
+      description: >-
+        Retrieves the list of ISO 3166-1 alpha-2 country codes supported
+        for a given configuration such as Identity Verification or Document
+        Verification.
+      tags:
+        - Configuration
+      parameters:
+        - name: configurationName
+          in: path
+          required: true
+          description: >-
+            The configuration name, such as Identity Verification.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Country codes returned successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                  pattern: '^[A-Z]{2}$'
+                  description: >-
+                    ISO 3166-1 alpha-2 country code.
+        '401':
+          description: Unauthorized
+  /configuration/v1/fields/{configurationName}/{countryCode}:
+    get:
+      operationId: getFields
+      summary: Get verification fields
+      description: >-
+        Retrieves the required and optional data fields for a specific
+        country and configuration. The response defines the JSON schema
+        for the verification request data fields.
+      tags:
+        - Configuration
+      parameters:
+        - name: configurationName
+          in: path
+          required: true
+          description: >-
+            The configuration name.
+          schema:
+            type: string
+        - name: countryCode
+          in: path
+          required: true
+          description: >-
+            ISO 3166-1 alpha-2 country code.
+          schema:
+            type: string
+            pattern: '^[A-Z]{2}$'
+      responses:
+        '200':
+          description: Field definitions returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                description: >-
+                  JSON schema describing required and optional fields
+                  for the verification request.
+        '401':
+          description: Unauthorized
+  /configuration/v1/consents/{configurationName}/{countryCode}:
+    get:
+      operationId: getConsents
+      summary: Get consent requirements
+      description: >-
+        Retrieves the list of data sources that require explicit consent
+        before verification can be performed for a given country and
+        configuration.
+      tags:
+        - Configuration
+      parameters:
+        - name: configurationName
+          in: path
+          required: true
+          description: >-
+            The configuration name.
+          schema:
+            type: string
+        - name: countryCode
+          in: path
+          required: true
+          description: >-
+            ISO 3166-1 alpha-2 country code.
+          schema:
+            type: string
+            pattern: '^[A-Z]{2}$'
+      responses:
+        '200':
+          description: Consent requirements returned successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                  description: >-
+                    Data source name requiring consent.
+        '401':
+          description: Unauthorized
+  /configuration/v1/testentities/{configurationName}/{countryCode}:
+    get:
+      operationId: getTestEntities
+      summary: Get test entities
+      description: >-
+        Retrieves test entity data for sandbox testing. Available only for
+        sandbox accounts and returns sample identity data that can be used
+        to test verification requests.
+      tags:
+        - Configuration
+      parameters:
+        - name: configurationName
+          in: path
+          required: true
+          description: >-
+            The configuration name.
+          schema:
+            type: string
+        - name: countryCode
+          in: path
+          required: true
+          description: >-
+            ISO 3166-1 alpha-2 country code.
+          schema:
+            type: string
+            pattern: '^[A-Z]{2}$'
+      responses:
+        '200':
+          description: Test entities returned successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  description: >-
+                    Sample entity data for testing.
+        '401':
+          description: Unauthorized
+  /verifications/v1/verify:
+    post:
+      operationId: verifyIdentity
+      summary: Verify identity
+      description: >-
+        Submits an identity or document verification request. The API
+        checks the submitted personal information against configured
+        data sources for the specified country and returns verification
+        results including match status for each data source queried.
+      tags:
+        - Verification
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerificationRequest'
+      responses:
+        '200':
+          description: Verification completed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerificationResponse'
+        '400':
+          description: Invalid verification request
+        '401':
+          description: Unauthorized
+  /verifications/v1/transactionrecord/{transactionRecordId}:
+    get:
+      operationId: getTransactionRecord
+      summary: Get transaction record
+      description: >-
+        Retrieves a past verification transaction record by its unique
+        identifier. Returns the full verification results for the
+        specified transaction.
+      tags:
+        - Verification
+      parameters:
+        - name: transactionRecordId
+          in: path
+          required: true
+          description: >-
+            The unique identifier of the transaction record.
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Transaction record returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerificationResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Transaction record not found
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: >-
+        HTTP Basic Authentication using Base64-encoded username and password
+        credentials.
+  schemas:
+    VerificationRequest:
+      type: object
+      required:
+        - AcceptTruliooTermsAndConditions
+        - ConfigurationName
+        - CountryCode
+        - DataFields
+      properties:
+        AcceptTruliooTermsAndConditions:
+          type: boolean
+          description: >-
+            Must be set to true to accept terms and conditions.
+        CleansedAddress:
+          type: boolean
+          description: >-
+            Whether to use address cleansing before verification.
+        ConfigurationName:
+          type: string
+          description: >-
+            The configuration name such as Identity Verification.
+        ConsentForDataSources:
+          type: array
+          items:
+            type: string
+          description: >-
+            List of data source names for which consent has been obtained.
+        CountryCode:
+          type: string
+          pattern: '^[A-Z]{2}$'
+          description: >-
+            ISO 3166-1 alpha-2 country code.
+        DataFields:
+          type: object
+          properties:
+            PersonInfo:
+              type: object
+              properties:
+                FirstGivenName:
+                  type: string
+                  description: >-
+                    First name of the individual.
+                MiddleName:
+                  type: string
+                  description: >-
+                    Middle name of the individual.
+                FirstSurName:
+                  type: string
+                  description: >-
+                    Surname of the individual.
+                DayOfBirth:
+                  type: integer
+                  minimum: 1
+                  maximum: 31
+                  description: >-
+                    Day of birth.
+                MonthOfBirth:
+                  type: integer
+                  minimum: 1
+                  maximum: 12
+                  description: >-
+                    Month of birth.
+                YearOfBirth:
+                  type: integer
+                  description: >-
+                    Year of birth.
+                Gender:
+                  type: string
+                  enum:
+                    - M
+                    - F
+                  description: >-
+                    Gender of the individual.
+            Location:
+              type: object
+              properties:
+                BuildingNumber:
+                  type: string
+                  description: >-
+                    Building number.
+                UnitNumber:
+                  type: string
+                  description: >-
+                    Unit or apartment number.
+                StreetName:
+                  type: string
+                  description: >-
+                    Street name.
+                StreetType:
+                  type: string
+                  description: >-
+                    Street type such as St, Ave, Rd.
+                Suburb:
+                  type: string
+                  description: >-
+                    Suburb or city name.
+                StateProvinceCode:
+                  type: string
+                  description: >-
+                    State or province code.
+                PostalCode:
+                  type: string
+                  description: >-
+                    Postal or ZIP code.
+            Communication:
+              type: object
+              properties:
+                Telephone:
+                  type: string
+                  description: >-
+                    Phone number.
+                EmailAddress:
+                  type: string
+                  format: email
+                  description: >-
+                    Email address.
+            CountrySpecific:
+              type: object
+              additionalProperties:
+                type: object
+                additionalProperties:
+                  type: string
+              description: >-
+                Country-specific fields keyed by country code.
+        VerboseMode:
+          type: boolean
+          description: >-
+            When true, returns additional diagnostic information.
+    VerificationResponse:
+      type: object
+      properties:
+        TransactionID:
+          type: string
+          format: uuid
+          description: >-
+            Unique identifier for the verification transaction.
+        UploadedDt:
+          type: string
+          format: date-time
+          description: >-
+            Timestamp when the verification was submitted.
+        CountryCode:
+          type: string
+          description: >-
+            The country code used for verification.
+        ProductName:
+          type: string
+          description: >-
+            The product configuration name.
+        Record:
+          type: object
+          properties:
+            TransactionRecordID:
+              type: string
+              format: uuid
+              description: >-
+                Unique identifier for the verification record.
+            RecordStatus:
+              type: string
+              enum:
+                - match
+                - nomatch
+              description: >-
+                Overall verification result.
+            DatasourceResults:
+              type: array
+              items:
+                type: object
+                properties:
+                  DatasourceName:
+                    type: string
+                    description: >-
+                      Name of the data source queried.
+                  DatasourceFields:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        FieldName:
+                          type: string
+                          description: >-
+                            The field that was verified.
+                        Status:
+                          type: string
+                          enum:
+                            - match
+                            - nomatch
+                            - missing
+                            - censored
+                          description: >-
+                            Verification status for this field.
+              description: >-
+                Results from each data source checked.

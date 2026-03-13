@@ -1,0 +1,463 @@
+asyncapi: 2.6.0
+info:
+  title: Refinitiv Real-Time WebSocket API
+  version: '1.0.0'
+  description: >-
+    Low-latency streaming API for real-time market data using WebSocket
+    connections. It supports the Open Message Model (OMM) and allows
+    applications to connect directly to Refinitiv Real-Time distribution
+    systems or the LSEG Data Platform for streaming pricing data, market
+    depth, news, and other real-time content using JSON message formats
+    over standard WebSocket connections.
+  contact:
+    name: LSEG Developer Support
+    url: https://developers.lseg.com/en/support
+  license:
+    name: LSEG Terms of Service
+    url: https://developers.lseg.com/en/terms-and-conditions
+externalDocs:
+  description: Refinitiv Real-Time WebSocket API Documentation
+  url: https://developers.lseg.com/en/api-catalog/refinitiv-real-time-opnsrc/refinitiv-websocket-api/documentation
+servers:
+  realTimeOptimized:
+    url: wss://api.refinitiv.com/streaming/pricing/v1/
+    protocol: wss
+    description: >-
+      LSEG Real-Time Optimized (RTO) cloud streaming service. Endpoint
+      discovery is performed via the RDP streaming/pricing/v1 REST API
+      before connecting. Requires a valid OAuth 2.0 access token from the
+      RDP authentication service.
+    security:
+      - bearerToken: []
+  realTimeDistribution:
+    url: wss://{ads-hostname}:{port}/WebSocket
+    protocol: wss
+    description: >-
+      On-premise Real-Time Distribution System (ADS/RTDS) WebSocket
+      endpoint. Hostname and port are configured based on the local
+      deployment. Authentication uses DACS username and optional
+      application ID.
+defaultContentType: application/json
+channels:
+  login:
+    description: >-
+      Authentication channel for establishing a streaming session. A Login
+      request must be the first message sent after opening the WebSocket
+      connection. The server responds with a Login refresh indicating
+      session status and entitlements.
+    publish:
+      operationId: sendLoginRequest
+      summary: Send login request
+      message:
+        $ref: '#/components/messages/LoginRequest'
+    subscribe:
+      operationId: receiveLoginResponse
+      summary: Receive login response
+      message:
+        $ref: '#/components/messages/LoginResponse'
+  pricingStream:
+    description: >-
+      Channel for subscribing to and receiving real-time pricing updates
+      for financial instruments. Clients send Market Price requests
+      specifying RICs and receive refresh messages with initial snapshots
+      followed by update messages as prices change.
+    publish:
+      operationId: sendMarketPriceRequest
+      summary: Request market price streaming data
+      message:
+        $ref: '#/components/messages/MarketPriceRequest'
+    subscribe:
+      operationId: receiveMarketPriceData
+      summary: Receive market price updates
+      message:
+        oneOf:
+          - $ref: '#/components/messages/MarketPriceRefresh'
+          - $ref: '#/components/messages/MarketPriceUpdate'
+          - $ref: '#/components/messages/StatusMessage'
+  marketDepth:
+    description: >-
+      Channel for subscribing to Level 2 market depth data showing the
+      full order book for financial instruments. Provides bid and ask
+      levels with associated sizes.
+    publish:
+      operationId: sendMarketByPriceRequest
+      summary: Request market depth data
+      message:
+        $ref: '#/components/messages/MarketByPriceRequest'
+    subscribe:
+      operationId: receiveMarketByPriceData
+      summary: Receive market depth updates
+      message:
+        oneOf:
+          - $ref: '#/components/messages/MarketByPriceRefresh'
+          - $ref: '#/components/messages/MarketByPriceUpdate'
+          - $ref: '#/components/messages/StatusMessage'
+  ping:
+    description: >-
+      Heartbeat channel for keeping the WebSocket connection alive. The
+      server sends periodic ping messages and the client must respond with
+      pong messages to maintain the connection.
+    publish:
+      operationId: sendPong
+      summary: Send pong heartbeat response
+      message:
+        $ref: '#/components/messages/PongMessage'
+    subscribe:
+      operationId: receivePing
+      summary: Receive ping heartbeat
+      message:
+        $ref: '#/components/messages/PingMessage'
+components:
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: >-
+        OAuth 2.0 Bearer token obtained from the RDP authentication
+        service at /auth/oauth2/v1/token.
+  messages:
+    LoginRequest:
+      name: LoginRequest
+      title: Login Request
+      summary: >-
+        Initial authentication message sent to establish a streaming session.
+      payload:
+        type: object
+        required:
+          - ID
+          - Domain
+          - Key
+        properties:
+          ID:
+            type: integer
+            description: >-
+              Stream identifier for the login stream, typically 1.
+          Domain:
+            type: string
+            const: Login
+            description: >-
+              The message domain, always Login for authentication.
+          Key:
+            type: object
+            properties:
+              Name:
+                type: string
+                description: >-
+                  The machine ID or DACS username for authentication.
+              Elements:
+                type: object
+                properties:
+                  ApplicationId:
+                    type: string
+                    description: >-
+                      The application identifier, typically 256.
+                  Position:
+                    type: string
+                    description: >-
+                      The application position, typically the IP address
+                      and hostname.
+                  AuthenticationToken:
+                    type: string
+                    description: >-
+                      The OAuth 2.0 access token for RTO connections.
+              NameType:
+                type: string
+                description: >-
+                  The type of name used for authentication.
+                enum:
+                  - AuthnToken
+                  - USER_NAME
+    LoginResponse:
+      name: LoginResponse
+      title: Login Response
+      summary: >-
+        Response to the login request indicating session status and
+        entitlements.
+      payload:
+        type: object
+        properties:
+          ID:
+            type: integer
+            description: >-
+              The stream identifier matching the login request.
+          Type:
+            type: string
+            description: >-
+              The message type, typically Refresh for a successful login.
+            enum:
+              - Refresh
+              - Status
+          Domain:
+            type: string
+            const: Login
+          Key:
+            type: object
+            properties:
+              Name:
+                type: string
+                description: >-
+                  The authenticated username.
+          State:
+            type: object
+            properties:
+              Stream:
+                type: string
+                description: >-
+                  Stream state, Open for active sessions.
+              Data:
+                type: string
+                description: >-
+                  Data state, Ok for successful authentication.
+              Text:
+                type: string
+                description: >-
+                  Status text message.
+          Elements:
+            type: object
+            properties:
+              MaxMsgSize:
+                type: integer
+                description: >-
+                  Maximum message size supported.
+    MarketPriceRequest:
+      name: MarketPriceRequest
+      title: Market Price Request
+      summary: >-
+        Request to subscribe to real-time pricing data for instruments.
+      payload:
+        type: object
+        required:
+          - ID
+          - Key
+        properties:
+          ID:
+            type: integer
+            description: >-
+              Unique stream identifier for this subscription.
+          Key:
+            type: object
+            properties:
+              Name:
+                type: string
+                description: >-
+                  The RIC or instrument identifier to subscribe to.
+              Service:
+                type: string
+                description: >-
+                  The data service name such as ELEKTRON_DD.
+          Streaming:
+            type: boolean
+            description: >-
+              Whether to receive streaming updates or just a snapshot.
+          View:
+            type: array
+            items:
+              type: integer
+            description: >-
+              Field IDs to include in the response, for bandwidth
+              optimization.
+    MarketPriceRefresh:
+      name: MarketPriceRefresh
+      title: Market Price Refresh
+      summary: >-
+        Initial snapshot of pricing data for a subscribed instrument.
+      payload:
+        type: object
+        properties:
+          ID:
+            type: integer
+            description: >-
+              The stream identifier for this subscription.
+          Type:
+            type: string
+            const: Refresh
+          Key:
+            type: object
+            properties:
+              Name:
+                type: string
+                description: >-
+                  The RIC of the instrument.
+              Service:
+                type: string
+                description: >-
+                  The data service name.
+          State:
+            type: object
+            properties:
+              Stream:
+                type: string
+                description: >-
+                  Stream state.
+              Data:
+                type: string
+                description: >-
+                  Data state.
+          Fields:
+            type: object
+            additionalProperties: true
+            description: >-
+              Map of field names to their current values. Common fields
+              include BID, ASK, TRDPRC_1 (last trade), ACVOL_1 (volume),
+              HIGH_1, LOW_1, OPEN_PRC, and HST_CLOSE.
+    MarketPriceUpdate:
+      name: MarketPriceUpdate
+      title: Market Price Update
+      summary: >-
+        Incremental pricing update for a subscribed instrument containing
+        only changed fields.
+      payload:
+        type: object
+        properties:
+          ID:
+            type: integer
+            description: >-
+              The stream identifier for this subscription.
+          Type:
+            type: string
+            const: Update
+          UpdateType:
+            type: string
+            description: >-
+              The type of update such as Trade or Quote.
+          Fields:
+            type: object
+            additionalProperties: true
+            description: >-
+              Map of changed field names to their new values.
+    MarketByPriceRequest:
+      name: MarketByPriceRequest
+      title: Market By Price Request
+      summary: >-
+        Request to subscribe to Level 2 market depth data.
+      payload:
+        type: object
+        required:
+          - ID
+          - Domain
+          - Key
+        properties:
+          ID:
+            type: integer
+            description: >-
+              Unique stream identifier.
+          Domain:
+            type: string
+            const: MarketByPrice
+          Key:
+            type: object
+            properties:
+              Name:
+                type: string
+                description: >-
+                  The RIC of the instrument.
+              Service:
+                type: string
+                description: >-
+                  The data service name.
+    MarketByPriceRefresh:
+      name: MarketByPriceRefresh
+      title: Market By Price Refresh
+      summary: >-
+        Initial snapshot of the full order book for a subscribed instrument.
+      payload:
+        type: object
+        properties:
+          ID:
+            type: integer
+          Type:
+            type: string
+            const: Refresh
+          Domain:
+            type: string
+            const: MarketByPrice
+          Key:
+            type: object
+            properties:
+              Name:
+                type: string
+              Service:
+                type: string
+          Map:
+            type: object
+            description: >-
+              Map entries containing bid and ask price levels with
+              associated order sizes.
+    MarketByPriceUpdate:
+      name: MarketByPriceUpdate
+      title: Market By Price Update
+      summary: >-
+        Incremental update to the order book for a subscribed instrument.
+      payload:
+        type: object
+        properties:
+          ID:
+            type: integer
+          Type:
+            type: string
+            const: Update
+          Domain:
+            type: string
+            const: MarketByPrice
+          Map:
+            type: object
+            description: >-
+              Updated map entries for changed price levels.
+    StatusMessage:
+      name: StatusMessage
+      title: Status Message
+      summary: >-
+        Status message indicating stream state changes such as errors,
+        closures, or redirects.
+      payload:
+        type: object
+        properties:
+          ID:
+            type: integer
+            description: >-
+              The stream identifier.
+          Type:
+            type: string
+            const: Status
+          State:
+            type: object
+            properties:
+              Stream:
+                type: string
+                description: >-
+                  Stream state such as Open, Closed, or ClosedRecover.
+              Data:
+                type: string
+                description: >-
+                  Data state such as Ok or Suspect.
+              Code:
+                type: string
+                description: >-
+                  Status code such as NotFound or NotEntitled.
+              Text:
+                type: string
+                description: >-
+                  Human-readable status message.
+    PingMessage:
+      name: PingMessage
+      title: Ping Message
+      summary: >-
+        Server heartbeat message that must be responded to with a pong.
+      payload:
+        type: object
+        properties:
+          Type:
+            type: string
+            const: Ping
+    PongMessage:
+      name: PongMessage
+      title: Pong Message
+      summary: >-
+        Client heartbeat response to a server ping message.
+      payload:
+        type: object
+        properties:
+          Type:
+            type: string
+            const: Pong

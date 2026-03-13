@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.refinitiv.com/schemas/refinitiv/instrument.json",
+  "title": "Refinitiv Financial Instrument",
+  "description": "Represents a financial instrument with its identifiers, pricing data, and metadata as used across Refinitiv Data Platform APIs.",
+  "type": "object",
+  "required": ["ric"],
+  "properties": {
+    "ric": {
+      "type": "string",
+      "description": "Reuters Instrument Code (RIC) uniquely identifying the instrument on the Refinitiv platform.",
+      "pattern": "^[A-Z0-9.=/]+$"
+    },
+    "isin": {
+      "type": ["string", "null"],
+      "description": "International Securities Identification Number (ISIN) for the instrument.",
+      "pattern": "^[A-Z]{2}[A-Z0-9]{9}[0-9]$",
+      "minLength": 12,
+      "maxLength": 12
+    },
+    "cusip": {
+      "type": ["string", "null"],
+      "description": "Committee on Uniform Securities Identification Procedures (CUSIP) number.",
+      "pattern": "^[A-Z0-9]{9}$",
+      "minLength": 9,
+      "maxLength": 9
+    },
+    "sedol": {
+      "type": ["string", "null"],
+      "description": "Stock Exchange Daily Official List (SEDOL) code.",
+      "pattern": "^[A-Z0-9]{7}$",
+      "minLength": 7,
+      "maxLength": 7
+    },
+    "ticker": {
+      "type": ["string", "null"],
+      "description": "Exchange ticker symbol for the instrument."
+    },
+    "permId": {
+      "type": ["string", "null"],
+      "description": "Refinitiv Permanent Identifier (PermID) for the instrument.",
+      "pattern": "^[0-9]+$"
+    },
+    "lei": {
+      "type": ["string", "null"],
+      "description": "Legal Entity Identifier (LEI) for the issuing organization.",
+      "pattern": "^[A-Z0-9]{20}$",
+      "minLength": 20,
+      "maxLength": 20
+    },
+    "displayName": {
+      "type": ["string", "null"],
+      "description": "Human-readable display name of the instrument."
+    },
+    "currency": {
+      "type": ["string", "null"],
+      "description": "ISO 4217 currency code for the instrument's trading currency.",
+      "pattern": "^[A-Z]{3}$",
+      "minLength": 3,
+      "maxLength": 3
+    },
+    "exchangeCode": {
+      "type": ["string", "null"],
+      "description": "Market Identifier Code (MIC) for the exchange where the instrument is traded.",
+      "pattern": "^[A-Z]{4}$"
+    },
+    "exchangeName": {
+      "type": ["string", "null"],
+      "description": "Human-readable name of the exchange."
+    },
+    "assetClass": {
+      "type": ["string", "null"],
+      "description": "The asset class category of the instrument.",
+      "enum": ["Equity", "FixedIncome", "Commodity", "ForeignExchange", "Derivative", "Fund", "Index", null]
+    },
+    "country": {
+      "type": ["string", "null"],
+      "description": "ISO 3166-1 alpha-2 country code of the primary listing.",
+      "pattern": "^[A-Z]{2}$"
+    },
+    "status": {
+      "type": ["string", "null"],
+      "description": "Current trading status of the instrument.",
+      "enum": ["Active", "Inactive", "Delisted", null]
+    }
+  },
+  "$defs": {
+    "PricingData": {
+      "type": "object",
+      "description": "Real-time or delayed pricing snapshot for an instrument.",
+      "properties": {
+        "bid": {
+          "type": ["number", "null"],
+          "description": "Current best bid price."
+        },
+        "ask": {
+          "type": ["number", "null"],
+          "description": "Current best ask price."
+        },
+        "last": {
+          "type": ["number", "null"],
+          "description": "Last traded price."
+        },
+        "open": {
+          "type": ["number", "null"],
+          "description": "Opening price for the current trading session."
+        },
+        "high": {
+          "type": ["number", "null"],
+          "description": "Highest price in the current trading session."
+        },
+        "low": {
+          "type": ["number", "null"],
+          "description": "Lowest price in the current trading session."
+        },
+        "close": {
+          "type": ["number", "null"],
+          "description": "Previous session closing price."
+        },
+        "volume": {
+          "type": ["integer", "null"],
+          "description": "Trading volume for the current session.",
+          "minimum": 0
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of the pricing data."
+        }
+      }
+    },
+    "HistoricalBar": {
+      "type": "object",
+      "description": "A single OHLCV bar from historical pricing data.",
+      "properties": {
+        "date": {
+          "type": "string",
+          "format": "date",
+          "description": "The date of the bar for interday data."
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp for intraday bars."
+        },
+        "open": {
+          "type": ["number", "null"],
+          "description": "Opening price."
+        },
+        "high": {
+          "type": ["number", "null"],
+          "description": "Highest price."
+        },
+        "low": {
+          "type": ["number", "null"],
+          "description": "Lowest price."
+        },
+        "close": {
+          "type": ["number", "null"],
+          "description": "Closing price."
+        },
+        "volume": {
+          "type": ["integer", "null"],
+          "description": "Trading volume.",
+          "minimum": 0
+        },
+        "count": {
+          "type": ["integer", "null"],
+          "description": "Number of trades.",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}

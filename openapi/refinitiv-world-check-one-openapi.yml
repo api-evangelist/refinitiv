@@ -1,0 +1,783 @@
+openapi: 3.1.0
+info:
+  title: World-Check One API
+  description: >-
+    RESTful API for integrating LSEG World-Check screening capabilities into
+    existing workflows and internal systems. It enables automated customer and
+    third-party screening for onboarding, KYC, and due diligence processes
+    against the World-Check risk intelligence database, supporting synchronous
+    and asynchronous screening, ongoing monitoring, case management, and
+    audit trail capabilities.
+  version: '2.0.0'
+  contact:
+    name: LSEG Developer Support
+    url: https://developers.lseg.com/en/support
+  termsOfService: https://developers.lseg.com/en/terms-and-conditions
+externalDocs:
+  description: World-Check One API Documentation
+  url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+servers:
+  - url: https://api-worldcheck.refinitiv.com/v2
+    description: Production Server
+tags:
+  - name: Cases
+    description: >-
+      Case creation, screening, retrieval, update, and deletion operations
+      for entity screening against the World-Check database.
+  - name: Screening Results
+    description: >-
+      Operations for retrieving and managing screening results including
+      matched profiles and resolution workflows.
+  - name: Ongoing Screening
+    description: >-
+      Ongoing screening monitoring for cases that have been flagged for
+      continuous surveillance against the World-Check database.
+  - name: Groups
+    description: >-
+      Group management operations for organizing cases and configuring
+      screening parameters per group.
+  - name: Reference
+    description: >-
+      Reference data operations for retrieving profile details and
+      resolution toolkit configurations.
+security:
+  - hmacAuth: []
+paths:
+  /cases/screeningRequest:
+    post:
+      operationId: createCaseAndScreen
+      summary: Create case with synchronous screening
+      description: >-
+        Creates a new case and performs synchronous screening in a single
+        request. Returns all matched screening results within the response.
+        Optionally enables ongoing screening by setting the caseScreeningState
+        to WATCHLIST with ONGOING monitoring.
+      tags:
+        - Cases
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScreeningRequest'
+      responses:
+        '200':
+          description: Screening completed with results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScreeningResponse'
+        '400':
+          description: Invalid screening request
+        '401':
+          description: Unauthorized or invalid HMAC signature
+        '403':
+          description: Forbidden
+  /cases/{caseSystemId}:
+    get:
+      operationId: getCase
+      summary: Get case details
+      description: >-
+        Retrieves the details of an existing case including its current
+        status, screening state, and metadata.
+      tags:
+        - Cases
+      parameters:
+        - $ref: '#/components/parameters/caseSystemId'
+      responses:
+        '200':
+          description: Case details returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Case'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Case not found
+    put:
+      operationId: updateCase
+      summary: Update an existing case
+      description: >-
+        Updates the details of an existing case such as name fields, custom
+        data, and screening parameters.
+      tags:
+        - Cases
+      parameters:
+        - $ref: '#/components/parameters/caseSystemId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CaseUpdateRequest'
+      responses:
+        '200':
+          description: Case updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Case'
+        '400':
+          description: Invalid update request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Case not found
+    delete:
+      operationId: deleteCase
+      summary: Delete a case
+      description: >-
+        Permanently deletes a case and all associated screening results
+        and audit history.
+      tags:
+        - Cases
+      parameters:
+        - $ref: '#/components/parameters/caseSystemId'
+      responses:
+        '204':
+          description: Case deleted successfully
+        '401':
+          description: Unauthorized
+        '404':
+          description: Case not found
+  /cases/{caseSystemId}/results:
+    get:
+      operationId: getScreeningResults
+      summary: Get screening results
+      description: >-
+        Retrieves detailed screening results for a specific case including
+        all matched profiles, match strength indicators, and resolution
+        status for each match.
+      tags:
+        - Screening Results
+      parameters:
+        - $ref: '#/components/parameters/caseSystemId'
+      responses:
+        '200':
+          description: Screening results returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScreeningResultsResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Case not found
+  /cases/{caseSystemId}/results/{resultId}/resolution:
+    put:
+      operationId: resolveResult
+      summary: Resolve a screening result
+      description: >-
+        Resolves a specific screening result match by assigning a resolution
+        status such as True Positive, False Positive, or Unresolved. The
+        valid resolution options depend on the group's resolution toolkit
+        configuration.
+      tags:
+        - Screening Results
+      parameters:
+        - $ref: '#/components/parameters/caseSystemId'
+        - name: resultId
+          in: path
+          required: true
+          description: >-
+            The unique identifier of the screening result to resolve.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResolutionRequest'
+      responses:
+        '200':
+          description: Result resolved successfully
+        '400':
+          description: Invalid resolution request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Result not found
+  /cases/ongoingScreeningUpdates:
+    get:
+      operationId: getOngoingScreeningUpdates
+      summary: Get ongoing screening updates
+      description: >-
+        Retrieves all ongoing screening updates for cases that have been
+        flagged for continuous monitoring. Returns cases where new matches
+        have been found or existing matches have changed since the last
+        screening cycle.
+      tags:
+        - Ongoing Screening
+      parameters:
+        - name: since
+          in: query
+          description: >-
+            Filter updates since this date-time in ISO 8601 format.
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: Ongoing screening updates returned successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OngoingScreeningUpdate'
+        '401':
+          description: Unauthorized
+  /groups:
+    get:
+      operationId: listGroups
+      summary: List groups
+      description: >-
+        Retrieves all groups available in the account. Groups are used to
+        organize cases and configure screening parameters such as
+        provider types, match thresholds, and resolution toolkits.
+      tags:
+        - Groups
+      responses:
+        '200':
+          description: Groups returned successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Group'
+        '401':
+          description: Unauthorized
+  /groups/{groupId}:
+    get:
+      operationId: getGroup
+      summary: Get group details
+      description: >-
+        Retrieves the details and configuration of a specific group
+        including its screening settings and resolution toolkit.
+      tags:
+        - Groups
+      parameters:
+        - name: groupId
+          in: path
+          required: true
+          description: >-
+            The unique identifier of the group.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Group details returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Group not found
+  /groups/{groupId}/resolutionToolkit:
+    get:
+      operationId: getResolutionToolkit
+      summary: Get resolution toolkit
+      description: >-
+        Retrieves the resolution toolkit configuration for a specific group.
+        The toolkit defines the valid resolution statuses, risk levels, and
+        reasons that can be applied to screening results for cases
+        belonging to the group.
+      tags:
+        - Groups
+      parameters:
+        - name: groupId
+          in: path
+          required: true
+          description: >-
+            The unique identifier of the group.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Resolution toolkit returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResolutionToolkit'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Group not found
+  /reference/profile/{profileId}:
+    get:
+      operationId: getProfile
+      summary: Get reference profile
+      description: >-
+        Retrieves the full reference profile details for a matched entity
+        from the World-Check database, including biographical information,
+        associated countries, linked entities, and source documents.
+      tags:
+        - Reference
+      parameters:
+        - name: profileId
+          in: path
+          required: true
+          description: >-
+            The unique identifier of the World-Check profile.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Profile returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Profile not found
+components:
+  securitySchemes:
+    hmacAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: >-
+        HMAC-SHA256 authentication. All requests must include the API key
+        and be signed with the API secret using HMAC-SHA256. The signature
+        is computed over the request method, path, date, and body content,
+        and included in the Authorization header as a base64-encoded value.
+  parameters:
+    caseSystemId:
+      name: caseSystemId
+      in: path
+      required: true
+      description: >-
+        The system-generated unique identifier for the case.
+      schema:
+        type: string
+  schemas:
+    ScreeningRequest:
+      type: object
+      required:
+        - groupId
+        - entityType
+        - providerTypes
+        - name
+      properties:
+        groupId:
+          type: string
+          description: >-
+            The group under which to create the case.
+        entityType:
+          type: string
+          description: >-
+            The type of entity being screened.
+          enum:
+            - INDIVIDUAL
+            - ORGANISATION
+            - VESSEL
+        caseId:
+          type: string
+          description: >-
+            A client-defined case identifier for tracking purposes.
+        providerTypes:
+          type: array
+          items:
+            type: string
+            enum:
+              - WATCHLIST
+              - CLIENT_WATCHLIST
+              - MEDIA_CHECK
+              - PASSPORT_CHECK
+          description: >-
+            The provider types to screen against, such as WATCHLIST for
+            World-Check risk intelligence data.
+        caseScreeningState:
+          type: object
+          properties:
+            WATCHLIST:
+              type: string
+              description: >-
+                Set to ONGOING to enable continuous monitoring.
+              enum:
+                - INITIAL
+                - ONGOING
+        name:
+          type: object
+          properties:
+            firstName:
+              type: string
+              description: >-
+                First name of the individual being screened.
+            middleName:
+              type: string
+              description: >-
+                Middle name of the individual being screened.
+            lastName:
+              type: string
+              description: >-
+                Last name of the individual being screened.
+            fullName:
+              type: string
+              description: >-
+                Full name, used when individual name parts are not available,
+                or the organization name when screening organizations.
+        secondaryFields:
+          type: object
+          properties:
+            dateOfBirth:
+              type: string
+              format: date
+              description: >-
+                Date of birth for individual screening.
+            countryLocation:
+              type: string
+              description: >-
+                Country of location, ISO 3166-1 alpha-2 code.
+            nationality:
+              type: string
+              description: >-
+                Nationality, ISO 3166-1 alpha-2 code.
+            gender:
+              type: string
+              description: >-
+                Gender of the individual.
+              enum:
+                - MALE
+                - FEMALE
+                - UNSPECIFIED
+        customFields:
+          type: array
+          items:
+            type: object
+            properties:
+              typeId:
+                type: string
+                description: >-
+                  The custom field type identifier.
+              value:
+                type: string
+                description: >-
+                  The custom field value.
+    ScreeningResponse:
+      type: object
+      properties:
+        caseSystemId:
+          type: string
+          description: >-
+            The system-generated case identifier.
+        caseId:
+          type: string
+          description: >-
+            The client-defined case identifier.
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScreeningResult'
+    ScreeningResult:
+      type: object
+      properties:
+        resultId:
+          type: string
+          description: >-
+            The unique identifier of the screening result.
+        referenceId:
+          type: string
+          description: >-
+            The World-Check reference profile identifier.
+        matchStrength:
+          type: string
+          description: >-
+            The strength of the match, such as EXACT, STRONG, MEDIUM, or WEAK.
+        matchedTerm:
+          type: string
+          description: >-
+            The name or term that was matched.
+        submittedTerm:
+          type: string
+          description: >-
+            The original term submitted for screening.
+        matchedNameType:
+          type: string
+          description: >-
+            The type of name matched, such as PRIMARY or ALIAS.
+        categories:
+          type: array
+          items:
+            type: string
+          description: >-
+            Categories assigned to the matched profile such as PEP,
+            Sanctions, or Adverse Media.
+        resolution:
+          type: object
+          description: >-
+            The current resolution status of the result, null if unresolved.
+          properties:
+            statusId:
+              type: string
+              description: >-
+                The resolution status identifier.
+            riskId:
+              type: string
+              description: >-
+                The risk level identifier.
+            reasonId:
+              type: string
+              description: >-
+                The resolution reason identifier.
+    Case:
+      type: object
+      properties:
+        caseSystemId:
+          type: string
+          description: >-
+            The system-generated case identifier.
+        caseId:
+          type: string
+          description: >-
+            The client-defined case identifier.
+        groupId:
+          type: string
+          description: >-
+            The group the case belongs to.
+        entityType:
+          type: string
+          description: >-
+            The entity type of the case.
+        name:
+          type: object
+          properties:
+            firstName:
+              type: string
+            middleName:
+              type: string
+            lastName:
+              type: string
+            fullName:
+              type: string
+        caseScreeningState:
+          type: object
+          description: >-
+            The current screening state for each provider type.
+        creationDate:
+          type: string
+          format: date-time
+          description: >-
+            The date and time the case was created.
+        modificationDate:
+          type: string
+          format: date-time
+          description: >-
+            The date and time the case was last modified.
+    CaseUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: object
+          properties:
+            firstName:
+              type: string
+            middleName:
+              type: string
+            lastName:
+              type: string
+            fullName:
+              type: string
+        secondaryFields:
+          type: object
+          description: >-
+            Updated secondary screening fields.
+        customFields:
+          type: array
+          items:
+            type: object
+            properties:
+              typeId:
+                type: string
+              value:
+                type: string
+    ScreeningResultsResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScreeningResult'
+    OngoingScreeningUpdate:
+      type: object
+      properties:
+        caseSystemId:
+          type: string
+          description: >-
+            The case that has updated screening results.
+        caseId:
+          type: string
+          description: >-
+            The client-defined case identifier.
+        updateDate:
+          type: string
+          format: date-time
+          description: >-
+            The date and time of the screening update.
+        providerType:
+          type: string
+          description: >-
+            The provider type that generated the update.
+    Group:
+      type: object
+      properties:
+        groupId:
+          type: string
+          description: >-
+            The unique identifier of the group.
+        name:
+          type: string
+          description: >-
+            The name of the group.
+        parentId:
+          type: string
+          description: >-
+            The parent group identifier, if applicable.
+        status:
+          type: string
+          description: >-
+            The status of the group, such as ACTIVE or INACTIVE.
+    ResolutionToolkit:
+      type: object
+      properties:
+        groupId:
+          type: string
+          description: >-
+            The group this toolkit applies to.
+        statuses:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: >-
+                  The status identifier.
+              label:
+                type: string
+                description: >-
+                  The display label for the status.
+              type:
+                type: string
+                description: >-
+                  The status type such as POSITIVE, FALSE, or UNSPECIFIED.
+        risks:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: >-
+                  The risk level identifier.
+              label:
+                type: string
+                description: >-
+                  The display label for the risk level.
+        reasons:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: >-
+                  The reason identifier.
+              label:
+                type: string
+                description: >-
+                  The display label for the reason.
+    ResolutionRequest:
+      type: object
+      required:
+        - statusId
+      properties:
+        statusId:
+          type: string
+          description: >-
+            The resolution status to assign, from the resolution toolkit.
+        riskId:
+          type: string
+          description: >-
+            The risk level to assign, from the resolution toolkit.
+        reasonId:
+          type: string
+          description: >-
+            The reason for the resolution, from the resolution toolkit.
+        remarks:
+          type: string
+          description: >-
+            Free-text remarks or notes for the resolution.
+    Profile:
+      type: object
+      properties:
+        profileId:
+          type: string
+          description: >-
+            The unique identifier of the World-Check profile.
+        primaryName:
+          type: string
+          description: >-
+            The primary name of the profiled entity.
+        entityType:
+          type: string
+          description: >-
+            The entity type such as INDIVIDUAL or ORGANISATION.
+        categories:
+          type: array
+          items:
+            type: string
+          description: >-
+            Categories such as PEP, Sanctions, Law Enforcement, or
+            Adverse Media.
+        countryLinks:
+          type: array
+          items:
+            type: object
+            properties:
+              country:
+                type: string
+                description: >-
+                  Country name.
+              countryCode:
+                type: string
+                description: >-
+                  ISO 3166-1 alpha-2 code.
+              type:
+                type: string
+                description: >-
+                  Relationship type such as NATIONALITY or LOCATION.
+        sources:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: >-
+                  The source name.
+              url:
+                type: string
+                format: uri
+                description: >-
+                  The source URL.
+        aliases:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: >-
+                  The alias name.
+              type:
+                type: string
+                description: >-
+                  The alias type such as AKA, FKA, or DBA.
