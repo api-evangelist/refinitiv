@@ -1,12 +1,15 @@
+aid: refinitiv
 name: Refinitiv APIs
 description: >-
   Refinitiv, an LSEG (London Stock Exchange Group) business, provides financial
   market data, infrastructure, and analytics to businesses and financial
   professionals worldwide.
+type: Index
 image: https://www.refinitiv.com/etc/designs/refinitiv/images/refinitiv-logo.svg
-url: https://developers.lseg.com/en
-created: '2024'
-modified: '2026-03-09'
+url: https://raw.githubusercontent.com/api-evangelist/refinitiv/refs/heads/main/apis.yml
+created: '2024-01-01'
+modified: '2026-03-16'
+specificationVersion: '0.19'
 apis:
 - name: Refinitiv Data Platform (RDP) API
   description: >-
@@ -609,6 +612,5 @@ common:
 - type: Medium
   url: https://medium.com/lseg-developer-community
 maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
-  X-twitter: apievangelist
+  - FN: Kin Lane
+    email: kin@apievangelist.com
