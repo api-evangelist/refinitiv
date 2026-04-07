@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: World-Check One API
+  title: Refinitiv World-Check One API
   description: >-
     RESTful API for integrating LSEG World-Check screening capabilities into
     existing workflows and internal systems. It enables automated customer and
@@ -46,7 +46,7 @@ paths:
   /cases/screeningRequest:
     post:
       operationId: createCaseAndScreen
-      summary: Create case with synchronous screening
+      summary: Refinitiv Create case with synchronous screening
       description: >-
         Creates a new case and performs synchronous screening in a single
         request. Returns all matched screening results within the response.
@@ -76,7 +76,7 @@ paths:
   /cases/{caseSystemId}:
     get:
       operationId: getCase
-      summary: Get case details
+      summary: Refinitiv Get case details
       description: >-
         Retrieves the details of an existing case including its current
         status, screening state, and metadata.
@@ -97,7 +97,7 @@ paths:
           description: Case not found
     put:
       operationId: updateCase
-      summary: Update an existing case
+      summary: Refinitiv Update an existing case
       description: >-
         Updates the details of an existing case such as name fields, custom
         data, and screening parameters.
@@ -126,7 +126,7 @@ paths:
           description: Case not found
     delete:
       operationId: deleteCase
-      summary: Delete a case
+      summary: Refinitiv Delete a case
       description: >-
         Permanently deletes a case and all associated screening results
         and audit history.
@@ -144,7 +144,7 @@ paths:
   /cases/{caseSystemId}/results:
     get:
       operationId: getScreeningResults
-      summary: Get screening results
+      summary: Refinitiv Get screening results
       description: >-
         Retrieves detailed screening results for a specific case including
         all matched profiles, match strength indicators, and resolution
@@ -167,7 +167,7 @@ paths:
   /cases/{caseSystemId}/results/{resultId}/resolution:
     put:
       operationId: resolveResult
-      summary: Resolve a screening result
+      summary: Refinitiv Resolve a screening result
       description: >-
         Resolves a specific screening result match by assigning a resolution
         status such as True Positive, False Positive, or Unresolved. The
@@ -202,7 +202,7 @@ paths:
   /cases/ongoingScreeningUpdates:
     get:
       operationId: getOngoingScreeningUpdates
-      summary: Get ongoing screening updates
+      summary: Refinitiv Get ongoing screening updates
       description: >-
         Retrieves all ongoing screening updates for cases that have been
         flagged for continuous monitoring. Returns cases where new matches
@@ -232,7 +232,7 @@ paths:
   /groups:
     get:
       operationId: listGroups
-      summary: List groups
+      summary: Refinitiv List groups
       description: >-
         Retrieves all groups available in the account. Groups are used to
         organize cases and configure screening parameters such as
@@ -253,7 +253,7 @@ paths:
   /groups/{groupId}:
     get:
       operationId: getGroup
-      summary: Get group details
+      summary: Refinitiv Get group details
       description: >-
         Retrieves the details and configuration of a specific group
         including its screening settings and resolution toolkit.
@@ -281,7 +281,7 @@ paths:
   /groups/{groupId}/resolutionToolkit:
     get:
       operationId: getResolutionToolkit
-      summary: Get resolution toolkit
+      summary: Refinitiv Get resolution toolkit
       description: >-
         Retrieves the resolution toolkit configuration for a specific group.
         The toolkit defines the valid resolution statuses, risk levels, and
@@ -311,7 +311,7 @@ paths:
   /reference/profile/{profileId}:
     get:
       operationId: getProfile
-      summary: Get reference profile
+      summary: Refinitiv Get reference profile
       description: >-
         Retrieves the full reference profile details for a matched entity
         from the World-Check database, including biographical information,

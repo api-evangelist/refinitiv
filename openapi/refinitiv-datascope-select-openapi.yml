@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: LSEG DataScope Select REST API
+  title: Refinitiv LSEG DataScope Select REST API
   description: >-
     Internet-hosted OData REST API for programmatic access to global pricing,
     corporate actions, reference data, historical data, cross-reference, and
@@ -43,7 +43,7 @@ paths:
   /Authentication/RequestToken:
     post:
       operationId: requestToken
-      summary: Request authentication token
+      summary: Refinitiv Request authentication token
       description: >-
         Authenticates the user and returns a session token that must be
         included in all subsequent API requests. The token is included in
@@ -97,7 +97,7 @@ paths:
   /Extractions/Extract:
     post:
       operationId: extractData
-      summary: Submit on-demand extraction
+      summary: Refinitiv Submit on-demand extraction
       description: >-
         Submits an on-demand data extraction request. For small result sets,
         the response is returned synchronously. For larger extractions, the
@@ -143,7 +143,7 @@ paths:
   /Extractions/ExtractWithNotes:
     post:
       operationId: extractWithNotes
-      summary: Extract data with notes
+      summary: Refinitiv Extract data with notes
       description: >-
         Submits an on-demand extraction request and returns results in JSON
         format along with extraction notes. Suitable for smaller data sets
@@ -172,7 +172,7 @@ paths:
   /Extractions/ExtractRaw:
     post:
       operationId: extractRaw
-      summary: Extract raw data
+      summary: Refinitiv Extract raw data
       description: >-
         Submits an on-demand extraction request optimized for large data sets.
         Returns results in CSV format compressed with gzip for bandwidth
@@ -212,7 +212,7 @@ paths:
   /Extractions/RawExtractionResults('{jobId}')/$value:
     get:
       operationId: getRawExtractionResults
-      summary: Download raw extraction results
+      summary: Refinitiv Download raw extraction results
       description: >-
         Downloads the raw extraction results for a completed extraction job.
         Results are returned as gzip-compressed CSV data.
@@ -241,7 +241,7 @@ paths:
   /Extractions/InstrumentListGetByName(ListName='{listName}'):
     get:
       operationId: getInstrumentListByName
-      summary: Get instrument list by name
+      summary: Refinitiv Get instrument list by name
       description: >-
         Retrieves an instrument list by its name, returning the list
         metadata and contained instruments.
@@ -269,7 +269,7 @@ paths:
   /Extractions/InstrumentLists:
     get:
       operationId: listInstrumentLists
-      summary: List instrument lists
+      summary: Refinitiv List instrument lists
       description: >-
         Retrieves all instrument lists defined in the user's account.
       tags:
@@ -290,7 +290,7 @@ paths:
           description: Unauthorized
     post:
       operationId: createInstrumentList
-      summary: Create instrument list
+      summary: Refinitiv Create instrument list
       description: >-
         Creates a new instrument list with the specified name and instruments.
       tags:
@@ -311,7 +311,7 @@ paths:
   /Extractions/Schedules:
     get:
       operationId: listSchedules
-      summary: List extraction schedules
+      summary: Refinitiv List extraction schedules
       description: >-
         Retrieves all extraction schedules defined in the user's account.
       tags:
@@ -333,7 +333,7 @@ paths:
   /Users/Users('{userId}'):
     get:
       operationId: getUser
-      summary: Get user information
+      summary: Refinitiv Get user information
       description: >-
         Retrieves user account information for the specified user ID.
       tags:

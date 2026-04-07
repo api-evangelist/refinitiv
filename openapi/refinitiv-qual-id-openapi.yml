@@ -36,7 +36,7 @@ paths:
   /connection/v1/sayhello/{name}:
     get:
       operationId: sayHello
-      summary: Test connectivity
+      summary: Refinitiv Test connectivity
       description: >-
         Tests connectivity to the API server. This endpoint does not require
         authentication and returns a greeting with the provided name.
@@ -61,7 +61,7 @@ paths:
   /connection/v1/testauthentication:
     get:
       operationId: testAuthentication
-      summary: Test authentication
+      summary: Refinitiv Test authentication
       description: >-
         Tests that the provided credentials are valid by returning a greeting
         with the authenticated username.
@@ -79,7 +79,7 @@ paths:
   /configuration/v1/countrycodes/{configurationName}:
     get:
       operationId: getCountryCodes
-      summary: Get supported country codes
+      summary: Refinitiv Get supported country codes
       description: >-
         Retrieves the list of ISO 3166-1 alpha-2 country codes supported
         for a given configuration such as Identity Verification or Document
@@ -111,7 +111,7 @@ paths:
   /configuration/v1/fields/{configurationName}/{countryCode}:
     get:
       operationId: getFields
-      summary: Get verification fields
+      summary: Refinitiv Get verification fields
       description: >-
         Retrieves the required and optional data fields for a specific
         country and configuration. The response defines the JSON schema
@@ -149,7 +149,7 @@ paths:
   /configuration/v1/consents/{configurationName}/{countryCode}:
     get:
       operationId: getConsents
-      summary: Get consent requirements
+      summary: Refinitiv Get consent requirements
       description: >-
         Retrieves the list of data sources that require explicit consent
         before verification can be performed for a given country and
@@ -188,7 +188,7 @@ paths:
   /configuration/v1/testentities/{configurationName}/{countryCode}:
     get:
       operationId: getTestEntities
-      summary: Get test entities
+      summary: Refinitiv Get test entities
       description: >-
         Retrieves test entity data for sandbox testing. Available only for
         sandbox accounts and returns sample identity data that can be used
@@ -227,7 +227,7 @@ paths:
   /verifications/v1/verify:
     post:
       operationId: verifyIdentity
-      summary: Verify identity
+      summary: Refinitiv Verify identity
       description: >-
         Submits an identity or document verification request. The API
         checks the submitted personal information against configured
@@ -255,7 +255,7 @@ paths:
   /verifications/v1/transactionrecord/{transactionRecordId}:
     get:
       operationId: getTransactionRecord
-      summary: Get transaction record
+      summary: Refinitiv Get transaction record
       description: >-
         Retrieves a past verification transaction record by its unique
         identifier. Returns the full verification results for the

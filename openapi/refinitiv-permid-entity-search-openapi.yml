@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: PermID Entity Search API
+  title: Refinitiv PermID Entity Search API
   description: >-
     RESTful API enabling search of entities by name, ticker, or RIC to return
     PermIDs, or use PermIDs to retrieve entity information. PermID is an open
@@ -33,7 +33,7 @@ paths:
   /search:
     get:
       operationId: searchEntities
-      summary: Search entities by query
+      summary: Refinitiv Search entities by query
       description: >-
         Searches for entities across organizations, equity instruments, and
         equity quotes. Supports searching by name, ticker, RIC, LEI, PermID,
@@ -91,7 +91,7 @@ paths:
   /calais:
     post:
       operationId: tagContent
-      summary: Tag content with entities
+      summary: Refinitiv Tag content with entities
       description: >-
         Submits unstructured text content for natural language processing
         and entity extraction. Identifies and tags companies, people, deals,
@@ -163,7 +163,7 @@ paths:
   /match:
     post:
       operationId: matchRecords
-      summary: Match records to PermIDs
+      summary: Refinitiv Match records to PermIDs
       description: >-
         Matches unstructured entity records to PermID identifiers. Accepts
         entity data such as organization name, address, and identifiers and
@@ -199,7 +199,7 @@ paths:
   /lookup:
     get:
       operationId: lookupEntity
-      summary: Look up entity by PermID
+      summary: Refinitiv Look up entity by PermID
       description: >-
         Retrieves detailed information about a specific entity using its
         PermID identifier, returning structured data about the organization,

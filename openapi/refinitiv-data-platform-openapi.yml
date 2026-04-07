@@ -61,7 +61,7 @@ paths:
   /auth/oauth2/v1/token:
     post:
       operationId: getToken
-      summary: Request access token
+      summary: Refinitiv Request access token
       description: >-
         Obtains an OAuth 2.0 access token using password grant or refresh token
         grant. The access token is required for all subsequent API calls and is
@@ -134,7 +134,7 @@ paths:
   /data/historical-pricing/v1/views/interday-summaries/{universe}:
     get:
       operationId: getInterdaySummaries
-      summary: Get interday pricing summaries
+      summary: Refinitiv Get interday pricing summaries
       description: >-
         Retrieves historical interday pricing summaries for a given instrument,
         including open, high, low, close, and volume data points. Supports
@@ -186,7 +186,7 @@ paths:
   /data/historical-pricing/v1/views/intraday-summaries/{universe}:
     get:
       operationId: getIntradaySummaries
-      summary: Get intraday pricing summaries
+      summary: Refinitiv Get intraday pricing summaries
       description: >-
         Retrieves historical intraday pricing summaries for a given instrument
         at configurable intervals. Returns time-stamped OHLCV bars for the
@@ -237,7 +237,7 @@ paths:
   /data/historical-pricing/v1/views/events/{universe}:
     get:
       operationId: getHistoricalPricingEvents
-      summary: Get historical pricing events
+      summary: Refinitiv Get historical pricing events
       description: >-
         Retrieves historical trade and quote events for a given instrument,
         providing tick-level data for detailed analysis of market activity.
@@ -281,7 +281,7 @@ paths:
   /data/pricing/snapshots/v1/:
     get:
       operationId: getPricingSnapshots
-      summary: Get pricing snapshots
+      summary: Refinitiv Get pricing snapshots
       description: >-
         Retrieves real-time or delayed pricing snapshots for one or more
         financial instruments. Returns the latest available price data
@@ -316,7 +316,7 @@ paths:
   /pricing/chains/v1/:
     get:
       operationId: getPricingChains
-      summary: Get pricing chains
+      summary: Refinitiv Get pricing chains
       description: >-
         Retrieves constituent instruments for a pricing chain such as an
         options chain or futures chain identified by its chain RIC.
@@ -353,7 +353,7 @@ paths:
   /data/news/v1/headlines:
     get:
       operationId: getNewsHeadlines
-      summary: Get news headlines
+      summary: Refinitiv Get news headlines
       description: >-
         Retrieves news headlines matching the specified query criteria.
         Supports filtering by topic, instrument, date range, and other
@@ -395,7 +395,7 @@ paths:
   /data/news/v1/stories/{storyId}:
     get:
       operationId: getNewsStory
-      summary: Get news story
+      summary: Refinitiv Get news story
       description: >-
         Retrieves the full text and metadata for a specific news story
         identified by its story ID.
@@ -423,7 +423,7 @@ paths:
   /data/environmental-social-governance/v1/views/basic:
     get:
       operationId: getEsgBasic
-      summary: Get basic ESG scores
+      summary: Refinitiv Get basic ESG scores
       description: >-
         Retrieves basic Environmental, Social, and Governance scores for
         one or more companies. Returns overall ESG scores and individual
@@ -452,7 +452,7 @@ paths:
   /data/environmental-social-governance/v1/views/measures-full:
     get:
       operationId: getEsgMeasuresFull
-      summary: Get full ESG measures
+      summary: Refinitiv Get full ESG measures
       description: >-
         Retrieves comprehensive ESG measures including detailed environmental,
         social, and governance metrics, carbon emissions data, green revenue
@@ -493,7 +493,7 @@ paths:
   /data/quantitative-analytics/v1/financial-contracts:
     post:
       operationId: calculateFinancialContracts
-      summary: Calculate financial contracts
+      summary: Refinitiv Calculate financial contracts
       description: >-
         Submits financial contract definitions to the Instrument Pricing
         Analytics (IPA) engine for pricing, risk calculation, and
@@ -521,7 +521,7 @@ paths:
   /discovery/symbology/v1/convert:
     post:
       operationId: convertSymbology
-      summary: Convert symbology identifiers
+      summary: Refinitiv Convert symbology identifiers
       description: >-
         Converts financial instrument identifiers between different symbology
         types such as RIC, ISIN, CUSIP, SEDOL, ticker, and PermID. Supports
@@ -548,7 +548,7 @@ paths:
   /discovery/search/v1/:
     post:
       operationId: searchInstruments
-      summary: Search for instruments
+      summary: Refinitiv Search for instruments
       description: >-
         Searches across organizations, instruments, quotes, and economic
         indicators. Supports complex query expressions and filtering by
@@ -575,7 +575,7 @@ paths:
   /streaming/pricing/v1/:
     get:
       operationId: getStreamingEndpoints
-      summary: Discover streaming endpoints
+      summary: Refinitiv Discover streaming endpoints
       description: >-
         Retrieves available streaming service endpoints for establishing
         WebSocket connections to real-time pricing data. Returns endpoint
