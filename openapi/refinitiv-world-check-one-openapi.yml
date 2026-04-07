@@ -24,22 +24,22 @@ tags:
     description: >-
       Case creation, screening, retrieval, update, and deletion operations
       for entity screening against the World-Check database.
-  - name: Screening Results
-    description: >-
-      Operations for retrieving and managing screening results including
-      matched profiles and resolution workflows.
-  - name: Ongoing Screening
-    description: >-
-      Ongoing screening monitoring for cases that have been flagged for
-      continuous surveillance against the World-Check database.
   - name: Groups
     description: >-
       Group management operations for organizing cases and configuring
       screening parameters per group.
+  - name: Ongoing Screening
+    description: >-
+      Ongoing screening monitoring for cases that have been flagged for
+      continuous surveillance against the World-Check database.
   - name: Reference
     description: >-
       Reference data operations for retrieving profile details and
       resolution toolkit configurations.
+  - name: Screening Results
+    description: >-
+      Operations for retrieving and managing screening results including
+      matched profiles and resolution workflows.
 security:
   - hmacAuth: []
 paths:

@@ -23,30 +23,26 @@ tags:
     description: >-
       OAuth 2.0 token management for obtaining and refreshing access tokens
       required by all other API endpoints.
-  - name: Historical Pricing
-    description: >-
-      Access to historical interday and intraday pricing data for financial
-      instruments including summaries, events, and time series.
-  - name: Pricing
-    description: >-
-      Real-time and delayed snapshot pricing data for financial instruments
-      and pricing chains.
-  - name: News
-    description: >-
-      Access to real-time and historical news headlines and stories from
-      Reuters and other sources.
   - name: ESG
     description: >-
       Environmental, Social, and Governance data including scores, measures,
       carbon emissions, and controversy tracking across thousands of companies.
+  - name: Historical Pricing
+    description: >-
+      Access to historical interday and intraday pricing data for financial
+      instruments including summaries, events, and time series.
+  - name: News
+    description: >-
+      Access to real-time and historical news headlines and stories from
+      Reuters and other sources.
+  - name: Pricing
+    description: >-
+      Real-time and delayed snapshot pricing data for financial instruments
+      and pricing chains.
   - name: Quantitative Analytics
     description: >-
       Instrument Pricing Analytics (IPA) service for pricing financial
       contracts, calculating risk measures, and running quantitative models.
-  - name: Symbology
-    description: >-
-      Symbol lookup and conversion between different identifier types
-      including RIC, ISIN, CUSIP, SEDOL, and PermID.
   - name: Search
     description: >-
       Discovery and search across organizations, instruments, quotes, and
@@ -55,6 +51,10 @@ tags:
     description: >-
       Service discovery for streaming connections to real-time pricing
       and data services.
+  - name: Symbology
+    description: >-
+      Symbol lookup and conversion between different identifier types
+      including RIC, ISIN, CUSIP, SEDOL, and PermID.
 security:
   - bearerAuth: []
 paths:

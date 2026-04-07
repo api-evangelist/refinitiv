@@ -19,13 +19,13 @@ servers:
   - url: https://api.globaldatacompany.com
     description: Production Server
 tags:
-  - name: Connection
-    description: >-
-      Connectivity and authentication testing endpoints.
   - name: Configuration
     description: >-
       Configuration retrieval for country codes, fields, consents, and
       test entities required for verification requests.
+  - name: Connection
+    description: >-
+      Connectivity and authentication testing endpoints.
   - name: Verification
     description: >-
       Identity and document verification submission and transaction
