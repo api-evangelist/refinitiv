@@ -1,0 +1,41 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api-worldcheck.refinitiv.com/v2/cases/screeningRequest",
+    "headers": {
+      "Authorization": "HMAC-SHA256 apiKey:signature",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "entityType": "INDIVIDUAL",
+      "name": "John Smith",
+      "dateOfBirth": "1975-06-15",
+      "nationality": "US",
+      "groupId": "group-123",
+      "caseScreeningState": "PENDING_REVIEW",
+      "customFields": []
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "caseSystemId": "case-456789",
+      "entityType": "INDIVIDUAL",
+      "name": "John Smith",
+      "caseScreeningState": "PENDING_REVIEW",
+      "screeningResults": [
+        {
+          "resultId": "result-111",
+          "matchStrength": "EXACT",
+          "riskType": "SANCTIONS",
+          "primaryName": "John Smith",
+          "dateOfBirth": "1975-06-15",
+          "nationality": "US",
+          "caseResultId": "wc-999111"
+        }
+      ],
+      "createdDate": "2026-05-02T10:15:30Z",
+      "lastModified": "2026-05-02T10:15:31Z"
+    }
+  }
+}

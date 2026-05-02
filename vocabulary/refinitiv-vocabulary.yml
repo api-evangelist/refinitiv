@@ -1,0 +1,172 @@
+name: Refinitiv Vocabulary
+description: >-
+  Normative vocabulary for the Refinitiv (LSEG) financial data platform
+  ecosystem covering APIs, financial data concepts, compliance terminology,
+  and identifier systems.
+version: '1.0'
+modified: '2026-05-02'
+source: https://developers.lseg.com
+terms:
+  - term: Refinitiv Data Platform (RDP)
+    definition: >-
+      The cloud-enabled central REST API hub for accessing Refinitiv/LSEG
+      financial content programmatically. Provides access to historical
+      pricing, real-time pricing, news, ESG data, quantitative analytics,
+      symbology, and search services at https://api.refinitiv.com.
+    tags:
+      - Platform
+      - Core Concept
+
+  - term: RIC (Reuters Instrument Code)
+    definition: >-
+      The primary instrument identifier in the Refinitiv ecosystem. Composed
+      of a root ticker symbol plus an exchange suffix (e.g., AAPL.O for Apple
+      on NASDAQ, IBM.N for IBM on NYSE). RICs are central to nearly all RDP
+      pricing and data queries.
+    tags:
+      - Identifier
+
+  - term: PermID
+    definition: >-
+      Permanent Identifier — a globally unique, persistent machine-readable
+      identifier assigned by LSEG to organizations, instruments, quotes,
+      and economic indicators. PermIDs are open, freely available, and
+      stable across corporate actions.
+    tags:
+      - Identifier
+      - Open Data
+
+  - term: World-Check
+    definition: >-
+      LSEG World-Check — a comprehensive risk intelligence database used
+      for screening entities against sanctions lists, politically exposed
+      persons (PEPs), adverse media, and global regulatory watchlists.
+      Core to KYC, AML, and third-party due diligence workflows.
+    tags:
+      - Compliance
+      - Risk Management
+
+  - term: DataScope Select
+    definition: >-
+      An OData REST API platform for batch extraction of global financial
+      data including end-of-day pricing, corporate actions, reference data,
+      historical data, cross-reference data, and entity data. Supports
+      both on-demand and scheduled extraction workflows.
+    tags:
+      - Data Platform
+      - Bulk Data
+
+  - term: Intelligent Tagging
+    definition: >-
+      A Refinitiv API service (calais.refinitiv.com) that applies machine
+      learning-based NLP to extract and tag financial entities, topics,
+      events, and relationships from unstructured text. Returns PermIDs
+      for identified organizations, people, and instruments.
+    tags:
+      - NLP
+      - Text Analytics
+
+  - term: Tick History
+    definition: >-
+      A historical tick-level market data service providing time-and-sales,
+      intraday bars, market depth, and order book data across global markets.
+      Accessed via the TRTH REST API built on the DataScope Select platform.
+    tags:
+      - Market Data
+      - Historical Data
+
+  - term: ESG Combined Score
+    definition: >-
+      A Refinitiv score (0-100) that blends the company's ESG Score with
+      its Controversies Score to produce a comprehensive sustainability
+      rating that reflects both proactive ESG performance and adverse
+      ESG incidents.
+    tags:
+      - ESG
+      - Sustainability
+
+  - term: KYC (Know Your Customer)
+    definition: >-
+      A regulatory compliance process requiring financial institutions to
+      verify the identity, suitability, and risk of clients. Refinitiv
+      World-Check and PermID support KYC by enabling entity identification
+      and risk screening against global databases.
+    tags:
+      - Compliance
+      - Regulatory
+
+  - term: AML (Anti-Money Laundering)
+    definition: >-
+      A set of laws, regulations, and procedures intended to prevent the
+      practice of generating income through illegal activities. Refinitiv
+      World-Check screening helps identify high-risk entities and
+      sanctions violations in AML workflows.
+    tags:
+      - Compliance
+      - Regulatory
+
+  - term: Ongoing Monitoring
+    definition: >-
+      A World-Check feature that continuously watches screened entities
+      for new matches as the World-Check database updates. Entities placed
+      on a watchlist receive automatic notifications when their risk profile
+      changes.
+    tags:
+      - World-Check
+      - Compliance
+
+  - term: HMAC Authentication
+    definition: >-
+      The authentication scheme used by the World-Check One API. Clients
+      compute a Hash-based Message Authentication Code using their API Key
+      and Secret to sign each request, ensuring message integrity and
+      authenticity.
+    tags:
+      - Authentication
+      - Security
+
+  - term: Screening Case
+    definition: >-
+      A World-Check record representing a single screening event for an
+      entity. Cases track the screening lifecycle from initial screening
+      through result review and resolution, with full audit trail.
+    tags:
+      - World-Check
+      - Compliance
+
+  - term: PEP (Politically Exposed Person)
+    definition: >-
+      An individual who holds or has held a prominent public position and
+      may be at higher risk of corruption or financial crime. Refinitiv
+      World-Check includes PEP screening as part of its risk intelligence
+      database.
+    tags:
+      - Compliance
+      - Risk
+
+  - term: ESG Pillar
+    definition: >-
+      One of the three main categories of ESG assessment: Environmental
+      (resource use, emissions, innovation), Social (workforce, human rights,
+      community), and Governance (management, shareholders, CSR). Each pillar
+      has a score (0-100) contributing to the overall ESG Score.
+    tags:
+      - ESG
+
+  - term: Pricing Chain
+    definition: >-
+      A Refinitiv concept for an instrument that is actually a chain of
+      related contracts (e.g., futures chains). The Pricing Chains endpoint
+      returns the constituent contracts within a pricing chain for navigation.
+    tags:
+      - Market Data
+      - Derivatives
+
+  - term: OData
+    definition: >-
+      Open Data Protocol — a RESTful protocol used by DataScope Select for
+      querying and manipulating data. Supports $filter, $select, $top,
+      and other standard OData query options for structured data extraction.
+    tags:
+      - Protocol
+      - DataScope Select

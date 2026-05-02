@@ -1,0 +1,42 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.refinitiv.com/data/pricing/snapshots/v1/AAPL.O,IBM.N,MSFT.OQ",
+    "headers": {
+      "Authorization": "Bearer {access_token}"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "universe": [
+        {
+          "instrumentId": "AAPL.O",
+          "ric": "AAPL.O",
+          "fields": {
+            "BID": 185.42,
+            "ASK": 185.45,
+            "TRDPRC_1": 185.44,
+            "NETCHNG_1": 1.23,
+            "PCTCHNG": 0.67,
+            "ACVOL_UNS": 45123400,
+            "HST_CLOSE": 184.21
+          }
+        },
+        {
+          "instrumentId": "IBM.N",
+          "ric": "IBM.N",
+          "fields": {
+            "BID": 168.90,
+            "ASK": 168.95,
+            "TRDPRC_1": 168.92,
+            "NETCHNG_1": -0.45,
+            "PCTCHNG": -0.27,
+            "ACVOL_UNS": 2345600,
+            "HST_CLOSE": 169.37
+          }
+        }
+      ]
+    }
+  }
+}

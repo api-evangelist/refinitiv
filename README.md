@@ -1,106 +1,132 @@
-# Refinitiv APIs (refinitiv)
-Refinitiv provides financial market data, infrastructure, and analytics to businesses and financial professionals worldwide
+# Refinitiv
 
-**URL:** [Visit APIs.json URL](https://developers.refinitiv.com)
+Refinitiv, an LSEG (London Stock Exchange Group) business, provides financial market data, infrastructure, and analytics to businesses and financial professionals worldwide. The Refinitiv Data Platform offers REST APIs for historical pricing, real-time data, ESG scores, news, compliance screening, and symbology.
 
-## Timestamps
+**Human URL:** [https://developers.lseg.com](https://developers.lseg.com)
 
-- **Created:** 2024 
-- **Modified:** 2024 
+**Developer Portal:** [https://developers.lseg.com/en/api-catalog](https://developers.lseg.com/en/api-catalog)
+
+## Tags
+
+- Financial Data
+- Market Data
+- ESG
+- News
+- Compliance
+- Screening
+- Analytics
 
 ## APIs
 
 ### Refinitiv Data Platform (RDP) API
-Cloud-enabled API providing access to streaming and non-streaming financial data, news, research, and analytics
+Cloud-enabled REST API for pricing, ESG, news, quantitative analytics, symbology, and search.
 
-**Human URL:** [https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis](https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis)
+- [OpenAPI](openapi/refinitiv-data-platform-openapi.yml)
+- [Documentation](https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation)
 
+### DataScope Select REST API
+Bulk extraction platform for prices, corporate actions, reference data, and historical data.
 
-#### Tags:
+- [OpenAPI](openapi/refinitiv-datascope-select-openapi.yml)
+- [Documentation](https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation)
 
- - financial data, market data, streaming, analytics
+### PermID Entity Search API
+Entity search, intelligent tagging, and record matching for organizations and instruments.
 
-#### Properties
+- [OpenAPI](openapi/refinitiv-permid-entity-search-openapi.yml)
+- [Documentation](https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation)
 
-- [X-documentation](https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation)
-- [X-openapi](https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download)
-- [X-authentication](https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start)
-- [X-pricing](https://www.refinitiv.com/en/products/refinitiv-data-platform)
+### World-Check One API
+Entity screening against the World-Check risk intelligence database for KYC and AML.
 
-### Eikon Data API
-Python library providing access to financial data, news, and symbology from Refinitiv Eikon
+- [OpenAPI](openapi/refinitiv-world-check-one-openapi.yml)
+- [Documentation](https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation)
 
-**Human URL:** [https://developers.refinitiv.com/en/api-catalog/eikon/eikon-data-api](https://developers.refinitiv.com/en/api-catalog/eikon/eikon-data-api)
+### LSEG Real-Time WebSocket API
+WebSocket API for real-time streaming pricing and news data.
 
+- [AsyncAPI](asyncapi/refinitiv-real-time-websocket-asyncapi.yml)
+- [Documentation](https://developers.lseg.com/en/api-catalog/real-time-opnsrc/websocket-api/documentation)
 
-#### Tags:
+## Artifacts
 
- - python, eikon, financial data, desktop
+### OpenAPI Specifications
 
-#### Properties
+| Specification | Description |
+|---------------|-------------|
+| [Data Platform API](openapi/refinitiv-data-platform-openapi.yml) | Pricing, ESG, news, symbology, search |
+| [DataScope Select API](openapi/refinitiv-datascope-select-openapi.yml) | Bulk data extraction |
+| [PermID Entity Search API](openapi/refinitiv-permid-entity-search-openapi.yml) | Entity search and tagging |
+| [Qual-ID API](openapi/refinitiv-qual-id-openapi.yml) | Identity verification |
+| [World-Check One API](openapi/refinitiv-world-check-one-openapi.yml) | Compliance screening |
 
-- [X-documentation](https://developers.refinitiv.com/en/api-catalog/eikon/eikon-data-api/documentation)
-- [X-quick-start](https://developers.refinitiv.com/en/api-catalog/eikon/eikon-data-api/quick-start)
-- [X-tutorials](https://developers.refinitiv.com/en/api-catalog/eikon/eikon-data-api/tutorials)
+### AsyncAPI Specifications
 
-### Refinitiv Real-Time (WebSocket API)
-Low-latency streaming API for real-time market data using WebSocket connections
+| Specification | Description |
+|---------------|-------------|
+| [Real-Time WebSocket API](asyncapi/refinitiv-real-time-websocket-asyncapi.yml) | Streaming market data |
 
-**Human URL:** [https://developers.refinitiv.com/en/api-catalog/refinitiv-real-time-opnsrc/refinitiv-websocket-api](https://developers.refinitiv.com/en/api-catalog/refinitiv-real-time-opnsrc/refinitiv-websocket-api)
+### Rules
 
+| Ruleset | Description |
+|---------|-------------|
+| [Refinitiv Rules](rules/refinitiv-rules.yml) | Spectral ruleset for Refinitiv API conventions |
 
-#### Tags:
+### Capabilities
 
- - websocket, streaming, real-time, market data
+| Capability | Description |
+|------------|-------------|
+| [Financial Market Data](capabilities/financial-market-data.yaml) | Pricing, ESG, news, symbology via Data Platform |
+| [Compliance Screening](capabilities/compliance-screening.yaml) | World-Check screening and PermID entity research |
 
-#### Properties
+**Shared Definitions:**
+- [Data Platform](capabilities/shared/data-platform.yaml)
+- [World-Check One](capabilities/shared/world-check-one.yaml)
+- [PermID](capabilities/shared/permid.yaml)
 
-- [X-documentation](https://developers.refinitiv.com/en/api-catalog/refinitiv-real-time-opnsrc/refinitiv-websocket-api/documentation)
-- [X-quick-start](https://developers.refinitiv.com/en/api-catalog/refinitiv-real-time-opnsrc/refinitiv-websocket-api/quick-start)
-- [X-tutorials](https://developers.refinitiv.com/en/api-catalog/refinitiv-real-time-opnsrc/refinitiv-websocket-api/tutorials)
+### JSON Schema
 
-### News API
-Access to comprehensive news content from Refinitiv including real-time and historical news articles
+| Schema | Description |
+|--------|-------------|
+| [Instrument Schema](json-schema/refinitiv-instrument-schema.json) | Financial instrument with identifiers and pricing |
+| [ESG Score Schema](json-schema/refinitiv-esg-score-schema.json) | ESG pillar and combined scores |
+| [News Article Schema](json-schema/refinitiv-news-article-schema.json) | News headline and story structure |
+| [Screening Case Schema](json-schema/refinitiv-screening-case-schema.json) | World-Check screening case |
 
-**Human URL:** [https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis](https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis)
+### JSON Structure
 
+| Structure | Description |
+|-----------|-------------|
+| [Data Platform Structure](json-structure/refinitiv-data-platform-structure.json) | Overview of all API endpoints and domains |
 
-#### Tags:
+### JSON-LD
 
- - news, content, research, media
+| Context | Description |
+|---------|-------------|
+| [Refinitiv Context](json-ld/refinitiv-context.jsonld) | JSON-LD context for financial data semantics |
 
-#### Properties
+### Examples
 
-- [X-documentation](https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation)
-- [X-tutorials](https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials)
+| Example | Description |
+|---------|-------------|
+| [Get Pricing Snapshots](examples/refinitiv-get-pricing-snapshots-example.json) | Real-time pricing snapshot for multiple instruments |
+| [Screen Entity](examples/refinitiv-world-check-screen-entity-example.json) | World-Check entity screening request/response |
 
-### Environmental Social Governance (ESG) API
-Access to ESG data, scores, and analytics for sustainable investing
+### Vocabulary
 
-**Human URL:** [https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis](https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis)
-
-
-#### Tags:
-
- - esg, sustainability, analytics, environmental
-
-#### Properties
-
-- [X-documentation](https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation)
-- [X-pricing](https://www.refinitiv.com/en/sustainable-finance/esg-data)
+| Vocabulary | Description |
+|------------|-------------|
+| [Refinitiv Vocabulary](vocabulary/refinitiv-vocabulary.yml) | Domain vocabulary for Refinitiv APIs and financial data |
 
 ## Common Properties
 
-- [X-portal](https://developers.refinitiv.com)
-- [X-getting-started](https://developers.refinitiv.com/en/api-catalog)
-- [X-support](https://developers.refinitiv.com/en/support)
-- [X-blog](https://developers.refinitiv.com/en/article-catalog)
-- [X-github](https://github.com/Refinitiv-API-Samples)
-- [X-terms-of-service](https://developers.refinitiv.com/en/terms-and-conditions)
-- [X-contact](https://developers.refinitiv.com/en/contact-us)
+- [Developer Portal](https://developers.lseg.com)
+- [Community](https://community.developers.refinitiv.com/)
+- [GitHub Organization](https://github.com/Refinitiv-API-Samples)
+- [Terms of Service](https://developers.lseg.com/en/terms-and-conditions)
+- [Privacy Policy](https://www.lseg.com/en/policies/privacy-statement)
 
 ## Maintainers
 
-**FN:** API Evangelist
-
-**Email:** info@apievangelist.com
+**FN:** Kin Lane
+**Email:** kin@apievangelist.com

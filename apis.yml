@@ -611,6 +611,38 @@ common:
     url: https://developers.lseg.com/en/tools-catalog
   - type: Medium
     url: https://medium.com/lseg-developer-community
+  - type: OpenAPI
+    url: openapi/refinitiv-data-platform-openapi.yml
+  - type: OpenAPI
+    url: openapi/refinitiv-datascope-select-openapi.yml
+  - type: OpenAPI
+    url: openapi/refinitiv-permid-entity-search-openapi.yml
+  - type: OpenAPI
+    url: openapi/refinitiv-qual-id-openapi.yml
+  - type: OpenAPI
+    url: openapi/refinitiv-world-check-one-openapi.yml
+  - type: AsyncAPI
+    url: asyncapi/refinitiv-real-time-websocket-asyncapi.yml
+  - type: JSONSchema
+    url: json-schema/refinitiv-instrument-schema.json
+  - type: JSONSchema
+    url: json-schema/refinitiv-esg-score-schema.json
+  - type: JSONSchema
+    url: json-schema/refinitiv-news-article-schema.json
+  - type: JSONSchema
+    url: json-schema/refinitiv-screening-case-schema.json
+  - type: JSONStructure
+    url: json-structure/refinitiv-data-platform-structure.json
+  - type: JSONLDContext
+    url: json-ld/refinitiv-context.jsonld
+  - type: SpectralRules
+    url: rules/refinitiv-rules.yml
+  - type: NaftikoCapabilities
+    url: capabilities/financial-market-data.yaml
+  - type: NaftikoCapabilities
+    url: capabilities/compliance-screening.yaml
+  - type: Vocabulary
+    url: vocabulary/refinitiv-vocabulary.yml
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

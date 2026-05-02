@@ -43,7 +43,7 @@ paths:
   /Authentication/RequestToken:
     post:
       operationId: requestToken
-      summary: Refinitiv Request authentication token
+      summary: Request Authentication Token
       description: >-
         Authenticates the user and returns a session token that must be
         included in all subsequent API requests. The token is included in
@@ -97,7 +97,7 @@ paths:
   /Extractions/Extract:
     post:
       operationId: extractData
-      summary: Refinitiv Submit on-demand extraction
+      summary: Submit On-Demand Extraction
       description: >-
         Submits an on-demand data extraction request. For small result sets,
         the response is returned synchronously. For larger extractions, the
@@ -143,7 +143,7 @@ paths:
   /Extractions/ExtractWithNotes:
     post:
       operationId: extractWithNotes
-      summary: Refinitiv Extract data with notes
+      summary: Extract Data with Notes
       description: >-
         Submits an on-demand extraction request and returns results in JSON
         format along with extraction notes. Suitable for smaller data sets
@@ -172,7 +172,7 @@ paths:
   /Extractions/ExtractRaw:
     post:
       operationId: extractRaw
-      summary: Refinitiv Extract raw data
+      summary: Extract Raw Data
       description: >-
         Submits an on-demand extraction request optimized for large data sets.
         Returns results in CSV format compressed with gzip for bandwidth
@@ -212,7 +212,7 @@ paths:
   /Extractions/RawExtractionResults('{jobId}')/$value:
     get:
       operationId: getRawExtractionResults
-      summary: Refinitiv Download raw extraction results
+      summary: Download Raw Extraction Results
       description: >-
         Downloads the raw extraction results for a completed extraction job.
         Results are returned as gzip-compressed CSV data.
@@ -241,7 +241,7 @@ paths:
   /Extractions/InstrumentListGetByName(ListName='{listName}'):
     get:
       operationId: getInstrumentListByName
-      summary: Refinitiv Get instrument list by name
+      summary: Get Instrument List by Name
       description: >-
         Retrieves an instrument list by its name, returning the list
         metadata and contained instruments.
@@ -269,7 +269,7 @@ paths:
   /Extractions/InstrumentLists:
     get:
       operationId: listInstrumentLists
-      summary: Refinitiv List instrument lists
+      summary: List Instrument Lists
       description: >-
         Retrieves all instrument lists defined in the user's account.
       tags:
@@ -290,7 +290,7 @@ paths:
           description: Unauthorized
     post:
       operationId: createInstrumentList
-      summary: Refinitiv Create instrument list
+      summary: Create Instrument List
       description: >-
         Creates a new instrument list with the specified name and instruments.
       tags:
@@ -311,7 +311,7 @@ paths:
   /Extractions/Schedules:
     get:
       operationId: listSchedules
-      summary: Refinitiv List extraction schedules
+      summary: List Extraction Schedules
       description: >-
         Retrieves all extraction schedules defined in the user's account.
       tags:
@@ -333,7 +333,7 @@ paths:
   /Users/Users('{userId}'):
     get:
       operationId: getUser
-      summary: Refinitiv Get user information
+      summary: Get User Information
       description: >-
         Retrieves user account information for the specified user ID.
       tags:

@@ -1,0 +1,74 @@
+{
+  "name": "Refinitiv Data Platform API Structure",
+  "description": "Structural overview of the Refinitiv (LSEG) Data Platform REST API endpoints covering pricing, ESG, news, analytics, symbology, and search.",
+  "version": "1.0.0",
+  "baseUrl": "https://api.refinitiv.com",
+  "authentication": {
+    "type": "OAuth2 Password Grant",
+    "tokenEndpoint": "/auth/oauth2/v1/token",
+    "accessTokenTTL": "5 minutes",
+    "refreshTokenTTL": "30 days"
+  },
+  "apis": {
+    "dataRefinitivPlatform": {
+      "title": "Refinitiv Data Platform (RDP) API",
+      "openapi": "openapi/refinitiv-data-platform-openapi.yml",
+      "domains": [
+        "Authentication",
+        "Historical Pricing",
+        "Streaming Pricing",
+        "News",
+        "ESG",
+        "Quantitative Analytics",
+        "Symbology",
+        "Search",
+        "Streaming Discovery"
+      ]
+    },
+    "datascopeSelect": {
+      "title": "DataScope Select REST API",
+      "openapi": "openapi/refinitiv-datascope-select-openapi.yml",
+      "baseUrl": "https://selectapi.datascope.lseg.com/RestApi/v1",
+      "domains": [
+        "Authentication",
+        "Extractions",
+        "Instruments",
+        "Schedules",
+        "Users"
+      ]
+    },
+    "permidEntitySearch": {
+      "title": "PermID Entity Search API",
+      "openapi": "openapi/refinitiv-permid-entity-search-openapi.yml",
+      "baseUrl": "https://api-eit.refinitiv.com/permid",
+      "domains": [
+        "Entity Search",
+        "Intelligent Tagging",
+        "Record Matching",
+        "Entity Lookup"
+      ]
+    },
+    "worldCheckOne": {
+      "title": "World-Check One API",
+      "openapi": "openapi/refinitiv-world-check-one-openapi.yml",
+      "baseUrl": "https://api-worldcheck.refinitiv.com/v2",
+      "domains": [
+        "Cases",
+        "Screening Results",
+        "Ongoing Screening",
+        "Groups",
+        "Reference Data"
+      ]
+    },
+    "realTimeWebSocket": {
+      "title": "LSEG Real-Time WebSocket API",
+      "asyncapi": "asyncapi/refinitiv-real-time-websocket-asyncapi.yml",
+      "protocol": "WebSocket with JSON messages",
+      "domains": [
+        "Market Data Subscription",
+        "Real-Time Pricing",
+        "News Streaming"
+      ]
+    }
+  }
+}

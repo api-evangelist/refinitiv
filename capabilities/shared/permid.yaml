@@ -1,0 +1,137 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Refinitiv PermID Entity Search API"
+  description: "RESTful API for searching and discovering organizations, equity instruments, and quotes using PermID identifiers. Includes entity search, intelligent tagging, and record matching."
+  tags:
+    - Refinitiv
+    - PermID
+    - Entity Search
+    - Symbology
+    - Open Data
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      PERMID_APP_KEY: PERMID_APP_KEY
+
+capability:
+  consumes:
+    - type: http
+      namespace: refinitiv-permid
+      baseUri: https://api-eit.refinitiv.com/permid
+      description: "PermID Entity Search REST API."
+      authentication:
+        type: apikey
+        key: x-ag-access-token
+        value: "{{PERMID_APP_KEY}}"
+        placement: header
+      resources:
+        - name: entity-search
+          path: /search
+          description: "Entity search and lookup."
+          operations:
+            - name: search-entities
+              method: GET
+              description: "Search entities by query string."
+              inputParameters:
+                - name: q
+                  in: query
+                  type: string
+                  required: true
+                  description: "Search query."
+                - name: entityType
+                  in: query
+                  type: string
+                  required: false
+                  description: "Entity type filter (organization, instrument, quote)."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: intelligent-tagging
+          path: /calais
+          description: "Entity extraction from text."
+          operations:
+            - name: tag-content
+              method: POST
+              description: "Tag text content with financial entities."
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  content: "{{tools.content}}"
+
+        - name: record-matching
+          path: /match
+          description: "Match records to PermIDs."
+          operations:
+            - name: match-records
+              method: POST
+              description: "Match entity records to PermID identifiers."
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  entity: "{{tools.entity}}"
+
+  exposes:
+    - type: rest
+      port: 8123
+      namespace: refinitiv-permid-api
+      resources:
+        - path: /v1/entities/search
+          name: entity-search
+          operations:
+            - method: GET
+              name: search-entities
+              description: "Search for entities."
+              call: "refinitiv-permid.search-entities"
+              with:
+                q: "rest.q"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9123
+      namespace: refinitiv-permid-mcp
+      transport: http
+      tools:
+        - name: search-entities
+          description: "Search for organizations, instruments, and quotes using the PermID Entity Search API."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "refinitiv-permid.search-entities"
+          with:
+            q: "tools.query"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: tag-content
+          description: "Extract financial entities from text content using Intelligent Tagging."
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "refinitiv-permid.tag-content"
+          with:
+            content: "tools.content"
+          outputParameters:
+            - type: object
+              mapping: "$."

@@ -1,0 +1,230 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Refinitiv World-Check One API"
+  description: "RESTful API for screening entities against the World-Check risk intelligence database for KYC, AML, and due diligence workflows."
+  tags:
+    - Refinitiv
+    - Compliance
+    - Screening
+    - KYC
+    - AML
+    - World-Check
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      WORLD_CHECK_API_KEY: WORLD_CHECK_API_KEY
+      WORLD_CHECK_API_SECRET: WORLD_CHECK_API_SECRET
+
+capability:
+  consumes:
+    - type: http
+      namespace: refinitiv-world-check
+      baseUri: https://api-worldcheck.refinitiv.com/v2
+      description: "World-Check One API for entity risk screening."
+      authentication:
+        type: apikey
+        key: Authorization
+        value: "HMAC-SHA256 {{WORLD_CHECK_API_KEY}}:{{WORLD_CHECK_API_SECRET}}"
+        placement: header
+      resources:
+        - name: cases
+          path: /cases
+          description: "Case management and screening."
+          operations:
+            - name: create-case-and-screen
+              method: POST
+              description: "Create a case and perform synchronous screening."
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  entityType: "{{tools.entityType}}"
+                  name: "{{tools.name}}"
+                  groupId: "{{tools.groupId}}"
+
+            - name: get-case
+              method: GET
+              description: "Get case details."
+              inputParameters:
+                - name: caseSystemId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Case system identifier."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: update-case
+              method: PUT
+              description: "Update an existing case."
+              inputParameters:
+                - name: caseSystemId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Case system identifier."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  name: "{{tools.name}}"
+
+            - name: delete-case
+              method: DELETE
+              description: "Delete a case."
+              inputParameters:
+                - name: caseSystemId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Case system identifier."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: screening-results
+          path: /cases
+          description: "Screening results management."
+          operations:
+            - name: get-screening-results
+              method: GET
+              description: "Get screening results for a case."
+              inputParameters:
+                - name: caseSystemId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Case system identifier."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: resolve-screening-result
+              method: PUT
+              description: "Resolve a screening match result."
+              inputParameters:
+                - name: caseSystemId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Case system identifier."
+                - name: resultId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Result identifier."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  riskType: "{{tools.riskType}}"
+                  comments: "{{tools.comments}}"
+
+        - name: groups
+          path: /groups
+          description: "Group management."
+          operations:
+            - name: list-groups
+              method: GET
+              description: "List available screening groups."
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8122
+      namespace: refinitiv-world-check-api
+      resources:
+        - path: /v1/screening/cases
+          name: cases
+          description: "Screening cases."
+          operations:
+            - method: POST
+              name: create-and-screen
+              description: "Create a case and screen."
+              call: "refinitiv-world-check.create-case-and-screen"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/screening/cases/{caseSystemId}
+          name: case-detail
+          description: "Individual case."
+          operations:
+            - method: GET
+              name: get-case
+              description: "Get case details."
+              call: "refinitiv-world-check.get-case"
+              with:
+                caseSystemId: "rest.caseSystemId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9122
+      namespace: refinitiv-world-check-mcp
+      transport: http
+      tools:
+        - name: screen-entity
+          description: "Create a World-Check case and screen an entity against the risk database."
+          hints:
+            readOnly: false
+            openWorld: false
+          call: "refinitiv-world-check.create-case-and-screen"
+          with:
+            entityType: "tools.entityType"
+            name: "tools.name"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-case
+          description: "Retrieve details and status of a World-Check screening case."
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "refinitiv-world-check.get-case"
+          with:
+            caseSystemId: "tools.caseSystemId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-groups
+          description: "List available World-Check screening groups and their configurations."
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "refinitiv-world-check.list-groups"
+          outputParameters:
+            - type: object
+              mapping: "$."

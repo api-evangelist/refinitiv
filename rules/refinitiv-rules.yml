@@ -1,0 +1,72 @@
+extends: spectral:oas
+rules:
+  refinitiv-operation-summary-title-case:
+    description: All operation summaries must use Title Case.
+    message: "Operation summary '{{value}}' must use Title Case."
+    severity: warn
+    given: "$.paths[*][*].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][a-zA-Z0-9 '\\-]*$"
+
+  refinitiv-operation-id-camel-case:
+    description: OperationIds must use camelCase.
+    message: "OperationId '{{value}}' must use camelCase."
+    severity: warn
+    given: "$.paths[*][*].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  refinitiv-tags-defined:
+    description: All operations must include at least one tag.
+    message: "Operation must include at least one tag."
+    severity: warn
+    given: "$.paths[*][*]"
+    then:
+      field: tags
+      function: truthy
+
+  refinitiv-servers-defined:
+    description: API must define at least one server.
+    message: "API must have at least one server defined."
+    severity: error
+    given: "$"
+    then:
+      field: servers
+      function: truthy
+
+  refinitiv-response-success-defined:
+    description: All operations must define at least one success (2xx) response.
+    message: "Operation must define a success response."
+    severity: error
+    given: "$.paths[*][*].responses"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          anyOf:
+            - required: ["200"]
+            - required: ["201"]
+            - required: ["202"]
+            - required: ["204"]
+
+  refinitiv-info-contact:
+    description: API info must include a contact object.
+    message: "API info.contact must be defined."
+    severity: warn
+    given: "$.info"
+    then:
+      field: contact
+      function: defined
+
+  refinitiv-schema-descriptions:
+    description: All schema properties should have descriptions.
+    message: "Schema property should have a description."
+    severity: info
+    given: "$.components.schemas[*].properties[*]"
+    then:
+      field: description
+      function: defined

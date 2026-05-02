@@ -1,0 +1,190 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Refinitiv Compliance Screening"
+  description: >-
+    Unified workflow capability for compliance officers and KYC analysts
+    screening entities and verifying identities using Refinitiv's World-Check
+    risk intelligence database and PermID entity search. Supports onboarding,
+    due diligence, AML, and ongoing monitoring workflows.
+  tags:
+    - Refinitiv
+    - Compliance
+    - KYC
+    - AML
+    - Screening
+    - Due Diligence
+    - World-Check
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      WORLD_CHECK_API_KEY: WORLD_CHECK_API_KEY
+      WORLD_CHECK_API_SECRET: WORLD_CHECK_API_SECRET
+      PERMID_APP_KEY: PERMID_APP_KEY
+
+capability:
+  consumes:
+    - import: refinitiv-world-check
+      location: ./shared/world-check-one.yaml
+    - import: refinitiv-permid
+      location: ./shared/permid.yaml
+
+  exposes:
+    - type: rest
+      port: 8081
+      namespace: refinitiv-compliance-api
+      description: "Unified REST API for Refinitiv compliance and screening."
+      resources:
+        - path: /v1/screening/cases
+          name: screening-cases
+          description: "Entity screening cases."
+          operations:
+            - method: POST
+              name: create-and-screen
+              description: "Create a case and screen against World-Check."
+              call: "refinitiv-world-check.create-case-and-screen"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/screening/cases/{caseSystemId}
+          name: screening-case-detail
+          description: "Case details."
+          operations:
+            - method: GET
+              name: get-case
+              description: "Get screening case details."
+              call: "refinitiv-world-check.get-case"
+              with:
+                caseSystemId: "rest.caseSystemId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: DELETE
+              name: delete-case
+              description: "Delete a screening case."
+              call: "refinitiv-world-check.delete-case"
+              with:
+                caseSystemId: "rest.caseSystemId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/screening/groups
+          name: screening-groups
+          description: "Screening group configuration."
+          operations:
+            - method: GET
+              name: list-groups
+              description: "List available screening groups."
+              call: "refinitiv-world-check.list-groups"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/entities/search
+          name: entity-search
+          description: "Entity search via PermID."
+          operations:
+            - method: GET
+              name: search-entities
+              description: "Search for organizations and instruments."
+              call: "refinitiv-permid.search-entities"
+              with:
+                q: "rest.q"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/entities/tag
+          name: entity-tagging
+          description: "Intelligent entity tagging."
+          operations:
+            - method: POST
+              name: tag-content
+              description: "Tag text with financial entities."
+              call: "refinitiv-permid.tag-content"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9081
+      namespace: refinitiv-compliance-mcp
+      transport: http
+      description: "MCP server for AI-assisted Refinitiv compliance screening."
+      tools:
+        - name: screen-entity
+          description: "Screen a company or individual against the World-Check risk intelligence database for KYC and AML compliance."
+          hints:
+            readOnly: false
+            openWorld: false
+          call: "refinitiv-world-check.create-case-and-screen"
+          with:
+            entityType: "tools.entityType"
+            name: "tools.name"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-screening-case
+          description: "Retrieve the current status and results of a World-Check screening case."
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "refinitiv-world-check.get-case"
+          with:
+            caseSystemId: "tools.caseSystemId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: resolve-screening-result
+          description: "Resolve and annotate a World-Check screening match result with risk determination."
+          hints:
+            readOnly: false
+            openWorld: false
+          call: "refinitiv-world-check.resolve-screening-result"
+          with:
+            caseSystemId: "tools.caseSystemId"
+            resultId: "tools.resultId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-screening-groups
+          description: "List available World-Check screening groups and their configurations."
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "refinitiv-world-check.list-groups"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: search-entities
+          description: "Search for organizations and instruments using PermID for pre-screening entity research."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "refinitiv-permid.search-entities"
+          with:
+            q: "tools.query"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: tag-document-entities
+          description: "Extract and tag financial entities from document text using Intelligent Tagging."
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "refinitiv-permid.tag-content"
+          with:
+            content: "tools.content"
+          outputParameters:
+            - type: object
+              mapping: "$."
