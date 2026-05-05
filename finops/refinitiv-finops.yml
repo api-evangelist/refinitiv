@@ -1,0 +1,362 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+provider: Refinitiv
+providerId: refinitiv
+publisherName: Refinitiv
+serviceCategory: API
+created: '2026-05-04'
+modified: '2026-05-04'
+tags:
+  - FinOps
+  - Cost Management
+  - FOCUS
+description: FinOps framework definition for the Refinitiv API surface. Provides a FOCUS-aligned mapping
+  for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
+principles:
+  - name: Visibility
+    description: Make API consumption costs visible to engineering, product, and finance teams in near
+      real-time.
+  - name: Allocation
+    description: Tag every chargeable API call with the consuming team, environment, application, and
+      feature so cost can be allocated.
+  - name: Optimization
+    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
+      cost per useful unit of work.
+  - name: Accountability
+    description: Establish budget owners and chargeback or showback flows for each consuming team.
+domains:
+  - name: Understand Usage and Cost
+    capabilities:
+      - Data Ingestion
+      - Allocation
+      - Reporting and Analytics
+      - Anomaly Management
+  - name: Quantify Business Value
+    capabilities:
+      - Planning and Estimating
+      - Forecasting
+      - Budgeting
+      - Benchmarking
+      - Unit Economics
+  - name: Optimize Usage and Cost
+    capabilities:
+      - Architecting for Cloud
+      - Rate Optimization
+      - Workload Optimization
+      - Cloud Sustainability
+      - Licensing and SaaS
+  - name: Manage the FinOps Practice
+    capabilities:
+      - FinOps Practice Operations
+      - FinOps Education and Enablement
+      - Invoicing and Chargeback
+      - Onboarding Workloads
+      - Intersecting Disciplines
+billingModel:
+  pricingCategory: Usage-Based
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+    - Usage
+    - Purchase
+    - Tax
+    - Credit
+    - Adjustment
+  chargeFrequency: Recurring
+focusColumns:
+  ServiceName: Refinitiv
+  ServiceCategory: Developer Tools / API
+  ProviderName: Refinitiv
+  PublisherName: Refinitiv
+  InvoiceIssuerName: Refinitiv
+  PricingCategory: Usage-Based
+  PricingUnit: request
+  BillingCurrency: USD
+  ChargeCategory: Usage
+meters:
+  - name: api_requests
+    description: Count of billable API requests
+    unit: request
+    aggregation: sum
+    dimensions:
+      - api
+      - endpoint
+      - tier
+      - region
+      - consumer
+  - name: data_egress
+    description: Bytes returned over the network in API responses
+    unit: GB
+    aggregation: sum
+    dimensions:
+      - api
+      - region
+      - consumer
+  - name: compute_seconds
+    description: Server-side compute consumed by the request, where applicable
+    unit: second
+    aggregation: sum
+    dimensions:
+      - api
+      - endpoint
+      - tier
+apis:
+  - name: Refinitiv Data Platform (RDP) API
+    baseURL: https://api.refinitiv.com
+    tags:
+      - Analytics
+      - Financial Data
+      - Market Data
+      - Streaming
+    serviceName: Refinitiv Data Platform (RDP) API
+    serviceCategory: API
+  - name: Refinitiv Data Library for Python
+    baseURL: https://api.refinitiv.com
+    tags:
+      - Data Library
+      - Financial Data
+      - Python
+      - SDK
+    serviceName: Refinitiv Data Library for Python
+    serviceCategory: API
+  - name: Refinitiv Data Library for .NET
+    baseURL: https://api.refinitiv.com
+    tags:
+      - .NET
+      - Data Library
+      - Financial Data
+      - SDK
+    serviceName: Refinitiv Data Library for .NET
+    serviceCategory: API
+  - name: Refinitiv Data Platform Libraries
+    baseURL: https://api.refinitiv.com
+    tags:
+      - Financial Data
+      - JavaScript
+      - Libraries
+      - SDK
+    serviceName: Refinitiv Data Platform Libraries
+    serviceCategory: API
+  - name: Eikon Data API
+    baseURL: https://api.refinitiv.com
+    tags:
+      - Desktop
+      - Eikon
+      - Financial Data
+      - Python
+    serviceName: Eikon Data API
+    serviceCategory: API
+  - name: Refinitiv Real-Time WebSocket API
+    baseURL: wss://api.refinitiv.com
+    tags:
+      - Market Data
+      - Real-Time
+      - Streaming
+      - WebSocket
+    serviceName: Refinitiv Real-Time WebSocket API
+    serviceCategory: API
+  - name: Refinitiv Real-Time SDK - Java
+    baseURL: https://api.refinitiv.com
+    tags:
+      - Java
+      - Real-Time
+      - SDK
+      - Streaming
+    serviceName: Refinitiv Real-Time SDK - Java
+    serviceCategory: API
+  - name: Refinitiv Real-Time SDK - C/C++
+    baseURL: https://api.refinitiv.com
+    tags:
+      - C++
+      - Real-Time
+      - SDK
+      - Streaming
+    serviceName: Refinitiv Real-Time SDK - C/C++
+    serviceCategory: API
+  - name: Refinitiv News API
+    baseURL: https://api.refinitiv.com
+    tags:
+      - Content
+      - Media
+      - News
+      - Research
+    serviceName: Refinitiv News API
+    serviceCategory: API
+  - name: Refinitiv ESG API
+    baseURL: https://api.refinitiv.com
+    tags:
+      - Analytics
+      - Environmental
+      - ESG
+      - Sustainability
+    serviceName: Refinitiv ESG API
+    serviceCategory: API
+  - name: LSEG DataScope Select - REST API
+    baseURL: https://selectapi.datascope.lseg.com/RestApi/v1
+    tags:
+      - Data Extraction
+      - Historical Data
+      - Pricing
+      - Reference Data
+    serviceName: LSEG DataScope Select - REST API
+    serviceCategory: API
+  - name: LSEG DataScope Select - SOAP API
+    baseURL: https://selectapi.datascope.lseg.com
+    tags:
+      - Data Extraction
+      - Legacy
+      - Reference Data
+      - SOAP
+    serviceName: LSEG DataScope Select - SOAP API
+    serviceCategory: API
+  - name: LSEG Tick History REST API
+    baseURL: https://selectapi.datascope.lseg.com/RestApi/v1
+    tags:
+      - High Frequency
+      - Historical Data
+      - Tick Data
+      - Trading
+    serviceName: LSEG Tick History REST API
+    serviceCategory: API
+  - name: Datastream Web Service API
+    baseURL: https://product.datastream.com
+    tags:
+      - Datastream
+      - Economic Data
+      - Historical Data
+      - Time Series
+    serviceName: Datastream Web Service API
+    serviceCategory: API
+  - name: World-Check One API
+    baseURL: https://api.refinitiv.com
+    tags:
+      - Compliance
+      - KYC
+      - Risk Intelligence
+      - Screening
+    serviceName: World-Check One API
+    serviceCategory: API
+  - name: Qual-ID API
+    baseURL: https://api.refinitiv.com/verification/v1
+    tags:
+      - Compliance
+      - Document Verification
+      - Identity Verification
+      - KYC
+    serviceName: Qual-ID API
+    serviceCategory: API
+  - name: LSEG Due Diligence Portal API
+    baseURL: https://api.refinitiv.com
+    tags:
+      - Compliance
+      - Due Diligence
+      - Risk
+      - Screening
+    serviceName: LSEG Due Diligence Portal API
+    serviceCategory: API
+  - name: Refinitiv Knowledge Direct API (RKD)
+    baseURL: https://api.rkd.refinitiv.com
+    tags:
+      - Financial Data
+      - News
+      - Pricing
+      - Wealth Management
+    serviceName: Refinitiv Knowledge Direct API (RKD)
+    serviceCategory: API
+  - name: PermID Entity Search API
+    baseURL: https://api-eit.refinitiv.com
+    tags:
+      - Entity Search
+      - Open Data
+      - PermID
+      - Symbology
+    serviceName: PermID Entity Search API
+    serviceCategory: API
+  - name: Intelligent Tagging RESTful API
+    baseURL: https://api-eit.refinitiv.com
+    tags:
+      - Entity Recognition
+      - NLP
+      - Tagging
+      - Text Analytics
+    serviceName: Intelligent Tagging RESTful API
+    serviceCategory: API
+  - name: Workspace SDK
+    baseURL: https://api.refinitiv.com
+    tags:
+      - Application Development
+      - Desktop
+      - SDK
+      - Workspace
+    serviceName: Workspace SDK
+    serviceCategory: API
+  - name: Workspace Web Side by Side API
+    baseURL: https://api.refinitiv.com
+    tags:
+      - Desktop
+      - Interoperability
+      - Web
+      - Workspace
+    serviceName: Workspace Web Side by Side API
+    serviceCategory: API
+  - name: FX Trading - Spot and Forwards Matching API
+    baseURL: https://api.refinitiv.com
+    tags:
+      - FIX Protocol
+      - Forwards
+      - FX Trading
+      - Spot
+    serviceName: FX Trading - Spot and Forwards Matching API
+    serviceCategory: API
+  - name: FX Trading - NDF Matching API
+    baseURL: https://api.refinitiv.com
+    tags:
+      - Derivatives
+      - FIX Protocol
+      - FX Trading
+      - NDF
+    serviceName: FX Trading - NDF Matching API
+    serviceCategory: API
+  - name: FX Market Data - NDF Matching API
+    baseURL: https://api.refinitiv.com
+    tags:
+      - FX Market Data
+      - NDF
+      - Real-Time
+      - Trading
+    serviceName: FX Market Data - NDF Matching API
+    serviceCategory: API
+  - name: FX Reference Data API
+    baseURL: https://api.refinitiv.com
+    tags:
+      - FX
+      - Reference Data
+      - Trading
+      - Venue
+    serviceName: FX Reference Data API
+    serviceCategory: API
+  - name: FX Participant Insight Reporting API
+    baseURL: https://api.refinitiv.com
+    tags:
+      - Analytics
+      - FX
+      - Reporting
+      - Trading
+    serviceName: FX Participant Insight Reporting API
+    serviceCategory: API
+unitEconomics:
+  - name: Cost per 1K Requests
+    metric: billed_cost / (api_requests / 1000)
+    target: TBD
+  - name: Cost per Active Consumer
+    metric: billed_cost / active_consumers
+    target: TBD
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
