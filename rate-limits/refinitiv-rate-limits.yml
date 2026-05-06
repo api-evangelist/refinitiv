@@ -4,211 +4,32 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Refinitiv
 providerId: refinitiv
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Refinitiv API surface. Captures per-tier
-  quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to
-  be replaced with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+  - Financial Data
+  - Market Data
+  - LSEG
+description: Refinitiv/LSEG product rate limits are not centrally published; each product (Real-Time,
+  Tick History, World-Check One, DataScope, Workspace) has its own throttling rules documented inside
+  its licensed developer portal and contractually negotiated message-rate ceilings.
+sources:
+  - https://developers.lseg.com/
+notes: Public, cross-product rate-limit numbers are unavailable. Limits are per-product and contract-bound.
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Refinitiv Data Platform (RDP) API
-      - Refinitiv Data Library for Python
-      - Refinitiv Data Library for .NET
-      - Refinitiv Data Platform Libraries
-      - Eikon Data API
-      - Refinitiv Real-Time WebSocket API
-      - Refinitiv Real-Time SDK - Java
-      - Refinitiv Real-Time SDK - C/C++
-      - Refinitiv News API
-      - Refinitiv ESG API
-      - LSEG DataScope Select - REST API
-      - LSEG DataScope Select - SOAP API
-      - LSEG Tick History REST API
-      - Datastream Web Service API
-      - World-Check One API
-      - Qual-ID API
-      - LSEG Due Diligence Portal API
-      - Refinitiv Knowledge Direct API (RKD)
-      - PermID Entity Search API
-      - Intelligent Tagging RESTful API
-      - Workspace SDK
-      - Workspace Web Side by Side API
-      - FX Trading - Spot and Forwards Matching API
-      - FX Trading - NDF Matching API
-      - FX Market Data - NDF Matching API
-      - FX Reference Data API
-      - FX Participant Insight Reporting API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Refinitiv Data Platform (RDP) API
-      - Refinitiv Data Library for Python
-      - Refinitiv Data Library for .NET
-      - Refinitiv Data Platform Libraries
-      - Eikon Data API
-      - Refinitiv Real-Time WebSocket API
-      - Refinitiv Real-Time SDK - Java
-      - Refinitiv Real-Time SDK - C/C++
-      - Refinitiv News API
-      - Refinitiv ESG API
-      - LSEG DataScope Select - REST API
-      - LSEG DataScope Select - SOAP API
-      - LSEG Tick History REST API
-      - Datastream Web Service API
-      - World-Check One API
-      - Qual-ID API
-      - LSEG Due Diligence Portal API
-      - Refinitiv Knowledge Direct API (RKD)
-      - PermID Entity Search API
-      - Intelligent Tagging RESTful API
-      - Workspace SDK
-      - Workspace Web Side by Side API
-      - FX Trading - Spot and Forwards Matching API
-      - FX Trading - NDF Matching API
-      - FX Market Data - NDF Matching API
-      - FX Reference Data API
-      - FX Participant Insight Reporting API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Refinitiv Data Platform (RDP) API
-      - Refinitiv Data Library for Python
-      - Refinitiv Data Library for .NET
-      - Refinitiv Data Platform Libraries
-      - Eikon Data API
-      - Refinitiv Real-Time WebSocket API
-      - Refinitiv Real-Time SDK - Java
-      - Refinitiv Real-Time SDK - C/C++
-      - Refinitiv News API
-      - Refinitiv ESG API
-      - LSEG DataScope Select - REST API
-      - LSEG DataScope Select - SOAP API
-      - LSEG Tick History REST API
-      - Datastream Web Service API
-      - World-Check One API
-      - Qual-ID API
-      - LSEG Due Diligence Portal API
-      - Refinitiv Knowledge Direct API (RKD)
-      - PermID Entity Search API
-      - Intelligent Tagging RESTful API
-      - Workspace SDK
-      - Workspace Web Side by Side API
-      - FX Trading - Spot and Forwards Matching API
-      - FX Trading - NDF Matching API
-      - FX Market Data - NDF Matching API
-      - FX Reference Data API
-      - FX Participant Insight Reporting API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Refinitiv Data Platform (RDP) API
-      - Refinitiv Data Library for Python
-      - Refinitiv Data Library for .NET
-      - Refinitiv Data Platform Libraries
-      - Eikon Data API
-      - Refinitiv Real-Time WebSocket API
-      - Refinitiv Real-Time SDK - Java
-      - Refinitiv Real-Time SDK - C/C++
-      - Refinitiv News API
-      - Refinitiv ESG API
-      - LSEG DataScope Select - REST API
-      - LSEG DataScope Select - SOAP API
-      - LSEG Tick History REST API
-      - Datastream Web Service API
-      - World-Check One API
-      - Qual-ID API
-      - LSEG Due Diligence Portal API
-      - Refinitiv Knowledge Direct API (RKD)
-      - PermID Entity Search API
-      - Intelligent Tagging RESTful API
-      - Workspace SDK
-      - Workspace Web Side by Side API
-      - FX Trading - Spot and Forwards Matching API
-      - FX Trading - NDF Matching API
-      - FX Market Data - NDF Matching API
-      - FX Reference Data API
-      - FX Participant Insight Reporting API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
+  - name: Per-product contractual throttling
     scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Refinitiv Data Platform (RDP) API
-      - Refinitiv Data Library for Python
-      - Refinitiv Data Library for .NET
-      - Refinitiv Data Platform Libraries
-      - Eikon Data API
-      - Refinitiv Real-Time WebSocket API
-      - Refinitiv Real-Time SDK - Java
-      - Refinitiv Real-Time SDK - C/C++
-      - Refinitiv News API
-      - Refinitiv ESG API
-      - LSEG DataScope Select - REST API
-      - LSEG DataScope Select - SOAP API
-      - LSEG Tick History REST API
-      - Datastream Web Service API
-      - World-Check One API
-      - Qual-ID API
-      - LSEG Due Diligence Portal API
-      - Refinitiv Knowledge Direct API (RKD)
-      - PermID Entity Search API
-      - Intelligent Tagging RESTful API
-      - Workspace SDK
-      - Workspace Web Side by Side API
-      - FX Trading - Spot and Forwards Matching API
-      - FX Trading - NDF Matching API
-      - FX Market Data - NDF Matching API
-      - FX Reference Data API
-      - FX Participant Insight Reporting API
+    metric: varies
+    limit: 'see product-specific developer portal under https://developers.lseg.com/'
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Contractual Throughput Caps
+    description: Real-time and reference-data products enforce message- or request-rate caps defined in
+      the LSEG license; numbers are accessible only after contract execution.
+  - name: Per-Product Documentation
+    description: Each Refinitiv/LSEG API has its own portal section with limit, retry, and reconnect guidance.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
