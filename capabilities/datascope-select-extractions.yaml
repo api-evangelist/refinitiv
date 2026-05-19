@@ -1,0 +1,214 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Refinitiv LSEG DataScope Select REST API — Extractions
+  description: 'Refinitiv LSEG DataScope Select REST API — Extractions. 4 operations. Lead operation: Submit On-Demand Extraction.
+    Self-contained Naftiko capability covering one Refinitiv business surface.'
+  tags:
+  - Refinitiv
+  - Extractions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    REFINITIV_API_KEY: REFINITIV_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: datascope-select-extractions
+    baseUri: https://selectapi.datascope.lseg.com/RestApi/v1
+    description: Refinitiv LSEG DataScope Select REST API — Extractions business capability. Self-contained, no shared references.
+    resources:
+    - name: Extractions-Extract
+      path: /Extractions/Extract
+      operations:
+      - name: extractdata
+        method: POST
+        description: Submit On-Demand Extraction
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: Prefer
+          in: header
+          type: string
+          description: Set to respond-async to enable asynchronous processing.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: Extractions-ExtractRaw
+      path: /Extractions/ExtractRaw
+      operations:
+      - name: extractraw
+        method: POST
+        description: Extract Raw Data
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: Extractions-ExtractWithNotes
+      path: /Extractions/ExtractWithNotes
+      operations:
+      - name: extractwithnotes
+        method: POST
+        description: Extract Data with Notes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: Extractions-RawExtractionResults('{jobId}')-$value
+      path: /Extractions/RawExtractionResults('{jobId}')/$value
+      operations:
+      - name: getrawextractionresults
+        method: GET
+        description: Download Raw Extraction Results
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: jobId
+          in: path
+          type: string
+          description: The extraction job identifier.
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.REFINITIV_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: datascope-select-extractions-rest
+    port: 8080
+    description: REST adapter for Refinitiv LSEG DataScope Select REST API — Extractions. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/extractions/extract
+      name: extractions-extract
+      description: REST surface for Extractions-Extract.
+      operations:
+      - method: POST
+        name: extractdata
+        description: Submit On-Demand Extraction
+        call: datascope-select-extractions.extractdata
+        with:
+          Prefer: rest.Prefer
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/extractions/extractraw
+      name: extractions-extractraw
+      description: REST surface for Extractions-ExtractRaw.
+      operations:
+      - method: POST
+        name: extractraw
+        description: Extract Raw Data
+        call: datascope-select-extractions.extractraw
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/extractions/extractwithnotes
+      name: extractions-extractwithnotes
+      description: REST surface for Extractions-ExtractWithNotes.
+      operations:
+      - method: POST
+        name: extractwithnotes
+        description: Extract Data with Notes
+        call: datascope-select-extractions.extractwithnotes
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/extractions/rawextractionresults-jobid/value
+      name: extractions-rawextractionresults-jobid-value
+      description: REST surface for Extractions-RawExtractionResults('{jobId}')-$value.
+      operations:
+      - method: GET
+        name: getrawextractionresults
+        description: Download Raw Extraction Results
+        call: datascope-select-extractions.getrawextractionresults
+        with:
+          jobId: rest.jobId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: datascope-select-extractions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Refinitiv LSEG DataScope Select REST API — Extractions. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: submit-demand-extraction
+      description: Submit On-Demand Extraction
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: datascope-select-extractions.extractdata
+      with:
+        Prefer: tools.Prefer
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: extract-raw-data
+      description: Extract Raw Data
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: datascope-select-extractions.extractraw
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: extract-data-notes
+      description: Extract Data with Notes
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: datascope-select-extractions.extractwithnotes
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: download-raw-extraction-results
+      description: Download Raw Extraction Results
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: datascope-select-extractions.getrawextractionresults
+      with:
+        jobId: tools.jobId
+      outputParameters:
+      - type: object
+        mapping: $.

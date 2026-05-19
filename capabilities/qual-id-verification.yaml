@@ -1,0 +1,123 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Refinitiv Qual-ID API — Verification
+  description: 'Refinitiv Qual-ID API — Verification. 2 operations. Lead operation: Get Transaction Record. Self-contained
+    Naftiko capability covering one Refinitiv business surface.'
+  tags:
+  - Refinitiv
+  - Verification
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    REFINITIV_API_KEY: REFINITIV_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: qual-id-verification
+    baseUri: https://api.globaldatacompany.com
+    description: Refinitiv Qual-ID API — Verification business capability. Self-contained, no shared references.
+    resources:
+    - name: verifications-v1-transactionrecord-transactionRecordId
+      path: /verifications/v1/transactionrecord/{transactionRecordId}
+      operations:
+      - name: gettransactionrecord
+        method: GET
+        description: Get Transaction Record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: transactionRecordId
+          in: path
+          type: string
+          description: The unique identifier of the transaction record.
+          required: true
+    - name: verifications-v1-verify
+      path: /verifications/v1/verify
+      operations:
+      - name: verifyidentity
+        method: POST
+        description: Verify Identity
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.REFINITIV_USER}}'
+      password: '{{env.REFINITIV_PASS}}'
+  exposes:
+  - type: rest
+    namespace: qual-id-verification-rest
+    port: 8080
+    description: REST adapter for Refinitiv Qual-ID API — Verification. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/verifications/v1/transactionrecord/{transactionrecordid}
+      name: verifications-v1-transactionrecord-transactionrecordid
+      description: REST surface for verifications-v1-transactionrecord-transactionRecordId.
+      operations:
+      - method: GET
+        name: gettransactionrecord
+        description: Get Transaction Record
+        call: qual-id-verification.gettransactionrecord
+        with:
+          transactionRecordId: rest.transactionRecordId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/verifications/v1/verify
+      name: verifications-v1-verify
+      description: REST surface for verifications-v1-verify.
+      operations:
+      - method: POST
+        name: verifyidentity
+        description: Verify Identity
+        call: qual-id-verification.verifyidentity
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: qual-id-verification-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Refinitiv Qual-ID API — Verification. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-transaction-record
+      description: Get Transaction Record
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: qual-id-verification.gettransactionrecord
+      with:
+        transactionRecordId: tools.transactionRecordId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: verify-identity
+      description: Verify Identity
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: qual-id-verification.verifyidentity
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

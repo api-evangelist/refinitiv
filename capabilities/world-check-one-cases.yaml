@@ -1,0 +1,174 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Refinitiv World-Check One API — Cases
+  description: 'Refinitiv World-Check One API — Cases. 4 operations. Lead operation: Create Case with Synchronous Screening.
+    Self-contained Naftiko capability covering one Refinitiv business surface.'
+  tags:
+  - Refinitiv
+  - Cases
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    REFINITIV_API_KEY: REFINITIV_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: world-check-one-cases
+    baseUri: https://api-worldcheck.refinitiv.com/v2
+    description: Refinitiv World-Check One API — Cases business capability. Self-contained, no shared references.
+    resources:
+    - name: cases-screeningRequest
+      path: /cases/screeningRequest
+      operations:
+      - name: createcaseandscreen
+        method: POST
+        description: Create Case with Synchronous Screening
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: cases-caseSystemId
+      path: /cases/{caseSystemId}
+      operations:
+      - name: getcase
+        method: GET
+        description: Get Case Details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatecase
+        method: PUT
+        description: Update an Existing Case
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletecase
+        method: DELETE
+        description: Delete a Case
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.REFINITIV_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: world-check-one-cases-rest
+    port: 8080
+    description: REST adapter for Refinitiv World-Check One API — Cases. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/cases/screeningrequest
+      name: cases-screeningrequest
+      description: REST surface for cases-screeningRequest.
+      operations:
+      - method: POST
+        name: createcaseandscreen
+        description: Create Case with Synchronous Screening
+        call: world-check-one-cases.createcaseandscreen
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/cases/{casesystemid}
+      name: cases-casesystemid
+      description: REST surface for cases-caseSystemId.
+      operations:
+      - method: GET
+        name: getcase
+        description: Get Case Details
+        call: world-check-one-cases.getcase
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatecase
+        description: Update an Existing Case
+        call: world-check-one-cases.updatecase
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletecase
+        description: Delete a Case
+        call: world-check-one-cases.deletecase
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: world-check-one-cases-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Refinitiv World-Check One API — Cases. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: create-case-synchronous-screening
+      description: Create Case with Synchronous Screening
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: world-check-one-cases.createcaseandscreen
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-case-details
+      description: Get Case Details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: world-check-one-cases.getcase
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-existing-case
+      description: Update an Existing Case
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: world-check-one-cases.updatecase
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-case
+      description: Delete a Case
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: world-check-one-cases.deletecase
+      outputParameters:
+      - type: object
+        mapping: $.

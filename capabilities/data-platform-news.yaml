@@ -1,0 +1,134 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Refinitiv Data Platform (RDP) APIs — News
+  description: 'Refinitiv Data Platform (RDP) APIs — News. 2 operations. Lead operation: Get News Headlines. Self-contained
+    Naftiko capability covering one Refinitiv business surface.'
+  tags:
+  - Refinitiv
+  - News
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    REFINITIV_API_KEY: REFINITIV_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: data-platform-news
+    baseUri: https://api.refinitiv.com
+    description: Refinitiv Data Platform (RDP) APIs — News business capability. Self-contained, no shared references.
+    resources:
+    - name: data-news-v1-headlines
+      path: /data/news/v1/headlines
+      operations:
+      - name: getnewsheadlines
+        method: GET
+        description: Get News Headlines
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: query
+          in: query
+          type: string
+          description: The news search query string supporting keyword search and advanced query syntax.
+          required: true
+        - name: count
+          in: query
+          type: integer
+          description: Maximum number of headlines to return.
+        - name: cursor
+          in: query
+          type: string
+          description: Pagination cursor for retrieving the next page of results.
+    - name: data-news-v1-stories-storyId
+      path: /data/news/v1/stories/{storyId}
+      operations:
+      - name: getnewsstory
+        method: GET
+        description: Get News Story
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: storyId
+          in: path
+          type: string
+          description: The unique identifier of the news story.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.REFINITIV_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: data-platform-news-rest
+    port: 8080
+    description: REST adapter for Refinitiv Data Platform (RDP) APIs — News. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/data/news/v1/headlines
+      name: data-news-v1-headlines
+      description: REST surface for data-news-v1-headlines.
+      operations:
+      - method: GET
+        name: getnewsheadlines
+        description: Get News Headlines
+        call: data-platform-news.getnewsheadlines
+        with:
+          query: rest.query
+          count: rest.count
+          cursor: rest.cursor
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/data/news/v1/stories/{storyid}
+      name: data-news-v1-stories-storyid
+      description: REST surface for data-news-v1-stories-storyId.
+      operations:
+      - method: GET
+        name: getnewsstory
+        description: Get News Story
+        call: data-platform-news.getnewsstory
+        with:
+          storyId: rest.storyId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: data-platform-news-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Refinitiv Data Platform (RDP) APIs — News. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: get-news-headlines
+      description: Get News Headlines
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: data-platform-news.getnewsheadlines
+      with:
+        query: tools.query
+        count: tools.count
+        cursor: tools.cursor
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-news-story
+      description: Get News Story
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: data-platform-news.getnewsstory
+      with:
+        storyId: tools.storyId
+      outputParameters:
+      - type: object
+        mapping: $.

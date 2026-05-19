@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Refinitiv Data Platform (RDP) APIs — Symbology
+  description: 'Refinitiv Data Platform (RDP) APIs — Symbology. 1 operations. Lead operation: Convert Symbology Identifiers.
+    Self-contained Naftiko capability covering one Refinitiv business surface.'
+  tags:
+  - Refinitiv
+  - Symbology
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    REFINITIV_API_KEY: REFINITIV_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: data-platform-symbology
+    baseUri: https://api.refinitiv.com
+    description: Refinitiv Data Platform (RDP) APIs — Symbology business capability. Self-contained, no shared references.
+    resources:
+    - name: discovery-symbology-v1-convert
+      path: /discovery/symbology/v1/convert
+      operations:
+      - name: convertsymbology
+        method: POST
+        description: Convert Symbology Identifiers
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.REFINITIV_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: data-platform-symbology-rest
+    port: 8080
+    description: REST adapter for Refinitiv Data Platform (RDP) APIs — Symbology. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/discovery/symbology/v1/convert
+      name: discovery-symbology-v1-convert
+      description: REST surface for discovery-symbology-v1-convert.
+      operations:
+      - method: POST
+        name: convertsymbology
+        description: Convert Symbology Identifiers
+        call: data-platform-symbology.convertsymbology
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: data-platform-symbology-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Refinitiv Data Platform (RDP) APIs — Symbology. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: convert-symbology-identifiers
+      description: Convert Symbology Identifiers
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: data-platform-symbology.convertsymbology
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

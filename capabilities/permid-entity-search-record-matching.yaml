@@ -1,0 +1,82 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Refinitiv PermID Entity Search API — Record Matching
+  description: 'Refinitiv PermID Entity Search API — Record Matching. 1 operations. Lead operation: Match Records to PermIDs.
+    Self-contained Naftiko capability covering one Refinitiv business surface.'
+  tags:
+  - Refinitiv
+  - Record Matching
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    REFINITIV_API_KEY: REFINITIV_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: permid-entity-search-record-matching
+    baseUri: https://api-eit.refinitiv.com/permid
+    description: Refinitiv PermID Entity Search API — Record Matching business capability. Self-contained, no shared references.
+    resources:
+    - name: match
+      path: /match
+      operations:
+      - name: matchrecords
+        method: POST
+        description: Match Records to PermIDs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: x-ag-access-token
+      value: '{{env.REFINITIV_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: permid-entity-search-record-matching-rest
+    port: 8080
+    description: REST adapter for Refinitiv PermID Entity Search API — Record Matching. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/match
+      name: match
+      description: REST surface for match.
+      operations:
+      - method: POST
+        name: matchrecords
+        description: Match Records to PermIDs
+        call: permid-entity-search-record-matching.matchrecords
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: permid-entity-search-record-matching-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Refinitiv PermID Entity Search API — Record Matching. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: match-records-permids
+      description: Match Records to PermIDs
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: permid-entity-search-record-matching.matchrecords
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
