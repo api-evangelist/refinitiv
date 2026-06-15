@@ -1,0 +1,269 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Refinitiv World-Check One API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cases",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Case with Synchronous Screening",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-worldcheck.refinitiv.com/v2/cases/screeningRequest",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new case and performs synchronous screening in a single request. Returns all matched screening results within the response. Optionally enables ongoing screening by setting the caseScreeningState to WATCHLIST with ONGOING monitoring."
+        },
+        {
+          "info": {
+            "name": "Get Case Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-worldcheck.refinitiv.com/v2/cases/:caseSystemId",
+            "params": [
+              {
+                "name": "caseSystemId",
+                "value": "",
+                "type": "path",
+                "description": "The system-generated unique identifier for the case."
+              }
+            ]
+          },
+          "docs": "Retrieves the details of an existing case including its current status, screening state, and metadata."
+        },
+        {
+          "info": {
+            "name": "Update an Existing Case",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-worldcheck.refinitiv.com/v2/cases/:caseSystemId",
+            "params": [
+              {
+                "name": "caseSystemId",
+                "value": "",
+                "type": "path",
+                "description": "The system-generated unique identifier for the case."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the details of an existing case such as name fields, custom data, and screening parameters."
+        },
+        {
+          "info": {
+            "name": "Delete a Case",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-worldcheck.refinitiv.com/v2/cases/:caseSystemId",
+            "params": [
+              {
+                "name": "caseSystemId",
+                "value": "",
+                "type": "path",
+                "description": "The system-generated unique identifier for the case."
+              }
+            ]
+          },
+          "docs": "Permanently deletes a case and all associated screening results and audit history."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Screening Results",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Screening Results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-worldcheck.refinitiv.com/v2/cases/:caseSystemId/results",
+            "params": [
+              {
+                "name": "caseSystemId",
+                "value": "",
+                "type": "path",
+                "description": "The system-generated unique identifier for the case."
+              }
+            ]
+          },
+          "docs": "Retrieves detailed screening results for a specific case including all matched profiles, match strength indicators, and resolution status for each match."
+        },
+        {
+          "info": {
+            "name": "Resolve a Screening Result",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-worldcheck.refinitiv.com/v2/cases/:caseSystemId/results/:resultId/resolution",
+            "params": [
+              {
+                "name": "caseSystemId",
+                "value": "",
+                "type": "path",
+                "description": "The system-generated unique identifier for the case."
+              },
+              {
+                "name": "resultId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the screening result to resolve."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Resolves a specific screening result match by assigning a resolution status such as True Positive, False Positive, or Unresolved. The valid resolution options depend on the group's resolution toolkit configuration."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Ongoing Screening",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Ongoing Screening Updates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-worldcheck.refinitiv.com/v2/cases/ongoingScreeningUpdates",
+            "params": [
+              {
+                "name": "since",
+                "value": "",
+                "type": "query",
+                "description": "Filter updates since this date-time in ISO 8601 format."
+              }
+            ]
+          },
+          "docs": "Retrieves all ongoing screening updates for cases that have been flagged for continuous monitoring. Returns cases where new matches have been found or existing matches have changed since the last screening cycle."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-worldcheck.refinitiv.com/v2/groups"
+          },
+          "docs": "Retrieves all groups available in the account. Groups are used to organize cases and configure screening parameters such as provider types, match thresholds, and resolution toolkits."
+        },
+        {
+          "info": {
+            "name": "Get Group Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-worldcheck.refinitiv.com/v2/groups/:groupId",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the group."
+              }
+            ]
+          },
+          "docs": "Retrieves the details and configuration of a specific group including its screening settings and resolution toolkit."
+        },
+        {
+          "info": {
+            "name": "Get Resolution Toolkit",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-worldcheck.refinitiv.com/v2/groups/:groupId/resolutionToolkit",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the group."
+              }
+            ]
+          },
+          "docs": "Retrieves the resolution toolkit configuration for a specific group. The toolkit defines the valid resolution statuses, risk levels, and reasons that can be applied to screening results for cases belonging to the group."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Reference",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Reference Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-worldcheck.refinitiv.com/v2/reference/profile/:profileId",
+            "params": [
+              {
+                "name": "profileId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the World-Check profile."
+              }
+            ]
+          },
+          "docs": "Retrieves the full reference profile details for a matched entity from the World-Check database, including biographical information, associated countries, linked entities, and source documents."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

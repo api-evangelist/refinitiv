@@ -1,0 +1,1363 @@
+{
+  "item": [
+    {
+      "id": "e67b0ef2-e12a-4772-a48d-d3213cee491e",
+      "name": "Configuration",
+      "description": {
+        "content": "Configuration retrieval for country codes, fields, consents, and test entities required for verification requests.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f36edd08-05ce-430f-83ec-ea5c4057bbc1",
+          "name": "Get Supported Country Codes",
+          "request": {
+            "name": "Get Supported Country Codes",
+            "description": {
+              "content": "Retrieves the list of ISO 3166-1 alpha-2 country codes supported for a given configuration such as Identity Verification or Document Verification.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configuration",
+                "v1",
+                "countrycodes",
+                ":configurationName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "configurationName",
+                  "description": "(Required) The configuration name, such as Identity Verification."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4c95cd02-f25b-43af-8bbd-91151817d257",
+              "name": "Country codes returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configuration",
+                    "v1",
+                    "countrycodes",
+                    ":configurationName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "configurationName",
+                      "description": "(Required) The configuration name, such as Identity Verification."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"EC\",\n  \"FO\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12920314-d701-4906-9fdb-5ebc5131a306",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configuration",
+                    "v1",
+                    "countrycodes",
+                    ":configurationName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "configurationName",
+                      "description": "(Required) The configuration name, such as Identity Verification."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9fdfe07b-4602-480c-95cd-75e8efbbc71a",
+          "name": "Get Verification Fields",
+          "request": {
+            "name": "Get Verification Fields",
+            "description": {
+              "content": "Retrieves the required and optional data fields for a specific country and configuration. The response defines the JSON schema for the verification request data fields.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configuration",
+                "v1",
+                "fields",
+                ":configurationName",
+                ":countryCode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "configurationName",
+                  "description": "(Required) The configuration name."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "countryCode",
+                  "description": "(Required) ISO 3166-1 alpha-2 country code."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2ae8c25e-8260-4bd8-a79e-a2bbe3cf6627",
+              "name": "Field definitions returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configuration",
+                    "v1",
+                    "fields",
+                    ":configurationName",
+                    ":countryCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "configurationName",
+                      "description": "(Required) The configuration name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "countryCode",
+                      "description": "(Required) ISO 3166-1 alpha-2 country code."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "83d15ef0-3325-419a-85b4-82f7284cabbe",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configuration",
+                    "v1",
+                    "fields",
+                    ":configurationName",
+                    ":countryCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "configurationName",
+                      "description": "(Required) The configuration name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "countryCode",
+                      "description": "(Required) ISO 3166-1 alpha-2 country code."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a8ea630-2558-4ebd-8af0-de94a6da5733",
+          "name": "Get Consent Requirements",
+          "request": {
+            "name": "Get Consent Requirements",
+            "description": {
+              "content": "Retrieves the list of data sources that require explicit consent before verification can be performed for a given country and configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configuration",
+                "v1",
+                "consents",
+                ":configurationName",
+                ":countryCode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "configurationName",
+                  "description": "(Required) The configuration name."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "countryCode",
+                  "description": "(Required) ISO 3166-1 alpha-2 country code."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f8a79292-57f9-419d-a0ca-ff376a37298a",
+              "name": "Consent requirements returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configuration",
+                    "v1",
+                    "consents",
+                    ":configurationName",
+                    ":countryCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "configurationName",
+                      "description": "(Required) The configuration name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "countryCode",
+                      "description": "(Required) ISO 3166-1 alpha-2 country code."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"string\",\n  \"string\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3c89708a-0b55-4fe1-abe6-6267317b3633",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configuration",
+                    "v1",
+                    "consents",
+                    ":configurationName",
+                    ":countryCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "configurationName",
+                      "description": "(Required) The configuration name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "countryCode",
+                      "description": "(Required) ISO 3166-1 alpha-2 country code."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d57d39f1-cca7-47fc-9424-8ca3acbfad3b",
+          "name": "Get Test Entities",
+          "request": {
+            "name": "Get Test Entities",
+            "description": {
+              "content": "Retrieves test entity data for sandbox testing. Available only for sandbox accounts and returns sample identity data that can be used to test verification requests.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configuration",
+                "v1",
+                "testentities",
+                ":configurationName",
+                ":countryCode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "configurationName",
+                  "description": "(Required) The configuration name."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "countryCode",
+                  "description": "(Required) ISO 3166-1 alpha-2 country code."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a56b964c-9c09-4e5c-a204-001c7a58f210",
+              "name": "Test entities returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configuration",
+                    "v1",
+                    "testentities",
+                    ":configurationName",
+                    ":countryCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "configurationName",
+                      "description": "(Required) The configuration name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "countryCode",
+                      "description": "(Required) ISO 3166-1 alpha-2 country code."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "86df702d-2d75-42b7-84ac-9f7e442f73d7",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configuration",
+                    "v1",
+                    "testentities",
+                    ":configurationName",
+                    ":countryCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "configurationName",
+                      "description": "(Required) The configuration name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "countryCode",
+                      "description": "(Required) ISO 3166-1 alpha-2 country code."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "2662fd86-3434-422e-bdbe-8b2c257c5d7e",
+      "name": "Connection",
+      "description": {
+        "content": "Connectivity and authentication testing endpoints.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "56085881-1fbf-4fe2-a7b1-daad67867483",
+          "name": "Test Connectivity",
+          "request": {
+            "name": "Test Connectivity",
+            "description": {
+              "content": "Tests connectivity to the API server. This endpoint does not require authentication and returns a greeting with the provided name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "connection",
+                "v1",
+                "sayhello",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) A name to include in the greeting response."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a8e534f4-ba54-40bb-8472-1abb17bd36f2",
+              "name": "Connectivity test successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connection",
+                    "v1",
+                    "sayhello",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) A name to include in the greeting response."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "97eb9743-6fd4-4f31-9f4e-dd0206e6b62d",
+          "name": "Test Authentication",
+          "request": {
+            "name": "Test Authentication",
+            "description": {
+              "content": "Tests that the provided credentials are valid by returning a greeting with the authenticated username.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "connection",
+                "v1",
+                "testauthentication"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "45576d38-b4a9-4abe-8cf1-1236cda99f5a",
+              "name": "Authentication successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connection",
+                    "v1",
+                    "testauthentication"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6a38b315-c5df-45a2-99e2-d4c5a30cbf83",
+              "name": "Invalid credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connection",
+                    "v1",
+                    "testauthentication"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ec3a3bd8-f7d1-44be-9e44-2f4d40a3cad3",
+      "name": "Verification",
+      "description": {
+        "content": "Identity and document verification submission and transaction record retrieval.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ed4fb217-f010-4aea-9eb9-06b908122afd",
+          "name": "Verify Identity",
+          "request": {
+            "name": "Verify Identity",
+            "description": {
+              "content": "Submits an identity or document verification request. The API checks the submitted personal information against configured data sources for the specified country and returns verification results including match status for each data source queried.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "verifications",
+                "v1",
+                "verify"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"AcceptTruliooTermsAndConditions\": \"<boolean>\",\n  \"ConfigurationName\": \"<string>\",\n  \"CountryCode\": \"<string>\",\n  \"DataFields\": {\n    \"PersonInfo\": {\n      \"FirstGivenName\": \"<string>\",\n      \"MiddleName\": \"<string>\",\n      \"FirstSurName\": \"<string>\",\n      \"DayOfBirth\": \"<integer>\",\n      \"MonthOfBirth\": \"<integer>\",\n      \"YearOfBirth\": \"<integer>\",\n      \"Gender\": \"<string>\"\n    },\n    \"Location\": {\n      \"BuildingNumber\": \"<string>\",\n      \"UnitNumber\": \"<string>\",\n      \"StreetName\": \"<string>\",\n      \"StreetType\": \"<string>\",\n      \"Suburb\": \"<string>\",\n      \"StateProvinceCode\": \"<string>\",\n      \"PostalCode\": \"<string>\"\n    },\n    \"Communication\": {\n      \"Telephone\": \"<string>\",\n      \"EmailAddress\": \"<email>\"\n    },\n    \"CountrySpecific\": {\n      \"key_0\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\",\n        \"key_4\": \"<string>\"\n      }\n    }\n  },\n  \"CleansedAddress\": \"<boolean>\",\n  \"ConsentForDataSources\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"VerboseMode\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4f4f8370-a753-4240-9b9e-1bfa46521ce3",
+              "name": "Verification completed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verifications",
+                    "v1",
+                    "verify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"AcceptTruliooTermsAndConditions\": \"<boolean>\",\n  \"ConfigurationName\": \"<string>\",\n  \"CountryCode\": \"<string>\",\n  \"DataFields\": {\n    \"PersonInfo\": {\n      \"FirstGivenName\": \"<string>\",\n      \"MiddleName\": \"<string>\",\n      \"FirstSurName\": \"<string>\",\n      \"DayOfBirth\": \"<integer>\",\n      \"MonthOfBirth\": \"<integer>\",\n      \"YearOfBirth\": \"<integer>\",\n      \"Gender\": \"<string>\"\n    },\n    \"Location\": {\n      \"BuildingNumber\": \"<string>\",\n      \"UnitNumber\": \"<string>\",\n      \"StreetName\": \"<string>\",\n      \"StreetType\": \"<string>\",\n      \"Suburb\": \"<string>\",\n      \"StateProvinceCode\": \"<string>\",\n      \"PostalCode\": \"<string>\"\n    },\n    \"Communication\": {\n      \"Telephone\": \"<string>\",\n      \"EmailAddress\": \"<email>\"\n    },\n    \"CountrySpecific\": {\n      \"key_0\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\"\n      },\n      \"key_1\": {\n        \"key_0\": \"<string>\"\n      }\n    }\n  },\n  \"CleansedAddress\": \"<boolean>\",\n  \"ConsentForDataSources\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"VerboseMode\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"TransactionID\": \"2719f3df-1ffb-3fd8-9784-1587a8738068\",\n  \"UploadedDt\": \"1986-03-17T20:23:33.616Z\",\n  \"CountryCode\": \"string\",\n  \"ProductName\": \"string\",\n  \"Record\": {\n    \"TransactionRecordID\": \"f6f3112a-ff96-93cf-8ed7-080d0529be6a\",\n    \"RecordStatus\": \"nomatch\",\n    \"DatasourceResults\": [\n      {\n        \"DatasourceName\": \"string\",\n        \"DatasourceFields\": [\n          {\n            \"FieldName\": \"string\",\n            \"Status\": \"censored\"\n          },\n          {\n            \"FieldName\": \"string\",\n            \"Status\": \"match\"\n          }\n        ]\n      },\n      {\n        \"DatasourceName\": \"string\",\n        \"DatasourceFields\": [\n          {\n            \"FieldName\": \"string\",\n            \"Status\": \"nomatch\"\n          },\n          {\n            \"FieldName\": \"string\",\n            \"Status\": \"censored\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a6ca5687-d69d-4c31-afa4-e9c9ac63bac4",
+              "name": "Invalid verification request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verifications",
+                    "v1",
+                    "verify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"AcceptTruliooTermsAndConditions\": \"<boolean>\",\n  \"ConfigurationName\": \"<string>\",\n  \"CountryCode\": \"<string>\",\n  \"DataFields\": {\n    \"PersonInfo\": {\n      \"FirstGivenName\": \"<string>\",\n      \"MiddleName\": \"<string>\",\n      \"FirstSurName\": \"<string>\",\n      \"DayOfBirth\": \"<integer>\",\n      \"MonthOfBirth\": \"<integer>\",\n      \"YearOfBirth\": \"<integer>\",\n      \"Gender\": \"<string>\"\n    },\n    \"Location\": {\n      \"BuildingNumber\": \"<string>\",\n      \"UnitNumber\": \"<string>\",\n      \"StreetName\": \"<string>\",\n      \"StreetType\": \"<string>\",\n      \"Suburb\": \"<string>\",\n      \"StateProvinceCode\": \"<string>\",\n      \"PostalCode\": \"<string>\"\n    },\n    \"Communication\": {\n      \"Telephone\": \"<string>\",\n      \"EmailAddress\": \"<email>\"\n    },\n    \"CountrySpecific\": {\n      \"key_0\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\"\n      },\n      \"key_1\": {\n        \"key_0\": \"<string>\"\n      }\n    }\n  },\n  \"CleansedAddress\": \"<boolean>\",\n  \"ConsentForDataSources\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"VerboseMode\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9d226e14-05e7-430f-8295-2e1150859447",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verifications",
+                    "v1",
+                    "verify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"AcceptTruliooTermsAndConditions\": \"<boolean>\",\n  \"ConfigurationName\": \"<string>\",\n  \"CountryCode\": \"<string>\",\n  \"DataFields\": {\n    \"PersonInfo\": {\n      \"FirstGivenName\": \"<string>\",\n      \"MiddleName\": \"<string>\",\n      \"FirstSurName\": \"<string>\",\n      \"DayOfBirth\": \"<integer>\",\n      \"MonthOfBirth\": \"<integer>\",\n      \"YearOfBirth\": \"<integer>\",\n      \"Gender\": \"<string>\"\n    },\n    \"Location\": {\n      \"BuildingNumber\": \"<string>\",\n      \"UnitNumber\": \"<string>\",\n      \"StreetName\": \"<string>\",\n      \"StreetType\": \"<string>\",\n      \"Suburb\": \"<string>\",\n      \"StateProvinceCode\": \"<string>\",\n      \"PostalCode\": \"<string>\"\n    },\n    \"Communication\": {\n      \"Telephone\": \"<string>\",\n      \"EmailAddress\": \"<email>\"\n    },\n    \"CountrySpecific\": {\n      \"key_0\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\"\n      },\n      \"key_1\": {\n        \"key_0\": \"<string>\"\n      }\n    }\n  },\n  \"CleansedAddress\": \"<boolean>\",\n  \"ConsentForDataSources\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"VerboseMode\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "77c0cf7f-7b1f-48dc-9f02-1e397ec81abd",
+          "name": "Get Transaction Record",
+          "request": {
+            "name": "Get Transaction Record",
+            "description": {
+              "content": "Retrieves a past verification transaction record by its unique identifier. Returns the full verification results for the specified transaction.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "verifications",
+                "v1",
+                "transactionrecord",
+                ":transactionRecordId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "transactionRecordId",
+                  "description": "(Required) The unique identifier of the transaction record."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e2158e58-6b8b-4d64-9084-f799022e28a7",
+              "name": "Transaction record returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verifications",
+                    "v1",
+                    "transactionrecord",
+                    ":transactionRecordId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "transactionRecordId",
+                      "description": "(Required) The unique identifier of the transaction record."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"TransactionID\": \"2719f3df-1ffb-3fd8-9784-1587a8738068\",\n  \"UploadedDt\": \"1986-03-17T20:23:33.616Z\",\n  \"CountryCode\": \"string\",\n  \"ProductName\": \"string\",\n  \"Record\": {\n    \"TransactionRecordID\": \"f6f3112a-ff96-93cf-8ed7-080d0529be6a\",\n    \"RecordStatus\": \"nomatch\",\n    \"DatasourceResults\": [\n      {\n        \"DatasourceName\": \"string\",\n        \"DatasourceFields\": [\n          {\n            \"FieldName\": \"string\",\n            \"Status\": \"censored\"\n          },\n          {\n            \"FieldName\": \"string\",\n            \"Status\": \"match\"\n          }\n        ]\n      },\n      {\n        \"DatasourceName\": \"string\",\n        \"DatasourceFields\": [\n          {\n            \"FieldName\": \"string\",\n            \"Status\": \"nomatch\"\n          },\n          {\n            \"FieldName\": \"string\",\n            \"Status\": \"censored\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3c4e4579-e9b1-45a3-be60-3146107b5eb6",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verifications",
+                    "v1",
+                    "transactionrecord",
+                    ":transactionRecordId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "transactionRecordId",
+                      "description": "(Required) The unique identifier of the transaction record."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "671c6146-5429-4009-aeeb-65e64cc26f9c",
+              "name": "Transaction record not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verifications",
+                    "v1",
+                    "transactionrecord",
+                    ":transactionRecordId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "transactionRecordId",
+                      "description": "(Required) The unique identifier of the transaction record."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.globaldatacompany.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4cc9ea43-dabb-4d8e-8ede-d099fe1da102",
+    "name": "Refinitiv Qual-ID API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for automating identity verification and document verification processes. It helps organizations comply with regulations and identify potential financial crime using trusted and vetted data sources with normalized data fields. Supports verification across multiple countries using local data sources for identity matching.\n\nContact Support:\n Name: LSEG Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,1144 @@
+{
+  "item": [
+    {
+      "id": "2e17139a-5db5-404b-aac6-139810f27009",
+      "name": "Entity Search",
+      "description": {
+        "content": "Search for organizations, equity instruments, and equity quotes using various identifier types including name, ticker, RIC, LEI, and PermID.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "358660a4-3753-477d-a1dc-2c0bd3b49894",
+          "name": "Search Entities by Query",
+          "request": {
+            "name": "Search Entities by Query",
+            "description": {
+              "content": "Searches for entities across organizations, equity instruments, and equity quotes. Supports searching by name, ticker, RIC, LEI, PermID, and other standard identifiers. Returns matching entities with their PermID identifiers and metadata.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) The search query string. Can be a name, ticker, RIC, ISIN, LEI, or PermID."
+                },
+                {
+                  "disabled": false,
+                  "key": "entitytype",
+                  "value": "<string>",
+                  "description": "Filter results by entity type."
+                },
+                {
+                  "disabled": false,
+                  "key": "num",
+                  "value": "5",
+                  "description": "Maximum number of results to return, default is 5."
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "1",
+                  "description": "Starting index for pagination."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "88cdd776-9808-4dbb-9a47-482b22b894ca",
+              "name": "Search results returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entitytype",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "num",
+                      "value": "5"
+                    },
+                    {
+                      "key": "start",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ag-access-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": {\n    \"organizations\": {\n      \"total\": 339,\n      \"entities\": [\n        {\n          \"organizationName\": \"string\",\n          \"orgSubtype\": \"string\",\n          \"hasHoldingClassification\": \"string\",\n          \"primaryRIC\": \"string\",\n          \"lei\": \"string\",\n          \"@id\": \"http://CYwAbObzattU.urzdarYVI7fHZGdGIlUytWbLPICiqe+8QY,E-ZGl7A2maocVbNwB01.bwYS6uutGIhJ\"\n        },\n        {\n          \"organizationName\": \"string\",\n          \"orgSubtype\": \"string\",\n          \"hasHoldingClassification\": \"string\",\n          \"primaryRIC\": \"string\",\n          \"lei\": \"string\",\n          \"@id\": \"http://PGz.tvcjeygheLHHsHGfwK1ogCJkJBDSDei2yJIwmROlcBoYpxOwJy\"\n        }\n      ]\n    },\n    \"instruments\": {\n      \"total\": 2514,\n      \"entities\": [\n        {\n          \"hasName\": \"string\",\n          \"assetClass\": \"string\",\n          \"isIssuedBy\": \"string\",\n          \"@id\": \"http://LIvhWMdfWesgLuPaG.sajcms58+HmH30xwhnzNdk,Dq7wdfJng3ANztJD4gGb\"\n        },\n        {\n          \"hasName\": \"string\",\n          \"assetClass\": \"string\",\n          \"isIssuedBy\": \"string\",\n          \"@id\": \"https://RkHxe.mkdOlxsFAM\"\n        }\n      ]\n    },\n    \"quotes\": {\n      \"total\": 9775,\n      \"entities\": [\n        {\n          \"hasName\": \"string\",\n          \"hasRIC\": \"string\",\n          \"hasMic\": \"string\",\n          \"isQuoteOf\": \"string\",\n          \"@id\": \"https://kpVpLXWtxtYC.dthpGOH+Ar6D2ct8UOSSCSrno5Dqm5GWLPSl3Ka37L3yo2ABuHAfdppcx9e8dqQMdg-kw\"\n        },\n        {\n          \"hasName\": \"string\",\n          \"hasRIC\": \"string\",\n          \"hasMic\": \"string\",\n          \"isQuoteOf\": \"string\",\n          \"@id\": \"https://NYFgXpfM.gmhBx4fMyYykxMVcLJTkSwYRSnWeNWY.YCxyRH3pvkz6Ea3bJxpDX9m\"\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "425605c4-af29-4be8-ad40-9351ea33b649",
+              "name": "Invalid query parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entitytype",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "num",
+                      "value": "5"
+                    },
+                    {
+                      "key": "start",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ag-access-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "85284025-8af8-4ee5-ad82-4ac44dd99d94",
+              "name": "Invalid or missing API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entitytype",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "num",
+                      "value": "5"
+                    },
+                    {
+                      "key": "start",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ag-access-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cb9ab11d-d38a-44bb-be1c-9bcbc8ffb7a0",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entitytype",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "num",
+                      "value": "5"
+                    },
+                    {
+                      "key": "start",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ag-access-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "542d0ebb-3ea1-45b3-aa81-a715d6b5a0b8",
+          "name": "Tag Content with Entities",
+          "request": {
+            "name": "Tag Content with Entities",
+            "description": {
+              "content": "Submits unstructured text content for natural language processing and entity extraction. Identifies and tags companies, people, deals, geographical locations, industries, and events within the text and maps recognized entities to Refinitiv PermIDs for unambiguous identification.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "calais"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The Open Calais API key for authentication.",
+                "key": "x-ag-access-token",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The desired output format for the tagging results.",
+                "key": "outputFormat",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "text/html"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "3b1c1e14-c2a0-4f0d-b8c9-0548fbb31d6c",
+              "name": "Content tagged successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "calais"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ag-access-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Open Calais API key for authentication.",
+                    "key": "x-ag-access-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The content type of the input text. Supported values include text/plain, text/html, text/xml, and text/raw.",
+                    "key": "Content-Type",
+                    "value": "text/plain"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The desired output format for the tagging results.",
+                    "key": "outputFormat",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<string>"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": {\n    \"_type\": \"string\",\n    \"name\": \"string\",\n    \"_typeGroup\": \"string\",\n    \"fopiPermId\": \"string\",\n    \"relevance\": 7144.9011246132595,\n    \"confidence\": 8906.131427544351\n  },\n  \"key_1\": {\n    \"_type\": \"string\",\n    \"name\": \"string\",\n    \"_typeGroup\": \"string\",\n    \"fopiPermId\": \"string\",\n    \"relevance\": 1080.1598207495144,\n    \"confidence\": 6367.679723619848\n  },\n  \"key_2\": {\n    \"_type\": \"string\",\n    \"name\": \"string\",\n    \"_typeGroup\": \"string\",\n    \"fopiPermId\": \"string\",\n    \"relevance\": 3481.5148347977665,\n    \"confidence\": 4142.168262086368\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "26be00d6-5cfb-4e9b-8d24-d7100751742a",
+              "name": "Invalid content or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "calais"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ag-access-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Open Calais API key for authentication.",
+                    "key": "x-ag-access-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The content type of the input text. Supported values include text/plain, text/html, text/xml, and text/raw.",
+                    "key": "Content-Type",
+                    "value": "text/plain"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The desired output format for the tagging results.",
+                    "key": "outputFormat",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<string>"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8868a7b7-1c16-4282-9e19-1362be87ff75",
+              "name": "Invalid or missing API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "calais"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ag-access-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Open Calais API key for authentication.",
+                    "key": "x-ag-access-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The content type of the input text. Supported values include text/plain, text/html, text/xml, and text/raw.",
+                    "key": "Content-Type",
+                    "value": "text/plain"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The desired output format for the tagging results.",
+                    "key": "outputFormat",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<string>"
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d36c2188-ec4d-4b73-9a91-2ea224a014cc",
+              "name": "Content too large",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "calais"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ag-access-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Open Calais API key for authentication.",
+                    "key": "x-ag-access-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The content type of the input text. Supported values include text/plain, text/html, text/xml, and text/raw.",
+                    "key": "Content-Type",
+                    "value": "text/plain"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The desired output format for the tagging results.",
+                    "key": "outputFormat",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<string>"
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5f41db34-8067-43f3-94b2-860c6933502e",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "calais"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ag-access-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Open Calais API key for authentication.",
+                    "key": "x-ag-access-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The content type of the input text. Supported values include text/plain, text/html, text/xml, and text/raw.",
+                    "key": "Content-Type",
+                    "value": "text/plain"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The desired output format for the tagging results.",
+                    "key": "outputFormat",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<string>"
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "20a1f987-669c-476a-8a07-851c5fadc1b0",
+          "name": "Look Up Entity by PermID",
+          "request": {
+            "name": "Look Up Entity by PermID",
+            "description": {
+              "content": "Retrieves detailed information about a specific entity using its PermID identifier, returning structured data about the organization, instrument, or quote.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "lookup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) The PermID to look up."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "20eecc53-9bb6-493f-b553-4f8e130bc44a",
+              "name": "Entity details returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ag-access-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@id\": \"http://cnFviGZZ.gqbqRL0S1l,bHR\",\n  \"organizationName\": \"string\",\n  \"hasActivityStatus\": \"string\",\n  \"isIncorporatedIn\": \"string\",\n  \"isDomiciledIn\": \"string\",\n  \"hasURL\": \"https://ulbpyWeBCnrwLDVIzrZ.liwmkCVOE6gIJhhqW3iEU-1.6.tpzZ8s5rDGiywMh0TILKcof\",\n  \"hasPrimaryInstrument\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "74463ada-5cb1-4a4e-8848-92baade4807b",
+              "name": "Invalid PermID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ag-access-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5b0b5466-6cae-435a-93b2-b1a3f466d208",
+              "name": "Invalid or missing API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ag-access-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "48d6ddd9-fa8d-4ba7-8720-fcd06c1f59b3",
+              "name": "Entity not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ag-access-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "780eb5a9-7723-4ecf-98e5-2d83d8c1dba1",
+      "name": "Record Matching",
+      "description": {
+        "content": "Match unstructured entity records to PermID identifiers for concordance and entity resolution.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b5b14440-7984-42a0-a6c2-bc3a25caebfa",
+          "name": "Match Records to PermIDs",
+          "request": {
+            "name": "Match Records to PermIDs",
+            "description": {
+              "content": "Matches unstructured entity records to PermID identifiers. Accepts entity data such as organization name, address, and identifiers and returns the best matching PermID with confidence scores.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "match"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/plain"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "6fbfa7f2-4cba-4702-b3a3-259b3ab8d0e5",
+              "name": "Records matched successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "match"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ag-access-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<string>"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7446fac3-5b73-4179-853c-afd0692cd93b",
+              "name": "Invalid input format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "match"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ag-access-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<string>"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5b75c029-c9ae-4537-8e01-d70346a38225",
+              "name": "Invalid or missing API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "match"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ag-access-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<string>"
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "431d702c-1f40-4f0a-8e9a-8e790077c342",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "match"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ag-access-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<string>"
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-eit.refinitiv.com/permid",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-ag-access-token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5640e801-4549-4eec-95bb-c6a0ac155c55",
+    "name": "Refinitiv PermID Entity Search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API enabling search of entities by name, ticker, or RIC to return PermIDs, or use PermIDs to retrieve entity information. PermID is an open and free entity identification scheme that provides a unique identifier for organizations, instruments, and quotes across approximately 13 million organizations and 3 million equity quotes.\n\nContact Support:\n Name: LSEG Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,218 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Refinitiv LSEG DataScope Select REST API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Request Authentication Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://selectapi.datascope.lseg.com/RestApi/v1/Authentication/RequestToken",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Authenticates the user and returns a session token that must be included in all subsequent API requests. The token is included in the Authorization header as a Token value."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Extractions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Submit On-Demand Extraction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://selectapi.datascope.lseg.com/RestApi/v1/Extractions/Extract",
+            "headers": [
+              {
+                "name": "Prefer",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits an on-demand data extraction request. For small result sets, the response is returned synchronously. For larger extractions, the server responds with HTTP 202 Accepted and a Location header for polling the extraction status."
+        },
+        {
+          "info": {
+            "name": "Extract Data with Notes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://selectapi.datascope.lseg.com/RestApi/v1/Extractions/ExtractWithNotes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits an on-demand extraction request and returns results in JSON format along with extraction notes. Suitable for smaller data sets where JSON output is preferred."
+        },
+        {
+          "info": {
+            "name": "Extract Raw Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://selectapi.datascope.lseg.com/RestApi/v1/Extractions/ExtractRaw",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits an on-demand extraction request optimized for large data sets. Returns results in CSV format compressed with gzip for bandwidth optimization."
+        },
+        {
+          "info": {
+            "name": "Download Raw Extraction Results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://selectapi.datascope.lseg.com/RestApi/v1/Extractions/RawExtractionResults(':jobId')/$value",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path",
+                "description": "The extraction job identifier."
+              }
+            ]
+          },
+          "docs": "Downloads the raw extraction results for a completed extraction job. Results are returned as gzip-compressed CSV data."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Instruments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Instrument List by Name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://selectapi.datascope.lseg.com/RestApi/v1/Extractions/InstrumentListGetByName(ListName=':listName')",
+            "params": [
+              {
+                "name": "listName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the instrument list."
+              }
+            ]
+          },
+          "docs": "Retrieves an instrument list by its name, returning the list metadata and contained instruments."
+        },
+        {
+          "info": {
+            "name": "List Instrument Lists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://selectapi.datascope.lseg.com/RestApi/v1/Extractions/InstrumentLists"
+          },
+          "docs": "Retrieves all instrument lists defined in the user's account."
+        },
+        {
+          "info": {
+            "name": "Create Instrument List",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://selectapi.datascope.lseg.com/RestApi/v1/Extractions/InstrumentLists",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new instrument list with the specified name and instruments."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Schedules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Extraction Schedules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://selectapi.datascope.lseg.com/RestApi/v1/Extractions/Schedules"
+          },
+          "docs": "Retrieves all extraction schedules defined in the user's account."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get User Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://selectapi.datascope.lseg.com/RestApi/v1/Users/Users(':userId')",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The user identifier."
+              }
+            ]
+          },
+          "docs": "Retrieves user account information for the specified user ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
