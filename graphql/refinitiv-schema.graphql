@@ -1,0 +1,1303 @@
+"""
+Refinitiv (LSEG Data & Analytics) GraphQL Schema
+Covers real-time market data, historical prices, reference data,
+news, ESG scores, and financial calendars for capital markets applications.
+"""
+
+schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}
+
+# ─────────────────────────────────────────────────────────────
+# Root Types
+# ─────────────────────────────────────────────────────────────
+
+type Query {
+  # Market Data
+  quote(ric: String!): Quote
+  quotes(rics: [String!]!): [Quote!]!
+  snapshot(ric: String!, fields: [String!]): Snapshot
+
+  # Historical Data
+  timeSeries(input: TimeSeriesInput!): TimeSeriesResponse
+  interday(input: InterdayInput!): InterdayResponse
+  intraday(input: IntradayInput!): IntradayResponse
+
+  # Reference Data
+  instrument(ric: String!): Instrument
+  instruments(filter: InstrumentFilter, page: PageInput): InstrumentConnection
+  exchange(mic: String!): Exchange
+  exchanges(filter: ExchangeFilter): [Exchange!]!
+  currency(code: String!): Currency
+  currencies: [Currency!]!
+  sector(id: String!): Sector
+  sectors: [Sector!]!
+  issuer(id: String!): Issuer
+  issuers(filter: IssuerFilter, page: PageInput): IssuerConnection
+
+  # Options & Derivatives
+  optionChain(underlyingRic: String!, expiry: String): OptionChain
+  futuresChain(underlyingRic: String!): FuturesChain
+
+  # Fixed Income
+  bond(isin: String!): Bond
+  bonds(filter: BondFilter, page: PageInput): BondConnection
+  yieldCurve(curveId: String!, date: String): YieldCurve
+
+  # News & Research
+  headlines(filter: NewsFilter, page: PageInput): HeadlineConnection
+  newsItem(storyId: String!): NewsItem
+  analyst(id: String!): Analyst
+  analystReports(filter: AnalystReportFilter, page: PageInput): AnalystReportConnection
+
+  # ESG
+  esgScore(ric: String!): ESGScore
+  esgScores(rics: [String!]!): [ESGScore!]!
+  esgControversies(ric: String!, filter: ESGControversyFilter): [ESGControversy!]!
+
+  # Financials
+  financials(ric: String!, period: FinancialPeriod, statementType: StatementType): Financials
+  incomeStatement(ric: String!, period: FinancialPeriod): IncomeStatement
+  balanceSheet(ric: String!, period: FinancialPeriod): BalanceSheet
+  cashFlowStatement(ric: String!, period: FinancialPeriod): CashFlowStatement
+  estimates(ric: String!): [Estimate!]!
+
+  # Calendar & Events
+  earningsCalendar(filter: CalendarFilter): [EarningsEvent!]!
+  dividendCalendar(filter: CalendarFilter): [DividendEvent!]!
+  economicCalendar(filter: EconomicCalendarFilter): [EconomicEvent!]!
+  ipoCalendar(filter: CalendarFilter): [IPOEvent!]!
+
+  # Indices
+  index(ric: String!): Index
+  indexConstituents(ric: String!, page: PageInput): IndexConstituentConnection
+
+  # Commodities
+  commodity(ric: String!): Commodity
+  commodities(filter: CommodityFilter): [Commodity!]!
+
+  # Forex
+  fxRate(baseCurrency: String!, quoteCurrency: String!): FXRate
+  fxRates(pairs: [FXPairInput!]!): [FXRate!]!
+  fxHistory(input: FXHistoryInput!): FXHistoryResponse
+
+  # Portfolio & Analytics
+  portfolio(id: String!): Portfolio
+  portfolios(userId: String!): [Portfolio!]!
+  riskAnalytics(ric: String!, input: RiskInput): RiskAnalytics
+
+  # Screener
+  equityScreener(filter: EquityScreenerFilter, page: PageInput): EquityScreenerResult
+  bondScreener(filter: BondScreenerFilter, page: PageInput): BondScreenerResult
+
+  # Search
+  search(query: String!, assetClass: AssetClass, limit: Int): SearchResult
+}
+
+type Mutation {
+  createPortfolio(input: CreatePortfolioInput!): Portfolio!
+  updatePortfolio(id: String!, input: UpdatePortfolioInput!): Portfolio!
+  deletePortfolio(id: String!): Boolean!
+  addPortfolioHolding(portfolioId: String!, input: HoldingInput!): Holding!
+  removePortfolioHolding(portfolioId: String!, holdingId: String!): Boolean!
+  createAlert(input: AlertInput!): Alert!
+  deleteAlert(id: String!): Boolean!
+  createWatchlist(input: CreateWatchlistInput!): Watchlist!
+  updateWatchlist(id: String!, input: UpdateWatchlistInput!): Watchlist!
+  addToWatchlist(watchlistId: String!, ric: String!): Watchlist!
+  removeFromWatchlist(watchlistId: String!, ric: String!): Watchlist!
+}
+
+type Subscription {
+  priceUpdate(rics: [String!]!): PriceUpdate!
+  tradeUpdate(rics: [String!]!): TradeUpdate!
+  newsUpdate(filter: NewsFilter): NewsItem!
+  alertTriggered(userId: String!): Alert!
+}
+
+# ─────────────────────────────────────────────────────────────
+# Market Data Types
+# ─────────────────────────────────────────────────────────────
+
+type Quote {
+  ric: String!
+  displayName: String
+  bid: Float
+  ask: Float
+  last: Float
+  open: Float
+  high: Float
+  low: Float
+  close: Float
+  previousClose: Float
+  change: Float
+  changePercent: Float
+  volume: Float
+  vwap: Float
+  marketCap: Float
+  sharesOutstanding: Float
+  currency: String
+  exchange: String
+  tradingStatus: TradingStatus
+  timestamp: String
+}
+
+type Snapshot {
+  ric: String!
+  fields: [FieldValue!]!
+  timestamp: String!
+}
+
+type FieldValue {
+  name: String!
+  value: String
+  type: FieldType
+}
+
+type PriceUpdate {
+  ric: String!
+  bid: Float
+  ask: Float
+  last: Float
+  volume: Float
+  timestamp: String!
+}
+
+type TradeUpdate {
+  ric: String!
+  price: Float!
+  size: Float!
+  side: TradeSide
+  timestamp: String!
+  conditions: [String!]
+}
+
+# ─────────────────────────────────────────────────────────────
+# Time Series / Historical Data
+# ─────────────────────────────────────────────────────────────
+
+type TimeSeriesResponse {
+  ric: String!
+  interval: TimeSeriesInterval!
+  data: [TimeSeriesBar!]!
+  metadata: TimeSeriesMetadata
+}
+
+type TimeSeriesBar {
+  timestamp: String!
+  open: Float
+  high: Float
+  low: Float
+  close: Float
+  volume: Float
+  turnover: Float
+}
+
+type TimeSeriesMetadata {
+  count: Int!
+  startDate: String
+  endDate: String
+  adjustedForDividends: Boolean
+  adjustedForSplits: Boolean
+}
+
+type InterdayResponse {
+  ric: String!
+  data: [InterdayBar!]!
+}
+
+type InterdayBar {
+  date: String!
+  open: Float
+  high: Float
+  low: Float
+  close: Float
+  volume: Float
+  adjustedClose: Float
+}
+
+type IntradayResponse {
+  ric: String!
+  interval: Int!
+  data: [IntradayBar!]!
+}
+
+type IntradayBar {
+  timestamp: String!
+  open: Float
+  high: Float
+  low: Float
+  close: Float
+  volume: Float
+}
+
+# ─────────────────────────────────────────────────────────────
+# Reference Data Types
+# ─────────────────────────────────────────────────────────────
+
+type Instrument {
+  ric: String!
+  isin: String
+  cusip: String
+  sedol: String
+  ticker: String
+  displayName: String
+  assetClass: AssetClass!
+  assetSubClass: String
+  exchange: Exchange
+  currency: Currency
+  country: String
+  sector: Sector
+  industry: String
+  issuer: Issuer
+  status: InstrumentStatus!
+  listingDate: String
+  delistingDate: String
+}
+
+type InstrumentConnection {
+  nodes: [Instrument!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type Exchange {
+  mic: String!
+  name: String!
+  country: String!
+  city: String
+  timezone: String
+  currency: Currency
+  tradingHours: TradingHours
+  status: ExchangeStatus
+}
+
+type TradingHours {
+  openTime: String
+  closeTime: String
+  preMarketOpen: String
+  afterHoursClose: String
+}
+
+type Currency {
+  code: String!
+  name: String!
+  symbol: String
+  numericCode: String
+  isActive: Boolean!
+}
+
+type Sector {
+  id: String!
+  name: String!
+  description: String
+  parentSector: Sector
+  level: Int
+}
+
+type Issuer {
+  id: String!
+  name: String!
+  country: String
+  legalEntityIdentifier: String
+  type: IssuerType
+  parentId: String
+  instruments: [Instrument!]
+}
+
+type IssuerConnection {
+  nodes: [Issuer!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+# ─────────────────────────────────────────────────────────────
+# Options & Derivatives
+# ─────────────────────────────────────────────────────────────
+
+type OptionChain {
+  underlyingRic: String!
+  underlyingPrice: Float
+  expirations: [OptionExpiration!]!
+}
+
+type OptionExpiration {
+  expiry: String!
+  daysToExpiry: Int
+  calls: [OptionContract!]!
+  puts: [OptionContract!]!
+}
+
+type OptionContract {
+  ric: String!
+  strike: Float!
+  type: OptionType!
+  bid: Float
+  ask: Float
+  last: Float
+  volume: Float
+  openInterest: Float
+  impliedVolatility: Float
+  delta: Float
+  gamma: Float
+  theta: Float
+  vega: Float
+  rho: Float
+}
+
+type FuturesChain {
+  underlyingRic: String!
+  contracts: [FuturesContract!]!
+}
+
+type FuturesContract {
+  ric: String!
+  expiry: String!
+  last: Float
+  bid: Float
+  ask: Float
+  settle: Float
+  openInterest: Float
+  volume: Float
+}
+
+# ─────────────────────────────────────────────────────────────
+# Fixed Income Types
+# ─────────────────────────────────────────────────────────────
+
+type Bond {
+  isin: String!
+  ric: String
+  name: String!
+  issuer: Issuer
+  couponRate: Float
+  couponFrequency: CouponFrequency
+  maturityDate: String
+  issueDate: String
+  faceValue: Float
+  currency: String
+  bondType: BondType
+  creditRating: CreditRating
+  yield: Float
+  duration: Float
+  modifiedDuration: Float
+  convexity: Float
+  price: Float
+  callSchedule: [CallScheduleItem!]
+}
+
+type BondConnection {
+  nodes: [Bond!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type CreditRating {
+  agency: String!
+  rating: String!
+  outlook: String
+  date: String
+}
+
+type CallScheduleItem {
+  date: String!
+  price: Float!
+}
+
+type YieldCurve {
+  curveId: String!
+  name: String!
+  currency: String
+  date: String!
+  tenors: [YieldCurveTenor!]!
+}
+
+type YieldCurveTenor {
+  tenor: String!
+  yield: Float!
+  maturityDate: String
+}
+
+# ─────────────────────────────────────────────────────────────
+# News & Research Types
+# ─────────────────────────────────────────────────────────────
+
+type HeadlineConnection {
+  nodes: [Headline!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type Headline {
+  storyId: String!
+  headline: String!
+  summary: String
+  source: String
+  publishedAt: String!
+  topics: [String!]
+  rics: [String!]
+  urgency: NewsUrgency
+}
+
+type NewsItem {
+  storyId: String!
+  headline: String!
+  body: String
+  summary: String
+  source: String
+  publishedAt: String!
+  modifiedAt: String
+  topics: [String!]
+  rics: [String!]
+  urgency: NewsUrgency
+  language: String
+  copyright: String
+}
+
+type Analyst {
+  id: String!
+  name: String!
+  firm: String
+  specializations: [String!]
+  recentReports: [AnalystReport!]
+}
+
+type AnalystReport {
+  id: String!
+  title: String!
+  analyst: Analyst
+  ric: String
+  publishedAt: String!
+  recommendation: Recommendation
+  targetPrice: Float
+  currency: String
+  summary: String
+}
+
+type AnalystReportConnection {
+  nodes: [AnalystReport!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+# ─────────────────────────────────────────────────────────────
+# ESG Types
+# ─────────────────────────────────────────────────────────────
+
+type ESGScore {
+  ric: String!
+  companyName: String
+  scoringDate: String
+  overallScore: Float
+  overallGrade: String
+  environmentScore: Float
+  socialScore: Float
+  governanceScore: Float
+  esgControversyScore: Float
+  percentileRank: Float
+  industryRank: Int
+  industryCount: Int
+  coverage: [ESGCoverageItem!]
+}
+
+type ESGCoverageItem {
+  pillar: ESGPillar!
+  theme: String!
+  score: Float
+  weight: Float
+}
+
+type ESGControversy {
+  id: String!
+  ric: String!
+  title: String!
+  description: String
+  date: String
+  category: String
+  severity: ControversySeverity
+  status: String
+}
+
+# ─────────────────────────────────────────────────────────────
+# Financial Statement Types
+# ─────────────────────────────────────────────────────────────
+
+type Financials {
+  ric: String!
+  companyName: String
+  currency: String
+  incomeStatement: IncomeStatement
+  balanceSheet: BalanceSheet
+  cashFlowStatement: CashFlowStatement
+}
+
+type IncomeStatement {
+  ric: String!
+  period: FinancialPeriod!
+  fiscalYear: Int!
+  fiscalQuarter: Int
+  periodEndDate: String
+  revenue: Float
+  costOfRevenue: Float
+  grossProfit: Float
+  operatingExpenses: Float
+  ebit: Float
+  ebitda: Float
+  interestExpense: Float
+  incomeBeforeTax: Float
+  taxExpense: Float
+  netIncome: Float
+  eps: Float
+  dilutedEps: Float
+  sharesBasic: Float
+  sharesDiluted: Float
+}
+
+type BalanceSheet {
+  ric: String!
+  period: FinancialPeriod!
+  fiscalYear: Int!
+  fiscalQuarter: Int
+  periodEndDate: String
+  totalAssets: Float
+  currentAssets: Float
+  cash: Float
+  shortTermInvestments: Float
+  accountsReceivable: Float
+  inventory: Float
+  propertyPlantEquipment: Float
+  goodwill: Float
+  totalLiabilities: Float
+  currentLiabilities: Float
+  shortTermDebt: Float
+  longTermDebt: Float
+  totalEquity: Float
+  retainedEarnings: Float
+}
+
+type CashFlowStatement {
+  ric: String!
+  period: FinancialPeriod!
+  fiscalYear: Int!
+  fiscalQuarter: Int
+  periodEndDate: String
+  operatingCashFlow: Float
+  capitalExpenditures: Float
+  freeCashFlow: Float
+  investingActivities: Float
+  financingActivities: Float
+  dividendsPaid: Float
+  shareRepurchases: Float
+  netChangeInCash: Float
+}
+
+type Estimate {
+  ric: String!
+  metric: String!
+  period: FinancialPeriod!
+  fiscalYear: Int!
+  fiscalQuarter: Int
+  consensusMean: Float
+  consensusMedian: Float
+  consensusHigh: Float
+  consensusLow: Float
+  standardDeviation: Float
+  numberOfEstimates: Int
+  revisionsUp: Int
+  revisionsDown: Int
+}
+
+# ─────────────────────────────────────────────────────────────
+# Calendar / Events Types
+# ─────────────────────────────────────────────────────────────
+
+type EarningsEvent {
+  ric: String!
+  companyName: String
+  date: String!
+  time: EarningsTime
+  fiscalQuarter: Int
+  fiscalYear: Int
+  epsEstimate: Float
+  epsActual: Float
+  revenuEstimate: Float
+  revenueActual: Float
+  confirmed: Boolean
+}
+
+type DividendEvent {
+  ric: String!
+  companyName: String
+  exDividendDate: String!
+  recordDate: String
+  paymentDate: String
+  amount: Float
+  currency: String
+  frequency: DividendFrequency
+  dividendType: DividendType
+}
+
+type EconomicEvent {
+  id: String!
+  name: String!
+  country: String!
+  date: String!
+  time: String
+  period: String
+  actual: Float
+  forecast: Float
+  previous: Float
+  revised: Float
+  importance: EventImportance
+  unit: String
+}
+
+type IPOEvent {
+  ric: String
+  companyName: String!
+  exchange: String
+  date: String
+  priceRangeLow: Float
+  priceRangeHigh: Float
+  offerPrice: Float
+  sharesOffered: Float
+  proceeds: Float
+  currency: String
+  status: IPOStatus
+  underwriters: [String!]
+}
+
+# ─────────────────────────────────────────────────────────────
+# Index Types
+# ─────────────────────────────────────────────────────────────
+
+type Index {
+  ric: String!
+  name: String!
+  description: String
+  currency: String
+  country: String
+  provider: String
+  rebalanceFrequency: String
+  constituentsCount: Int
+  marketCap: Float
+  level: Float
+  change: Float
+  changePercent: Float
+}
+
+type IndexConstituentConnection {
+  nodes: [IndexConstituent!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type IndexConstituent {
+  ric: String!
+  name: String
+  weight: Float
+  sharesHeld: Float
+  marketValue: Float
+  sector: String
+  addedDate: String
+}
+
+# ─────────────────────────────────────────────────────────────
+# Commodity Types
+# ─────────────────────────────────────────────────────────────
+
+type Commodity {
+  ric: String!
+  name: String!
+  type: CommodityType!
+  unit: String
+  currency: String
+  last: Float
+  change: Float
+  changePercent: Float
+  bid: Float
+  ask: Float
+  open: Float
+  high: Float
+  low: Float
+  settlementPrice: Float
+}
+
+# ─────────────────────────────────────────────────────────────
+# FX Types
+# ─────────────────────────────────────────────────────────────
+
+type FXRate {
+  baseCurrency: String!
+  quoteCurrency: String!
+  pair: String!
+  bid: Float
+  ask: Float
+  mid: Float
+  change: Float
+  changePercent: Float
+  timestamp: String!
+}
+
+type FXHistoryResponse {
+  pair: String!
+  data: [FXHistoryBar!]!
+}
+
+type FXHistoryBar {
+  date: String!
+  open: Float
+  high: Float
+  low: Float
+  close: Float
+}
+
+# ─────────────────────────────────────────────────────────────
+# Portfolio Types
+# ─────────────────────────────────────────────────────────────
+
+type Portfolio {
+  id: String!
+  name: String!
+  description: String
+  currency: String!
+  holdings: [Holding!]!
+  totalValue: Float
+  totalCost: Float
+  totalGainLoss: Float
+  totalGainLossPercent: Float
+  dayGainLoss: Float
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Holding {
+  id: String!
+  ric: String!
+  instrument: Instrument
+  quantity: Float!
+  averageCost: Float
+  currentPrice: Float
+  marketValue: Float
+  unrealizedGainLoss: Float
+  unrealizedGainLossPercent: Float
+  weight: Float
+}
+
+type RiskAnalytics {
+  ric: String!
+  beta: Float
+  alpha: Float
+  sharpeRatio: Float
+  volatility: Float
+  valueAtRisk95: Float
+  valueAtRisk99: Float
+  maxDrawdown: Float
+  correlationToMarket: Float
+  period: String
+}
+
+# ─────────────────────────────────────────────────────────────
+# Alert & Watchlist Types
+# ─────────────────────────────────────────────────────────────
+
+type Alert {
+  id: String!
+  ric: String!
+  name: String
+  condition: AlertCondition!
+  threshold: Float!
+  triggered: Boolean!
+  triggeredAt: String
+  createdAt: String!
+}
+
+type Watchlist {
+  id: String!
+  name: String!
+  description: String
+  items: [WatchlistItem!]!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type WatchlistItem {
+  ric: String!
+  instrument: Instrument
+  addedAt: String!
+  notes: String
+}
+
+# ─────────────────────────────────────────────────────────────
+# Search Types
+# ─────────────────────────────────────────────────────────────
+
+type SearchResult {
+  query: String!
+  totalCount: Int!
+  instruments: [InstrumentSearchHit!]!
+}
+
+type InstrumentSearchHit {
+  ric: String!
+  displayName: String!
+  assetClass: AssetClass
+  exchange: String
+  currency: String
+  score: Float
+}
+
+# ─────────────────────────────────────────────────────────────
+# Screener Types
+# ─────────────────────────────────────────────────────────────
+
+type EquityScreenerResult {
+  nodes: [EquityScreenerRow!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type EquityScreenerRow {
+  ric: String!
+  name: String!
+  exchange: String
+  sector: String
+  marketCap: Float
+  peRatio: Float
+  pbRatio: Float
+  dividendYield: Float
+  eps: Float
+  revenue: Float
+  revenueGrowth: Float
+  netMargin: Float
+  roe: Float
+  debtToEquity: Float
+}
+
+type BondScreenerResult {
+  nodes: [BondScreenerRow!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type BondScreenerRow {
+  isin: String!
+  name: String!
+  issuer: String
+  maturityDate: String
+  couponRate: Float
+  yield: Float
+  duration: Float
+  creditRating: String
+  currency: String
+}
+
+# ─────────────────────────────────────────────────────────────
+# Common / Pagination Types
+# ─────────────────────────────────────────────────────────────
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+# ─────────────────────────────────────────────────────────────
+# Input Types
+# ─────────────────────────────────────────────────────────────
+
+input TimeSeriesInput {
+  ric: String!
+  interval: TimeSeriesInterval!
+  startDate: String!
+  endDate: String
+  adjustedForDividends: Boolean
+  adjustedForSplits: Boolean
+  count: Int
+}
+
+input InterdayInput {
+  ric: String!
+  startDate: String!
+  endDate: String
+  adjustedForSplits: Boolean
+  adjustedForDividends: Boolean
+}
+
+input IntradayInput {
+  ric: String!
+  intervalMinutes: Int!
+  startDateTime: String!
+  endDateTime: String
+}
+
+input InstrumentFilter {
+  assetClass: AssetClass
+  exchange: String
+  country: String
+  currency: String
+  sector: String
+  status: InstrumentStatus
+  searchQuery: String
+}
+
+input ExchangeFilter {
+  country: String
+  status: ExchangeStatus
+}
+
+input IssuerFilter {
+  type: IssuerType
+  country: String
+  searchQuery: String
+}
+
+input BondFilter {
+  issuer: String
+  currency: String
+  maturityDateFrom: String
+  maturityDateTo: String
+  minYield: Float
+  maxYield: Float
+  minCoupon: Float
+  maxCoupon: Float
+  bondType: BondType
+  minCreditRating: String
+  country: String
+}
+
+input NewsFilter {
+  rics: [String!]
+  topics: [String!]
+  sources: [String!]
+  dateFrom: String
+  dateTo: String
+  urgency: NewsUrgency
+  language: String
+}
+
+input AnalystReportFilter {
+  ric: String
+  analystId: String
+  firm: String
+  recommendation: Recommendation
+  dateFrom: String
+  dateTo: String
+}
+
+input ESGControversyFilter {
+  category: String
+  severity: ControversySeverity
+  dateFrom: String
+  dateTo: String
+}
+
+input CalendarFilter {
+  dateFrom: String!
+  dateTo: String!
+  exchange: String
+  country: String
+}
+
+input EconomicCalendarFilter {
+  dateFrom: String!
+  dateTo: String!
+  country: String
+  importance: EventImportance
+}
+
+input FXPairInput {
+  baseCurrency: String!
+  quoteCurrency: String!
+}
+
+input FXHistoryInput {
+  baseCurrency: String!
+  quoteCurrency: String!
+  startDate: String!
+  endDate: String
+  interval: FXInterval
+}
+
+input PageInput {
+  first: Int
+  after: String
+  last: Int
+  before: String
+}
+
+input CreatePortfolioInput {
+  name: String!
+  description: String
+  currency: String!
+}
+
+input UpdatePortfolioInput {
+  name: String
+  description: String
+  currency: String
+}
+
+input HoldingInput {
+  ric: String!
+  quantity: Float!
+  averageCost: Float
+  purchaseDate: String
+}
+
+input AlertInput {
+  ric: String!
+  name: String
+  condition: AlertCondition!
+  threshold: Float!
+}
+
+input CreateWatchlistInput {
+  name: String!
+  description: String
+}
+
+input UpdateWatchlistInput {
+  name: String
+  description: String
+}
+
+input RiskInput {
+  period: String
+  benchmark: String
+}
+
+input EquityScreenerFilter {
+  exchange: [String!]
+  country: [String!]
+  sector: [String!]
+  minMarketCap: Float
+  maxMarketCap: Float
+  minPeRatio: Float
+  maxPeRatio: Float
+  minDividendYield: Float
+  maxDividendYield: Float
+  minRevenueGrowth: Float
+  minNetMargin: Float
+  minRoe: Float
+  maxDebtToEquity: Float
+}
+
+input BondScreenerFilter {
+  currency: [String!]
+  country: [String!]
+  bondType: [BondType!]
+  minYield: Float
+  maxYield: Float
+  minDuration: Float
+  maxDuration: Float
+  maturityDateFrom: String
+  maturityDateTo: String
+  minCreditRating: String
+}
+
+# ─────────────────────────────────────────────────────────────
+# Enums
+# ─────────────────────────────────────────────────────────────
+
+enum AssetClass {
+  EQUITY
+  FIXED_INCOME
+  COMMODITY
+  CURRENCY
+  DERIVATIVE
+  FUND
+  INDEX
+  CRYPTOCURRENCY
+  REAL_ESTATE
+}
+
+enum TradingStatus {
+  OPEN
+  CLOSED
+  HALTED
+  PRE_MARKET
+  AFTER_HOURS
+  AUCTION
+}
+
+enum TradeSide {
+  BUY
+  SELL
+}
+
+enum FieldType {
+  PRICE
+  VOLUME
+  TEXT
+  DATE
+  TIME
+  BOOLEAN
+  INTEGER
+  FLOAT
+}
+
+enum TimeSeriesInterval {
+  TICK
+  MINUTE_1
+  MINUTE_5
+  MINUTE_15
+  MINUTE_30
+  HOUR_1
+  DAY
+  WEEK
+  MONTH
+  QUARTER
+  YEAR
+}
+
+enum InstrumentStatus {
+  ACTIVE
+  INACTIVE
+  DELISTED
+  SUSPENDED
+}
+
+enum ExchangeStatus {
+  OPEN
+  CLOSED
+  HOLIDAY
+}
+
+enum IssuerType {
+  CORPORATION
+  GOVERNMENT
+  MUNICIPALITY
+  SUPRANATIONAL
+  FINANCIAL_INSTITUTION
+}
+
+enum OptionType {
+  CALL
+  PUT
+}
+
+enum BondType {
+  GOVERNMENT
+  CORPORATE
+  MUNICIPAL
+  AGENCY
+  COVERED
+  CONVERTIBLE
+  HIGH_YIELD
+  INFLATION_LINKED
+}
+
+enum CouponFrequency {
+  ANNUAL
+  SEMI_ANNUAL
+  QUARTERLY
+  MONTHLY
+  ZERO_COUPON
+}
+
+enum FinancialPeriod {
+  ANNUAL
+  SEMI_ANNUAL
+  QUARTERLY
+  TTM
+}
+
+enum StatementType {
+  INCOME_STATEMENT
+  BALANCE_SHEET
+  CASH_FLOW
+}
+
+enum NewsUrgency {
+  BREAKING
+  URGENT
+  NORMAL
+  BACKGROUND
+}
+
+enum Recommendation {
+  STRONG_BUY
+  BUY
+  HOLD
+  UNDERPERFORM
+  SELL
+  STRONG_SELL
+}
+
+enum ESGPillar {
+  ENVIRONMENT
+  SOCIAL
+  GOVERNANCE
+}
+
+enum ControversySeverity {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum EventImportance {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum EarningsTime {
+  BEFORE_OPEN
+  AFTER_CLOSE
+  DURING_TRADING
+  UNCONFIRMED
+}
+
+enum DividendFrequency {
+  ANNUAL
+  SEMI_ANNUAL
+  QUARTERLY
+  MONTHLY
+  IRREGULAR
+  SPECIAL
+}
+
+enum DividendType {
+  CASH
+  STOCK
+  SPECIAL
+  RETURN_OF_CAPITAL
+}
+
+enum IPOStatus {
+  FILED
+  PRICED
+  TRADING
+  WITHDRAWN
+  POSTPONED
+}
+
+enum CommodityType {
+  ENERGY
+  METALS_PRECIOUS
+  METALS_BASE
+  AGRICULTURAL
+  LIVESTOCK
+  SOFTS
+}
+
+enum AlertCondition {
+  PRICE_ABOVE
+  PRICE_BELOW
+  PERCENT_CHANGE_UP
+  PERCENT_CHANGE_DOWN
+  VOLUME_ABOVE
+  NEWS_ALERT
+}
+
+enum FXInterval {
+  DAY
+  WEEK
+  MONTH
+}
