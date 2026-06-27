@@ -3,16 +3,12 @@
   "feeds": [
     {
       "source": "https://developers.lseg.com/en/article-catalog",
-      "feed_url": "https://developers.lseg.com/en/article-catalog",
-      "title": "",
+      "feed_url": "",
       "saved": 0,
-      "method": "none"
-    },
-    {
-      "source": "https://developers.lseg.com/en/support",
-      "error": "HTTPError"
+      "method": "agent-scrape"
     }
   ],
-  "fetched": "2026-06-14T20:42:17Z",
-  "post_count": 0
+  "fetched": "2026-06-27T13:04:52Z",
+  "post_count": 0,
+  "agent_pulled": "2026-06-27"
 }
