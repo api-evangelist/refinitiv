@@ -1,0 +1,43 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/refinitiv-data-platform-openapi.yml, openapi/refinitiv-datascope-select-openapi.yml,
+  openapi/refinitiv-permid-entity-search-openapi.yml, openapi/refinitiv-qual-id-openapi.yml,
+  openapi/refinitiv-world-check-one-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: OAuth 2.0 Bearer token obtained from the /auth/oauth2/v1/token endpoint. Access
+    tokens are valid for five minutes.
+  sources:
+  - openapi/refinitiv-data-platform-openapi.yml
+- name: tokenAuth
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: Session token obtained from the Authentication/RequestToken endpoint. Include
+    as Token followed by the token value.
+  sources:
+  - openapi/refinitiv-datascope-select-openapi.yml
+  - openapi/refinitiv-world-check-one-openapi.yml
+- name: apiKeyAuth
+  type: apiKey
+  in: header
+  parameter: x-ag-access-token
+  description: Open PermID API key. Registered users receive an API key that is shared across
+    PermID Entity Search, Record Matching, and Intelligent Tagging services.
+  sources:
+  - openapi/refinitiv-permid-entity-search-openapi.yml
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: HTTP Basic Authentication using Base64-encoded username and password credentials.
+  sources:
+  - openapi/refinitiv-qual-id-openapi.yml
