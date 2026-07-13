@@ -2,13 +2,11 @@
   "repo": "refinitiv",
   "feeds": [
     {
-      "source": "https://developers.lseg.com/en/article-catalog",
-      "feed_url": "",
-      "saved": 0,
-      "method": "agent-scrape"
+      "source": "https://developers.lseg.com/en/support",
+      "error": "HTTPError"
     }
   ],
-  "fetched": "2026-06-27T13:04:52Z",
+  "fetched": "2026-07-11T11:50:51Z",
   "post_count": 0,
-  "agent_pulled": "2026-06-27"
+  "agent_pulled": "2026-07-04"
 }
