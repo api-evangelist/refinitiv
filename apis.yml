@@ -556,6 +556,8 @@ apis:
       - type: Documentation
         url: https://developers.lseg.com/en/api-catalog/fx-venues/fx-reporting/documentation
 common:
+  - type: AgenticAccess
+    url: agentic-access/refinitiv-agentic-access.yml
   - type: DomainSecurity
     url: security/refinitiv-domain-security.yml
   - type: Authentication
