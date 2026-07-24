@@ -1,0 +1,126 @@
+openapi: 3.1.0
+info:
+  title: Refinitiv Data Platform (RDP) APIs Authentication Pricing API
+  description: Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.
+  version: 1.0.0
+  contact:
+    name: LSEG Developer Support
+    url: https://developers.lseg.com/en/support
+  termsOfService: https://developers.lseg.com/en/terms-and-conditions
+servers:
+- url: https://api.refinitiv.com
+  description: Production Server
+security:
+- bearerAuth: []
+tags:
+- name: Pricing
+  description: Real-time and delayed snapshot pricing data for financial instruments and pricing chains.
+paths:
+  /data/pricing/snapshots/v1/:
+    get:
+      operationId: getPricingSnapshots
+      summary: Get Pricing Snapshots
+      description: Retrieves real-time or delayed pricing snapshots for one or more financial instruments. Returns the latest available price data including bid, ask, last trade, and volume.
+      tags:
+      - Pricing
+      parameters:
+      - name: universe
+        in: query
+        required: true
+        description: Comma-separated list of instrument identifiers such as RICs.
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated list of specific fields to return.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Pricing snapshot data returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PricingSnapshotResponse'
+        '400':
+          description: Invalid request parameters
+        '401':
+          description: Unauthorized
+  /pricing/chains/v1/:
+    get:
+      operationId: getPricingChains
+      summary: Get Pricing Chains
+      description: Retrieves constituent instruments for a pricing chain such as an options chain or futures chain identified by its chain RIC.
+      tags:
+      - Pricing
+      parameters:
+      - name: universe
+        in: query
+        required: true
+        description: The chain RIC identifier.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Chain constituents returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      description: Chain constituent data.
+        '400':
+          description: Invalid request parameters
+        '401':
+          description: Unauthorized
+        '404':
+          description: Chain not found
+components:
+  schemas:
+    PricingSnapshotResponse:
+      type: object
+      properties:
+        universe:
+          type: array
+          items:
+            type: object
+            properties:
+              ric:
+                type: string
+                description: The RIC identifier for the instrument.
+              displayName:
+                type: string
+                description: The display name of the instrument.
+              status:
+                type: string
+                description: The status of the pricing data retrieval.
+        headers:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: The field name.
+              type:
+                type: string
+                description: The data type of the field.
+        data:
+          type: array
+          items:
+            type: array
+            items:
+              description: Field values corresponding to the headers array.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 Bearer token obtained from the /auth/oauth2/v1/token endpoint. Access tokens are valid for five minutes.
+externalDocs:
+  description: Refinitiv Data Platform API Documentation
+  url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation

@@ -1,0 +1,66 @@
+openapi: 3.1.0
+info:
+  title: Refinitiv Data Platform (RDP) APIs Authentication Connection API
+  description: Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.
+  version: 1.0.0
+  contact:
+    name: LSEG Developer Support
+    url: https://developers.lseg.com/en/support
+  termsOfService: https://developers.lseg.com/en/terms-and-conditions
+servers:
+- url: https://api.refinitiv.com
+  description: Production Server
+security:
+- bearerAuth: []
+tags:
+- name: Connection
+  description: Connectivity and authentication testing endpoints.
+paths:
+  /connection/v1/sayhello/{name}:
+    get:
+      operationId: sayHello
+      summary: Test Connectivity
+      description: Tests connectivity to the API server. This endpoint does not require authentication and returns a greeting with the provided name.
+      tags:
+      - Connection
+      security: []
+      parameters:
+      - name: name
+        in: path
+        required: true
+        description: A name to include in the greeting response.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Connectivity test successful
+          content:
+            text/plain:
+              schema:
+                type: string
+  /connection/v1/testauthentication:
+    get:
+      operationId: testAuthentication
+      summary: Test Authentication
+      description: Tests that the provided credentials are valid by returning a greeting with the authenticated username.
+      tags:
+      - Connection
+      responses:
+        '200':
+          description: Authentication successful
+          content:
+            text/plain:
+              schema:
+                type: string
+        '401':
+          description: Invalid credentials
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 Bearer token obtained from the /auth/oauth2/v1/token endpoint. Access tokens are valid for five minutes.
+externalDocs:
+  description: Refinitiv Data Platform API Documentation
+  url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation

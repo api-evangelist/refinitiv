@@ -1,0 +1,143 @@
+openapi: 3.1.0
+info:
+  title: Refinitiv Data Platform (RDP) APIs Authentication News API
+  description: Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.
+  version: 1.0.0
+  contact:
+    name: LSEG Developer Support
+    url: https://developers.lseg.com/en/support
+  termsOfService: https://developers.lseg.com/en/terms-and-conditions
+servers:
+- url: https://api.refinitiv.com
+  description: Production Server
+security:
+- bearerAuth: []
+tags:
+- name: News
+  description: Access to real-time and historical news headlines and stories from Reuters and other sources.
+paths:
+  /data/news/v1/headlines:
+    get:
+      operationId: getNewsHeadlines
+      summary: Get News Headlines
+      description: Retrieves news headlines matching the specified query criteria. Supports filtering by topic, instrument, date range, and other parameters. Returns headline text, timestamp, and story identifiers.
+      tags:
+      - News
+      parameters:
+      - name: query
+        in: query
+        required: true
+        description: The news search query string supporting keyword search and advanced query syntax.
+        schema:
+          type: string
+      - name: count
+        in: query
+        description: Maximum number of headlines to return.
+        schema:
+          type: integer
+      - name: cursor
+        in: query
+        description: Pagination cursor for retrieving the next page of results.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: News headlines returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewsHeadlinesResponse'
+        '400':
+          description: Invalid query parameters
+        '401':
+          description: Unauthorized
+  /data/news/v1/stories/{storyId}:
+    get:
+      operationId: getNewsStory
+      summary: Get News Story
+      description: Retrieves the full text and metadata for a specific news story identified by its story ID.
+      tags:
+      - News
+      parameters:
+      - name: storyId
+        in: path
+        required: true
+        description: The unique identifier of the news story.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: News story returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewsStory'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Story not found
+components:
+  schemas:
+    NewsHeadline:
+      type: object
+      properties:
+        storyId:
+          type: string
+          description: The unique identifier of the news story.
+        title:
+          type: string
+          description: The headline text.
+        newsItem:
+          type: string
+          description: A reference identifier for the news item.
+        sourceCode:
+          type: string
+          description: The code identifying the news source.
+        versionCreated:
+          type: string
+          format: date-time
+          description: The timestamp when the headline was created.
+    NewsHeadlinesResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/NewsHeadline'
+        meta:
+          type: object
+          properties:
+            count:
+              type: integer
+              description: The total number of matching headlines.
+            next:
+              type: string
+              description: Pagination cursor for the next page of results.
+    NewsStory:
+      type: object
+      properties:
+        storyId:
+          type: string
+          description: The unique identifier of the news story.
+        title:
+          type: string
+          description: The headline of the story.
+        body:
+          type: string
+          description: The full text body of the news story.
+        sourceCode:
+          type: string
+          description: The code identifying the news source.
+        versionCreated:
+          type: string
+          format: date-time
+          description: The timestamp when the story was published.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 Bearer token obtained from the /auth/oauth2/v1/token endpoint. Access tokens are valid for five minutes.
+externalDocs:
+  description: Refinitiv Data Platform API Documentation
+  url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation

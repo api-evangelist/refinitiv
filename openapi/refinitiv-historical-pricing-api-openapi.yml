@@ -1,0 +1,192 @@
+openapi: 3.1.0
+info:
+  title: Refinitiv Data Platform (RDP) APIs Authentication Historical Pricing API
+  description: Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.
+  version: 1.0.0
+  contact:
+    name: LSEG Developer Support
+    url: https://developers.lseg.com/en/support
+  termsOfService: https://developers.lseg.com/en/terms-and-conditions
+servers:
+- url: https://api.refinitiv.com
+  description: Production Server
+security:
+- bearerAuth: []
+tags:
+- name: Historical Pricing
+  description: Access to historical interday and intraday pricing data for financial instruments including summaries, events, and time series.
+paths:
+  /data/historical-pricing/v1/views/interday-summaries/{universe}:
+    get:
+      operationId: getInterdaySummaries
+      summary: Get Interday Pricing Summaries
+      description: Retrieves historical interday pricing summaries for a given instrument, including open, high, low, close, and volume data points. Supports date range filtering and adjustments for corporate actions.
+      tags:
+      - Historical Pricing
+      parameters:
+      - $ref: '#/components/parameters/universe'
+      - name: start
+        in: query
+        description: Start date for the historical data range in ISO 8601 format.
+        schema:
+          type: string
+          format: date
+      - name: end
+        in: query
+        description: End date for the historical data range in ISO 8601 format.
+        schema:
+          type: string
+          format: date
+      - name: count
+        in: query
+        description: Maximum number of data points to return.
+        schema:
+          type: integer
+      - name: adjustments
+        in: query
+        description: Comma-separated list of adjustment types to apply such as exchangeCorrection and capitalChange.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Historical pricing data returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HistoricalPricingResponse'
+        '400':
+          description: Invalid request parameters
+        '401':
+          description: Unauthorized
+        '404':
+          description: Instrument not found
+  /data/historical-pricing/v1/views/intraday-summaries/{universe}:
+    get:
+      operationId: getIntradaySummaries
+      summary: Get Intraday Pricing Summaries
+      description: Retrieves historical intraday pricing summaries for a given instrument at configurable intervals. Returns time-stamped OHLCV bars for the requested period.
+      tags:
+      - Historical Pricing
+      parameters:
+      - $ref: '#/components/parameters/universe'
+      - name: start
+        in: query
+        description: Start date-time for the data range in ISO 8601 format.
+        schema:
+          type: string
+          format: date-time
+      - name: end
+        in: query
+        description: End date-time for the data range in ISO 8601 format.
+        schema:
+          type: string
+          format: date-time
+      - name: interval
+        in: query
+        description: The interval between data points such as PT1M, PT5M, PT1H.
+        schema:
+          type: string
+      - name: count
+        in: query
+        description: Maximum number of data points to return.
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Intraday pricing data returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HistoricalPricingResponse'
+        '400':
+          description: Invalid request parameters
+        '401':
+          description: Unauthorized
+        '404':
+          description: Instrument not found
+  /data/historical-pricing/v1/views/events/{universe}:
+    get:
+      operationId: getHistoricalPricingEvents
+      summary: Get Historical Pricing Events
+      description: Retrieves historical trade and quote events for a given instrument, providing tick-level data for detailed analysis of market activity.
+      tags:
+      - Historical Pricing
+      parameters:
+      - $ref: '#/components/parameters/universe'
+      - name: start
+        in: query
+        description: Start date-time for the data range in ISO 8601 format.
+        schema:
+          type: string
+          format: date-time
+      - name: end
+        in: query
+        description: End date-time for the data range in ISO 8601 format.
+        schema:
+          type: string
+          format: date-time
+      - name: count
+        in: query
+        description: Maximum number of events to return.
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Historical pricing events returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HistoricalPricingResponse'
+        '400':
+          description: Invalid request parameters
+        '401':
+          description: Unauthorized
+        '404':
+          description: Instrument not found
+components:
+  parameters:
+    universe:
+      name: universe
+      in: path
+      required: true
+      description: The instrument identifier, typically a RIC such as IBM.N or AAPL.O.
+      schema:
+        type: string
+  schemas:
+    HistoricalPricingResponse:
+      type: object
+      properties:
+        universe:
+          type: object
+          properties:
+            ric:
+              type: string
+              description: The RIC identifier for the instrument.
+            displayName:
+              type: string
+              description: The display name of the instrument.
+        data:
+          type: array
+          items:
+            type: object
+            description: Individual pricing data points with fields such as date, open, high, low, close, volume, and count.
+        headers:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: The field name.
+              type:
+                type: string
+                description: The data type of the field.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 Bearer token obtained from the /auth/oauth2/v1/token endpoint. Access tokens are valid for five minutes.
+externalDocs:
+  description: Refinitiv Data Platform API Documentation
+  url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation

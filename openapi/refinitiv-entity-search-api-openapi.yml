@@ -1,0 +1,310 @@
+openapi: 3.1.0
+info:
+  title: Refinitiv Data Platform (RDP) APIs Authentication Entity Search API
+  description: Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.
+  version: 1.0.0
+  contact:
+    name: LSEG Developer Support
+    url: https://developers.lseg.com/en/support
+  termsOfService: https://developers.lseg.com/en/terms-and-conditions
+servers:
+- url: https://api.refinitiv.com
+  description: Production Server
+security:
+- bearerAuth: []
+tags:
+- name: Entity Search
+  description: Search for organizations, equity instruments, and equity quotes using various identifier types including name, ticker, RIC, LEI, and PermID.
+paths:
+  /search:
+    get:
+      operationId: searchEntities
+      summary: Search Entities by Query
+      description: Searches for entities across organizations, equity instruments, and equity quotes. Supports searching by name, ticker, RIC, LEI, PermID, and other standard identifiers. Returns matching entities with their PermID identifiers and metadata.
+      tags:
+      - Entity Search
+      parameters:
+      - name: q
+        in: query
+        required: true
+        description: The search query string. Can be a name, ticker, RIC, ISIN, LEI, or PermID.
+        schema:
+          type: string
+      - name: entitytype
+        in: query
+        description: Filter results by entity type.
+        schema:
+          type: string
+          enum:
+          - organization
+          - instrument
+          - quote
+      - name: num
+        in: query
+        description: Maximum number of results to return, default is 5.
+        schema:
+          type: integer
+          default: 5
+          maximum: 100
+      - name: start
+        in: query
+        description: Starting index for pagination.
+        schema:
+          type: integer
+          default: 1
+      responses:
+        '200':
+          description: Search results returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+        '400':
+          description: Invalid query parameters
+        '401':
+          description: Invalid or missing API key
+        '429':
+          description: Rate limit exceeded
+  /calais:
+    post:
+      operationId: tagContent
+      summary: Tag Content with Entities
+      description: Submits unstructured text content for natural language processing and entity extraction. Identifies and tags companies, people, deals, geographical locations, industries, and events within the text and maps recognized entities to Refinitiv PermIDs for unambiguous identification.
+      tags:
+      - Entity Search
+      parameters:
+      - name: x-ag-access-token
+        in: header
+        required: true
+        description: The Open Calais API key for authentication.
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        required: true
+        description: The content type of the input text. Supported values include text/plain, text/html, text/xml, and text/raw.
+        schema:
+          type: string
+          enum:
+          - text/plain
+          - text/html
+          - text/xml
+          - text/raw
+      - name: outputFormat
+        in: header
+        description: The desired output format for the tagging results.
+        schema:
+          type: string
+          enum:
+          - application/json
+          - xml/rdf
+          - text/n3
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              type: string
+              description: The unstructured text content to analyze and tag.
+          text/html:
+            schema:
+              type: string
+          text/xml:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: Content tagged successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaggingResponse'
+        '400':
+          description: Invalid content or parameters
+        '401':
+          description: Invalid or missing API key
+        '413':
+          description: Content too large
+        '429':
+          description: Rate limit exceeded
+  /lookup:
+    get:
+      operationId: lookupEntity
+      summary: Look Up Entity by PermID
+      description: Retrieves detailed information about a specific entity using its PermID identifier, returning structured data about the organization, instrument, or quote.
+      tags:
+      - Entity Search
+      parameters:
+      - name: q
+        in: query
+        required: true
+        description: The PermID to look up.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Entity details returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityDetail'
+        '400':
+          description: Invalid PermID
+        '401':
+          description: Invalid or missing API key
+        '404':
+          description: Entity not found
+components:
+  schemas:
+    QuoteEntity:
+      type: object
+      properties:
+        hasName:
+          type: string
+          description: The name of the quote.
+        hasRIC:
+          type: string
+          description: The RIC code.
+        hasMic:
+          type: string
+          description: The Market Identifier Code.
+        isQuoteOf:
+          type: string
+          description: The PermID of the quoted instrument.
+        '@id':
+          type: string
+          format: uri
+          description: The PermID URI for the quote.
+    SearchResponse:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            organizations:
+              type: object
+              properties:
+                total:
+                  type: integer
+                  description: Total number of matching organizations.
+                entities:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/OrganizationEntity'
+            instruments:
+              type: object
+              properties:
+                total:
+                  type: integer
+                  description: Total number of matching instruments.
+                entities:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/InstrumentEntity'
+            quotes:
+              type: object
+              properties:
+                total:
+                  type: integer
+                  description: Total number of matching quotes.
+                entities:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/QuoteEntity'
+    TaggingResponse:
+      type: object
+      additionalProperties:
+        type: object
+        properties:
+          _type:
+            type: string
+            description: The entity type such as Company, Person, City, or IndustryTerm.
+          name:
+            type: string
+            description: The recognized entity name.
+          _typeGroup:
+            type: string
+            description: The type group such as entities, topics, or relations.
+          fopiPermId:
+            type: string
+            description: The associated PermID identifier.
+          relevance:
+            type: number
+            description: The relevance score from 0 to 1.
+          confidence:
+            type: number
+            description: The confidence score for the entity recognition.
+      description: Map of extracted entities, topics, and relations keyed by unique identifiers, with each entry containing entity metadata and linked PermIDs.
+    OrganizationEntity:
+      type: object
+      properties:
+        organizationName:
+          type: string
+          description: The name of the organization.
+        orgSubtype:
+          type: string
+          description: The subtype of the organization such as Company or Fund.
+        hasHoldingClassification:
+          type: string
+          description: Whether the organization is public or private.
+        primaryRIC:
+          type: string
+          description: The primary RIC associated with the organization.
+        lei:
+          type: string
+          description: The Legal Entity Identifier.
+        '@id':
+          type: string
+          format: uri
+          description: The PermID URI for the organization.
+    InstrumentEntity:
+      type: object
+      properties:
+        hasName:
+          type: string
+          description: The name of the instrument.
+        assetClass:
+          type: string
+          description: The asset class of the instrument.
+        isIssuedBy:
+          type: string
+          description: The PermID of the issuing organization.
+        '@id':
+          type: string
+          format: uri
+          description: The PermID URI for the instrument.
+    EntityDetail:
+      type: object
+      properties:
+        '@id':
+          type: string
+          format: uri
+          description: The PermID URI.
+        organizationName:
+          type: string
+          description: The name of the organization.
+        hasActivityStatus:
+          type: string
+          description: The activity status of the entity.
+        isIncorporatedIn:
+          type: string
+          description: The country of incorporation.
+        isDomiciledIn:
+          type: string
+          description: The country of domicile.
+        hasURL:
+          type: string
+          format: uri
+          description: The entity's website URL.
+        hasPrimaryInstrument:
+          type: string
+          description: The PermID of the primary instrument.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 Bearer token obtained from the /auth/oauth2/v1/token endpoint. Access tokens are valid for five minutes.
+externalDocs:
+  description: Refinitiv Data Platform API Documentation
+  url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation

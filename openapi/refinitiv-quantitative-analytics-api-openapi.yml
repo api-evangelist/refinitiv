@@ -1,0 +1,101 @@
+openapi: 3.1.0
+info:
+  title: Refinitiv Data Platform (RDP) APIs Authentication Quantitative Analytics API
+  description: Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.
+  version: 1.0.0
+  contact:
+    name: LSEG Developer Support
+    url: https://developers.lseg.com/en/support
+  termsOfService: https://developers.lseg.com/en/terms-and-conditions
+servers:
+- url: https://api.refinitiv.com
+  description: Production Server
+security:
+- bearerAuth: []
+tags:
+- name: Quantitative Analytics
+  description: Instrument Pricing Analytics (IPA) service for pricing financial contracts, calculating risk measures, and running quantitative models.
+paths:
+  /data/quantitative-analytics/v1/financial-contracts:
+    post:
+      operationId: calculateFinancialContracts
+      summary: Calculate Financial Contracts
+      description: Submits financial contract definitions to the Instrument Pricing Analytics (IPA) engine for pricing, risk calculation, and quantitative analysis. Supports bonds, swaps, options, and other derivative instruments.
+      tags:
+      - Quantitative Analytics
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FinancialContractRequest'
+      responses:
+        '200':
+          description: Calculation results returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FinancialContractResponse'
+        '400':
+          description: Invalid contract definition
+        '401':
+          description: Unauthorized
+components:
+  schemas:
+    FinancialContractRequest:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            type: string
+          description: List of output fields to calculate.
+        outputs:
+          type: array
+          items:
+            type: string
+          description: List of output types to return.
+        universe:
+          type: array
+          items:
+            type: object
+            properties:
+              instrumentType:
+                type: string
+                description: The type of financial instrument such as Bond or Swap.
+              instrumentDefinition:
+                type: object
+                description: The instrument definition parameters.
+              pricingParameters:
+                type: object
+                description: The pricing parameters for the calculation.
+          description: Array of financial contract definitions to price.
+    FinancialContractResponse:
+      type: object
+      properties:
+        headers:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: The output field name.
+              type:
+                type: string
+                description: The data type of the field.
+        data:
+          type: array
+          items:
+            type: array
+            items:
+              description: Calculated values corresponding to the headers array.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 Bearer token obtained from the /auth/oauth2/v1/token endpoint. Access tokens are valid for five minutes.
+externalDocs:
+  description: Refinitiv Data Platform API Documentation
+  url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation

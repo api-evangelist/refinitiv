@@ -1,0 +1,154 @@
+openapi: 3.1.0
+info:
+  title: Refinitiv Data Platform (RDP) APIs Authentication Groups API
+  description: Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.
+  version: 1.0.0
+  contact:
+    name: LSEG Developer Support
+    url: https://developers.lseg.com/en/support
+  termsOfService: https://developers.lseg.com/en/terms-and-conditions
+servers:
+- url: https://api.refinitiv.com
+  description: Production Server
+security:
+- bearerAuth: []
+tags:
+- name: Groups
+  description: Group management operations for organizing cases and configuring screening parameters per group.
+paths:
+  /groups:
+    get:
+      operationId: listGroups
+      summary: List Groups
+      description: Retrieves all groups available in the account. Groups are used to organize cases and configure screening parameters such as provider types, match thresholds, and resolution toolkits.
+      tags:
+      - Groups
+      responses:
+        '200':
+          description: Groups returned successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Group'
+        '401':
+          description: Unauthorized
+  /groups/{groupId}:
+    get:
+      operationId: getGroup
+      summary: Get Group Details
+      description: Retrieves the details and configuration of a specific group including its screening settings and resolution toolkit.
+      tags:
+      - Groups
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        description: The unique identifier of the group.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Group details returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Group not found
+  /groups/{groupId}/resolutionToolkit:
+    get:
+      operationId: getResolutionToolkit
+      summary: Get Resolution Toolkit
+      description: Retrieves the resolution toolkit configuration for a specific group. The toolkit defines the valid resolution statuses, risk levels, and reasons that can be applied to screening results for cases belonging to the group.
+      tags:
+      - Groups
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        description: The unique identifier of the group.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Resolution toolkit returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResolutionToolkit'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Group not found
+components:
+  schemas:
+    Group:
+      type: object
+      properties:
+        groupId:
+          type: string
+          description: The unique identifier of the group.
+        name:
+          type: string
+          description: The name of the group.
+        parentId:
+          type: string
+          description: The parent group identifier, if applicable.
+        status:
+          type: string
+          description: The status of the group, such as ACTIVE or INACTIVE.
+    ResolutionToolkit:
+      type: object
+      properties:
+        groupId:
+          type: string
+          description: The group this toolkit applies to.
+        statuses:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: The status identifier.
+              label:
+                type: string
+                description: The display label for the status.
+              type:
+                type: string
+                description: The status type such as POSITIVE, FALSE, or UNSPECIFIED.
+        risks:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: The risk level identifier.
+              label:
+                type: string
+                description: The display label for the risk level.
+        reasons:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: The reason identifier.
+              label:
+                type: string
+                description: The display label for the reason.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 Bearer token obtained from the /auth/oauth2/v1/token endpoint. Access tokens are valid for five minutes.
+externalDocs:
+  description: Refinitiv Data Platform API Documentation
+  url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation

@@ -1,0 +1,90 @@
+openapi: 3.1.0
+info:
+  title: Refinitiv Data Platform (RDP) APIs Authentication Search API
+  description: Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.
+  version: 1.0.0
+  contact:
+    name: LSEG Developer Support
+    url: https://developers.lseg.com/en/support
+  termsOfService: https://developers.lseg.com/en/terms-and-conditions
+servers:
+- url: https://api.refinitiv.com
+  description: Production Server
+security:
+- bearerAuth: []
+tags:
+- name: Search
+  description: Discovery and search across organizations, instruments, quotes, and economic indicators.
+paths:
+  /discovery/search/v1/:
+    post:
+      operationId: searchInstruments
+      summary: Search for Instruments
+      description: Searches across organizations, instruments, quotes, and economic indicators. Supports complex query expressions and filtering by asset class, exchange, country, and other attributes.
+      tags:
+      - Search
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
+      responses:
+        '200':
+          description: Search results returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+        '400':
+          description: Invalid search query
+        '401':
+          description: Unauthorized
+components:
+  schemas:
+    SearchResponse:
+      type: object
+      properties:
+        Total:
+          type: integer
+          description: Total number of matching results.
+        Hits:
+          type: array
+          items:
+            type: object
+            description: Individual search result containing the matched entity or instrument data.
+    SearchRequest:
+      type: object
+      properties:
+        Query:
+          type: string
+          description: The search query string.
+        View:
+          type: string
+          description: The search view such as Entities, InstrumentSearch, or QuoteSearch.
+          enum:
+          - Entities
+          - InstrumentSearch
+          - QuoteSearch
+          - IndicatorSearch
+        Filter:
+          type: string
+          description: Filter expression to narrow search results.
+        Top:
+          type: integer
+          description: Maximum number of results to return.
+        Skip:
+          type: integer
+          description: Number of results to skip for pagination.
+        Select:
+          type: string
+          description: Comma-separated list of fields to include in results.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 Bearer token obtained from the /auth/oauth2/v1/token endpoint. Access tokens are valid for five minutes.
+externalDocs:
+  description: Refinitiv Data Platform API Documentation
+  url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation

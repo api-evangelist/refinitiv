@@ -1,0 +1,150 @@
+openapi: 3.1.0
+info:
+  title: Refinitiv Data Platform (RDP) APIs Authentication API
+  description: Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.
+  version: 1.0.0
+  contact:
+    name: LSEG Developer Support
+    url: https://developers.lseg.com/en/support
+  termsOfService: https://developers.lseg.com/en/terms-and-conditions
+servers:
+- url: https://api.refinitiv.com
+  description: Production Server
+security:
+- bearerAuth: []
+tags:
+- name: Authentication
+  description: OAuth 2.0 token management for obtaining and refreshing access tokens required by all other API endpoints.
+paths:
+  /auth/oauth2/v1/token:
+    post:
+      operationId: getToken
+      summary: Request Access Token
+      description: Obtains an OAuth 2.0 access token using password grant or refresh token grant. The access token is required for all subsequent API calls and is valid for five minutes. The response also includes a refresh token that can be used to obtain new access tokens without re-authenticating.
+      tags:
+      - Authentication
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - client_id
+              - grant_type
+              properties:
+                username:
+                  type: string
+                  description: The user's machine account username. Required for password grant type.
+                password:
+                  type: string
+                  description: The user's machine account password. Required for password grant type.
+                client_id:
+                  type: string
+                  description: The application client ID provided during registration.
+                grant_type:
+                  type: string
+                  description: The OAuth 2.0 grant type. Use password for initial authentication or refresh_token for token renewal.
+                  enum:
+                  - password
+                  - refresh_token
+                refresh_token:
+                  type: string
+                  description: The refresh token from a previous authentication. Required for refresh_token grant type.
+                scope:
+                  type: string
+                  description: The scope of access requested. Each RDP resource has a permission scope assigned to it.
+                takeExclusiveSignOnControl:
+                  type: string
+                  description: When set to true, forces sign-on even if another session exists for the same credentials.
+                  enum:
+                  - 'true'
+                  - 'false'
+      responses:
+        '200':
+          description: Successful authentication
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '400':
+          description: Invalid request parameters
+        '401':
+          description: Invalid credentials
+  /Authentication/RequestToken:
+    post:
+      operationId: requestToken
+      summary: Request Authentication Token
+      description: Authenticates the user and returns a session token that must be included in all subsequent API requests. The token is included in the Authorization header as a Token value.
+      tags:
+      - Authentication
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - Credentials
+              properties:
+                Credentials:
+                  type: object
+                  required:
+                  - Username
+                  - Password
+                  properties:
+                    Username:
+                      type: string
+                      description: The DataScope Select username.
+                    Password:
+                      type: string
+                      description: The DataScope Select password.
+      responses:
+        '200':
+          description: Authentication successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  '@odata.context':
+                    type: string
+                    description: OData context URI.
+                  value:
+                    type: string
+                    description: The session token to use in subsequent requests.
+        '400':
+          description: Invalid credentials
+        '401':
+          description: Authentication failed
+components:
+  schemas:
+    TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: The OAuth 2.0 access token to use in subsequent API requests.
+        refresh_token:
+          type: string
+          description: Token used to obtain a new access token without re-authenticating.
+        expires_in:
+          type: integer
+          description: The lifetime of the access token in seconds.
+        scope:
+          type: string
+          description: The scope of access granted by the token.
+        token_type:
+          type: string
+          description: The type of token, typically Bearer.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 Bearer token obtained from the /auth/oauth2/v1/token endpoint. Access tokens are valid for five minutes.
+externalDocs:
+  description: Refinitiv Data Platform API Documentation
+  url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation

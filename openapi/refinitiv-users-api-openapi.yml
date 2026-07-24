@@ -1,0 +1,69 @@
+openapi: 3.1.0
+info:
+  title: Refinitiv Data Platform (RDP) APIs Authentication Users API
+  description: Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.
+  version: 1.0.0
+  contact:
+    name: LSEG Developer Support
+    url: https://developers.lseg.com/en/support
+  termsOfService: https://developers.lseg.com/en/terms-and-conditions
+servers:
+- url: https://api.refinitiv.com
+  description: Production Server
+security:
+- bearerAuth: []
+tags:
+- name: Users
+  description: User account information and preferences management.
+paths:
+  /Users/Users('{userId}'):
+    get:
+      operationId: getUser
+      summary: Get User Information
+      description: Retrieves user account information for the specified user ID.
+      tags:
+      - Users
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        description: The user identifier.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: User information returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: Unauthorized
+        '404':
+          description: User not found
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        UserId:
+          type: string
+          description: The unique user identifier.
+        UserName:
+          type: string
+          description: The username.
+        Email:
+          type: string
+          description: The user's email address.
+        Phone:
+          type: string
+          description: The user's phone number.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 Bearer token obtained from the /auth/oauth2/v1/token endpoint. Access tokens are valid for five minutes.
+externalDocs:
+  description: Refinitiv Data Platform API Documentation
+  url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation

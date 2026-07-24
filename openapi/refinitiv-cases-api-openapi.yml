@@ -1,0 +1,326 @@
+openapi: 3.1.0
+info:
+  title: Refinitiv Data Platform (RDP) APIs Authentication Cases API
+  description: Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.
+  version: 1.0.0
+  contact:
+    name: LSEG Developer Support
+    url: https://developers.lseg.com/en/support
+  termsOfService: https://developers.lseg.com/en/terms-and-conditions
+servers:
+- url: https://api.refinitiv.com
+  description: Production Server
+security:
+- bearerAuth: []
+tags:
+- name: Cases
+  description: Case creation, screening, retrieval, update, and deletion operations for entity screening against the World-Check database.
+paths:
+  /cases/screeningRequest:
+    post:
+      operationId: createCaseAndScreen
+      summary: Create Case with Synchronous Screening
+      description: Creates a new case and performs synchronous screening in a single request. Returns all matched screening results within the response. Optionally enables ongoing screening by setting the caseScreeningState to WATCHLIST with ONGOING monitoring.
+      tags:
+      - Cases
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScreeningRequest'
+      responses:
+        '200':
+          description: Screening completed with results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScreeningResponse'
+        '400':
+          description: Invalid screening request
+        '401':
+          description: Unauthorized or invalid HMAC signature
+        '403':
+          description: Forbidden
+  /cases/{caseSystemId}:
+    get:
+      operationId: getCase
+      summary: Get Case Details
+      description: Retrieves the details of an existing case including its current status, screening state, and metadata.
+      tags:
+      - Cases
+      parameters:
+      - $ref: '#/components/parameters/caseSystemId'
+      responses:
+        '200':
+          description: Case details returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Case'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Case not found
+    put:
+      operationId: updateCase
+      summary: Update an Existing Case
+      description: Updates the details of an existing case such as name fields, custom data, and screening parameters.
+      tags:
+      - Cases
+      parameters:
+      - $ref: '#/components/parameters/caseSystemId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CaseUpdateRequest'
+      responses:
+        '200':
+          description: Case updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Case'
+        '400':
+          description: Invalid update request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Case not found
+    delete:
+      operationId: deleteCase
+      summary: Delete a Case
+      description: Permanently deletes a case and all associated screening results and audit history.
+      tags:
+      - Cases
+      parameters:
+      - $ref: '#/components/parameters/caseSystemId'
+      responses:
+        '204':
+          description: Case deleted successfully
+        '401':
+          description: Unauthorized
+        '404':
+          description: Case not found
+components:
+  schemas:
+    ScreeningResponse:
+      type: object
+      properties:
+        caseSystemId:
+          type: string
+          description: The system-generated case identifier.
+        caseId:
+          type: string
+          description: The client-defined case identifier.
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScreeningResult'
+    ScreeningResult:
+      type: object
+      properties:
+        resultId:
+          type: string
+          description: The unique identifier of the screening result.
+        referenceId:
+          type: string
+          description: The World-Check reference profile identifier.
+        matchStrength:
+          type: string
+          description: The strength of the match, such as EXACT, STRONG, MEDIUM, or WEAK.
+        matchedTerm:
+          type: string
+          description: The name or term that was matched.
+        submittedTerm:
+          type: string
+          description: The original term submitted for screening.
+        matchedNameType:
+          type: string
+          description: The type of name matched, such as PRIMARY or ALIAS.
+        categories:
+          type: array
+          items:
+            type: string
+          description: Categories assigned to the matched profile such as PEP, Sanctions, or Adverse Media.
+        resolution:
+          type: object
+          description: The current resolution status of the result, null if unresolved.
+          properties:
+            statusId:
+              type: string
+              description: The resolution status identifier.
+            riskId:
+              type: string
+              description: The risk level identifier.
+            reasonId:
+              type: string
+              description: The resolution reason identifier.
+    Case:
+      type: object
+      properties:
+        caseSystemId:
+          type: string
+          description: The system-generated case identifier.
+        caseId:
+          type: string
+          description: The client-defined case identifier.
+        groupId:
+          type: string
+          description: The group the case belongs to.
+        entityType:
+          type: string
+          description: The entity type of the case.
+        name:
+          type: object
+          properties:
+            firstName:
+              type: string
+            middleName:
+              type: string
+            lastName:
+              type: string
+            fullName:
+              type: string
+        caseScreeningState:
+          type: object
+          description: The current screening state for each provider type.
+        creationDate:
+          type: string
+          format: date-time
+          description: The date and time the case was created.
+        modificationDate:
+          type: string
+          format: date-time
+          description: The date and time the case was last modified.
+    CaseUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: object
+          properties:
+            firstName:
+              type: string
+            middleName:
+              type: string
+            lastName:
+              type: string
+            fullName:
+              type: string
+        secondaryFields:
+          type: object
+          description: Updated secondary screening fields.
+        customFields:
+          type: array
+          items:
+            type: object
+            properties:
+              typeId:
+                type: string
+              value:
+                type: string
+    ScreeningRequest:
+      type: object
+      required:
+      - groupId
+      - entityType
+      - providerTypes
+      - name
+      properties:
+        groupId:
+          type: string
+          description: The group under which to create the case.
+        entityType:
+          type: string
+          description: The type of entity being screened.
+          enum:
+          - INDIVIDUAL
+          - ORGANISATION
+          - VESSEL
+        caseId:
+          type: string
+          description: A client-defined case identifier for tracking purposes.
+        providerTypes:
+          type: array
+          items:
+            type: string
+            enum:
+            - WATCHLIST
+            - CLIENT_WATCHLIST
+            - MEDIA_CHECK
+            - PASSPORT_CHECK
+          description: The provider types to screen against, such as WATCHLIST for World-Check risk intelligence data.
+        caseScreeningState:
+          type: object
+          properties:
+            WATCHLIST:
+              type: string
+              description: Set to ONGOING to enable continuous monitoring.
+              enum:
+              - INITIAL
+              - ONGOING
+        name:
+          type: object
+          properties:
+            firstName:
+              type: string
+              description: First name of the individual being screened.
+            middleName:
+              type: string
+              description: Middle name of the individual being screened.
+            lastName:
+              type: string
+              description: Last name of the individual being screened.
+            fullName:
+              type: string
+              description: Full name, used when individual name parts are not available, or the organization name when screening organizations.
+        secondaryFields:
+          type: object
+          properties:
+            dateOfBirth:
+              type: string
+              format: date
+              description: Date of birth for individual screening.
+            countryLocation:
+              type: string
+              description: Country of location, ISO 3166-1 alpha-2 code.
+            nationality:
+              type: string
+              description: Nationality, ISO 3166-1 alpha-2 code.
+            gender:
+              type: string
+              description: Gender of the individual.
+              enum:
+              - MALE
+              - FEMALE
+              - UNSPECIFIED
+        customFields:
+          type: array
+          items:
+            type: object
+            properties:
+              typeId:
+                type: string
+                description: The custom field type identifier.
+              value:
+                type: string
+                description: The custom field value.
+  parameters:
+    caseSystemId:
+      name: caseSystemId
+      in: path
+      required: true
+      description: The system-generated unique identifier for the case.
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 Bearer token obtained from the /auth/oauth2/v1/token endpoint. Access tokens are valid for five minutes.
+externalDocs:
+  description: Refinitiv Data Platform API Documentation
+  url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation

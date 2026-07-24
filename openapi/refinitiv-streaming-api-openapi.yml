@@ -1,0 +1,62 @@
+openapi: 3.1.0
+info:
+  title: Refinitiv Data Platform (RDP) APIs Authentication Streaming API
+  description: Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.
+  version: 1.0.0
+  contact:
+    name: LSEG Developer Support
+    url: https://developers.lseg.com/en/support
+  termsOfService: https://developers.lseg.com/en/terms-and-conditions
+servers:
+- url: https://api.refinitiv.com
+  description: Production Server
+security:
+- bearerAuth: []
+tags:
+- name: Streaming
+  description: Service discovery for streaming connections to real-time pricing and data services.
+paths:
+  /streaming/pricing/v1/:
+    get:
+      operationId: getStreamingEndpoints
+      summary: Discover Streaming Endpoints
+      description: Retrieves available streaming service endpoints for establishing WebSocket connections to real-time pricing data. Returns endpoint URIs and port information for connecting to the Real-Time Optimized streaming service.
+      tags:
+      - Streaming
+      responses:
+        '200':
+          description: Streaming endpoints returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  services:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        endpoint:
+                          type: string
+                          description: The WebSocket endpoint URI.
+                        port:
+                          type: integer
+                          description: The port number for the streaming connection.
+                        provider:
+                          type: string
+                          description: The streaming service provider.
+                        dataFormat:
+                          type: string
+                          description: The data format used by the streaming endpoint.
+        '401':
+          description: Unauthorized
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 Bearer token obtained from the /auth/oauth2/v1/token endpoint. Access tokens are valid for five minutes.
+externalDocs:
+  description: Refinitiv Data Platform API Documentation
+  url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
