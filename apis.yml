@@ -2004,15 +2004,15 @@ common:
   - type: Medium
     url: https://medium.com/lseg-developer-community
   - type: OpenAPI
-    url: openapi/refinitiv-data-platform-openapi.yml
+    url: openapi/_original/refinitiv-data-platform-openapi.yml
   - type: OpenAPI
-    url: openapi/refinitiv-datascope-select-openapi.yml
+    url: openapi/_original/refinitiv-datascope-select-openapi.yml
   - type: OpenAPI
-    url: openapi/refinitiv-permid-entity-search-openapi.yml
+    url: openapi/_original/refinitiv-permid-entity-search-openapi.yml
   - type: OpenAPI
-    url: openapi/refinitiv-qual-id-openapi.yml
+    url: openapi/_original/refinitiv-qual-id-openapi.yml
   - type: OpenAPI
-    url: openapi/refinitiv-world-check-one-openapi.yml
+    url: openapi/_original/refinitiv-world-check-one-openapi.yml
   - type: AsyncAPI
     url: asyncapi/refinitiv-real-time-websocket-asyncapi.yml
   - type: JSONSchema
