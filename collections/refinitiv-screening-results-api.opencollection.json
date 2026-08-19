@@ -1,0 +1,72 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Refinitiv Data Platform (RDP) APIs Authentication Screening Results API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Screening Results",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Screening Results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.refinitiv.com/cases/:caseSystemId/results",
+            "params": [
+              {
+                "name": "caseSystemId",
+                "value": "",
+                "type": "path",
+                "description": "The system-generated unique identifier for the case."
+              }
+            ]
+          },
+          "docs": "Retrieves detailed screening results for a specific case including all matched profiles, match strength indicators, and resolution status for each match."
+        },
+        {
+          "info": {
+            "name": "Resolve a Screening Result",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.refinitiv.com/cases/:caseSystemId/results/:resultId/resolution",
+            "params": [
+              {
+                "name": "caseSystemId",
+                "value": "",
+                "type": "path",
+                "description": "The system-generated unique identifier for the case."
+              },
+              {
+                "name": "resultId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the screening result to resolve."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Resolves a specific screening result match by assigning a resolution status such as True Positive, False Positive, or Unresolved. The valid resolution options depend on the group's resolution toolkit configuration."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

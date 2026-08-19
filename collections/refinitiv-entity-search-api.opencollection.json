@@ -1,0 +1,105 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Refinitiv Data Platform (RDP) APIs Authentication Entity Search API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Entity Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Entities by Query",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.refinitiv.com/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "The search query string. Can be a name, ticker, RIC, ISIN, LEI, or PermID."
+              },
+              {
+                "name": "entitytype",
+                "value": "",
+                "type": "query",
+                "description": "Filter results by entity type."
+              },
+              {
+                "name": "num",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to return, default is 5."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Starting index for pagination."
+              }
+            ]
+          },
+          "docs": "Searches for entities across organizations, equity instruments, and equity quotes. Supports searching by name, ticker, RIC, LEI, PermID, and other standard identifiers. Returns matching entities with their PermID identifiers and metadata."
+        },
+        {
+          "info": {
+            "name": "Tag Content with Entities",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.refinitiv.com/calais",
+            "headers": [
+              {
+                "name": "x-ag-access-token",
+                "value": ""
+              },
+              {
+                "name": "Content-Type",
+                "value": ""
+              },
+              {
+                "name": "outputFormat",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Submits unstructured text content for natural language processing and entity extraction. Identifies and tags companies, people, deals, geographical locations, industries, and events within the text and maps recognized entities to Refinitiv PermIDs for unambiguous identification."
+        },
+        {
+          "info": {
+            "name": "Look Up Entity by PermID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.refinitiv.com/lookup",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "The PermID to look up."
+              }
+            ]
+          },
+          "docs": "Retrieves detailed information about a specific entity using its PermID identifier, returning structured data about the organization, instrument, or quote."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

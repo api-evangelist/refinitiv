@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Refinitiv Data Platform (RDP) APIs Authentication Pricing API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pricing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Pricing Snapshots",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.refinitiv.com/data/pricing/snapshots/v1/",
+            "params": [
+              {
+                "name": "universe",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of instrument identifiers such as RICs."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of specific fields to return."
+              }
+            ]
+          },
+          "docs": "Retrieves real-time or delayed pricing snapshots for one or more financial instruments. Returns the latest available price data including bid, ask, last trade, and volume."
+        },
+        {
+          "info": {
+            "name": "Get Pricing Chains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.refinitiv.com/pricing/chains/v1/",
+            "params": [
+              {
+                "name": "universe",
+                "value": "",
+                "type": "query",
+                "description": "The chain RIC identifier."
+              }
+            ]
+          },
+          "docs": "Retrieves constituent instruments for a pricing chain such as an options chain or futures chain identified by its chain RIC."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

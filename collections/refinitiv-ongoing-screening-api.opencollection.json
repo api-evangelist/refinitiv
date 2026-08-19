@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Refinitiv Data Platform (RDP) APIs Authentication Ongoing Screening API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Ongoing Screening",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Ongoing Screening Updates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.refinitiv.com/cases/ongoingScreeningUpdates",
+            "params": [
+              {
+                "name": "since",
+                "value": "",
+                "type": "query",
+                "description": "Filter updates since this date-time in ISO 8601 format."
+              }
+            ]
+          },
+          "docs": "Retrieves all ongoing screening updates for cases that have been flagged for continuous monitoring. Returns cases where new matches have been found or existing matches have changed since the last screening cycle."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

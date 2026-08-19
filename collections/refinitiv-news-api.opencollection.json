@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Refinitiv Data Platform (RDP) APIs Authentication News API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "News",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get News Headlines",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.refinitiv.com/data/news/v1/headlines",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "The news search query string supporting keyword search and advanced query syntax."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of headlines to return."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor for retrieving the next page of results."
+              }
+            ]
+          },
+          "docs": "Retrieves news headlines matching the specified query criteria. Supports filtering by topic, instrument, date range, and other parameters. Returns headline text, timestamp, and story identifiers."
+        },
+        {
+          "info": {
+            "name": "Get News Story",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.refinitiv.com/data/news/v1/stories/:storyId",
+            "params": [
+              {
+                "name": "storyId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the news story."
+              }
+            ]
+          },
+          "docs": "Retrieves the full text and metadata for a specific news story identified by its story ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

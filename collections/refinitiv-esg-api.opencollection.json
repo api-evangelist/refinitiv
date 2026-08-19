@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Refinitiv Data Platform (RDP) APIs Authentication ESG API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ESG",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Basic ESG Scores",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.refinitiv.com/data/environmental-social-governance/v1/views/basic",
+            "params": [
+              {
+                "name": "universe",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of instrument identifiers."
+              }
+            ]
+          },
+          "docs": "Retrieves basic Environmental, Social, and Governance scores for one or more companies. Returns overall ESG scores and individual pillar scores."
+        },
+        {
+          "info": {
+            "name": "Get Full ESG Measures",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.refinitiv.com/data/environmental-social-governance/v1/views/measures-full",
+            "params": [
+              {
+                "name": "universe",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of instrument identifiers."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Start year for historical ESG data."
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "End year for historical ESG data."
+              }
+            ]
+          },
+          "docs": "Retrieves comprehensive ESG measures including detailed environmental, social, and governance metrics, carbon emissions data, green revenue metrics, and controversy tracking for one or more companies."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

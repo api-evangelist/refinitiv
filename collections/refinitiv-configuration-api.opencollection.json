@@ -1,0 +1,118 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Refinitiv Data Platform (RDP) APIs Authentication Configuration API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Configuration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Supported Country Codes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.refinitiv.com/configuration/v1/countrycodes/:configurationName",
+            "params": [
+              {
+                "name": "configurationName",
+                "value": "",
+                "type": "path",
+                "description": "The configuration name, such as Identity Verification."
+              }
+            ]
+          },
+          "docs": "Retrieves the list of ISO 3166-1 alpha-2 country codes supported for a given configuration such as Identity Verification or Document Verification."
+        },
+        {
+          "info": {
+            "name": "Get Verification Fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.refinitiv.com/configuration/v1/fields/:configurationName/:countryCode",
+            "params": [
+              {
+                "name": "configurationName",
+                "value": "",
+                "type": "path",
+                "description": "The configuration name."
+              },
+              {
+                "name": "countryCode",
+                "value": "",
+                "type": "path",
+                "description": "ISO 3166-1 alpha-2 country code."
+              }
+            ]
+          },
+          "docs": "Retrieves the required and optional data fields for a specific country and configuration. The response defines the JSON schema for the verification request data fields."
+        },
+        {
+          "info": {
+            "name": "Get Consent Requirements",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.refinitiv.com/configuration/v1/consents/:configurationName/:countryCode",
+            "params": [
+              {
+                "name": "configurationName",
+                "value": "",
+                "type": "path",
+                "description": "The configuration name."
+              },
+              {
+                "name": "countryCode",
+                "value": "",
+                "type": "path",
+                "description": "ISO 3166-1 alpha-2 country code."
+              }
+            ]
+          },
+          "docs": "Retrieves the list of data sources that require explicit consent before verification can be performed for a given country and configuration."
+        },
+        {
+          "info": {
+            "name": "Get Test Entities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.refinitiv.com/configuration/v1/testentities/:configurationName/:countryCode",
+            "params": [
+              {
+                "name": "configurationName",
+                "value": "",
+                "type": "path",
+                "description": "The configuration name."
+              },
+              {
+                "name": "countryCode",
+                "value": "",
+                "type": "path",
+                "description": "ISO 3166-1 alpha-2 country code."
+              }
+            ]
+          },
+          "docs": "Retrieves test entity data for sandbox testing. Available only for sandbox accounts and returns sample identity data that can be used to test verification requests."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,94 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Refinitiv Data Platform (RDP) APIs Authentication Extractions API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Extractions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Submit On-Demand Extraction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.refinitiv.com/Extractions/Extract",
+            "headers": [
+              {
+                "name": "Prefer",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits an on-demand data extraction request. For small result sets, the response is returned synchronously. For larger extractions, the server responds with HTTP 202 Accepted and a Location header for polling the extraction status."
+        },
+        {
+          "info": {
+            "name": "Extract Data with Notes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.refinitiv.com/Extractions/ExtractWithNotes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits an on-demand extraction request and returns results in JSON format along with extraction notes. Suitable for smaller data sets where JSON output is preferred."
+        },
+        {
+          "info": {
+            "name": "Extract Raw Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.refinitiv.com/Extractions/ExtractRaw",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits an on-demand extraction request optimized for large data sets. Returns results in CSV format compressed with gzip for bandwidth optimization."
+        },
+        {
+          "info": {
+            "name": "Download Raw Extraction Results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.refinitiv.com/Extractions/RawExtractionResults(':jobId')/$value",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path",
+                "description": "The extraction job identifier."
+              }
+            ]
+          },
+          "docs": "Downloads the raw extraction results for a completed extraction job. Results are returned as gzip-compressed CSV data."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

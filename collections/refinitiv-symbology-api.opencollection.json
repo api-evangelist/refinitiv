@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Refinitiv Data Platform (RDP) APIs Authentication Symbology API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Symbology",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Convert Symbology Identifiers",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.refinitiv.com/discovery/symbology/v1/convert",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Converts financial instrument identifiers between different symbology types such as RIC, ISIN, CUSIP, SEDOL, ticker, and PermID. Supports batch conversion of multiple identifiers in a single request."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Refinitiv Data Platform (RDP) APIs Authentication Record Matching API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Record Matching",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Match Records to PermIDs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.refinitiv.com/match"
+          },
+          "docs": "Matches unstructured entity records to PermID identifiers. Accepts entity data such as organization name, address, and identifiers and returns the best matching PermID with confidence scores."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

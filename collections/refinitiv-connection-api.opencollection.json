@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Refinitiv Data Platform (RDP) APIs Authentication Connection API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Connection",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Test Connectivity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.refinitiv.com/connection/v1/sayhello/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "A name to include in the greeting response."
+              }
+            ]
+          },
+          "docs": "Tests connectivity to the API server. This endpoint does not require authentication and returns a greeting with the provided name."
+        },
+        {
+          "info": {
+            "name": "Test Authentication",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.refinitiv.com/connection/v1/testauthentication"
+          },
+          "docs": "Tests that the provided credentials are valid by returning a greeting with the authenticated username."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

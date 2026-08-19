@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Refinitiv Data Platform (RDP) APIs Authentication Streaming API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Streaming",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Discover Streaming Endpoints",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.refinitiv.com/streaming/pricing/v1/"
+          },
+          "docs": "Retrieves available streaming service endpoints for establishing WebSocket connections to real-time pricing data. Returns endpoint URIs and port information for connecting to the Real-Time Optimized streaming service."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,167 @@
+{
+  "item": [
+    {
+      "id": "9c6252f3-7b26-498b-8afa-fa341be30aea",
+      "name": "Streaming",
+      "description": {
+        "content": "Service discovery for streaming connections to real-time pricing and data services.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "62610436-39ea-4171-9ae8-fd94843437d1",
+          "name": "Discover Streaming Endpoints",
+          "request": {
+            "name": "Discover Streaming Endpoints",
+            "description": {
+              "content": "Retrieves available streaming service endpoints for establishing WebSocket connections to real-time pricing data. Returns endpoint URIs and port information for connecting to the Real-Time Optimized streaming service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "streaming",
+                "pricing",
+                "v1",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fb7c9551-c112-4e60-8533-db82e3f2948d",
+              "name": "Streaming endpoints returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "streaming",
+                    "pricing",
+                    "v1",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"services\": [\n    {\n      \"endpoint\": \"string\",\n      \"port\": 2002,\n      \"provider\": \"string\",\n      \"dataFormat\": \"string\"\n    },\n    {\n      \"endpoint\": \"string\",\n      \"port\": 9179,\n      \"provider\": \"string\",\n      \"dataFormat\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dd10ba9e-7ea4-4f38-8b49-841701951800",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "streaming",
+                    "pricing",
+                    "v1",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.refinitiv.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0c03764b-c2c6-461c-92bd-57fb6aa55961",
+    "name": "Refinitiv Data Platform (RDP) APIs Authentication Streaming API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.\n\nContact Support:\n Name: LSEG Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

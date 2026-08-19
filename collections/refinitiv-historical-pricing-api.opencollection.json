@@ -1,0 +1,147 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Refinitiv Data Platform (RDP) APIs Authentication Historical Pricing API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Historical Pricing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Interday Pricing Summaries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.refinitiv.com/data/historical-pricing/v1/views/interday-summaries/:universe",
+            "params": [
+              {
+                "name": "universe",
+                "value": "",
+                "type": "path",
+                "description": "The instrument identifier, typically a RIC such as IBM.N or AAPL.O."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Start date for the historical data range in ISO 8601 format."
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "End date for the historical data range in ISO 8601 format."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of data points to return."
+              },
+              {
+                "name": "adjustments",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of adjustment types to apply such as exchangeCorrection and capitalChange."
+              }
+            ]
+          },
+          "docs": "Retrieves historical interday pricing summaries for a given instrument, including open, high, low, close, and volume data points. Supports date range filtering and adjustments for corporate actions."
+        },
+        {
+          "info": {
+            "name": "Get Intraday Pricing Summaries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.refinitiv.com/data/historical-pricing/v1/views/intraday-summaries/:universe",
+            "params": [
+              {
+                "name": "universe",
+                "value": "",
+                "type": "path",
+                "description": "The instrument identifier, typically a RIC such as IBM.N or AAPL.O."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Start date-time for the data range in ISO 8601 format."
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "End date-time for the data range in ISO 8601 format."
+              },
+              {
+                "name": "interval",
+                "value": "",
+                "type": "query",
+                "description": "The interval between data points such as PT1M, PT5M, PT1H."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of data points to return."
+              }
+            ]
+          },
+          "docs": "Retrieves historical intraday pricing summaries for a given instrument at configurable intervals. Returns time-stamped OHLCV bars for the requested period."
+        },
+        {
+          "info": {
+            "name": "Get Historical Pricing Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.refinitiv.com/data/historical-pricing/v1/views/events/:universe",
+            "params": [
+              {
+                "name": "universe",
+                "value": "",
+                "type": "path",
+                "description": "The instrument identifier, typically a RIC such as IBM.N or AAPL.O."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Start date-time for the data range in ISO 8601 format."
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "End date-time for the data range in ISO 8601 format."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of events to return."
+              }
+            ]
+          },
+          "docs": "Retrieves historical trade and quote events for a given instrument, providing tick-level data for detailed analysis of market activity."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

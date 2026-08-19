@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Refinitiv Data Platform (RDP) APIs Authentication Verification API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Verification",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Verify Identity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.refinitiv.com/verifications/v1/verify",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits an identity or document verification request. The API checks the submitted personal information against configured data sources for the specified country and returns verification results including match status for each data source queried."
+        },
+        {
+          "info": {
+            "name": "Get Transaction Record",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.refinitiv.com/verifications/v1/transactionrecord/:transactionRecordId",
+            "params": [
+              {
+                "name": "transactionRecordId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the transaction record."
+              }
+            ]
+          },
+          "docs": "Retrieves a past verification transaction record by its unique identifier. Returns the full verification results for the specified transaction."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

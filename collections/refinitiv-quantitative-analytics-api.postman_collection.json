@@ -1,0 +1,246 @@
+{
+  "item": [
+    {
+      "id": "2fb8a127-9915-43ed-9ce7-d81231290b01",
+      "name": "Quantitative Analytics",
+      "description": {
+        "content": "Instrument Pricing Analytics (IPA) service for pricing financial contracts, calculating risk measures, and running quantitative models.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2e8e08ca-4b25-4f7e-8f29-e5e0fd81cc03",
+          "name": "Calculate Financial Contracts",
+          "request": {
+            "name": "Calculate Financial Contracts",
+            "description": {
+              "content": "Submits financial contract definitions to the Instrument Pricing Analytics (IPA) engine for pricing, risk calculation, and quantitative analysis. Supports bonds, swaps, options, and other derivative instruments.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "quantitative-analytics",
+                "v1",
+                "financial-contracts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"outputs\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"universe\": [\n    {\n      \"instrumentType\": \"<string>\",\n      \"instrumentDefinition\": \"<object>\",\n      \"pricingParameters\": \"<object>\"\n    },\n    {\n      \"instrumentType\": \"<string>\",\n      \"instrumentDefinition\": \"<object>\",\n      \"pricingParameters\": \"<object>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bf8c582a-7ed7-4002-8503-63d920f1a96b",
+              "name": "Calculation results returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "quantitative-analytics",
+                    "v1",
+                    "financial-contracts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"outputs\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"universe\": [\n    {\n      \"instrumentType\": \"<string>\",\n      \"instrumentDefinition\": \"<object>\",\n      \"pricingParameters\": \"<object>\"\n    },\n    {\n      \"instrumentType\": \"<string>\",\n      \"instrumentDefinition\": \"<object>\",\n      \"pricingParameters\": \"<object>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"headers\": [\n    {\n      \"name\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  ],\n  \"data\": [\n    [],\n    []\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9481b747-1bd5-4e35-9e7a-f5f64a53ddf4",
+              "name": "Invalid contract definition",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "quantitative-analytics",
+                    "v1",
+                    "financial-contracts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"outputs\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"universe\": [\n    {\n      \"instrumentType\": \"<string>\",\n      \"instrumentDefinition\": \"<object>\",\n      \"pricingParameters\": \"<object>\"\n    },\n    {\n      \"instrumentType\": \"<string>\",\n      \"instrumentDefinition\": \"<object>\",\n      \"pricingParameters\": \"<object>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b1f90879-16ba-43ec-977b-a47bc0b44611",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "quantitative-analytics",
+                    "v1",
+                    "financial-contracts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"outputs\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"universe\": [\n    {\n      \"instrumentType\": \"<string>\",\n      \"instrumentDefinition\": \"<object>\",\n      \"pricingParameters\": \"<object>\"\n    },\n    {\n      \"instrumentType\": \"<string>\",\n      \"instrumentDefinition\": \"<object>\",\n      \"pricingParameters\": \"<object>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.refinitiv.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8c0194f4-6a4f-465d-9582-ecc01d85a07e",
+    "name": "Refinitiv Data Platform (RDP) APIs Authentication Quantitative Analytics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.\n\nContact Support:\n Name: LSEG Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Refinitiv Data Platform (RDP) APIs Authentication Instruments API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Instruments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Instrument List by Name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.refinitiv.com/Extractions/InstrumentListGetByName(ListName=':listName')",
+            "params": [
+              {
+                "name": "listName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the instrument list."
+              }
+            ]
+          },
+          "docs": "Retrieves an instrument list by its name, returning the list metadata and contained instruments."
+        },
+        {
+          "info": {
+            "name": "List Instrument Lists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.refinitiv.com/Extractions/InstrumentLists"
+          },
+          "docs": "Retrieves all instrument lists defined in the user's account."
+        },
+        {
+          "info": {
+            "name": "Create Instrument List",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.refinitiv.com/Extractions/InstrumentLists",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new instrument list with the specified name and instruments."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

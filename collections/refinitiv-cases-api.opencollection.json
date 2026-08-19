@@ -1,0 +1,100 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Refinitiv Data Platform (RDP) APIs Authentication Cases API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cases",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Case with Synchronous Screening",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.refinitiv.com/cases/screeningRequest",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new case and performs synchronous screening in a single request. Returns all matched screening results within the response. Optionally enables ongoing screening by setting the caseScreeningState to WATCHLIST with ONGOING monitoring."
+        },
+        {
+          "info": {
+            "name": "Get Case Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.refinitiv.com/cases/:caseSystemId",
+            "params": [
+              {
+                "name": "caseSystemId",
+                "value": "",
+                "type": "path",
+                "description": "The system-generated unique identifier for the case."
+              }
+            ]
+          },
+          "docs": "Retrieves the details of an existing case including its current status, screening state, and metadata."
+        },
+        {
+          "info": {
+            "name": "Update an Existing Case",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.refinitiv.com/cases/:caseSystemId",
+            "params": [
+              {
+                "name": "caseSystemId",
+                "value": "",
+                "type": "path",
+                "description": "The system-generated unique identifier for the case."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the details of an existing case such as name fields, custom data, and screening parameters."
+        },
+        {
+          "info": {
+            "name": "Delete a Case",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.refinitiv.com/cases/:caseSystemId",
+            "params": [
+              {
+                "name": "caseSystemId",
+                "value": "",
+                "type": "path",
+                "description": "The system-generated unique identifier for the case."
+              }
+            ]
+          },
+          "docs": "Permanently deletes a case and all associated screening results and audit history."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
