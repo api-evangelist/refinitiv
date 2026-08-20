@@ -939,6 +939,8 @@ apis:
     https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
   baseURL: https://api.refinitiv.com
   tags:
+  - Group
+  tags_raw:
   - Groups
   properties:
   - type: OpenAPI
@@ -1835,6 +1837,8 @@ apis:
     https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
   baseURL: https://api.refinitiv.com
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
