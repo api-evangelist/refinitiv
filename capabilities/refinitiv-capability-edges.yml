@@ -1,0 +1,49 @@
+slug: refinitiv
+provider: Refinitiv
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Cases
+  spec_file: refinitiv-cases-api-openapi.yml
+  capability_id: BC-1400
+  capability_id_l1: BC-1400
+  capability_name: Financial Crime Management
+  confidence: 0.7
+  evidence: 'POST /cases/screeningRequest createCaseAndScreen "Create Case with Synchronous Screening";
+    schemas: ScreeningRequest, ScreeningResponse, ScreeningResult, Case'
+  reason: Case creation with synchronous screening and screening results is Refinitiv's watchlist/World-Check
+    style screening surface — financial crime screening and case handling. Evidence does not distinguish
+    sanctions screening from KYC/PEP due diligence, so L1 only.
+- tag: Ongoing Screening
+  spec_file: refinitiv-ongoing-screening-api-openapi.yml
+  capability_id: BC-1400
+  capability_id_l1: BC-1400
+  capability_name: Financial Crime Management
+  confidence: 0.7
+  evidence: GET /cases/ongoingScreeningUpdates  getOngoingScreeningUpdates  Get Ongoing Screening Updates
+  reason: Case-based ongoing screening updates is the World-Check style continuous watchlist/PEP/sanctions
+    screening surface, squarely financial-crime screening. Kept at L1 because the evidence does not distinguish
+    sanctions screening (BC-1400.20) from KYC periodic review (BC-1300.20).
+- tag: Screening Results
+  spec_file: refinitiv-screening-results-api-openapi.yml
+  capability_id: BC-1400.20
+  capability_id_l1: BC-1400
+  capability_name: Sanctions Screening Management
+  confidence: 0.7
+  evidence: GET /cases/{caseSystemId}/results  getScreeningResults  Get Screening Results; PUT /cases/{caseSystemId}/results/{resultId}/resolution  resolveResult  Resolve
+    a Screening Result
+  reason: 'Refinitiv''s World-Check style surface: screening cases produce results (hits) that an analyst
+    must resolve. This is name-screening hit handling against sanctions/PEP lists — financial crime screening.
+    Some ambiguity between sanctions screening hit handling (BC-1400.20), case management (BC-1400.50)
+    and KYC/CDD (BC-1300.20), so confidence is moderate.'

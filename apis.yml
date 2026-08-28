@@ -4,6 +4,19 @@ description: >-
   Refinitiv, an LSEG (London Stock Exchange Group) business, provides financial market data, infrastructure, and
   analytics to businesses and financial professionals worldwide.
 type: Index
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: true
+  callable_host: true
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  - pricing
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: enterprise
   onboarding: self-serve
@@ -1959,6 +1972,13 @@ apis:
   - type: Website
     url: https://permid.org/
 common:
+  - type: CapabilityMap
+    url: capabilities/refinitiv-capability-edges.yml
+    name: Refinitiv Business Capability Map
+  - type: IssueTracker
+    url: https://github.com/Refinitiv/Real-Time-SDK/issues
+  - type: Releases
+    url: https://github.com/Refinitiv/Real-Time-SDK/releases
   - type: AgenticAccess
     url: agentic-access/refinitiv-agentic-access.yml
   - type: DomainSecurity
