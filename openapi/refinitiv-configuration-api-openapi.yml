@@ -1,17 +1,17 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Refinitiv Data Platform (RDP) APIs Authentication Configuration API
-  description: Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.
+  title: Refinitiv Qual-ID Configuration API
+  description: RESTful API for automating identity verification and document verification processes. It helps organizations comply with regulations and identify potential financial crime using trusted and vetted data sources with normalized data fields. Supports verification across multiple countries using local data sources for identity matching.
   version: 1.0.0
   contact:
     name: LSEG Developer Support
     url: https://developers.lseg.com/en/support
   termsOfService: https://developers.lseg.com/en/terms-and-conditions
 servers:
-- url: https://api.refinitiv.com
+- url: https://api.globaldatacompany.com
   description: Production Server
 security:
-- bearerAuth: []
+- basicAuth: []
 tags:
 - name: Configuration
   description: Configuration retrieval for country codes, fields, consents, and test entities required for verification requests.
@@ -142,11 +142,10 @@ paths:
           description: Unauthorized
 components:
   securitySchemes:
-    bearerAuth:
+    basicAuth:
       type: http
-      scheme: bearer
-      bearerFormat: JWT
-      description: OAuth 2.0 Bearer token obtained from the /auth/oauth2/v1/token endpoint. Access tokens are valid for five minutes.
+      scheme: basic
+      description: HTTP Basic Authentication using Base64-encoded username and password credentials.
 externalDocs:
-  description: Refinitiv Data Platform API Documentation
-  url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
+  description: Qual-ID API Documentation
+  url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation

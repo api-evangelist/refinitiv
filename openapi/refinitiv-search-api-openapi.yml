@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Refinitiv Data Platform (RDP) APIs Authentication Search API
+  title: Refinitiv Data Platform (RDP) Search API
   description: Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.
   version: 1.0.0
   contact:
@@ -42,17 +42,6 @@ paths:
           description: Unauthorized
 components:
   schemas:
-    SearchResponse:
-      type: object
-      properties:
-        Total:
-          type: integer
-          description: Total number of matching results.
-        Hits:
-          type: array
-          items:
-            type: object
-            description: Individual search result containing the matched entity or instrument data.
     SearchRequest:
       type: object
       properties:
@@ -79,6 +68,17 @@ components:
         Select:
           type: string
           description: Comma-separated list of fields to include in results.
+    SearchResponse:
+      type: object
+      properties:
+        Total:
+          type: integer
+          description: Total number of matching results.
+        Hits:
+          type: array
+          items:
+            type: object
+            description: Individual search result containing the matched entity or instrument data.
   securitySchemes:
     bearerAuth:
       type: http
