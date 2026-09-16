@@ -1,8 +1,7 @@
 aid: refinitiv
 name: Refinitiv
-description: >-
-  Refinitiv, an LSEG (London Stock Exchange Group) business, provides financial market data, infrastructure, and
-  analytics to businesses and financial professionals worldwide.
+description: Refinitiv, an LSEG (London Stock Exchange Group) business, provides financial market data,
+  infrastructure, and analytics to businesses and financial professionals worldwide.
 type: Index
 deliveryModel:
   model: unknown
@@ -34,17 +33,15 @@ accessModel:
 image: https://www.refinitiv.com/etc/designs/refinitiv/images/refinitiv-logo.svg
 url: https://raw.githubusercontent.com/api-evangelist/refinitiv/refs/heads/main/apis.yml
 created: '2024-01-01'
-modified: '2026-05-19'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 apis:
 - name: Refinitiv Data Library for Python
-  description: >-
-    Python library providing uniform access to the breadth and depth of financial data and services available
-    on the LSEG Data Platform. It offers ease-of-use interfaces for streaming and non-streaming data,
-    and can be used from within LSEG Workspace, through the Data Platform, or deployed on-premise.
+  description: Python library providing uniform access to the breadth and depth of financial data and
+    services available on the LSEG Data Platform. It offers ease-of-use interfaces for streaming and non-streaming
+    data, and can be used from within LSEG Workspace, through the Data Platform, or deployed on-premise.
   image: https://www.refinitiv.com/etc/designs/refinitiv/images/refinitiv-logo.svg
-  humanURL: >-
-    https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-library-for-python
+  humanURL: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-library-for-python
   baseURL: https://api.refinitiv.com
   tags:
   - Data Library
@@ -53,24 +50,19 @@ apis:
   - SDK
   properties:
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-library-for-python/documentation
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-library-for-python/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-library-for-python/quick-start
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-library-for-python/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-library-for-python/tutorials
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-library-for-python/tutorials
   - type: GitHubRepository
     url: https://github.com/LSEG-API-Samples/Example.DataLibrary.Python
 - name: Refinitiv Data Library for .NET
-  description: >-
-    .NET library providing uniform access to financial data and services available on the LSEG Data Platform.
-    It supports streaming and non-streaming data retrieval and integrates with LSEG Workspace, the Data
-    Platform, and on-premise deployed infrastructure.
+  description: .NET library providing uniform access to financial data and services available on the LSEG
+    Data Platform. It supports streaming and non-streaming data retrieval and integrates with LSEG Workspace,
+    the Data Platform, and on-premise deployed infrastructure.
   image: https://www.refinitiv.com/etc/designs/refinitiv/images/refinitiv-logo.svg
-  humanURL: >-
-    https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-library-for--net
+  humanURL: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-library-for--net
   baseURL: https://api.refinitiv.com
   tags:
   - .NET
@@ -79,19 +71,15 @@ apis:
   - SDK
   properties:
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-library-for--net/documentation
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-library-for--net/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-library-for--net/quick-start
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-library-for--net/quick-start
 - name: Refinitiv Data Platform Libraries
-  description: >-
-    Suite of ease-of-use libraries and interfaces for Python, TypeScript and JavaScript providing access
-    to streaming and non-streaming data services on the LSEG Data Platform. These libraries have been
-    superseded by the newer Refinitiv Data Libraries for new development.
+  description: Suite of ease-of-use libraries and interfaces for Python, TypeScript and JavaScript providing
+    access to streaming and non-streaming data services on the LSEG Data Platform. These libraries have
+    been superseded by the newer Refinitiv Data Libraries for new development.
   image: https://www.refinitiv.com/etc/designs/refinitiv/images/refinitiv-logo.svg
-  humanURL: >-
-    https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-libraries
+  humanURL: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-libraries
   baseURL: https://api.refinitiv.com
   tags:
   - Financial Data
@@ -100,18 +88,14 @@ apis:
   - SDK
   properties:
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-libraries/documentation
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-libraries/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-libraries/quick-start
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-libraries/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-libraries/tutorials
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-libraries/tutorials
 - name: Eikon Data API
-  description: >-
-    Python library providing access to financial data, news, and symbology from within the Refinitiv Eikon
-    or LSEG Workspace desktop application. It enables Eikon end users to access data programmatically
+  description: Python library providing access to financial data, news, and symbology from within the
+    Refinitiv Eikon or LSEG Workspace desktop application. It enables Eikon end users to access data programmatically
     from their desktop session.
   image: https://www.refinitiv.com/etc/designs/refinitiv/images/refinitiv-logo.svg
   humanURL: https://developers.lseg.com/en/api-catalog/eikon/eikon-data-api
@@ -131,13 +115,11 @@ apis:
   - type: Downloads
     url: https://developers.lseg.com/en/api-catalog/eikon/eikon-data-api/download
 - name: Refinitiv Real-Time WebSocket API
-  description: >-
-    Low-latency streaming API for real-time market data using WebSocket connections. It supports the Open
-    Message Model (OMM) and allows applications to connect directly to Refinitiv Real-Time distribution
+  description: Low-latency streaming API for real-time market data using WebSocket connections. It supports
+    the Open Message Model (OMM) and allows applications to connect directly to Refinitiv Real-Time distribution
     systems or the LSEG Data Platform for streaming data.
   image: https://www.refinitiv.com/etc/designs/refinitiv/images/refinitiv-logo.svg
-  humanURL: >-
-    https://developers.lseg.com/en/api-catalog/refinitiv-real-time-opnsrc/refinitiv-websocket-api
+  humanURL: https://developers.lseg.com/en/api-catalog/refinitiv-real-time-opnsrc/refinitiv-websocket-api
   baseURL: wss://api.refinitiv.com
   tags:
   - Market Data
@@ -146,24 +128,19 @@ apis:
   - WebSocket
   properties:
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-real-time-opnsrc/refinitiv-websocket-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-real-time-opnsrc/refinitiv-websocket-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-real-time-opnsrc/refinitiv-websocket-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-real-time-opnsrc/refinitiv-websocket-api/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-real-time-opnsrc/refinitiv-websocket-api/tutorials
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-real-time-opnsrc/refinitiv-websocket-api/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-real-time-opnsrc/refinitiv-websocket-api/download
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-real-time-opnsrc/refinitiv-websocket-api/download
   - type: AsyncAPI
     url: asyncapi/refinitiv-real-time-websocket-asyncapi.yml
 - name: Refinitiv Real-Time SDK - Java
-  description: >-
-    Open source Java SDK for the Refinitiv Real-Time platform, containing the Enterprise Message API (EMA)
-    for ease-of-use rapid development and the Enterprise Transport API (ETA) for low-level, high-performance
-    access to real-time streaming market data.
+  description: Open source Java SDK for the Refinitiv Real-Time platform, containing the Enterprise Message
+    API (EMA) for ease-of-use rapid development and the Enterprise Transport API (ETA) for low-level,
+    high-performance access to real-time streaming market data.
   image: https://www.refinitiv.com/etc/designs/refinitiv/images/refinitiv-logo.svg
   humanURL: https://developers.lseg.com/en/api-catalog/real-time-opnsrc/rt-sdk-java
   baseURL: https://api.refinitiv.com
@@ -184,10 +161,9 @@ apis:
   - type: GitHubRepository
     url: https://github.com/Refinitiv/Real-Time-SDK
 - name: Refinitiv Real-Time SDK - C/C++
-  description: >-
-    Open source C/C++ SDK for the Refinitiv Real-Time platform, providing the Enterprise Message API (EMA)
-    and Enterprise Transport API (ETA) for building high-performance, low-latency applications that consume
-    and contribute real-time market data.
+  description: Open source C/C++ SDK for the Refinitiv Real-Time platform, providing the Enterprise Message
+    API (EMA) and Enterprise Transport API (ETA) for building high-performance, low-latency applications
+    that consume and contribute real-time market data.
   image: https://www.refinitiv.com/etc/designs/refinitiv/images/refinitiv-logo.svg
   humanURL: https://developers.lseg.com/en/api-catalog/real-time-opnsrc/rt-sdk-cc
   baseURL: https://api.refinitiv.com
@@ -204,12 +180,11 @@ apis:
   - type: GitHubRepository
     url: https://github.com/Refinitiv/Real-Time-SDK
 - name: Refinitiv News API
-  description: >-
-    Access to comprehensive news content from Refinitiv including real-time and historical news articles,
-    Machine Readable News (MRN), and news analytics delivered through the Refinitiv Data Platform.
+  description: Access to comprehensive news content from Refinitiv including real-time and historical
+    news articles, Machine Readable News (MRN), and news analytics delivered through the Refinitiv Data
+    Platform.
   image: https://www.refinitiv.com/etc/designs/refinitiv/images/refinitiv-logo.svg
-  humanURL: >-
-    https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
+  humanURL: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
   baseURL: https://api.refinitiv.com
   tags:
   - Content
@@ -218,19 +193,15 @@ apis:
   - Research
   properties:
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
 - name: Refinitiv ESG API
-  description: >-
-    Access to environmental, social, and governance (ESG) data, scores, and analytics for sustainable
+  description: Access to environmental, social, and governance (ESG) data, scores, and analytics for sustainable
     investing. The API provides ESG scores, carbon emissions data, green revenue metrics, and controversy
     tracking across thousands of companies.
   image: https://www.refinitiv.com/etc/designs/refinitiv/images/refinitiv-logo.svg
-  humanURL: >-
-    https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
+  humanURL: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
   baseURL: https://api.refinitiv.com
   tags:
   - Analytics
@@ -239,15 +210,13 @@ apis:
   - Sustainability
   properties:
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
   - type: Pricing
     url: https://www.lseg.com/en/data-analytics/sustainable-finance/esg-scores
 - name: LSEG DataScope Select - SOAP API
-  description: >-
-    SOAP-based web service API for DataScope Select, providing extraction functionality for global pricing,
-    reference, and historical data. Clients are encouraged to migrate to the REST API for new development,
-    as all future functionality will be designed around REST.
+  description: SOAP-based web service API for DataScope Select, providing extraction functionality for
+    global pricing, reference, and historical data. Clients are encouraged to migrate to the REST API
+    for new development, as all future functionality will be designed around REST.
   image: https://www.refinitiv.com/etc/designs/refinitiv/images/refinitiv-logo.svg
   humanURL: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-soap-api
   baseURL: https://selectapi.datascope.lseg.com
@@ -258,19 +227,15 @@ apis:
   - SOAP
   properties:
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-soap-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-soap-api/documentation
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-soap-api/download
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-soap-api/download
 - name: LSEG Tick History REST API
-  description: >-
-    REST API providing access to historical high-frequency timestamped tick data across all global asset
-    classes dating back to 1996. It supports custom reporting and Venue by Day standard reporting for
-    complete trading data extraction.
+  description: REST API providing access to historical high-frequency timestamped tick data across all
+    global asset classes dating back to 1996. It supports custom reporting and Venue by Day standard reporting
+    for complete trading data extraction.
   image: https://www.refinitiv.com/etc/designs/refinitiv/images/refinitiv-logo.svg
-  humanURL: >-
-    https://developers.lseg.com/en/api-catalog/refinitiv-tick-history/refinitiv-tick-history-rth-rest-api
+  humanURL: https://developers.lseg.com/en/api-catalog/refinitiv-tick-history/refinitiv-tick-history-rth-rest-api
   baseURL: https://selectapi.datascope.lseg.com/RestApi/v1
   tags:
   - High Frequency
@@ -279,22 +244,17 @@ apis:
   - Trading
   properties:
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-tick-history/refinitiv-tick-history-rth-rest-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-tick-history/refinitiv-tick-history-rth-rest-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-tick-history/refinitiv-tick-history-rth-rest-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-tick-history/refinitiv-tick-history-rth-rest-api/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-tick-history/refinitiv-tick-history-rth-rest-api/tutorials
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-tick-history/refinitiv-tick-history-rth-rest-api/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-tick-history/refinitiv-tick-history-rth-rest-api/download
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-tick-history/refinitiv-tick-history-rth-rest-api/download
 - name: Datastream Web Service API
-  description: >-
-    API providing access to Datastream, the world's leading time series database with histories back to
-    the 1900s and over 48 million individual instruments or indicators. Available via SOAP, REST (JSON/XML),
-    and .NET library interfaces for Python, R, MATLAB, and EViews.
+  description: API providing access to Datastream, the world's leading time series database with histories
+    back to the 1900s and over 48 million individual instruments or indicators. Available via SOAP, REST
+    (JSON/XML), and .NET library interfaces for Python, R, MATLAB, and EViews.
   image: https://www.refinitiv.com/etc/designs/refinitiv/images/refinitiv-logo.svg
   humanURL: https://developers.lseg.com/en/api-catalog/eikon/datastream-web-service
   baseURL: https://product.datastream.com
@@ -313,13 +273,11 @@ apis:
   - type: Downloads
     url: https://developers.lseg.com/en/api-catalog/eikon/datastream-web-service/download
 - name: LSEG Due Diligence Portal API
-  description: >-
-    REST API enabling clients to place orders for LSEG Due Diligence Reports from within their own internal
-    systems and onboarding platforms. It uses OAuth2 for security and follows the OpenAPI 3 standard for
-    documentation.
+  description: REST API enabling clients to place orders for LSEG Due Diligence Reports from within their
+    own internal systems and onboarding platforms. It uses OAuth2 for security and follows the OpenAPI
+    3 standard for documentation.
   image: https://www.refinitiv.com/etc/designs/refinitiv/images/refinitiv-logo.svg
-  humanURL: >-
-    https://developers.lseg.com/en/api-catalog/lseg-due-diligence/lseg-due-diligence-reports-api
+  humanURL: https://developers.lseg.com/en/api-catalog/lseg-due-diligence/lseg-due-diligence-reports-api
   baseURL: https://api.refinitiv.com
   tags:
   - Compliance
@@ -328,19 +286,15 @@ apis:
   - Screening
   properties:
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/lseg-due-diligence/lseg-due-diligence-reports-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/lseg-due-diligence/lseg-due-diligence-reports-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/lseg-due-diligence/lseg-due-diligence-reports-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/lseg-due-diligence/lseg-due-diligence-reports-api/quick-start
 - name: Refinitiv Knowledge Direct API (RKD)
-  description: >-
-    API for wealth management that provides access to Refinitiv hosted content and capabilities. It integrates
-    into advisor solutions, customer-facing investment portals, and online trading platforms through a
-    suite of endpoints for pricing, news, referential data, and specialized services.
+  description: API for wealth management that provides access to Refinitiv hosted content and capabilities.
+    It integrates into advisor solutions, customer-facing investment portals, and online trading platforms
+    through a suite of endpoints for pricing, news, referential data, and specialized services.
   image: https://www.refinitiv.com/etc/designs/refinitiv/images/refinitiv-logo.svg
-  humanURL: >-
-    https://developers.lseg.com/en/api-catalog/refinitiv-knowledge-direct/refinitiv-knowledge-direct-api-rkd-api
+  humanURL: https://developers.lseg.com/en/api-catalog/refinitiv-knowledge-direct/refinitiv-knowledge-direct-api-rkd-api
   baseURL: https://api.rkd.refinitiv.com
   tags:
   - Financial Data
@@ -349,18 +303,15 @@ apis:
   - Wealth Management
   properties:
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-knowledge-direct/refinitiv-knowledge-direct-api-rkd-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-knowledge-direct/refinitiv-knowledge-direct-api-rkd-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-knowledge-direct/refinitiv-knowledge-direct-api-rkd-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-knowledge-direct/refinitiv-knowledge-direct-api-rkd-api/quick-start
   - type: API Playground
     url: https://support-portal.rkd.refinitiv.com/
 - name: Intelligent Tagging RESTful API
-  description: >-
-    Natural language processing API that identifies and tags entities such as companies, people, deals,
-    geographical locations, industries, and events within unstructured text. It maps recognized entities
-    to Refinitiv PermIDs for unambiguous identification and linking across documents.
+  description: Natural language processing API that identifies and tags entities such as companies, people,
+    deals, geographical locations, industries, and events within unstructured text. It maps recognized
+    entities to Refinitiv PermIDs for unambiguous identification and linking across documents.
   image: https://www.refinitiv.com/etc/designs/refinitiv/images/refinitiv-logo.svg
   humanURL: https://developers.lseg.com/en/api-catalog/open-perm-id/intelligent-tagging-restful-api
   baseURL: https://api-eit.refinitiv.com
@@ -371,16 +322,13 @@ apis:
   - Text Analytics
   properties:
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/open-perm-id/intelligent-tagging-restful-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/open-perm-id/intelligent-tagging-restful-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/open-perm-id/intelligent-tagging-restful-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/open-perm-id/intelligent-tagging-restful-api/quick-start
 - name: Workspace SDK
-  description: >-
-    End-to-end financial application development kit that allows developers to design a GUI, power it
-    with market data, and integrate logic into workflows. It enables creation of web-based financial applications
-    that run side by side with LSEG Workspace.
+  description: End-to-end financial application development kit that allows developers to design a GUI,
+    power it with market data, and integrate logic into workflows. It enables creation of web-based financial
+    applications that run side by side with LSEG Workspace.
   image: https://www.refinitiv.com/etc/designs/refinitiv/images/refinitiv-logo.svg
   humanURL: https://developers.lseg.com/en/api-catalog/workspace-sdk/workspace-sdk
   baseURL: https://api.refinitiv.com
@@ -397,10 +345,9 @@ apis:
   - type: Tutorials
     url: https://developers.lseg.com/en/api-catalog/workspace-sdk/workspace-sdk/tutorials
 - name: Workspace Web Side by Side API
-  description: >-
-    Interoperability API that connects client web applications to LSEG Workspace Web. It allows applications
-    to authenticate, connect to a running Workspace instance in the same browser, and exchange metadata
-    such as active RICs between applications.
+  description: Interoperability API that connects client web applications to LSEG Workspace Web. It allows
+    applications to authenticate, connect to a running Workspace instance in the same browser, and exchange
+    metadata such as active RICs between applications.
   image: https://www.refinitiv.com/etc/designs/refinitiv/images/refinitiv-logo.svg
   humanURL: https://developers.lseg.com/en/api-catalog/eikon/workspace-web-side-by-side-api
   baseURL: https://api.refinitiv.com
@@ -411,16 +358,13 @@ apis:
   - Workspace
   properties:
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/eikon/workspace-web-side-by-side-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/eikon/workspace-web-side-by-side-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/eikon/workspace-web-side-by-side-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/eikon/workspace-web-side-by-side-api/quick-start
 - name: FX Trading - Spot and Forwards Matching API
-  description: >-
-    FIX protocol-based API for electronic FX trading on LSEG Matching venues, supporting spot and forwards
-    currency trading. It uses FIX 5.0 SP2 with a specific set of FIX messages, tags, and workflows for
-    order submission and execution.
+  description: FIX protocol-based API for electronic FX trading on LSEG Matching venues, supporting spot
+    and forwards currency trading. It uses FIX 5.0 SP2 with a specific set of FIX messages, tags, and
+    workflows for order submission and execution.
   image: https://www.refinitiv.com/etc/designs/refinitiv/images/refinitiv-logo.svg
   humanURL: https://developers.lseg.com/en/api-catalog/fx-venues/fx-trading-spot-forwards-matching
   baseURL: https://api.refinitiv.com
@@ -431,12 +375,10 @@ apis:
   - Spot
   properties:
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/fx-venues/fx-trading-spot-forwards-matching/documentation
+    url: https://developers.lseg.com/en/api-catalog/fx-venues/fx-trading-spot-forwards-matching/documentation
 - name: FX Trading - NDF Matching API
-  description: >-
-    FIX protocol-based API for electronic trading of non-deliverable forwards (NDFs) on LSEG Matching
-    venues. It provides connectivity for trading participants to submit and manage NDF orders.
+  description: FIX protocol-based API for electronic trading of non-deliverable forwards (NDFs) on LSEG
+    Matching venues. It provides connectivity for trading participants to submit and manage NDF orders.
   image: https://www.refinitiv.com/etc/designs/refinitiv/images/refinitiv-logo.svg
   humanURL: https://developers.lseg.com/en/api-catalog/fx-venues/fx-trading-matching
   baseURL: https://api.refinitiv.com
@@ -449,9 +391,8 @@ apis:
   - type: Documentation
     url: https://developers.lseg.com/en/api-catalog/fx-venues/fx-trading-matching/documentation
 - name: FX Market Data - NDF Matching API
-  description: >-
-    Point-to-point market data service based on FIX SBE technology, allowing trading participants to receive
-    real-time information for each instrument traded on Primary CLOBs for NDF Matching venues.
+  description: Point-to-point market data service based on FIX SBE technology, allowing trading participants
+    to receive real-time information for each instrument traded on Primary CLOBs for NDF Matching venues.
   image: https://www.refinitiv.com/etc/designs/refinitiv/images/refinitiv-logo.svg
   humanURL: https://developers.lseg.com/en/api-catalog/fx-venues/fx-market-data
   baseURL: https://api.refinitiv.com
@@ -464,9 +405,8 @@ apis:
   - type: Documentation
     url: https://developers.lseg.com/en/api-catalog/fx-venues/fx-market-data/documentation
 - name: FX Reference Data API
-  description: >-
-    Service providing reference data for LSEG FX venues, offering instrument and venue configuration data
-    to support FX trading operations on the replatformed spot and forward Matching venues.
+  description: Service providing reference data for LSEG FX venues, offering instrument and venue configuration
+    data to support FX trading operations on the replatformed spot and forward Matching venues.
   image: https://www.refinitiv.com/etc/designs/refinitiv/images/refinitiv-logo.svg
   humanURL: https://developers.lseg.com/en/api-catalog/fx-venues/FX-Reference-Data-API
   baseURL: https://api.refinitiv.com
@@ -479,9 +419,8 @@ apis:
   - type: Documentation
     url: https://developers.lseg.com/en/api-catalog/fx-venues/FX-Reference-Data-API/documentation
 - name: FX Participant Insight Reporting API
-  description: >-
-    API providing reporting and analytics for FX trading participants on LSEG venues, enabling access
-    to execution quality metrics and participant insight data.
+  description: API providing reporting and analytics for FX trading participants on LSEG venues, enabling
+    access to execution quality metrics and participant insight data.
   image: https://www.refinitiv.com/etc/designs/refinitiv/images/refinitiv-logo.svg
   humanURL: https://developers.lseg.com/en/api-catalog/fx-venues/fx-reporting
   baseURL: https://api.refinitiv.com
@@ -495,10 +434,9 @@ apis:
     url: https://developers.lseg.com/en/api-catalog/fx-venues/fx-reporting/documentation
 - aid: refinitiv:refinitiv-authentication-api
   name: Refinitiv Authentication API
-  description: >-
-    OAuth 2.0 token management for obtaining and refreshing access tokens required by all other API endpoints.
-  humanURL: >-
-    https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
+  description: OAuth 2.0 token management for obtaining and refreshing access tokens required by all other
+    API endpoints.
+  humanURL: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
   baseURL: https://api.refinitiv.com
   tags:
   - Authentication
@@ -506,17 +444,13 @@ apis:
   - type: OpenAPI
     url: openapi/refinitiv-authentication-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
   - type: API Playground
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
@@ -524,46 +458,34 @@ apis:
   - type: GraphQL
     url: graphql/refinitiv-graphql.md
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
+    url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
   - type: GettingStarted
     url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/quick-start
   - type: Website
     url: https://permid.org/
 - aid: refinitiv:refinitiv-cases-api
   name: Refinitiv Cases API
-  description: >-
-    Case creation, screening, retrieval, update, and deletion operations for entity screening against
-    the World-Check database.
-  humanURL: >-
-    https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
+  description: Case creation, screening, retrieval, update, and deletion operations for entity screening
+    against the World-Check database.
+  humanURL: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
   baseURL: https://api.refinitiv.com
   tags:
   - Cases
@@ -571,17 +493,13 @@ apis:
   - type: OpenAPI
     url: openapi/refinitiv-cases-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
   - type: API Playground
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
@@ -589,46 +507,34 @@ apis:
   - type: GraphQL
     url: graphql/refinitiv-graphql.md
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
+    url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
   - type: GettingStarted
     url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/quick-start
   - type: Website
     url: https://permid.org/
 - aid: refinitiv:refinitiv-configuration-api
   name: Refinitiv Configuration API
-  description: >-
-    Configuration retrieval for country codes, fields, consents, and test entities required for verification
-    requests.
-  humanURL: >-
-    https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
+  description: Configuration retrieval for country codes, fields, consents, and test entities required
+    for verification requests.
+  humanURL: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
   baseURL: https://api.refinitiv.com
   tags:
   - Configuration
@@ -636,17 +542,13 @@ apis:
   - type: OpenAPI
     url: openapi/refinitiv-configuration-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
   - type: API Playground
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
@@ -654,35 +556,25 @@ apis:
   - type: GraphQL
     url: graphql/refinitiv-graphql.md
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
+    url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
   - type: GettingStarted
     url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/quick-start
   - type: Website
@@ -690,8 +582,7 @@ apis:
 - aid: refinitiv:refinitiv-connection-api
   name: Refinitiv Connection API
   description: Connectivity and authentication testing endpoints.
-  humanURL: >-
-    https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
+  humanURL: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
   baseURL: https://api.refinitiv.com
   tags:
   - Connection
@@ -699,17 +590,13 @@ apis:
   - type: OpenAPI
     url: openapi/refinitiv-connection-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
   - type: API Playground
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
@@ -717,46 +604,34 @@ apis:
   - type: GraphQL
     url: graphql/refinitiv-graphql.md
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
+    url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
   - type: GettingStarted
     url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/quick-start
   - type: Website
     url: https://permid.org/
 - aid: refinitiv:refinitiv-entity-search-api
   name: Refinitiv Entity Search API
-  description: >-
-    Search for organizations, equity instruments, and equity quotes using various identifier types including
-    name, ticker, RIC, LEI, and PermID.
-  humanURL: >-
-    https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
+  description: Search for organizations, equity instruments, and equity quotes using various identifier
+    types including name, ticker, RIC, LEI, and PermID.
+  humanURL: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
   baseURL: https://api.refinitiv.com
   tags:
   - Entity Search
@@ -764,17 +639,13 @@ apis:
   - type: OpenAPI
     url: openapi/refinitiv-entity-search-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
   - type: API Playground
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
@@ -782,46 +653,34 @@ apis:
   - type: GraphQL
     url: graphql/refinitiv-graphql.md
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
+    url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
   - type: GettingStarted
     url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/quick-start
   - type: Website
     url: https://permid.org/
 - aid: refinitiv:refinitiv-esg-api
   name: Refinitiv ESG API
-  description: >-
-    Environmental, Social, and Governance data including scores, measures, carbon emissions, and controversy
-    tracking across thousands of companies.
-  humanURL: >-
-    https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
+  description: Environmental, Social, and Governance data including scores, measures, carbon emissions,
+    and controversy tracking across thousands of companies.
+  humanURL: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
   baseURL: https://api.refinitiv.com
   tags:
   - ESG
@@ -829,17 +688,13 @@ apis:
   - type: OpenAPI
     url: openapi/refinitiv-esg-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
   - type: API Playground
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
@@ -847,46 +702,34 @@ apis:
   - type: GraphQL
     url: graphql/refinitiv-graphql.md
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
+    url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
   - type: GettingStarted
     url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/quick-start
   - type: Website
     url: https://permid.org/
 - aid: refinitiv:refinitiv-extractions-api
   name: Refinitiv Extractions API
-  description: >-
-    On-demand and scheduled data extraction operations for retrieving pricing, reference, corporate actions,
-    and historical data.
-  humanURL: >-
-    https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
+  description: On-demand and scheduled data extraction operations for retrieving pricing, reference, corporate
+    actions, and historical data.
+  humanURL: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
   baseURL: https://api.refinitiv.com
   tags:
   - Extractions
@@ -894,17 +737,13 @@ apis:
   - type: OpenAPI
     url: openapi/refinitiv-extractions-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
   - type: API Playground
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
@@ -912,45 +751,34 @@ apis:
   - type: GraphQL
     url: graphql/refinitiv-graphql.md
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
+    url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
   - type: GettingStarted
     url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/quick-start
   - type: Website
     url: https://permid.org/
 - aid: refinitiv:refinitiv-groups-api
   name: Refinitiv Groups API
-  description: >-
-    Group management operations for organizing cases and configuring screening parameters per group.
-  humanURL: >-
-    https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
+  description: Group management operations for organizing cases and configuring screening parameters per
+    group.
+  humanURL: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
   baseURL: https://api.refinitiv.com
   tags:
   - Group
@@ -960,17 +788,13 @@ apis:
   - type: OpenAPI
     url: openapi/refinitiv-groups-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
   - type: API Playground
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
@@ -978,46 +802,34 @@ apis:
   - type: GraphQL
     url: graphql/refinitiv-graphql.md
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
+    url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
   - type: GettingStarted
     url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/quick-start
   - type: Website
     url: https://permid.org/
 - aid: refinitiv:refinitiv-historical-pricing-api
   name: Refinitiv Historical Pricing API
-  description: >-
-    Access to historical interday and intraday pricing data for financial instruments including summaries,
-    events, and time series.
-  humanURL: >-
-    https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
+  description: Access to historical interday and intraday pricing data for financial instruments including
+    summaries, events, and time series.
+  humanURL: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
   baseURL: https://api.refinitiv.com
   tags:
   - Historical Pricing
@@ -1025,17 +837,13 @@ apis:
   - type: OpenAPI
     url: openapi/refinitiv-historical-pricing-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
   - type: API Playground
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
@@ -1043,35 +851,25 @@ apis:
   - type: GraphQL
     url: graphql/refinitiv-graphql.md
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
+    url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
   - type: GettingStarted
     url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/quick-start
   - type: Website
@@ -1079,8 +877,7 @@ apis:
 - aid: refinitiv:refinitiv-instruments-api
   name: Refinitiv Instruments API
   description: Instrument search, validation, and instrument list management operations.
-  humanURL: >-
-    https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
+  humanURL: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
   baseURL: https://api.refinitiv.com
   tags:
   - Instruments
@@ -1088,17 +885,13 @@ apis:
   - type: OpenAPI
     url: openapi/refinitiv-instruments-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
   - type: API Playground
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
@@ -1106,45 +899,33 @@ apis:
   - type: GraphQL
     url: graphql/refinitiv-graphql.md
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
+    url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
   - type: GettingStarted
     url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/quick-start
   - type: Website
     url: https://permid.org/
 - aid: refinitiv:refinitiv-news-api
   name: Refinitiv News API
-  description: >-
-    Access to real-time and historical news headlines and stories from Reuters and other sources.
-  humanURL: >-
-    https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
+  description: Access to real-time and historical news headlines and stories from Reuters and other sources.
+  humanURL: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
   baseURL: https://api.refinitiv.com
   tags:
   - News
@@ -1152,17 +933,13 @@ apis:
   - type: OpenAPI
     url: openapi/refinitiv-news-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
   - type: API Playground
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
@@ -1170,46 +947,34 @@ apis:
   - type: GraphQL
     url: graphql/refinitiv-graphql.md
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
+    url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
   - type: GettingStarted
     url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/quick-start
   - type: Website
     url: https://permid.org/
 - aid: refinitiv:refinitiv-ongoing-screening-api
   name: Refinitiv Ongoing Screening API
-  description: >-
-    Ongoing screening monitoring for cases that have been flagged for continuous surveillance against
-    the World-Check database.
-  humanURL: >-
-    https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
+  description: Ongoing screening monitoring for cases that have been flagged for continuous surveillance
+    against the World-Check database.
+  humanURL: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
   baseURL: https://api.refinitiv.com
   tags:
   - Ongoing Screening
@@ -1217,17 +982,13 @@ apis:
   - type: OpenAPI
     url: openapi/refinitiv-ongoing-screening-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
   - type: API Playground
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
@@ -1235,45 +996,33 @@ apis:
   - type: GraphQL
     url: graphql/refinitiv-graphql.md
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
+    url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
   - type: GettingStarted
     url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/quick-start
   - type: Website
     url: https://permid.org/
 - aid: refinitiv:refinitiv-pricing-api
   name: Refinitiv Pricing API
-  description: >-
-    Real-time and delayed snapshot pricing data for financial instruments and pricing chains.
-  humanURL: >-
-    https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
+  description: Real-time and delayed snapshot pricing data for financial instruments and pricing chains.
+  humanURL: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
   baseURL: https://api.refinitiv.com
   tags:
   - Pricing
@@ -1281,17 +1030,13 @@ apis:
   - type: OpenAPI
     url: openapi/refinitiv-pricing-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
   - type: API Playground
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
@@ -1299,46 +1044,34 @@ apis:
   - type: GraphQL
     url: graphql/refinitiv-graphql.md
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
+    url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
   - type: GettingStarted
     url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/quick-start
   - type: Website
     url: https://permid.org/
 - aid: refinitiv:refinitiv-quantitative-analytics-api
   name: Refinitiv Quantitative Analytics API
-  description: >-
-    Instrument Pricing Analytics (IPA) service for pricing financial contracts, calculating risk measures,
-    and running quantitative models.
-  humanURL: >-
-    https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
+  description: Instrument Pricing Analytics (IPA) service for pricing financial contracts, calculating
+    risk measures, and running quantitative models.
+  humanURL: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
   baseURL: https://api.refinitiv.com
   tags:
   - Quantitative Analytics
@@ -1346,17 +1079,13 @@ apis:
   - type: OpenAPI
     url: openapi/refinitiv-quantitative-analytics-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
   - type: API Playground
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
@@ -1364,45 +1093,33 @@ apis:
   - type: GraphQL
     url: graphql/refinitiv-graphql.md
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
+    url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
   - type: GettingStarted
     url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/quick-start
   - type: Website
     url: https://permid.org/
 - aid: refinitiv:refinitiv-record-matching-api
   name: Refinitiv Record Matching API
-  description: >-
-    Match unstructured entity records to PermID identifiers for concordance and entity resolution.
-  humanURL: >-
-    https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
+  description: Match unstructured entity records to PermID identifiers for concordance and entity resolution.
+  humanURL: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
   baseURL: https://api.refinitiv.com
   tags:
   - Record Matching
@@ -1410,17 +1127,13 @@ apis:
   - type: OpenAPI
     url: openapi/refinitiv-record-matching-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
   - type: API Playground
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
@@ -1428,45 +1141,33 @@ apis:
   - type: GraphQL
     url: graphql/refinitiv-graphql.md
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
+    url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
   - type: GettingStarted
     url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/quick-start
   - type: Website
     url: https://permid.org/
 - aid: refinitiv:refinitiv-reference-api
   name: Refinitiv Reference API
-  description: >-
-    Reference data operations for retrieving profile details and resolution toolkit configurations.
-  humanURL: >-
-    https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
+  description: Reference data operations for retrieving profile details and resolution toolkit configurations.
+  humanURL: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
   baseURL: https://api.refinitiv.com
   tags:
   - Reference
@@ -1474,17 +1175,13 @@ apis:
   - type: OpenAPI
     url: openapi/refinitiv-reference-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
   - type: API Playground
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
@@ -1492,35 +1189,25 @@ apis:
   - type: GraphQL
     url: graphql/refinitiv-graphql.md
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
+    url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
   - type: GettingStarted
     url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/quick-start
   - type: Website
@@ -1528,8 +1215,7 @@ apis:
 - aid: refinitiv:refinitiv-schedules-api
   name: Refinitiv Schedules API
   description: Schedule management for recurring extraction jobs.
-  humanURL: >-
-    https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
+  humanURL: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
   baseURL: https://api.refinitiv.com
   tags:
   - Schedules
@@ -1537,17 +1223,13 @@ apis:
   - type: OpenAPI
     url: openapi/refinitiv-schedules-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
   - type: API Playground
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
@@ -1555,46 +1237,34 @@ apis:
   - type: GraphQL
     url: graphql/refinitiv-graphql.md
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
+    url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
   - type: GettingStarted
     url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/quick-start
   - type: Website
     url: https://permid.org/
 - aid: refinitiv:refinitiv-screening-results-api
   name: Refinitiv Screening Results API
-  description: >-
-    Operations for retrieving and managing screening results including matched profiles and resolution
-    workflows.
-  humanURL: >-
-    https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
+  description: Operations for retrieving and managing screening results including matched profiles and
+    resolution workflows.
+  humanURL: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
   baseURL: https://api.refinitiv.com
   tags:
   - Screening Results
@@ -1602,17 +1272,13 @@ apis:
   - type: OpenAPI
     url: openapi/refinitiv-screening-results-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
   - type: API Playground
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
@@ -1620,35 +1286,25 @@ apis:
   - type: GraphQL
     url: graphql/refinitiv-graphql.md
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
+    url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
   - type: GettingStarted
     url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/quick-start
   - type: Website
@@ -1656,8 +1312,7 @@ apis:
 - aid: refinitiv:refinitiv-search-api
   name: Refinitiv Search API
   description: Discovery and search across organizations, instruments, quotes, and economic indicators.
-  humanURL: >-
-    https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
+  humanURL: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
   baseURL: https://api.refinitiv.com
   tags:
   - Search
@@ -1665,17 +1320,13 @@ apis:
   - type: OpenAPI
     url: openapi/refinitiv-search-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
   - type: API Playground
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
@@ -1683,35 +1334,25 @@ apis:
   - type: GraphQL
     url: graphql/refinitiv-graphql.md
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
+    url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
   - type: GettingStarted
     url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/quick-start
   - type: Website
@@ -1719,8 +1360,7 @@ apis:
 - aid: refinitiv:refinitiv-streaming-api
   name: Refinitiv Streaming API
   description: Service discovery for streaming connections to real-time pricing and data services.
-  humanURL: >-
-    https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
+  humanURL: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
   baseURL: https://api.refinitiv.com
   tags:
   - Streaming
@@ -1728,17 +1368,13 @@ apis:
   - type: OpenAPI
     url: openapi/refinitiv-streaming-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
   - type: API Playground
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
@@ -1746,46 +1382,34 @@ apis:
   - type: GraphQL
     url: graphql/refinitiv-graphql.md
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
+    url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
   - type: GettingStarted
     url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/quick-start
   - type: Website
     url: https://permid.org/
 - aid: refinitiv:refinitiv-symbology-api
   name: Refinitiv Symbology API
-  description: >-
-    Symbol lookup and conversion between different identifier types including RIC, ISIN, CUSIP, SEDOL,
-    and PermID.
-  humanURL: >-
-    https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
+  description: Symbol lookup and conversion between different identifier types including RIC, ISIN, CUSIP,
+    SEDOL, and PermID.
+  humanURL: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
   baseURL: https://api.refinitiv.com
   tags:
   - Symbology
@@ -1793,17 +1417,13 @@ apis:
   - type: OpenAPI
     url: openapi/refinitiv-symbology-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
   - type: API Playground
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
@@ -1811,35 +1431,25 @@ apis:
   - type: GraphQL
     url: graphql/refinitiv-graphql.md
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
+    url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
   - type: GettingStarted
     url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/quick-start
   - type: Website
@@ -1847,8 +1457,7 @@ apis:
 - aid: refinitiv:refinitiv-users-api
   name: Refinitiv Users API
   description: User account information and preferences management.
-  humanURL: >-
-    https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
+  humanURL: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
   baseURL: https://api.refinitiv.com
   tags:
   - User
@@ -1858,17 +1467,13 @@ apis:
   - type: OpenAPI
     url: openapi/refinitiv-users-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
   - type: API Playground
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
@@ -1876,35 +1481,25 @@ apis:
   - type: GraphQL
     url: graphql/refinitiv-graphql.md
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
+    url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
   - type: GettingStarted
     url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/quick-start
   - type: Website
@@ -1912,8 +1507,7 @@ apis:
 - aid: refinitiv:refinitiv-verification-api
   name: Refinitiv Verification API
   description: Identity and document verification submission and transaction record retrieval.
-  humanURL: >-
-    https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
+  humanURL: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
   baseURL: https://api.refinitiv.com
   tags:
   - Verification
@@ -1921,17 +1515,13 @@ apis:
   - type: OpenAPI
     url: openapi/refinitiv-verification-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
+    url: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/download
   - type: API Playground
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
@@ -1939,123 +1529,118 @@ apis:
   - type: GraphQL
     url: graphql/refinitiv-graphql.md
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/quick-start
   - type: Tutorials
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/tutorials
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
+    url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/quick-start
   - type: Downloads
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/download
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/documentation
   - type: GettingStarted
-    url: >-
-      https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/qual-id-api/quick-start
   - type: Documentation
-    url: >-
-      https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
+    url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/documentation
   - type: GettingStarted
     url: https://developers.lseg.com/en/api-catalog/open-perm-id/permid-entity-search/quick-start
   - type: Website
     url: https://permid.org/
 common:
-  - type: CapabilityMap
-    url: capabilities/refinitiv-capability-edges.yml
-    name: Refinitiv Business Capability Map
-  - type: IssueTracker
-    url: https://github.com/Refinitiv/Real-Time-SDK/issues
-  - type: Releases
-    url: https://github.com/Refinitiv/Real-Time-SDK/releases
-  - type: AgenticAccess
-    url: agentic-access/refinitiv-agentic-access.yml
-  - type: DomainSecurity
-    url: security/refinitiv-domain-security.yml
-  - type: Authentication
-    url: authentication/refinitiv-authentication.yml
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/refinitiv
-  - type: JSONLD
-    url: json-ld/refinitiv-context.jsonld
-  - type: JSONSchema
-    url: json-schema/refinitiv-instrument-schema.json
-  - type: JSONSchema
-    url: json-schema/refinitiv-esg-score-schema.json
-  - type: JSONSchema
-    url: json-schema/refinitiv-screening-case-schema.json
-  - type: JSONSchema
-    url: json-schema/refinitiv-news-article-schema.json
-  - type: Portal
-    url: https://developers.lseg.com/en
-  - type: GettingStarted
-    url: https://developers.lseg.com/en/api-catalog
-  - type: Documentation
-    url: https://developers.lseg.com/en/api-catalog
-  - type: Support
-    url: https://developers.lseg.com/en/support
-  - type: Blog
-    url: https://developers.lseg.com/en/article-catalog
-  - type: GitHubOrganization
-    url: https://github.com/LSEG-API-Samples
-  - type: GitHubOrganization
-    url: https://github.com/Refinitiv-API-Samples
-  - type: TermsOfService
-    url: https://developers.lseg.com/en/terms-and-conditions
-  - type: Contact
-    url: https://developers.lseg.com/en/contact-us
-  - type: PrivacyPolicy
-    url: https://www.lseg.com/en/policies/privacy-statement
-  - type: Community
-    url: https://community.developers.refinitiv.com/
-  - type: Website
-    url: https://www.lseg.com/en
-  - type: Login
-    url: https://www.lseg.com/en/product-logins
-  - type: Developer Tools
-    url: https://developers.lseg.com/en/tools-catalog
-  - type: Medium
-    url: https://medium.com/lseg-developer-community
-  - type: OpenAPI
-    url: openapi/_original/refinitiv-data-platform-openapi.yml
-  - type: OpenAPI
-    url: openapi/_original/refinitiv-datascope-select-openapi.yml
-  - type: OpenAPI
-    url: openapi/_original/refinitiv-permid-entity-search-openapi.yml
-  - type: OpenAPI
-    url: openapi/_original/refinitiv-qual-id-openapi.yml
-  - type: OpenAPI
-    url: openapi/_original/refinitiv-world-check-one-openapi.yml
-  - type: AsyncAPI
-    url: asyncapi/refinitiv-real-time-websocket-asyncapi.yml
-  - type: JSONSchema
-    url: json-schema/refinitiv-instrument-schema.json
-  - type: JSONSchema
-    url: json-schema/refinitiv-esg-score-schema.json
-  - type: JSONSchema
-    url: json-schema/refinitiv-news-article-schema.json
-  - type: JSONSchema
-    url: json-schema/refinitiv-screening-case-schema.json
-  - type: JSONStructure
-    url: json-structure/refinitiv-data-platform-structure.json
-  - type: JSONLDContext
-    url: json-ld/refinitiv-context.jsonld
-  - type: SpectralRules
-    url: rules/refinitiv-rules.yml
-  - type: Vocabulary
-    url: vocabulary/refinitiv-vocabulary.yml
+- type: CapabilityMap
+  url: capabilities/refinitiv-capability-edges.yml
+  name: Refinitiv Business Capability Map
+- type: IssueTracker
+  url: https://github.com/Refinitiv/Real-Time-SDK/issues
+- type: Releases
+  url: https://github.com/Refinitiv/Real-Time-SDK/releases
+- type: AgenticAccess
+  url: agentic-access/refinitiv-agentic-access.yml
+- type: DomainSecurity
+  url: security/refinitiv-domain-security.yml
+- type: Authentication
+  url: authentication/refinitiv-authentication.yml
+- type: LinkedIn
+  url: https://www.linkedin.com/company/refinitiv
+- type: JSONLD
+  url: json-ld/refinitiv-context.jsonld
+- type: JSONSchema
+  url: json-schema/refinitiv-instrument-schema.json
+- type: JSONSchema
+  url: json-schema/refinitiv-esg-score-schema.json
+- type: JSONSchema
+  url: json-schema/refinitiv-screening-case-schema.json
+- type: JSONSchema
+  url: json-schema/refinitiv-news-article-schema.json
+- type: Portal
+  url: https://developers.lseg.com/en
+- type: GettingStarted
+  url: https://developers.lseg.com/en/api-catalog
+- type: Documentation
+  url: https://developers.lseg.com/en/api-catalog
+- type: Support
+  url: https://developers.lseg.com/en/support
+- type: Blog
+  url: https://developers.lseg.com/en/article-catalog
+- type: GitHubOrganization
+  url: https://github.com/LSEG-API-Samples
+- type: GitHubOrganization
+  url: https://github.com/Refinitiv-API-Samples
+- type: TermsOfService
+  url: https://developers.lseg.com/en/terms-and-conditions
+- type: Contact
+  url: https://developers.lseg.com/en/contact-us
+- type: PrivacyPolicy
+  url: https://www.lseg.com/en/policies/privacy-statement
+- type: Community
+  url: https://community.developers.refinitiv.com/
+- type: Website
+  url: https://www.lseg.com/en
+- type: Login
+  url: https://www.lseg.com/en/product-logins
+- type: Developer Tools
+  url: https://developers.lseg.com/en/tools-catalog
+- type: Medium
+  url: https://medium.com/lseg-developer-community
+- type: OpenAPI
+  url: openapi/_original/refinitiv-data-platform-openapi.yml
+- type: OpenAPI
+  url: openapi/_original/refinitiv-datascope-select-openapi.yml
+- type: OpenAPI
+  url: openapi/_original/refinitiv-permid-entity-search-openapi.yml
+- type: OpenAPI
+  url: openapi/_original/refinitiv-qual-id-openapi.yml
+- type: OpenAPI
+  url: openapi/_original/refinitiv-world-check-one-openapi.yml
+- type: AsyncAPI
+  url: asyncapi/refinitiv-real-time-websocket-asyncapi.yml
+- type: JSONSchema
+  url: json-schema/refinitiv-instrument-schema.json
+- type: JSONSchema
+  url: json-schema/refinitiv-esg-score-schema.json
+- type: JSONSchema
+  url: json-schema/refinitiv-news-article-schema.json
+- type: JSONSchema
+  url: json-schema/refinitiv-screening-case-schema.json
+- type: JSONStructure
+  url: json-structure/refinitiv-data-platform-structure.json
+- type: JSONLDContext
+  url: json-ld/refinitiv-context.jsonld
+- type: SpectralRules
+  url: rules/refinitiv-rules.yml
+- type: Vocabulary
+  url: vocabulary/refinitiv-vocabulary.yml
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
+tags:
+- Financial Data
+- Streaming
+- Trading
+- News
