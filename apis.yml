@@ -1218,6 +1218,8 @@ apis:
   humanURL: https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis
   baseURL: https://api.refinitiv.com
   tags:
+  - Schedule
+  tags_raw:
   - Schedules
   properties:
   - type: OpenAPI
