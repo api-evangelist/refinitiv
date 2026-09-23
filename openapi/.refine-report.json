@@ -42,7 +42,8 @@
     "refinitiv-permid-entity-search-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "refinitiv-qual-id-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "refinitiv-world-check-one-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "tag 'Authentication' spans 2 source specs (refinitiv-data-platform-openapi.yml, refinitiv-datascope-select-openapi.yml): per-path servers applied"
+    "tag 'Authentication' spans 2 source specs (refinitiv-data-platform-openapi.yml, refinitiv-datascope-select-openapi.yml): per-path servers applied",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "refinitiv-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",

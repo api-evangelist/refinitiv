@@ -105,14 +105,6 @@ paths:
         '404':
           description: Case not found
 components:
-  parameters:
-    caseSystemId:
-      name: caseSystemId
-      in: path
-      required: true
-      description: The system-generated unique identifier for the case.
-      schema:
-        type: string
   schemas:
     Case:
       type: object
@@ -177,19 +169,6 @@ components:
                 type: string
               value:
                 type: string
-    ScreeningResponse:
-      type: object
-      properties:
-        caseSystemId:
-          type: string
-          description: The system-generated case identifier.
-        caseId:
-          type: string
-          description: The client-defined case identifier.
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ScreeningResult'
     ScreeningResult:
       type: object
       properties:
@@ -315,6 +294,27 @@ components:
               value:
                 type: string
                 description: The custom field value.
+    ScreeningResponse:
+      type: object
+      properties:
+        caseSystemId:
+          type: string
+          description: The system-generated case identifier.
+        caseId:
+          type: string
+          description: The client-defined case identifier.
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScreeningResult'
+  parameters:
+    caseSystemId:
+      name: caseSystemId
+      in: path
+      required: true
+      description: The system-generated unique identifier for the case.
+      schema:
+        type: string
   securitySchemes:
     hmacAuth:
       type: apiKey

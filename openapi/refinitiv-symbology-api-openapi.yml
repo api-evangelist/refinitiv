@@ -42,6 +42,14 @@ paths:
           description: Unauthorized
 components:
   schemas:
+    SymbologyConvertResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            description: Conversion results mapping source identifiers to target identifiers.
     SymbologyConvertRequest:
       type: object
       properties:
@@ -66,14 +74,6 @@ components:
           items:
             type: string
           description: Target identifier types to convert to.
-    SymbologyConvertResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            type: object
-            description: Conversion results mapping source identifiers to target identifiers.
   securitySchemes:
     bearerAuth:
       type: http

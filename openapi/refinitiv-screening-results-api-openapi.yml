@@ -107,6 +107,13 @@ components:
             reasonId:
               type: string
               description: The resolution reason identifier.
+    ScreeningResultsResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScreeningResult'
     ResolutionRequest:
       type: object
       required:
@@ -124,13 +131,6 @@ components:
         remarks:
           type: string
           description: Free-text remarks or notes for the resolution.
-    ScreeningResultsResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ScreeningResult'
   parameters:
     caseSystemId:
       name: caseSystemId

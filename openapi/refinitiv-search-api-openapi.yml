@@ -42,6 +42,17 @@ paths:
           description: Unauthorized
 components:
   schemas:
+    SearchResponse:
+      type: object
+      properties:
+        Total:
+          type: integer
+          description: Total number of matching results.
+        Hits:
+          type: array
+          items:
+            type: object
+            description: Individual search result containing the matched entity or instrument data.
     SearchRequest:
       type: object
       properties:
@@ -68,17 +79,6 @@ components:
         Select:
           type: string
           description: Comma-separated list of fields to include in results.
-    SearchResponse:
-      type: object
-      properties:
-        Total:
-          type: integer
-          description: Total number of matching results.
-        Hits:
-          type: array
-          items:
-            type: object
-            description: Individual search result containing the matched entity or instrument data.
   securitySchemes:
     bearerAuth:
       type: http

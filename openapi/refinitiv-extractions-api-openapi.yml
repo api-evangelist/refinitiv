@@ -143,17 +143,6 @@ paths:
           description: Unauthorized
 components:
   schemas:
-    ExtractionResponse:
-      type: object
-      properties:
-        '@odata.context':
-          type: string
-          description: OData context URI.
-        value:
-          type: array
-          items:
-            type: object
-            description: Extracted data rows.
     ExtractionWithNotesResponse:
       type: object
       properties:
@@ -202,6 +191,17 @@ components:
             Condition:
               type: object
               description: Extraction conditions such as date range and message filters.
+    ExtractionResponse:
+      type: object
+      properties:
+        '@odata.context':
+          type: string
+          description: OData context URI.
+        value:
+          type: array
+          items:
+            type: object
+            description: Extracted data rows.
   securitySchemes:
     tokenAuth:
       type: apiKey

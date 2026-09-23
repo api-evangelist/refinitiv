@@ -156,6 +156,22 @@ paths:
           description: Entity not found
 components:
   schemas:
+    InstrumentEntity:
+      type: object
+      properties:
+        hasName:
+          type: string
+          description: The name of the instrument.
+        assetClass:
+          type: string
+          description: The asset class of the instrument.
+        isIssuedBy:
+          type: string
+          description: The PermID of the issuing organization.
+        '@id':
+          type: string
+          format: uri
+          description: The PermID URI for the instrument.
     EntityDetail:
       type: object
       properties:
@@ -182,6 +198,42 @@ components:
         hasPrimaryInstrument:
           type: string
           description: The PermID of the primary instrument.
+    SearchResponse:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            organizations:
+              type: object
+              properties:
+                total:
+                  type: integer
+                  description: Total number of matching organizations.
+                entities:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/OrganizationEntity'
+            instruments:
+              type: object
+              properties:
+                total:
+                  type: integer
+                  description: Total number of matching instruments.
+                entities:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/InstrumentEntity'
+            quotes:
+              type: object
+              properties:
+                total:
+                  type: integer
+                  description: Total number of matching quotes.
+                entities:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/QuoteEntity'
     OrganizationEntity:
       type: object
       properties:
@@ -223,58 +275,6 @@ components:
           type: string
           format: uri
           description: The PermID URI for the quote.
-    InstrumentEntity:
-      type: object
-      properties:
-        hasName:
-          type: string
-          description: The name of the instrument.
-        assetClass:
-          type: string
-          description: The asset class of the instrument.
-        isIssuedBy:
-          type: string
-          description: The PermID of the issuing organization.
-        '@id':
-          type: string
-          format: uri
-          description: The PermID URI for the instrument.
-    SearchResponse:
-      type: object
-      properties:
-        result:
-          type: object
-          properties:
-            organizations:
-              type: object
-              properties:
-                total:
-                  type: integer
-                  description: Total number of matching organizations.
-                entities:
-                  type: array
-                  items:
-                    $ref: '#/components/schemas/OrganizationEntity'
-            instruments:
-              type: object
-              properties:
-                total:
-                  type: integer
-                  description: Total number of matching instruments.
-                entities:
-                  type: array
-                  items:
-                    $ref: '#/components/schemas/InstrumentEntity'
-            quotes:
-              type: object
-              properties:
-                total:
-                  type: integer
-                  description: Total number of matching quotes.
-                entities:
-                  type: array
-                  items:
-                    $ref: '#/components/schemas/QuoteEntity'
     TaggingResponse:
       type: object
       additionalProperties:
