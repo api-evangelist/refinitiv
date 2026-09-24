@@ -84,6 +84,11 @@ apis:
   tags:
   - Financial Data
   - JavaScript
+  - Library
+  - SDK
+  tags_raw:
+  - Financial Data
+  - JavaScript
   - Libraries
   - SDK
   properties:
@@ -282,6 +287,11 @@ apis:
   tags:
   - Compliance
   - Due Diligence
+  - Risk Management
+  - Screening
+  tags_raw:
+  - Compliance
+  - Due Diligence
   - Risk
   - Screening
   properties:
@@ -455,8 +465,6 @@ apis:
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
     url: https://www.lseg.com/en/data-analytics/financial-data
-  - type: GraphQL
-    url: graphql/refinitiv-graphql.md
   - type: Documentation
     url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
@@ -504,8 +512,6 @@ apis:
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
     url: https://www.lseg.com/en/data-analytics/financial-data
-  - type: GraphQL
-    url: graphql/refinitiv-graphql.md
   - type: Documentation
     url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
@@ -553,8 +559,6 @@ apis:
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
     url: https://www.lseg.com/en/data-analytics/financial-data
-  - type: GraphQL
-    url: graphql/refinitiv-graphql.md
   - type: Documentation
     url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
@@ -601,8 +605,6 @@ apis:
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
     url: https://www.lseg.com/en/data-analytics/financial-data
-  - type: GraphQL
-    url: graphql/refinitiv-graphql.md
   - type: Documentation
     url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
@@ -650,8 +652,6 @@ apis:
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
     url: https://www.lseg.com/en/data-analytics/financial-data
-  - type: GraphQL
-    url: graphql/refinitiv-graphql.md
   - type: Documentation
     url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
@@ -699,8 +699,6 @@ apis:
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
     url: https://www.lseg.com/en/data-analytics/financial-data
-  - type: GraphQL
-    url: graphql/refinitiv-graphql.md
   - type: Documentation
     url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
@@ -748,8 +746,6 @@ apis:
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
     url: https://www.lseg.com/en/data-analytics/financial-data
-  - type: GraphQL
-    url: graphql/refinitiv-graphql.md
   - type: Documentation
     url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
@@ -799,8 +795,6 @@ apis:
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
     url: https://www.lseg.com/en/data-analytics/financial-data
-  - type: GraphQL
-    url: graphql/refinitiv-graphql.md
   - type: Documentation
     url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
@@ -848,8 +842,6 @@ apis:
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
     url: https://www.lseg.com/en/data-analytics/financial-data
-  - type: GraphQL
-    url: graphql/refinitiv-graphql.md
   - type: Documentation
     url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
@@ -896,8 +888,6 @@ apis:
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
     url: https://www.lseg.com/en/data-analytics/financial-data
-  - type: GraphQL
-    url: graphql/refinitiv-graphql.md
   - type: Documentation
     url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
@@ -944,8 +934,6 @@ apis:
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
     url: https://www.lseg.com/en/data-analytics/financial-data
-  - type: GraphQL
-    url: graphql/refinitiv-graphql.md
   - type: Documentation
     url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
@@ -993,8 +981,6 @@ apis:
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
     url: https://www.lseg.com/en/data-analytics/financial-data
-  - type: GraphQL
-    url: graphql/refinitiv-graphql.md
   - type: Documentation
     url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
@@ -1041,8 +1027,6 @@ apis:
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
     url: https://www.lseg.com/en/data-analytics/financial-data
-  - type: GraphQL
-    url: graphql/refinitiv-graphql.md
   - type: Documentation
     url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
@@ -1090,8 +1074,6 @@ apis:
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
     url: https://www.lseg.com/en/data-analytics/financial-data
-  - type: GraphQL
-    url: graphql/refinitiv-graphql.md
   - type: Documentation
     url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
@@ -1138,8 +1120,6 @@ apis:
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
     url: https://www.lseg.com/en/data-analytics/financial-data
-  - type: GraphQL
-    url: graphql/refinitiv-graphql.md
   - type: Documentation
     url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
@@ -1186,8 +1166,6 @@ apis:
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
     url: https://www.lseg.com/en/data-analytics/financial-data
-  - type: GraphQL
-    url: graphql/refinitiv-graphql.md
   - type: Documentation
     url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
@@ -1236,8 +1214,6 @@ apis:
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
     url: https://www.lseg.com/en/data-analytics/financial-data
-  - type: GraphQL
-    url: graphql/refinitiv-graphql.md
   - type: Documentation
     url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
@@ -1285,8 +1261,6 @@ apis:
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
     url: https://www.lseg.com/en/data-analytics/financial-data
-  - type: GraphQL
-    url: graphql/refinitiv-graphql.md
   - type: Documentation
     url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
@@ -1333,8 +1307,6 @@ apis:
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
     url: https://www.lseg.com/en/data-analytics/financial-data
-  - type: GraphQL
-    url: graphql/refinitiv-graphql.md
   - type: Documentation
     url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
@@ -1381,8 +1353,6 @@ apis:
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
     url: https://www.lseg.com/en/data-analytics/financial-data
-  - type: GraphQL
-    url: graphql/refinitiv-graphql.md
   - type: Documentation
     url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
@@ -1430,8 +1400,6 @@ apis:
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
     url: https://www.lseg.com/en/data-analytics/financial-data
-  - type: GraphQL
-    url: graphql/refinitiv-graphql.md
   - type: Documentation
     url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
@@ -1480,8 +1448,6 @@ apis:
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
     url: https://www.lseg.com/en/data-analytics/financial-data
-  - type: GraphQL
-    url: graphql/refinitiv-graphql.md
   - type: Documentation
     url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
@@ -1528,8 +1494,6 @@ apis:
     url: https://apidocs.refinitiv.com/Apps/ApiDocs
   - type: Pricing
     url: https://www.lseg.com/en/data-analytics/financial-data
-  - type: GraphQL
-    url: graphql/refinitiv-graphql.md
   - type: Documentation
     url: https://developers.lseg.com/en/api-catalog/datascope-select/datascope-select-rest-api/documentation
   - type: GettingStarted
@@ -1646,3 +1610,4 @@ tags:
 - Streaming
 - Trading
 - News
+- Real-Time
