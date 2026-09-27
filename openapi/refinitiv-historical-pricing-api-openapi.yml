@@ -144,14 +144,6 @@ paths:
         '404':
           description: Instrument not found
 components:
-  parameters:
-    universe:
-      name: universe
-      in: path
-      required: true
-      description: The instrument identifier, typically a RIC such as IBM.N or AAPL.O.
-      schema:
-        type: string
   schemas:
     HistoricalPricingResponse:
       type: object
@@ -181,6 +173,14 @@ components:
               type:
                 type: string
                 description: The data type of the field.
+  parameters:
+    universe:
+      name: universe
+      in: path
+      required: true
+      description: The instrument identifier, typically a RIC such as IBM.N or AAPL.O.
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http

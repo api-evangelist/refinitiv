@@ -78,25 +78,22 @@ paths:
           description: Story not found
 components:
   schemas:
-    NewsStory:
+    NewsHeadlinesResponse:
       type: object
       properties:
-        storyId:
-          type: string
-          description: The unique identifier of the news story.
-        title:
-          type: string
-          description: The headline of the story.
-        body:
-          type: string
-          description: The full text body of the news story.
-        sourceCode:
-          type: string
-          description: The code identifying the news source.
-        versionCreated:
-          type: string
-          format: date-time
-          description: The timestamp when the story was published.
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/NewsHeadline'
+        meta:
+          type: object
+          properties:
+            count:
+              type: integer
+              description: The total number of matching headlines.
+            next:
+              type: string
+              description: Pagination cursor for the next page of results.
     NewsHeadline:
       type: object
       properties:
@@ -116,22 +113,25 @@ components:
           type: string
           format: date-time
           description: The timestamp when the headline was created.
-    NewsHeadlinesResponse:
+    NewsStory:
       type: object
       properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/NewsHeadline'
-        meta:
-          type: object
-          properties:
-            count:
-              type: integer
-              description: The total number of matching headlines.
-            next:
-              type: string
-              description: Pagination cursor for the next page of results.
+        storyId:
+          type: string
+          description: The unique identifier of the news story.
+        title:
+          type: string
+          description: The headline of the story.
+        body:
+          type: string
+          description: The full text body of the news story.
+        sourceCode:
+          type: string
+          description: The code identifying the news source.
+        versionCreated:
+          type: string
+          format: date-time
+          description: The timestamp when the story was published.
   securitySchemes:
     bearerAuth:
       type: http
