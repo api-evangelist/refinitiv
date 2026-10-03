@@ -68,61 +68,6 @@ paths:
           description: Transaction record not found
 components:
   schemas:
-    VerificationResponse:
-      type: object
-      properties:
-        TransactionID:
-          type: string
-          format: uuid
-          description: Unique identifier for the verification transaction.
-        UploadedDt:
-          type: string
-          format: date-time
-          description: Timestamp when the verification was submitted.
-        CountryCode:
-          type: string
-          description: The country code used for verification.
-        ProductName:
-          type: string
-          description: The product configuration name.
-        Record:
-          type: object
-          properties:
-            TransactionRecordID:
-              type: string
-              format: uuid
-              description: Unique identifier for the verification record.
-            RecordStatus:
-              type: string
-              enum:
-              - match
-              - nomatch
-              description: Overall verification result.
-            DatasourceResults:
-              type: array
-              items:
-                type: object
-                properties:
-                  DatasourceName:
-                    type: string
-                    description: Name of the data source queried.
-                  DatasourceFields:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        FieldName:
-                          type: string
-                          description: The field that was verified.
-                        Status:
-                          type: string
-                          enum:
-                          - match
-                          - nomatch
-                          - missing
-                          - censored
-                          description: Verification status for this field.
-              description: Results from each data source checked.
     VerificationRequest:
       type: object
       required:
@@ -227,6 +172,61 @@ components:
         VerboseMode:
           type: boolean
           description: When true, returns additional diagnostic information.
+    VerificationResponse:
+      type: object
+      properties:
+        TransactionID:
+          type: string
+          format: uuid
+          description: Unique identifier for the verification transaction.
+        UploadedDt:
+          type: string
+          format: date-time
+          description: Timestamp when the verification was submitted.
+        CountryCode:
+          type: string
+          description: The country code used for verification.
+        ProductName:
+          type: string
+          description: The product configuration name.
+        Record:
+          type: object
+          properties:
+            TransactionRecordID:
+              type: string
+              format: uuid
+              description: Unique identifier for the verification record.
+            RecordStatus:
+              type: string
+              enum:
+              - match
+              - nomatch
+              description: Overall verification result.
+            DatasourceResults:
+              type: array
+              items:
+                type: object
+                properties:
+                  DatasourceName:
+                    type: string
+                    description: Name of the data source queried.
+                  DatasourceFields:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        FieldName:
+                          type: string
+                          description: The field that was verified.
+                        Status:
+                          type: string
+                          enum:
+                          - match
+                          - nomatch
+                          - missing
+                          - censored
+                          description: Verification status for this field.
+              description: Results from each data source checked.
   securitySchemes:
     basicAuth:
       type: http

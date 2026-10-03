@@ -156,28 +156,6 @@ paths:
           description: Entity not found
 components:
   schemas:
-    OrganizationEntity:
-      type: object
-      properties:
-        organizationName:
-          type: string
-          description: The name of the organization.
-        orgSubtype:
-          type: string
-          description: The subtype of the organization such as Company or Fund.
-        hasHoldingClassification:
-          type: string
-          description: Whether the organization is public or private.
-        primaryRIC:
-          type: string
-          description: The primary RIC associated with the organization.
-        lei:
-          type: string
-          description: The Legal Entity Identifier.
-        '@id':
-          type: string
-          format: uri
-          description: The PermID URI for the organization.
     QuoteEntity:
       type: object
       properties:
@@ -197,72 +175,6 @@ components:
           type: string
           format: uri
           description: The PermID URI for the quote.
-    InstrumentEntity:
-      type: object
-      properties:
-        hasName:
-          type: string
-          description: The name of the instrument.
-        assetClass:
-          type: string
-          description: The asset class of the instrument.
-        isIssuedBy:
-          type: string
-          description: The PermID of the issuing organization.
-        '@id':
-          type: string
-          format: uri
-          description: The PermID URI for the instrument.
-    EntityDetail:
-      type: object
-      properties:
-        '@id':
-          type: string
-          format: uri
-          description: The PermID URI.
-        organizationName:
-          type: string
-          description: The name of the organization.
-        hasActivityStatus:
-          type: string
-          description: The activity status of the entity.
-        isIncorporatedIn:
-          type: string
-          description: The country of incorporation.
-        isDomiciledIn:
-          type: string
-          description: The country of domicile.
-        hasURL:
-          type: string
-          format: uri
-          description: The entity's website URL.
-        hasPrimaryInstrument:
-          type: string
-          description: The PermID of the primary instrument.
-    TaggingResponse:
-      type: object
-      additionalProperties:
-        type: object
-        properties:
-          _type:
-            type: string
-            description: The entity type such as Company, Person, City, or IndustryTerm.
-          name:
-            type: string
-            description: The recognized entity name.
-          _typeGroup:
-            type: string
-            description: The type group such as entities, topics, or relations.
-          fopiPermId:
-            type: string
-            description: The associated PermID identifier.
-          relevance:
-            type: number
-            description: The relevance score from 0 to 1.
-          confidence:
-            type: number
-            description: The confidence score for the entity recognition.
-      description: Map of extracted entities, topics, and relations keyed by unique identifiers, with each entry containing entity metadata and linked PermIDs.
     SearchResponse:
       type: object
       properties:
@@ -299,6 +211,94 @@ components:
                   type: array
                   items:
                     $ref: '#/components/schemas/QuoteEntity'
+    InstrumentEntity:
+      type: object
+      properties:
+        hasName:
+          type: string
+          description: The name of the instrument.
+        assetClass:
+          type: string
+          description: The asset class of the instrument.
+        isIssuedBy:
+          type: string
+          description: The PermID of the issuing organization.
+        '@id':
+          type: string
+          format: uri
+          description: The PermID URI for the instrument.
+    TaggingResponse:
+      type: object
+      additionalProperties:
+        type: object
+        properties:
+          _type:
+            type: string
+            description: The entity type such as Company, Person, City, or IndustryTerm.
+          name:
+            type: string
+            description: The recognized entity name.
+          _typeGroup:
+            type: string
+            description: The type group such as entities, topics, or relations.
+          fopiPermId:
+            type: string
+            description: The associated PermID identifier.
+          relevance:
+            type: number
+            description: The relevance score from 0 to 1.
+          confidence:
+            type: number
+            description: The confidence score for the entity recognition.
+      description: Map of extracted entities, topics, and relations keyed by unique identifiers, with each entry containing entity metadata and linked PermIDs.
+    EntityDetail:
+      type: object
+      properties:
+        '@id':
+          type: string
+          format: uri
+          description: The PermID URI.
+        organizationName:
+          type: string
+          description: The name of the organization.
+        hasActivityStatus:
+          type: string
+          description: The activity status of the entity.
+        isIncorporatedIn:
+          type: string
+          description: The country of incorporation.
+        isDomiciledIn:
+          type: string
+          description: The country of domicile.
+        hasURL:
+          type: string
+          format: uri
+          description: The entity's website URL.
+        hasPrimaryInstrument:
+          type: string
+          description: The PermID of the primary instrument.
+    OrganizationEntity:
+      type: object
+      properties:
+        organizationName:
+          type: string
+          description: The name of the organization.
+        orgSubtype:
+          type: string
+          description: The subtype of the organization such as Company or Fund.
+        hasHoldingClassification:
+          type: string
+          description: Whether the organization is public or private.
+        primaryRIC:
+          type: string
+          description: The primary RIC associated with the organization.
+        lei:
+          type: string
+          description: The Legal Entity Identifier.
+        '@id':
+          type: string
+          format: uri
+          description: The PermID URI for the organization.
   securitySchemes:
     apiKeyAuth:
       type: apiKey

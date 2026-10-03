@@ -78,41 +78,6 @@ paths:
           description: Story not found
 components:
   schemas:
-    NewsHeadlinesResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/NewsHeadline'
-        meta:
-          type: object
-          properties:
-            count:
-              type: integer
-              description: The total number of matching headlines.
-            next:
-              type: string
-              description: Pagination cursor for the next page of results.
-    NewsHeadline:
-      type: object
-      properties:
-        storyId:
-          type: string
-          description: The unique identifier of the news story.
-        title:
-          type: string
-          description: The headline text.
-        newsItem:
-          type: string
-          description: A reference identifier for the news item.
-        sourceCode:
-          type: string
-          description: The code identifying the news source.
-        versionCreated:
-          type: string
-          format: date-time
-          description: The timestamp when the headline was created.
     NewsStory:
       type: object
       properties:
@@ -132,6 +97,41 @@ components:
           type: string
           format: date-time
           description: The timestamp when the story was published.
+    NewsHeadline:
+      type: object
+      properties:
+        storyId:
+          type: string
+          description: The unique identifier of the news story.
+        title:
+          type: string
+          description: The headline text.
+        newsItem:
+          type: string
+          description: A reference identifier for the news item.
+        sourceCode:
+          type: string
+          description: The code identifying the news source.
+        versionCreated:
+          type: string
+          format: date-time
+          description: The timestamp when the headline was created.
+    NewsHeadlinesResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/NewsHeadline'
+        meta:
+          type: object
+          properties:
+            count:
+              type: integer
+              description: The total number of matching headlines.
+            next:
+              type: string
+              description: Pagination cursor for the next page of results.
   securitySchemes:
     bearerAuth:
       type: http
