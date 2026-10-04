@@ -68,6 +68,30 @@ paths:
           description: Result not found
 components:
   schemas:
+    ResolutionRequest:
+      type: object
+      required:
+      - statusId
+      properties:
+        statusId:
+          type: string
+          description: The resolution status to assign, from the resolution toolkit.
+        riskId:
+          type: string
+          description: The risk level to assign, from the resolution toolkit.
+        reasonId:
+          type: string
+          description: The reason for the resolution, from the resolution toolkit.
+        remarks:
+          type: string
+          description: Free-text remarks or notes for the resolution.
+    ScreeningResultsResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScreeningResult'
     ScreeningResult:
       type: object
       properties:
@@ -107,30 +131,6 @@ components:
             reasonId:
               type: string
               description: The resolution reason identifier.
-    ScreeningResultsResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ScreeningResult'
-    ResolutionRequest:
-      type: object
-      required:
-      - statusId
-      properties:
-        statusId:
-          type: string
-          description: The resolution status to assign, from the resolution toolkit.
-        riskId:
-          type: string
-          description: The risk level to assign, from the resolution toolkit.
-        reasonId:
-          type: string
-          description: The reason for the resolution, from the resolution toolkit.
-        remarks:
-          type: string
-          description: Free-text remarks or notes for the resolution.
   parameters:
     caseSystemId:
       name: caseSystemId

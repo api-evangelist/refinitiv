@@ -86,6 +86,21 @@ paths:
           description: Group not found
 components:
   schemas:
+    Group:
+      type: object
+      properties:
+        groupId:
+          type: string
+          description: The unique identifier of the group.
+        name:
+          type: string
+          description: The name of the group.
+        parentId:
+          type: string
+          description: The parent group identifier, if applicable.
+        status:
+          type: string
+          description: The status of the group, such as ACTIVE or INACTIVE.
     ResolutionToolkit:
       type: object
       properties:
@@ -128,21 +143,6 @@ components:
               label:
                 type: string
                 description: The display label for the reason.
-    Group:
-      type: object
-      properties:
-        groupId:
-          type: string
-          description: The unique identifier of the group.
-        name:
-          type: string
-          description: The name of the group.
-        parentId:
-          type: string
-          description: The parent group identifier, if applicable.
-        status:
-          type: string
-          description: The status of the group, such as ACTIVE or INACTIVE.
   securitySchemes:
     hmacAuth:
       type: apiKey

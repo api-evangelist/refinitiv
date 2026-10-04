@@ -106,6 +106,43 @@ paths:
           description: Case not found
 components:
   schemas:
+    Case:
+      type: object
+      properties:
+        caseSystemId:
+          type: string
+          description: The system-generated case identifier.
+        caseId:
+          type: string
+          description: The client-defined case identifier.
+        groupId:
+          type: string
+          description: The group the case belongs to.
+        entityType:
+          type: string
+          description: The entity type of the case.
+        name:
+          type: object
+          properties:
+            firstName:
+              type: string
+            middleName:
+              type: string
+            lastName:
+              type: string
+            fullName:
+              type: string
+        caseScreeningState:
+          type: object
+          description: The current screening state for each provider type.
+        creationDate:
+          type: string
+          format: date-time
+          description: The date and time the case was created.
+        modificationDate:
+          type: string
+          format: date-time
+          description: The date and time the case was last modified.
     ScreeningResult:
       type: object
       properties:
@@ -145,7 +182,7 @@ components:
             reasonId:
               type: string
               description: The resolution reason identifier.
-    Case:
+    ScreeningResponse:
       type: object
       properties:
         caseSystemId:
@@ -154,60 +191,10 @@ components:
         caseId:
           type: string
           description: The client-defined case identifier.
-        groupId:
-          type: string
-          description: The group the case belongs to.
-        entityType:
-          type: string
-          description: The entity type of the case.
-        name:
-          type: object
-          properties:
-            firstName:
-              type: string
-            middleName:
-              type: string
-            lastName:
-              type: string
-            fullName:
-              type: string
-        caseScreeningState:
-          type: object
-          description: The current screening state for each provider type.
-        creationDate:
-          type: string
-          format: date-time
-          description: The date and time the case was created.
-        modificationDate:
-          type: string
-          format: date-time
-          description: The date and time the case was last modified.
-    CaseUpdateRequest:
-      type: object
-      properties:
-        name:
-          type: object
-          properties:
-            firstName:
-              type: string
-            middleName:
-              type: string
-            lastName:
-              type: string
-            fullName:
-              type: string
-        secondaryFields:
-          type: object
-          description: Updated secondary screening fields.
-        customFields:
+        results:
           type: array
           items:
-            type: object
-            properties:
-              typeId:
-                type: string
-              value:
-                type: string
+            $ref: '#/components/schemas/ScreeningResult'
     ScreeningRequest:
       type: object
       required:
@@ -294,19 +281,32 @@ components:
               value:
                 type: string
                 description: The custom field value.
-    ScreeningResponse:
+    CaseUpdateRequest:
       type: object
       properties:
-        caseSystemId:
-          type: string
-          description: The system-generated case identifier.
-        caseId:
-          type: string
-          description: The client-defined case identifier.
-        results:
+        name:
+          type: object
+          properties:
+            firstName:
+              type: string
+            middleName:
+              type: string
+            lastName:
+              type: string
+            fullName:
+              type: string
+        secondaryFields:
+          type: object
+          description: Updated secondary screening fields.
+        customFields:
           type: array
           items:
-            $ref: '#/components/schemas/ScreeningResult'
+            type: object
+            properties:
+              typeId:
+                type: string
+              value:
+                type: string
   parameters:
     caseSystemId:
       name: caseSystemId

@@ -97,6 +97,22 @@ components:
           type: string
           format: date-time
           description: The timestamp when the story was published.
+    NewsHeadlinesResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/NewsHeadline'
+        meta:
+          type: object
+          properties:
+            count:
+              type: integer
+              description: The total number of matching headlines.
+            next:
+              type: string
+              description: Pagination cursor for the next page of results.
     NewsHeadline:
       type: object
       properties:
@@ -116,22 +132,6 @@ components:
           type: string
           format: date-time
           description: The timestamp when the headline was created.
-    NewsHeadlinesResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/NewsHeadline'
-        meta:
-          type: object
-          properties:
-            count:
-              type: integer
-              description: The total number of matching headlines.
-            next:
-              type: string
-              description: Pagination cursor for the next page of results.
   securitySchemes:
     bearerAuth:
       type: http

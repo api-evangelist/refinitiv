@@ -42,6 +42,26 @@ paths:
           description: Unauthorized
 components:
   schemas:
+    FinancialContractResponse:
+      type: object
+      properties:
+        headers:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: The output field name.
+              type:
+                type: string
+                description: The data type of the field.
+        data:
+          type: array
+          items:
+            type: array
+            items:
+              description: Calculated values corresponding to the headers array.
     FinancialContractRequest:
       type: object
       properties:
@@ -70,26 +90,6 @@ components:
                 type: object
                 description: The pricing parameters for the calculation.
           description: Array of financial contract definitions to price.
-    FinancialContractResponse:
-      type: object
-      properties:
-        headers:
-          type: array
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-                description: The output field name.
-              type:
-                type: string
-                description: The data type of the field.
-        data:
-          type: array
-          items:
-            type: array
-            items:
-              description: Calculated values corresponding to the headers array.
   securitySchemes:
     bearerAuth:
       type: http

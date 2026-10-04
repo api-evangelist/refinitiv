@@ -156,25 +156,6 @@ paths:
           description: Entity not found
 components:
   schemas:
-    QuoteEntity:
-      type: object
-      properties:
-        hasName:
-          type: string
-          description: The name of the quote.
-        hasRIC:
-          type: string
-          description: The RIC code.
-        hasMic:
-          type: string
-          description: The Market Identifier Code.
-        isQuoteOf:
-          type: string
-          description: The PermID of the quoted instrument.
-        '@id':
-          type: string
-          format: uri
-          description: The PermID URI for the quote.
     SearchResponse:
       type: object
       properties:
@@ -211,46 +192,6 @@ components:
                   type: array
                   items:
                     $ref: '#/components/schemas/QuoteEntity'
-    InstrumentEntity:
-      type: object
-      properties:
-        hasName:
-          type: string
-          description: The name of the instrument.
-        assetClass:
-          type: string
-          description: The asset class of the instrument.
-        isIssuedBy:
-          type: string
-          description: The PermID of the issuing organization.
-        '@id':
-          type: string
-          format: uri
-          description: The PermID URI for the instrument.
-    TaggingResponse:
-      type: object
-      additionalProperties:
-        type: object
-        properties:
-          _type:
-            type: string
-            description: The entity type such as Company, Person, City, or IndustryTerm.
-          name:
-            type: string
-            description: The recognized entity name.
-          _typeGroup:
-            type: string
-            description: The type group such as entities, topics, or relations.
-          fopiPermId:
-            type: string
-            description: The associated PermID identifier.
-          relevance:
-            type: number
-            description: The relevance score from 0 to 1.
-          confidence:
-            type: number
-            description: The confidence score for the entity recognition.
-      description: Map of extracted entities, topics, and relations keyed by unique identifiers, with each entry containing entity metadata and linked PermIDs.
     EntityDetail:
       type: object
       properties:
@@ -277,6 +218,65 @@ components:
         hasPrimaryInstrument:
           type: string
           description: The PermID of the primary instrument.
+    TaggingResponse:
+      type: object
+      additionalProperties:
+        type: object
+        properties:
+          _type:
+            type: string
+            description: The entity type such as Company, Person, City, or IndustryTerm.
+          name:
+            type: string
+            description: The recognized entity name.
+          _typeGroup:
+            type: string
+            description: The type group such as entities, topics, or relations.
+          fopiPermId:
+            type: string
+            description: The associated PermID identifier.
+          relevance:
+            type: number
+            description: The relevance score from 0 to 1.
+          confidence:
+            type: number
+            description: The confidence score for the entity recognition.
+      description: Map of extracted entities, topics, and relations keyed by unique identifiers, with each entry containing entity metadata and linked PermIDs.
+    QuoteEntity:
+      type: object
+      properties:
+        hasName:
+          type: string
+          description: The name of the quote.
+        hasRIC:
+          type: string
+          description: The RIC code.
+        hasMic:
+          type: string
+          description: The Market Identifier Code.
+        isQuoteOf:
+          type: string
+          description: The PermID of the quoted instrument.
+        '@id':
+          type: string
+          format: uri
+          description: The PermID URI for the quote.
+    InstrumentEntity:
+      type: object
+      properties:
+        hasName:
+          type: string
+          description: The name of the instrument.
+        assetClass:
+          type: string
+          description: The asset class of the instrument.
+        isIssuedBy:
+          type: string
+          description: The PermID of the issuing organization.
+        '@id':
+          type: string
+          format: uri
+          description: The PermID URI for the instrument.
     OrganizationEntity:
       type: object
       properties:
