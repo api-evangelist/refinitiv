@@ -143,58 +143,6 @@ components:
           type: string
           format: date-time
           description: The date and time the case was last modified.
-    ScreeningResult:
-      type: object
-      properties:
-        resultId:
-          type: string
-          description: The unique identifier of the screening result.
-        referenceId:
-          type: string
-          description: The World-Check reference profile identifier.
-        matchStrength:
-          type: string
-          description: The strength of the match, such as EXACT, STRONG, MEDIUM, or WEAK.
-        matchedTerm:
-          type: string
-          description: The name or term that was matched.
-        submittedTerm:
-          type: string
-          description: The original term submitted for screening.
-        matchedNameType:
-          type: string
-          description: The type of name matched, such as PRIMARY or ALIAS.
-        categories:
-          type: array
-          items:
-            type: string
-          description: Categories assigned to the matched profile such as PEP, Sanctions, or Adverse Media.
-        resolution:
-          type: object
-          description: The current resolution status of the result, null if unresolved.
-          properties:
-            statusId:
-              type: string
-              description: The resolution status identifier.
-            riskId:
-              type: string
-              description: The risk level identifier.
-            reasonId:
-              type: string
-              description: The resolution reason identifier.
-    ScreeningResponse:
-      type: object
-      properties:
-        caseSystemId:
-          type: string
-          description: The system-generated case identifier.
-        caseId:
-          type: string
-          description: The client-defined case identifier.
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ScreeningResult'
     ScreeningRequest:
       type: object
       required:
@@ -307,6 +255,58 @@ components:
                 type: string
               value:
                 type: string
+    ScreeningResponse:
+      type: object
+      properties:
+        caseSystemId:
+          type: string
+          description: The system-generated case identifier.
+        caseId:
+          type: string
+          description: The client-defined case identifier.
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScreeningResult'
+    ScreeningResult:
+      type: object
+      properties:
+        resultId:
+          type: string
+          description: The unique identifier of the screening result.
+        referenceId:
+          type: string
+          description: The World-Check reference profile identifier.
+        matchStrength:
+          type: string
+          description: The strength of the match, such as EXACT, STRONG, MEDIUM, or WEAK.
+        matchedTerm:
+          type: string
+          description: The name or term that was matched.
+        submittedTerm:
+          type: string
+          description: The original term submitted for screening.
+        matchedNameType:
+          type: string
+          description: The type of name matched, such as PRIMARY or ALIAS.
+        categories:
+          type: array
+          items:
+            type: string
+          description: Categories assigned to the matched profile such as PEP, Sanctions, or Adverse Media.
+        resolution:
+          type: object
+          description: The current resolution status of the result, null if unresolved.
+          properties:
+            statusId:
+              type: string
+              description: The resolution status identifier.
+            riskId:
+              type: string
+              description: The risk level identifier.
+            reasonId:
+              type: string
+              description: The resolution reason identifier.
   parameters:
     caseSystemId:
       name: caseSystemId

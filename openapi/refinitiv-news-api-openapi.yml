@@ -78,6 +78,25 @@ paths:
           description: Story not found
 components:
   schemas:
+    NewsHeadline:
+      type: object
+      properties:
+        storyId:
+          type: string
+          description: The unique identifier of the news story.
+        title:
+          type: string
+          description: The headline text.
+        newsItem:
+          type: string
+          description: A reference identifier for the news item.
+        sourceCode:
+          type: string
+          description: The code identifying the news source.
+        versionCreated:
+          type: string
+          format: date-time
+          description: The timestamp when the headline was created.
     NewsStory:
       type: object
       properties:
@@ -113,25 +132,6 @@ components:
             next:
               type: string
               description: Pagination cursor for the next page of results.
-    NewsHeadline:
-      type: object
-      properties:
-        storyId:
-          type: string
-          description: The unique identifier of the news story.
-        title:
-          type: string
-          description: The headline text.
-        newsItem:
-          type: string
-          description: A reference identifier for the news item.
-        sourceCode:
-          type: string
-          description: The code identifying the news source.
-        versionCreated:
-          type: string
-          format: date-time
-          description: The timestamp when the headline was created.
   securitySchemes:
     bearerAuth:
       type: http
