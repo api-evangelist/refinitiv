@@ -331,6 +331,11 @@ apis:
   baseURL: https://api-eit.refinitiv.com
   tags:
   - Entity Recognition
+  - Natural Language Processing
+  - Tagging
+  - Text Analytics
+  tags_raw:
+  - Entity Recognition
   - NLP
   - Tagging
   - Text Analytics
@@ -425,6 +430,11 @@ apis:
   humanURL: https://developers.lseg.com/en/api-catalog/fx-venues/FX-Reference-Data-API
   baseURL: https://api.refinitiv.com
   tags:
+  - Foreign Exchange
+  - Reference Data
+  - Trading
+  - Venue
+  tags_raw:
   - FX
   - Reference Data
   - Trading
@@ -439,6 +449,11 @@ apis:
   humanURL: https://developers.lseg.com/en/api-catalog/fx-venues/fx-reporting
   baseURL: https://api.refinitiv.com
   tags:
+  - Analytics
+  - Foreign Exchange
+  - Reporting
+  - Trading
+  tags_raw:
   - Analytics
   - FX
   - Reporting
