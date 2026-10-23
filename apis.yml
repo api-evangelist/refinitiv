@@ -1538,6 +1538,8 @@ apis:
   - type: Website
     url: https://permid.org/
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/refinitiv/overview
 - type: Plans
   url: plans/refinitiv-plans-pricing.yml
 - type: RateLimits
