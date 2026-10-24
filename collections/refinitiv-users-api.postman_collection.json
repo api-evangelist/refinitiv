@@ -1,211 +1,205 @@
 {
+  "info": {
+    "_postman_id": "0fcb77e2-0851-4b0f-a04d-dd2ab8524cdd",
+    "name": "Refinitiv LSEG DataScope Select REST Users API",
+    "description": "Internet-hosted OData REST API for programmatic access to global pricing, corporate actions, reference data, historical data, cross-reference, and entity data. It provides fully automated extraction workflows and batch processing capabilities for large-scale data retrieval from the DataScope Select platform.\n\nContact Support:\n Name: LSEG Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:34:48.000Z",
+    "updatedAt": "2026-10-21T20:34:49.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0fcb77e2-0851-4b0f-a04d-dd2ab8524cdd"
+  },
   "item": [
     {
-      "id": "7d241f51-1d5c-4095-a745-14f95357f5d1",
       "name": "Users",
-      "description": {
-        "content": "User account information and preferences management.",
-        "type": "text/plain"
-      },
       "item": [
         {
-          "id": "d25bd491-f973-47d4-901f-462791e8cfd3",
-          "name": "Get User Information",
-          "request": {
-            "name": "Get User Information",
-            "description": {
-              "content": "Retrieves user account information for the specified user ID.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "Users",
-                "Users('{{userId}}')"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "Users('{userId}')",
+          "item": [
             {
-              "id": "9adec8a1-ff10-4cc8-8eef-63fd4010655b",
-              "name": "User information returned successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "Users",
-                    "Users('{{userId}}')"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+              "name": "Get User Information",
+              "id": "a4afcc0f-3e99-4359-bbdd-db0896497ba1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"UserId\": \"string\",\n  \"UserName\": \"string\",\n  \"Email\": \"string\",\n  \"Phone\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "621b9038-ef3b-4d32-ba89-113fe164b843",
-              "name": "Unauthorized",
-              "originalRequest": {
                 "url": {
-                  "path": [
-                    "Users",
-                    "Users('{{userId}}')"
-                  ],
+                  "raw": "{{baseUrl}}/Users/Users('{{userId}}')",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "44d6e3ff-0b59-4a24-8140-78e2de903ace",
-              "name": "User not found",
-              "originalRequest": {
-                "url": {
                   "path": [
                     "Users",
                     "Users('{{userId}}')"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
+                  ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Retrieves user account information for the specified user ID."
               },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "8d64c395-0649-4b24-b96a-b1da46569bc5",
+                  "name": "User information returned successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Users/Users('{{userId}}')",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Users",
+                        "Users('{{userId}}')"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"UserId\": \"<string>\",\n  \"UserName\": \"<string>\",\n  \"Email\": \"<string>\",\n  \"Phone\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:34:49.000Z",
+                  "updatedAt": "2026-10-21T20:34:49.000Z",
+                  "uid": "35240-8d64c395-0649-4b24-b96a-b1da46569bc5"
+                },
+                {
+                  "id": "692b14c5-abb2-4608-be78-fcff190ed650",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Users/Users('{{userId}}')",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Users",
+                        "Users('{{userId}}')"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:34:49.000Z",
+                  "updatedAt": "2026-10-21T20:34:49.000Z",
+                  "uid": "35240-692b14c5-abb2-4608-be78-fcff190ed650"
+                },
+                {
+                  "id": "deb51273-3303-4102-92ff-6885a65186f1",
+                  "name": "User not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Users/Users('{{userId}}')",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Users",
+                        "Users('{{userId}}')"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:34:49.000Z",
+                  "updatedAt": "2026-10-21T20:34:49.000Z",
+                  "uid": "35240-deb51273-3303-4102-92ff-6885a65186f1"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T20:34:49.000Z",
+              "updatedAt": "2026-10-21T20:34:49.000Z",
+              "uid": "35240-a4afcc0f-3e99-4359-bbdd-db0896497ba1"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "48c72eb4-b0a7-4db7-9dc0-688260385c3b",
+          "createdAt": "2026-10-21T20:34:49.000Z",
+          "updatedAt": "2026-10-21T20:34:49.000Z",
+          "uid": "35240-48c72eb4-b0a7-4db7-9dc0-688260385c3b"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.refinitiv.com",
-      "key": "baseUrl"
-    },
-    {
-      "disabled": false,
-      "description": {
-        "content": "(Required) The user identifier.",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "<string>",
-      "key": "userId"
+      "id": "8027ad5d-8a8f-492a-bc12-e91546e26109",
+      "createdAt": "2026-10-21T20:34:49.000Z",
+      "updatedAt": "2026-10-21T20:34:49.000Z",
+      "uid": "35240-8027ad5d-8a8f-492a-bc12-e91546e26109"
     }
   ],
   "auth": {
-    "type": "bearer",
-    "bearer": [
+    "type": "apikey",
+    "apikey": [
       {
-        "key": "token",
-        "value": "{{bearerToken}}"
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "005d08de-2ffd-4643-9372-6e04aab5b91f",
-    "name": "Refinitiv Data Platform (RDP) APIs Authentication Users API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.\n\nContact Support:\n Name: LSEG Developer Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://selectapi.datascope.lseg.com/RestApi/v1"
+    },
+    {
+      "key": "userId",
+      "value": "<string>"
     }
-  }
+  ]
 }

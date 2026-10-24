@@ -1,149 +1,156 @@
 {
+  "info": {
+    "_postman_id": "bbe42a5a-caaf-4499-9c65-24d9c192ae69",
+    "name": "Refinitiv Data Platform (RDP) Streaming API",
+    "description": "Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.\n\nContact Support:\n Name: LSEG Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:34:36.000Z",
+    "updatedAt": "2026-10-21T20:34:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-bbe42a5a-caaf-4499-9c65-24d9c192ae69"
+  },
   "item": [
     {
-      "id": "9c6252f3-7b26-498b-8afa-fa341be30aea",
-      "name": "Streaming",
-      "description": {
-        "content": "Service discovery for streaming connections to real-time pricing and data services.",
-        "type": "text/plain"
-      },
+      "name": "streaming",
       "item": [
         {
-          "id": "62610436-39ea-4171-9ae8-fd94843437d1",
-          "name": "Discover Streaming Endpoints",
-          "request": {
-            "name": "Discover Streaming Endpoints",
-            "description": {
-              "content": "Retrieves available streaming service endpoints for establishing WebSocket connections to real-time pricing data. Returns endpoint URIs and port information for connecting to the Real-Time Optimized streaming service.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "streaming",
-                "pricing",
-                "v1",
-                ""
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "pricing",
+          "item": [
             {
-              "id": "fb7c9551-c112-4e60-8533-db82e3f2948d",
-              "name": "Streaming endpoints returned successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "streaming",
-                    "pricing",
-                    "v1",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+              "name": "v1",
+              "item": [
+                {
+                  "name": "Discover Streaming Endpoints",
+                  "id": "09371c0f-6cb4-4a74-908b-9972c87c54fa",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"services\": [\n    {\n      \"endpoint\": \"string\",\n      \"port\": 2002,\n      \"provider\": \"string\",\n      \"dataFormat\": \"string\"\n    },\n    {\n      \"endpoint\": \"string\",\n      \"port\": 9179,\n      \"provider\": \"string\",\n      \"dataFormat\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "dd10ba9e-7ea4-4f38-8b49-841701951800",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "streaming",
-                    "pricing",
-                    "v1",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/streaming/pricing/v1/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "streaming",
+                        "pricing",
+                        "v1",
+                        ""
+                      ]
                     },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                    "description": "Retrieves available streaming service endpoints for establishing WebSocket connections to real-time pricing data. Returns endpoint URIs and port information for connecting to the Real-Time Optimized streaming service."
+                  },
+                  "response": [
+                    {
+                      "id": "d56099ad-d47e-46b7-85ac-7847a40e4894",
+                      "name": "Streaming endpoints returned successfully",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/streaming/pricing/v1/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "streaming",
+                            "pricing",
+                            "v1",
+                            ""
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"services\": [\n    {\n      \"endpoint\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"provider\": \"<string>\",\n      \"dataFormat\": \"<string>\"\n    },\n    {\n      \"endpoint\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"provider\": \"<string>\",\n      \"dataFormat\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:34:37.000Z",
+                      "updatedAt": "2026-10-21T20:34:37.000Z",
+                      "uid": "35240-d56099ad-d47e-46b7-85ac-7847a40e4894"
+                    },
+                    {
+                      "id": "ea192681-745c-4e58-a21d-e77d95e10968",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/streaming/pricing/v1/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "streaming",
+                            "pricing",
+                            "v1",
+                            ""
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:34:37.000Z",
+                      "updatedAt": "2026-10-21T20:34:37.000Z",
+                      "uid": "35240-ea192681-745c-4e58-a21d-e77d95e10968"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:34:37.000Z",
+                  "updatedAt": "2026-10-21T20:34:37.000Z",
+                  "uid": "35240-09371c0f-6cb4-4a74-908b-9972c87c54fa"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "b5764c30-2480-42f2-a711-79f801c388b4",
+              "createdAt": "2026-10-21T20:34:37.000Z",
+              "updatedAt": "2026-10-21T20:34:37.000Z",
+              "uid": "35240-b5764c30-2480-42f2-a711-79f801c388b4"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "840eb881-75d7-48e0-b3ff-57883fde747f",
+          "createdAt": "2026-10-21T20:34:37.000Z",
+          "updatedAt": "2026-10-21T20:34:37.000Z",
+          "uid": "35240-840eb881-75d7-48e0-b3ff-57883fde747f"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.refinitiv.com",
-      "key": "baseUrl"
+      "id": "9e4f2739-04a3-472e-bc30-23ae78a9d240",
+      "createdAt": "2026-10-21T20:34:37.000Z",
+      "updatedAt": "2026-10-21T20:34:37.000Z",
+      "uid": "35240-9e4f2739-04a3-472e-bc30-23ae78a9d240"
     }
   ],
   "auth": {
@@ -151,17 +158,15 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "0c03764b-c2c6-461c-92bd-57fb6aa55961",
-    "name": "Refinitiv Data Platform (RDP) APIs Authentication Streaming API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.\n\nContact Support:\n Name: LSEG Developer Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.refinitiv.com"
     }
-  }
+  ]
 }

@@ -1,228 +1,257 @@
 {
+  "info": {
+    "_postman_id": "8dcde8db-a245-49ec-bab0-862f0b52d6fe",
+    "name": "Refinitiv Data Platform (RDP) Symbology API",
+    "description": "Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.\n\nContact Support:\n Name: LSEG Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:34:43.000Z",
+    "updatedAt": "2026-10-21T20:34:43.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8dcde8db-a245-49ec-bab0-862f0b52d6fe"
+  },
   "item": [
     {
-      "id": "151658b2-5eb6-4e3d-97c3-f0b19243f82b",
-      "name": "Symbology",
-      "description": {
-        "content": "Symbol lookup and conversion between different identifier types including RIC, ISIN, CUSIP, SEDOL, and PermID.",
-        "type": "text/plain"
-      },
+      "name": "discovery",
       "item": [
         {
-          "id": "2c6b8bfc-306d-4676-9015-6f31022f588e",
-          "name": "Convert Symbology Identifiers",
-          "request": {
-            "name": "Convert Symbology Identifiers",
-            "description": {
-              "content": "Converts financial instrument identifiers between different symbology types such as RIC, ISIN, CUSIP, SEDOL, ticker, and PermID. Supports batch conversion of multiple identifiers in a single request.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "discovery",
-                "symbology",
-                "v1",
-                "convert"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"from\": [\n    {\n      \"identifierTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"identifierTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"to\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "symbology",
+          "item": [
             {
-              "id": "689e0c2d-d30d-451c-b80d-6f82f7d47dfc",
-              "name": "Symbology conversion results returned successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "discovery",
-                    "symbology",
-                    "v1",
-                    "convert"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"from\": [\n    {\n      \"identifierTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"identifierTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"to\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "v1",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "convert",
+                  "item": [
+                    {
+                      "name": "Convert Symbology Identifiers",
+                      "id": "d7309a3e-5ae5-43d7-8de3-4ef05ee25916",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"from\": [\n    {\n      \"identifierTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"identifierTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"to\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/discovery/symbology/v1/convert",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "discovery",
+                            "symbology",
+                            "v1",
+                            "convert"
+                          ]
+                        },
+                        "description": "Converts financial instrument identifiers between different symbology types such as RIC, ISIN, CUSIP, SEDOL, ticker, and PermID. Supports batch conversion of multiple identifiers in a single request."
+                      },
+                      "response": [
+                        {
+                          "id": "42c8d20d-b0cf-4941-b33f-de5c403fc4b5",
+                          "name": "Symbology conversion results returned successfully",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"from\": [\n    {\n      \"identifierTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"identifierTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"to\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/discovery/symbology/v1/convert",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "discovery",
+                                "symbology",
+                                "v1",
+                                "convert"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-10-21T20:34:43.000Z",
+                          "updatedAt": "2026-10-21T20:34:43.000Z",
+                          "uid": "35240-42c8d20d-b0cf-4941-b33f-de5c403fc4b5"
+                        },
+                        {
+                          "id": "973f5bc0-6e42-46c9-a71d-70464c175ebf",
+                          "name": "Invalid request",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"from\": [\n    {\n      \"identifierTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"identifierTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"to\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/discovery/symbology/v1/convert",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "discovery",
+                                "symbology",
+                                "v1",
+                                "convert"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:34:43.000Z",
+                          "updatedAt": "2026-10-21T20:34:43.000Z",
+                          "uid": "35240-973f5bc0-6e42-46c9-a71d-70464c175ebf"
+                        },
+                        {
+                          "id": "90699950-4a17-417d-b7a3-8d744492ce1f",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"from\": [\n    {\n      \"identifierTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"identifierTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"to\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/discovery/symbology/v1/convert",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "discovery",
+                                "symbology",
+                                "v1",
+                                "convert"
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:34:43.000Z",
+                          "updatedAt": "2026-10-21T20:34:43.000Z",
+                          "uid": "35240-90699950-4a17-417d-b7a3-8d744492ce1f"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:34:43.000Z",
+                      "updatedAt": "2026-10-21T20:34:43.000Z",
+                      "uid": "35240-d7309a3e-5ae5-43d7-8de3-4ef05ee25916"
+                    }
+                  ],
+                  "id": "812d8a61-ee84-4cac-a2fb-36693569f9a8",
+                  "createdAt": "2026-10-21T20:34:43.000Z",
+                  "updatedAt": "2026-10-21T20:34:43.000Z",
+                  "uid": "35240-812d8a61-ee84-4cac-a2fb-36693569f9a8"
                 }
               ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "22988726-6342-4300-9f19-abb37b1482ab",
-              "name": "Invalid request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "discovery",
-                    "symbology",
-                    "v1",
-                    "convert"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"from\": [\n    {\n      \"identifierTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"identifierTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"to\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "e7b2e77f-535b-40c3-9376-010429de82f7",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "discovery",
-                    "symbology",
-                    "v1",
-                    "convert"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"from\": [\n    {\n      \"identifierTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"identifierTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"to\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "41b6b583-ea9a-4f38-91df-c942d1c92ae7",
+              "createdAt": "2026-10-21T20:34:43.000Z",
+              "updatedAt": "2026-10-21T20:34:43.000Z",
+              "uid": "35240-41b6b583-ea9a-4f38-91df-c942d1c92ae7"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "f0aab230-ef57-4b78-bdbc-1f35e9dcc754",
+          "createdAt": "2026-10-21T20:34:43.000Z",
+          "updatedAt": "2026-10-21T20:34:43.000Z",
+          "uid": "35240-f0aab230-ef57-4b78-bdbc-1f35e9dcc754"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.refinitiv.com",
-      "key": "baseUrl"
+      "id": "615e43f3-d6a5-4562-a500-6011bd570481",
+      "createdAt": "2026-10-21T20:34:43.000Z",
+      "updatedAt": "2026-10-21T20:34:43.000Z",
+      "uid": "35240-615e43f3-d6a5-4562-a500-6011bd570481"
     }
   ],
   "auth": {
@@ -230,17 +259,15 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "bf3a44c4-ff32-4d23-b5b5-ddbc5f88e663",
-    "name": "Refinitiv Data Platform (RDP) APIs Authentication Symbology API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.\n\nContact Support:\n Name: LSEG Developer Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.refinitiv.com"
     }
-  }
+  ]
 }

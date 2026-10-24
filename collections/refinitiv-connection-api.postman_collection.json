@@ -1,264 +1,284 @@
 {
+  "info": {
+    "_postman_id": "c4ea59a2-9a22-44a5-ab5b-62641d6c5827",
+    "name": "Refinitiv Qual-ID Connection API",
+    "description": "RESTful API for automating identity verification and document verification processes. It helps organizations comply with regulations and identify potential financial crime using trusted and vetted data sources with normalized data fields. Supports verification across multiple countries using local data sources for identity matching.\n\nContact Support:\n Name: LSEG Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:32:56.000Z",
+    "updatedAt": "2026-10-21T20:32:56.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c4ea59a2-9a22-44a5-ab5b-62641d6c5827"
+  },
   "item": [
     {
-      "id": "2d9f50ec-bce9-49a2-954f-3b54957f4781",
-      "name": "Connection",
-      "description": {
-        "content": "Connectivity and authentication testing endpoints.",
-        "type": "text/plain"
-      },
+      "name": "connection",
       "item": [
         {
-          "id": "3d56ee27-950f-40c0-8edd-1ff3a446d5e3",
-          "name": "Test Connectivity",
-          "request": {
-            "name": "Test Connectivity",
-            "description": {
-              "content": "Tests connectivity to the API server. This endpoint does not require authentication and returns a greeting with the provided name.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "connection",
-                "v1",
-                "sayhello",
-                ":name"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "name",
-                  "description": "(Required) A name to include in the greeting response."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "text/plain"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "v1",
+          "item": [
             {
-              "id": "b6cc72ff-eda3-4212-b708-575c4a763eb4",
-              "name": "Connectivity test successful",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "connection",
-                    "v1",
-                    "sayhello",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+              "name": "sayhello",
+              "item": [
+                {
+                  "name": "{name}",
+                  "item": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) A name to include in the greeting response."
+                      "name": "Test Connectivity",
+                      "id": "88a41e59-6178-4d70-84ad-bbf9703e130a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/connection/v1/sayhello/:name",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "connection",
+                            "v1",
+                            "sayhello",
+                            ":name"
+                          ],
+                          "variable": [
+                            {
+                              "id": "1e49ca63-8671-47c5-96bc-9e53d8bcc335",
+                              "key": "name",
+                              "value": "<string>",
+                              "description": "(Required) A name to include in the greeting response."
+                            }
+                          ]
+                        },
+                        "description": "Tests connectivity to the API server. This endpoint does not require authentication and returns a greeting with the provided name."
+                      },
+                      "response": [
+                        {
+                          "id": "57fbf93d-d08a-47cc-9fd3-7c5a632a3d58",
+                          "name": "Connectivity test successful",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "text/plain"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/connection/v1/sayhello/:name",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "connection",
+                                "v1",
+                                "sayhello",
+                                ":name"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "text/plain"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<string>",
+                          "createdAt": "2026-10-21T20:32:56.000Z",
+                          "updatedAt": "2026-10-21T20:32:56.000Z",
+                          "uid": "35240-57fbf93d-d08a-47cc-9fd3-7c5a632a3d58"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:32:56.000Z",
+                      "updatedAt": "2026-10-21T20:32:56.000Z",
+                      "uid": "35240-88a41e59-6178-4d70-84ad-bbf9703e130a"
                     }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "text/plain"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  ],
+                  "id": "e9d56652-514e-42be-9525-4a37306c0ac4",
+                  "createdAt": "2026-10-21T20:32:56.000Z",
+                  "updatedAt": "2026-10-21T20:32:56.000Z",
+                  "uid": "35240-e9d56652-514e-42be-9525-4a37306c0ac4"
                 }
               ],
-              "body": "string",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "b8b1e97c-cd42-4a01-9e8e-de1af9df8cc6",
-          "name": "Test Authentication",
-          "request": {
-            "name": "Test Authentication",
-            "description": {
-              "content": "Tests that the provided credentials are valid by returning a greeting with the authenticated username.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "connection",
-                "v1",
-                "testauthentication"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "text/plain"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "369628a1-d6d2-40a0-b6c3-fa5f49043848",
-              "name": "Authentication successful",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "connection",
-                    "v1",
-                    "testauthentication"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "text/plain"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "string",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "f73fc6d7-5ee0-4b87-b08a-e02b2f41e82c",
+              "createdAt": "2026-10-21T20:32:56.000Z",
+              "updatedAt": "2026-10-21T20:32:56.000Z",
+              "uid": "35240-f73fc6d7-5ee0-4b87-b08a-e02b2f41e82c"
             },
             {
-              "id": "f304bf80-b46c-48d2-ad13-12f7b06b9655",
-              "name": "Invalid credentials",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "connection",
-                    "v1",
-                    "testauthentication"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "name": "testauthentication",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "name": "Test Authentication",
+                  "id": "d45ca918-99f3-4215-9d4c-19fae566fcd5",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/connection/v1/testauthentication",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "connection",
+                        "v1",
+                        "testauthentication"
+                      ]
+                    },
+                    "description": "Tests that the provided credentials are valid by returning a greeting with the authenticated username."
+                  },
+                  "response": [
+                    {
+                      "id": "2d89bb5b-8b42-46a7-bead-89ab1fe38cb6",
+                      "name": "Authentication successful",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/connection/v1/testauthentication",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "connection",
+                            "v1",
+                            "testauthentication"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-10-21T20:32:56.000Z",
+                      "updatedAt": "2026-10-21T20:32:56.000Z",
+                      "uid": "35240-2d89bb5b-8b42-46a7-bead-89ab1fe38cb6"
+                    },
+                    {
+                      "id": "81d441a5-ad2e-45c7-8f90-ba6da4f578db",
+                      "name": "Invalid credentials",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/connection/v1/testauthentication",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "connection",
+                            "v1",
+                            "testauthentication"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:32:56.000Z",
+                      "updatedAt": "2026-10-21T20:32:56.000Z",
+                      "uid": "35240-81d441a5-ad2e-45c7-8f90-ba6da4f578db"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:32:56.000Z",
+                  "updatedAt": "2026-10-21T20:32:56.000Z",
+                  "uid": "35240-d45ca918-99f3-4215-9d4c-19fae566fcd5"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "e70a9139-d3b9-4029-b27d-37aeee836450",
+              "createdAt": "2026-10-21T20:32:56.000Z",
+              "updatedAt": "2026-10-21T20:32:56.000Z",
+              "uid": "35240-e70a9139-d3b9-4029-b27d-37aeee836450"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "0e56b2d2-befa-4860-9eb2-e397f46e63f3",
+          "createdAt": "2026-10-21T20:32:56.000Z",
+          "updatedAt": "2026-10-21T20:32:56.000Z",
+          "uid": "35240-0e56b2d2-befa-4860-9eb2-e397f46e63f3"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.refinitiv.com",
-      "key": "baseUrl"
+      "id": "6253ec4f-7a1f-4954-833b-b4acfbad2b5e",
+      "createdAt": "2026-10-21T20:32:56.000Z",
+      "updatedAt": "2026-10-21T20:32:56.000Z",
+      "uid": "35240-6253ec4f-7a1f-4954-833b-b4acfbad2b5e"
     }
   ],
   "auth": {
-    "type": "bearer",
-    "bearer": [
+    "type": "basic",
+    "basic": [
       {
-        "key": "token",
-        "value": "{{bearerToken}}"
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "b6254ed3-9c62-4936-be0a-5a09d533b4f4",
-    "name": "Refinitiv Data Platform (RDP) APIs Authentication Connection API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.\n\nContact Support:\n Name: LSEG Developer Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.globaldatacompany.com"
     }
-  }
+  ]
 }

@@ -1,32 +1,26 @@
 {
+  "info": {
+    "_postman_id": "d892c331-4ed0-4934-9bec-1197971550ca",
+    "name": "Refinitiv PermID Entity Search Record Matching API",
+    "description": "RESTful API enabling search of entities by name, ticker, or RIC to return PermIDs, or use PermIDs to retrieve entity information. PermID is an open and free entity identification scheme that provides a unique identifier for organizations, instruments, and quotes across approximately 13 million organizations and 3 million equity quotes.\n\nContact Support:\n Name: LSEG Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:34:03.000Z",
+    "updatedAt": "2026-10-21T20:34:03.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d892c331-4ed0-4934-9bec-1197971550ca"
+  },
   "item": [
     {
-      "id": "5b7c1292-b8bc-4d7e-a69a-1de3fad4dd75",
-      "name": "Record Matching",
-      "description": {
-        "content": "Match unstructured entity records to PermID identifiers for concordance and entity resolution.",
-        "type": "text/plain"
-      },
+      "name": "match",
       "item": [
         {
-          "id": "b8575855-e6d5-4c23-9ccf-dbb9926d09f1",
           "name": "Match Records to PermIDs",
+          "id": "f52af955-5b97-4e8d-8a79-0e1d268876ab",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Match Records to PermIDs",
-            "description": {
-              "content": "Matches unstructured entity records to PermID identifiers. Accepts entity data such as organization name, address, and identifiers and returns the best matching PermID with confidence scores.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "match"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
@@ -37,220 +31,231 @@
                 "value": "text/plain"
               }
             ],
-            "method": "POST",
-            "auth": null,
             "body": {
               "mode": "raw",
               "raw": "<string>"
-            }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/match",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "match"
+              ]
+            },
+            "description": "Matches unstructured entity records to PermID identifiers. Accepts entity data such as organization name, address, and identifiers and returns the best matching PermID with confidence scores."
           },
           "response": [
             {
-              "id": "b71fe322-a994-4818-963d-f6aff76a4d2e",
+              "id": "d6807c4e-9855-4315-a65f-8fb0f8f9ded9",
               "name": "Records matched successfully",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "match"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "text/plain"
                   },
                   {
                     "key": "Accept",
                     "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-ag-access-token",
+                    "value": "<API Key>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
                   "raw": "<string>"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/match",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "match"
+                  ]
                 }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "text",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "text/plain"
                 }
               ],
-              "body": "string",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": "<string>",
+              "createdAt": "2026-10-21T20:34:04.000Z",
+              "updatedAt": "2026-10-21T20:34:04.000Z",
+              "uid": "35240-d6807c4e-9855-4315-a65f-8fb0f8f9ded9"
             },
             {
-              "id": "b4ba472a-8384-45b9-a402-c95e4cb5712c",
+              "id": "7afdf80d-da6c-4b99-909a-d558caf591e9",
               "name": "Invalid input format",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "match"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-ag-access-token",
+                    "value": "<API Key>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
                   "raw": "<string>"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/match",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "match"
+                  ]
                 }
               },
               "status": "Bad Request",
               "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:34:04.000Z",
+              "updatedAt": "2026-10-21T20:34:04.000Z",
+              "uid": "35240-7afdf80d-da6c-4b99-909a-d558caf591e9"
             },
             {
-              "id": "1c60ece7-dcbf-4dd7-89ad-b5ff0aee3fbf",
+              "id": "407f79ae-82e8-472a-a6c0-c07691aa039f",
               "name": "Invalid or missing API key",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "match"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-ag-access-token",
+                    "value": "<API Key>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
                   "raw": "<string>"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/match",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "match"
+                  ]
                 }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:34:04.000Z",
+              "updatedAt": "2026-10-21T20:34:04.000Z",
+              "uid": "35240-407f79ae-82e8-472a-a6c0-c07691aa039f"
             },
             {
-              "id": "d6bfdc82-35e9-48b6-980a-a941131a0b8d",
+              "id": "832c9828-7568-4749-ac57-534d05d2d5f3",
               "name": "Rate limit exceeded",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "match"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-ag-access-token",
+                    "value": "<API Key>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
                   "raw": "<string>"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/match",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "match"
+                  ]
                 }
               },
               "status": "Too Many Requests",
               "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:34:04.000Z",
+              "updatedAt": "2026-10-21T20:34:04.000Z",
+              "uid": "35240-832c9828-7568-4749-ac57-534d05d2d5f3"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:34:04.000Z",
+          "updatedAt": "2026-10-21T20:34:04.000Z",
+          "uid": "35240-f52af955-5b97-4e8d-8a79-0e1d268876ab"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.refinitiv.com",
-      "key": "baseUrl"
+      "id": "a5009e84-4b24-449d-a0a7-5aa74e9f705a",
+      "createdAt": "2026-10-21T20:34:04.000Z",
+      "updatedAt": "2026-10-21T20:34:04.000Z",
+      "uid": "35240-a5009e84-4b24-449d-a0a7-5aa74e9f705a"
     }
   ],
   "auth": {
-    "type": "bearer",
-    "bearer": [
+    "type": "apikey",
+    "apikey": [
       {
-        "key": "token",
-        "value": "{{bearerToken}}"
+        "key": "key",
+        "value": "x-ag-access-token",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "f046e098-56e3-4f57-bd8d-a7755bbc7204",
-    "name": "Refinitiv Data Platform (RDP) APIs Authentication Record Matching API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.\n\nContact Support:\n Name: LSEG Developer Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api-eit.refinitiv.com/permid"
     }
-  }
+  ]
 }

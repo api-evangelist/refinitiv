@@ -1,564 +1,550 @@
 {
+  "info": {
+    "_postman_id": "a646c0d5-9d45-408f-8d03-a27bbddd46ea",
+    "name": "Refinitiv World-Check One Screening Results API",
+    "description": "RESTful API for integrating LSEG World-Check screening capabilities into existing workflows and internal systems. It enables automated customer and third-party screening for onboarding, KYC, and due diligence processes against the World-Check risk intelligence database, supporting synchronous and asynchronous screening, ongoing monitoring, case management, and audit trail capabilities.\n\nContact Support:\n Name: LSEG Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:34:24.000Z",
+    "updatedAt": "2026-10-21T20:34:24.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a646c0d5-9d45-408f-8d03-a27bbddd46ea"
+  },
   "item": [
     {
-      "id": "773f0ead-60d9-468e-9097-b874ae9318f8",
-      "name": "Screening Results",
-      "description": {
-        "content": "Operations for retrieving and managing screening results including matched profiles and resolution workflows.",
-        "type": "text/plain"
-      },
+      "name": "cases",
       "item": [
         {
-          "id": "50762dcb-8ea6-4bb9-b917-85c48220ba4f",
-          "name": "Get Screening Results",
-          "request": {
-            "name": "Get Screening Results",
-            "description": {
-              "content": "Retrieves detailed screening results for a specific case including all matched profiles, match strength indicators, and resolution status for each match.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "cases",
-                ":caseSystemId",
-                "results"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "caseSystemId",
-                  "description": "(Required) The system-generated unique identifier for the case."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{caseSystemId}",
+          "item": [
             {
-              "id": "248a09fc-424f-4672-9d0d-26c174d6402d",
-              "name": "Screening results returned successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "cases",
-                    ":caseSystemId",
-                    "results"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+              "name": "results",
+              "item": [
+                {
+                  "name": "{resultId}",
+                  "item": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "caseSystemId",
-                      "description": "(Required) The system-generated unique identifier for the case."
+                      "name": "resolution",
+                      "item": [
+                        {
+                          "name": "Resolve a Screening Result",
+                          "id": "f13909d7-c86b-4479-b7a4-bc089a1927ef",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"statusId\": \"<string>\",\n  \"riskId\": \"<string>\",\n  \"reasonId\": \"<string>\",\n  \"remarks\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/cases/:caseSystemId/results/:resultId/resolution",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "cases",
+                                ":caseSystemId",
+                                "results",
+                                ":resultId",
+                                "resolution"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "187bd8f2-5484-4a3a-9d63-7600cc25c77d",
+                                  "key": "caseSystemId",
+                                  "value": "<string>",
+                                  "description": "(Required) The system-generated unique identifier for the case."
+                                },
+                                {
+                                  "id": "c813cba5-fd42-4fa7-85c4-31831a793b1f",
+                                  "key": "resultId",
+                                  "value": "<string>",
+                                  "description": "(Required) The unique identifier of the screening result to resolve."
+                                }
+                              ]
+                            },
+                            "description": "Resolves a specific screening result match by assigning a resolution status such as True Positive, False Positive, or Unresolved. The valid resolution options depend on the group's resolution toolkit configuration."
+                          },
+                          "response": [
+                            {
+                              "id": "b0d50322-b909-454e-ab22-ee31d03834b9",
+                              "name": "Result resolved successfully",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"statusId\": \"<string>\",\n  \"riskId\": \"<string>\",\n  \"reasonId\": \"<string>\",\n  \"remarks\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/cases/:caseSystemId/results/:resultId/resolution",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "cases",
+                                    ":caseSystemId",
+                                    "results",
+                                    ":resultId",
+                                    "resolution"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "caseSystemId"
+                                    },
+                                    {
+                                      "key": "resultId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T20:34:24.000Z",
+                              "updatedAt": "2026-10-21T20:34:24.000Z",
+                              "uid": "35240-b0d50322-b909-454e-ab22-ee31d03834b9"
+                            },
+                            {
+                              "id": "e8eb2965-854c-4e1f-a7c5-4d2c1490458c",
+                              "name": "Invalid resolution request",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"statusId\": \"<string>\",\n  \"riskId\": \"<string>\",\n  \"reasonId\": \"<string>\",\n  \"remarks\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/cases/:caseSystemId/results/:resultId/resolution",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "cases",
+                                    ":caseSystemId",
+                                    "results",
+                                    ":resultId",
+                                    "resolution"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "caseSystemId"
+                                    },
+                                    {
+                                      "key": "resultId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T20:34:24.000Z",
+                              "updatedAt": "2026-10-21T20:34:24.000Z",
+                              "uid": "35240-e8eb2965-854c-4e1f-a7c5-4d2c1490458c"
+                            },
+                            {
+                              "id": "f7d40c2f-7f3f-4a46-b641-c0ee1b5e62a1",
+                              "name": "Unauthorized",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"statusId\": \"<string>\",\n  \"riskId\": \"<string>\",\n  \"reasonId\": \"<string>\",\n  \"remarks\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/cases/:caseSystemId/results/:resultId/resolution",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "cases",
+                                    ":caseSystemId",
+                                    "results",
+                                    ":resultId",
+                                    "resolution"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "caseSystemId"
+                                    },
+                                    {
+                                      "key": "resultId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T20:34:24.000Z",
+                              "updatedAt": "2026-10-21T20:34:24.000Z",
+                              "uid": "35240-f7d40c2f-7f3f-4a46-b641-c0ee1b5e62a1"
+                            },
+                            {
+                              "id": "5474b0b6-eed2-40df-bf48-f6f4200262c0",
+                              "name": "Result not found",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"statusId\": \"<string>\",\n  \"riskId\": \"<string>\",\n  \"reasonId\": \"<string>\",\n  \"remarks\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/cases/:caseSystemId/results/:resultId/resolution",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "cases",
+                                    ":caseSystemId",
+                                    "results",
+                                    ":resultId",
+                                    "resolution"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "caseSystemId"
+                                    },
+                                    {
+                                      "key": "resultId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T20:34:24.000Z",
+                              "updatedAt": "2026-10-21T20:34:24.000Z",
+                              "uid": "35240-5474b0b6-eed2-40df-bf48-f6f4200262c0"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T20:34:24.000Z",
+                          "updatedAt": "2026-10-21T20:34:24.000Z",
+                          "uid": "35240-f13909d7-c86b-4479-b7a4-bc089a1927ef"
+                        }
+                      ],
+                      "id": "f5f90c37-24df-4fe2-8c1e-f03101b3c47e",
+                      "createdAt": "2026-10-21T20:34:24.000Z",
+                      "updatedAt": "2026-10-21T20:34:24.000Z",
+                      "uid": "35240-f5f90c37-24df-4fe2-8c1e-f03101b3c47e"
                     }
-                  ]
+                  ],
+                  "id": "6cb2aa9f-fb1e-403a-b187-4efe50fde85e",
+                  "createdAt": "2026-10-21T20:34:24.000Z",
+                  "updatedAt": "2026-10-21T20:34:24.000Z",
+                  "uid": "35240-6cb2aa9f-fb1e-403a-b187-4efe50fde85e"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                {
+                  "name": "Get Screening Results",
+                  "id": "60cdb835-2bdd-41f1-a7d4-327d9f516a86",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"results\": [\n    {\n      \"resultId\": \"string\",\n      \"referenceId\": \"string\",\n      \"matchStrength\": \"string\",\n      \"matchedTerm\": \"string\",\n      \"submittedTerm\": \"string\",\n      \"matchedNameType\": \"string\",\n      \"categories\": [\n        \"string\",\n        \"string\"\n      ],\n      \"resolution\": {\n        \"statusId\": \"string\",\n        \"riskId\": \"string\",\n        \"reasonId\": \"string\"\n      }\n    },\n    {\n      \"resultId\": \"string\",\n      \"referenceId\": \"string\",\n      \"matchStrength\": \"string\",\n      \"matchedTerm\": \"string\",\n      \"submittedTerm\": \"string\",\n      \"matchedNameType\": \"string\",\n      \"categories\": [\n        \"string\",\n        \"string\"\n      ],\n      \"resolution\": {\n        \"statusId\": \"string\",\n        \"riskId\": \"string\",\n        \"reasonId\": \"string\"\n      }\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "eb35363f-2c36-407a-9464-d6daf6c8cd08",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "cases",
-                    ":caseSystemId",
-                    "results"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "caseSystemId",
-                      "description": "(Required) The system-generated unique identifier for the case."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/cases/:caseSystemId/results",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cases",
+                        ":caseSystemId",
+                        "results"
+                      ],
+                      "variable": [
+                        {
+                          "id": "05c5055c-c556-4464-a0d7-04e86c94a671",
+                          "key": "caseSystemId",
+                          "value": "<string>",
+                          "description": "(Required) The system-generated unique identifier for the case."
+                        }
+                      ]
                     },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "869bc42e-9f83-43aa-b4f8-48c4c9b7f02d",
-              "name": "Case not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "cases",
-                    ":caseSystemId",
-                    "results"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                    "description": "Retrieves detailed screening results for a specific case including all matched profiles, match strength indicators, and resolution status for each match."
+                  },
+                  "response": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "caseSystemId",
-                      "description": "(Required) The system-generated unique identifier for the case."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
+                      "id": "f5d18d0e-24fd-4774-a28c-28bc80adc1ae",
+                      "name": "Screening results returned successfully",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/cases/:caseSystemId/results",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "cases",
+                            ":caseSystemId",
+                            "results"
+                          ],
+                          "variable": [
+                            {
+                              "key": "caseSystemId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"results\": [\n    {\n      \"resultId\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"matchStrength\": \"<string>\",\n      \"matchedTerm\": \"<string>\",\n      \"submittedTerm\": \"<string>\",\n      \"matchedNameType\": \"<string>\",\n      \"categories\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"resolution\": {\n        \"statusId\": \"<string>\",\n        \"riskId\": \"<string>\",\n        \"reasonId\": \"<string>\"\n      }\n    },\n    {\n      \"resultId\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"matchStrength\": \"<string>\",\n      \"matchedTerm\": \"<string>\",\n      \"submittedTerm\": \"<string>\",\n      \"matchedNameType\": \"<string>\",\n      \"categories\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"resolution\": {\n        \"statusId\": \"<string>\",\n        \"riskId\": \"<string>\",\n        \"reasonId\": \"<string>\"\n      }\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:34:24.000Z",
+                      "updatedAt": "2026-10-21T20:34:24.000Z",
+                      "uid": "35240-f5d18d0e-24fd-4774-a28c-28bc80adc1ae"
                     },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                    {
+                      "id": "c07bffa5-6779-407c-9b8f-703c9e1af600",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/cases/:caseSystemId/results",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "cases",
+                            ":caseSystemId",
+                            "results"
+                          ],
+                          "variable": [
+                            {
+                              "key": "caseSystemId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:34:24.000Z",
+                      "updatedAt": "2026-10-21T20:34:24.000Z",
+                      "uid": "35240-c07bffa5-6779-407c-9b8f-703c9e1af600"
+                    },
+                    {
+                      "id": "06de7dd7-99e4-4c13-9f4c-4fdd918f14bc",
+                      "name": "Case not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/cases/:caseSystemId/results",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "cases",
+                            ":caseSystemId",
+                            "results"
+                          ],
+                          "variable": [
+                            {
+                              "key": "caseSystemId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:34:24.000Z",
+                      "updatedAt": "2026-10-21T20:34:24.000Z",
+                      "uid": "35240-06de7dd7-99e4-4c13-9f4c-4fdd918f14bc"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:34:24.000Z",
+                  "updatedAt": "2026-10-21T20:34:24.000Z",
+                  "uid": "35240-60cdb835-2bdd-41f1-a7d4-327d9f516a86"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "e29380ee-a2d4-493e-8693-a53898af90e2",
+              "createdAt": "2026-10-21T20:34:24.000Z",
+              "updatedAt": "2026-10-21T20:34:24.000Z",
+              "uid": "35240-e29380ee-a2d4-493e-8693-a53898af90e2"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "4f321bba-ad57-4ef1-92d0-ddeacf5d7649",
-          "name": "Resolve a Screening Result",
-          "request": {
-            "name": "Resolve a Screening Result",
-            "description": {
-              "content": "Resolves a specific screening result match by assigning a resolution status such as True Positive, False Positive, or Unresolved. The valid resolution options depend on the group's resolution toolkit configuration.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "cases",
-                ":caseSystemId",
-                "results",
-                ":resultId",
-                "resolution"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "caseSystemId",
-                  "description": "(Required) The system-generated unique identifier for the case."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "resultId",
-                  "description": "(Required) The unique identifier of the screening result to resolve."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"statusId\": \"<string>\",\n  \"riskId\": \"<string>\",\n  \"reasonId\": \"<string>\",\n  \"remarks\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "23e48bbf-e42f-48ab-956e-39015c9566b0",
-              "name": "Result resolved successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "cases",
-                    ":caseSystemId",
-                    "results",
-                    ":resultId",
-                    "resolution"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "caseSystemId",
-                      "description": "(Required) The system-generated unique identifier for the case."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "resultId",
-                      "description": "(Required) The unique identifier of the screening result to resolve."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"statusId\": \"<string>\",\n  \"riskId\": \"<string>\",\n  \"reasonId\": \"<string>\",\n  \"remarks\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "a1f174d2-9af4-4f68-94ca-d1d7f00d7c65",
-              "name": "Invalid resolution request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "cases",
-                    ":caseSystemId",
-                    "results",
-                    ":resultId",
-                    "resolution"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "caseSystemId",
-                      "description": "(Required) The system-generated unique identifier for the case."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "resultId",
-                      "description": "(Required) The unique identifier of the screening result to resolve."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"statusId\": \"<string>\",\n  \"riskId\": \"<string>\",\n  \"reasonId\": \"<string>\",\n  \"remarks\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "4aa9e720-df06-469b-80d7-06e43395577e",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "cases",
-                    ":caseSystemId",
-                    "results",
-                    ":resultId",
-                    "resolution"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "caseSystemId",
-                      "description": "(Required) The system-generated unique identifier for the case."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "resultId",
-                      "description": "(Required) The unique identifier of the screening result to resolve."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"statusId\": \"<string>\",\n  \"riskId\": \"<string>\",\n  \"reasonId\": \"<string>\",\n  \"remarks\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "caf5348f-7905-4be6-adc6-65851862c951",
-              "name": "Result not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "cases",
-                    ":caseSystemId",
-                    "results",
-                    ":resultId",
-                    "resolution"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "caseSystemId",
-                      "description": "(Required) The system-generated unique identifier for the case."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "resultId",
-                      "description": "(Required) The unique identifier of the screening result to resolve."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"statusId\": \"<string>\",\n  \"riskId\": \"<string>\",\n  \"reasonId\": \"<string>\",\n  \"remarks\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "237c5c99-2d80-41c8-abee-bc5e3419a620",
+          "createdAt": "2026-10-21T20:34:24.000Z",
+          "updatedAt": "2026-10-21T20:34:24.000Z",
+          "uid": "35240-237c5c99-2d80-41c8-abee-bc5e3419a620"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.refinitiv.com",
-      "key": "baseUrl"
+      "id": "08e966d7-4616-4c38-913f-b36a5950f360",
+      "createdAt": "2026-10-21T20:34:24.000Z",
+      "updatedAt": "2026-10-21T20:34:24.000Z",
+      "uid": "35240-08e966d7-4616-4c38-913f-b36a5950f360"
     }
   ],
   "auth": {
-    "type": "bearer",
-    "bearer": [
+    "type": "apikey",
+    "apikey": [
       {
-        "key": "token",
-        "value": "{{bearerToken}}"
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "469804f9-332d-48fe-be10-336912b5ad68",
-    "name": "Refinitiv Data Platform (RDP) APIs Authentication Screening Results API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.\n\nContact Support:\n Name: LSEG Developer Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api-worldcheck.refinitiv.com/v2"
     }
-  }
+  ]
 }

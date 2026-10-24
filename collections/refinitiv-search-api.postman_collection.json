@@ -1,228 +1,248 @@
 {
+  "info": {
+    "_postman_id": "5ad71055-6b68-41bb-adbb-3adb271d4a90",
+    "name": "Refinitiv Data Platform (RDP) Search API",
+    "description": "Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.\n\nContact Support:\n Name: LSEG Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:34:29.000Z",
+    "updatedAt": "2026-10-21T20:34:30.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5ad71055-6b68-41bb-adbb-3adb271d4a90"
+  },
   "item": [
     {
-      "id": "f61a5564-7ea6-4243-93d7-2dcf0e2d1c20",
-      "name": "Search",
-      "description": {
-        "content": "Discovery and search across organizations, instruments, quotes, and economic indicators.",
-        "type": "text/plain"
-      },
+      "name": "discovery",
       "item": [
         {
-          "id": "0e9c42c9-04dd-4b94-a53a-d794cf828f13",
-          "name": "Search for Instruments",
-          "request": {
-            "name": "Search for Instruments",
-            "description": {
-              "content": "Searches across organizations, instruments, quotes, and economic indicators. Supports complex query expressions and filtering by asset class, exchange, country, and other attributes.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "discovery",
-                "search",
-                "v1",
-                ""
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"Query\": \"<string>\",\n  \"View\": \"<string>\",\n  \"Filter\": \"<string>\",\n  \"Top\": \"<integer>\",\n  \"Skip\": \"<integer>\",\n  \"Select\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "search",
+          "item": [
             {
-              "id": "ba0c2747-0aa0-4a76-9592-f3e22f47c4ed",
-              "name": "Search results returned successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "discovery",
-                    "search",
-                    "v1",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+              "name": "v1",
+              "item": [
+                {
+                  "name": "Search for Instruments",
+                  "id": "5dec5a0c-b0e1-4339-a727-4f17d6e749b2",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"Query\": \"<string>\",\n  \"View\": \"<string>\",\n  \"Filter\": \"<string>\",\n  \"Top\": \"<integer>\",\n  \"Skip\": \"<integer>\",\n  \"Select\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"Total\": 7155\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "9bd168a1-b8f7-498e-9ddd-52ac4920f16a",
-              "name": "Invalid search query",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "discovery",
-                    "search",
-                    "v1",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Query\": \"<string>\",\n  \"View\": \"IndicatorSearch\",\n  \"Filter\": \"<string>\",\n  \"Top\": \"<integer>\",\n  \"Skip\": \"<integer>\",\n  \"Select\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
                     },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"Query\": \"<string>\",\n  \"View\": \"<string>\",\n  \"Filter\": \"<string>\",\n  \"Top\": \"<integer>\",\n  \"Skip\": \"<integer>\",\n  \"Select\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "39322219-a93a-4805-b7c9-ed8115ab1a3b",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "discovery",
-                    "search",
-                    "v1",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
+                    "url": {
+                      "raw": "{{baseUrl}}/discovery/search/v1/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "discovery",
+                        "search",
+                        "v1",
+                        ""
+                      ]
                     },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"Query\": \"<string>\",\n  \"View\": \"<string>\",\n  \"Filter\": \"<string>\",\n  \"Top\": \"<integer>\",\n  \"Skip\": \"<integer>\",\n  \"Select\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
+                    "description": "Searches across organizations, instruments, quotes, and economic indicators. Supports complex query expressions and filtering by asset class, exchange, country, and other attributes."
+                  },
+                  "response": [
+                    {
+                      "id": "5af123b9-df6f-473b-b76e-52130545bd6e",
+                      "name": "Search results returned successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Query\": \"<string>\",\n  \"View\": \"IndicatorSearch\",\n  \"Filter\": \"<string>\",\n  \"Top\": \"<integer>\",\n  \"Skip\": \"<integer>\",\n  \"Select\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/discovery/search/v1/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "discovery",
+                            "search",
+                            "v1",
+                            ""
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"Total\": \"<integer>\"\n}",
+                      "createdAt": "2026-10-21T20:34:30.000Z",
+                      "updatedAt": "2026-10-21T20:34:30.000Z",
+                      "uid": "35240-5af123b9-df6f-473b-b76e-52130545bd6e"
+                    },
+                    {
+                      "id": "e35789fd-4100-4611-9b26-5d7bedffa0ab",
+                      "name": "Invalid search query",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Query\": \"<string>\",\n  \"View\": \"IndicatorSearch\",\n  \"Filter\": \"<string>\",\n  \"Top\": \"<integer>\",\n  \"Skip\": \"<integer>\",\n  \"Select\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/discovery/search/v1/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "discovery",
+                            "search",
+                            "v1",
+                            ""
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:34:30.000Z",
+                      "updatedAt": "2026-10-21T20:34:30.000Z",
+                      "uid": "35240-e35789fd-4100-4611-9b26-5d7bedffa0ab"
+                    },
+                    {
+                      "id": "3f0fd101-69ca-4f5b-98f0-057b3b37dbce",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Query\": \"<string>\",\n  \"View\": \"IndicatorSearch\",\n  \"Filter\": \"<string>\",\n  \"Top\": \"<integer>\",\n  \"Skip\": \"<integer>\",\n  \"Select\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/discovery/search/v1/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "discovery",
+                            "search",
+                            "v1",
+                            ""
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:34:30.000Z",
+                      "updatedAt": "2026-10-21T20:34:30.000Z",
+                      "uid": "35240-3f0fd101-69ca-4f5b-98f0-057b3b37dbce"
                     }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  ],
+                  "createdAt": "2026-10-21T20:34:30.000Z",
+                  "updatedAt": "2026-10-21T20:34:30.000Z",
+                  "uid": "35240-5dec5a0c-b0e1-4339-a727-4f17d6e749b2"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "a3698bd7-59c0-4801-b53a-76b00587849e",
+              "createdAt": "2026-10-21T20:34:30.000Z",
+              "updatedAt": "2026-10-21T20:34:30.000Z",
+              "uid": "35240-a3698bd7-59c0-4801-b53a-76b00587849e"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "40ec0c12-18f4-4627-b1e4-0a4354e78687",
+          "createdAt": "2026-10-21T20:34:30.000Z",
+          "updatedAt": "2026-10-21T20:34:30.000Z",
+          "uid": "35240-40ec0c12-18f4-4627-b1e4-0a4354e78687"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.refinitiv.com",
-      "key": "baseUrl"
+      "id": "56509af8-1cda-46d4-927e-2a226b0c4810",
+      "createdAt": "2026-10-21T20:34:30.000Z",
+      "updatedAt": "2026-10-21T20:34:30.000Z",
+      "uid": "35240-56509af8-1cda-46d4-927e-2a226b0c4810"
     }
   ],
   "auth": {
@@ -230,17 +250,15 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "f18b71c2-a9e1-4e8b-8ddb-e22f2d6a4349",
-    "name": "Refinitiv Data Platform (RDP) APIs Authentication Search API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.\n\nContact Support:\n Name: LSEG Developer Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.refinitiv.com"
     }
-  }
+  ]
 }

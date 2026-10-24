@@ -1,453 +1,465 @@
 {
+  "info": {
+    "_postman_id": "c17b517a-908d-42a6-836c-eaf8a3e02cb0",
+    "name": "Refinitiv Data Platform (RDP) News API",
+    "description": "Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.\n\nContact Support:\n Name: LSEG Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:33:37.000Z",
+    "updatedAt": "2026-10-21T20:33:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c17b517a-908d-42a6-836c-eaf8a3e02cb0"
+  },
   "item": [
     {
-      "id": "fefac091-5d17-4e89-9ac3-7a2c29fa2043",
-      "name": "News",
-      "description": {
-        "content": "Access to real-time and historical news headlines and stories from Reuters and other sources.",
-        "type": "text/plain"
-      },
+      "name": "data",
       "item": [
         {
-          "id": "01a4129a-bad6-4292-9d79-600aa461fd9a",
-          "name": "Get News Headlines",
-          "request": {
-            "name": "Get News Headlines",
-            "description": {
-              "content": "Retrieves news headlines matching the specified query criteria. Supports filtering by topic, instrument, date range, and other parameters. Returns headline text, timestamp, and story identifiers.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "data",
-                "news",
-                "v1",
-                "headlines"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "query",
-                  "value": "<string>",
-                  "description": "(Required) The news search query string supporting keyword search and advanced query syntax."
-                },
-                {
-                  "disabled": false,
-                  "key": "count",
-                  "value": "<integer>",
-                  "description": "Maximum number of headlines to return."
-                },
-                {
-                  "disabled": false,
-                  "key": "cursor",
-                  "value": "<string>",
-                  "description": "Pagination cursor for retrieving the next page of results."
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "news",
+          "item": [
             {
-              "id": "ca7bd212-4524-423b-bca1-91f5771fb0d4",
-              "name": "News headlines returned successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "data",
-                    "news",
-                    "v1",
-                    "headlines"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+              "name": "v1",
+              "item": [
+                {
+                  "name": "headlines",
+                  "item": [
                     {
-                      "key": "query",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "count",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "cursor",
-                      "value": "<string>"
+                      "name": "Get News Headlines",
+                      "id": "433972c5-e5b8-478f-adb0-5a4f8225a873",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/data/news/v1/headlines?query=<string>&count=<integer>&cursor=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "data",
+                            "news",
+                            "v1",
+                            "headlines"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The news search query string supporting keyword search and advanced query syntax.",
+                              "key": "query",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of headlines to return.",
+                              "key": "count",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Pagination cursor for retrieving the next page of results.",
+                              "key": "cursor",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "description": "Retrieves news headlines matching the specified query criteria. Supports filtering by topic, instrument, date range, and other parameters. Returns headline text, timestamp, and story identifiers."
+                      },
+                      "response": [
+                        {
+                          "id": "e7be46c1-c508-412a-b34e-551f69e01688",
+                          "name": "News headlines returned successfully",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/data/news/v1/headlines?query=<string>&count=<integer>&cursor=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "data",
+                                "news",
+                                "v1",
+                                "headlines"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The news search query string supporting keyword search and advanced query syntax.",
+                                  "key": "query",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Maximum number of headlines to return.",
+                                  "key": "count",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Pagination cursor for retrieving the next page of results.",
+                                  "key": "cursor",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": [\n    {\n      \"storyId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"newsItem\": \"<string>\",\n      \"sourceCode\": \"<string>\",\n      \"versionCreated\": \"<dateTime>\"\n    },\n    {\n      \"storyId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"newsItem\": \"<string>\",\n      \"sourceCode\": \"<string>\",\n      \"versionCreated\": \"<dateTime>\"\n    }\n  ],\n  \"meta\": {\n    \"count\": \"<integer>\",\n    \"next\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-21T20:33:38.000Z",
+                          "updatedAt": "2026-10-21T20:33:38.000Z",
+                          "uid": "35240-e7be46c1-c508-412a-b34e-551f69e01688"
+                        },
+                        {
+                          "id": "ce895a35-3a92-4d40-993b-ea1e1c78361f",
+                          "name": "Invalid query parameters",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/data/news/v1/headlines?query=<string>&count=<integer>&cursor=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "data",
+                                "news",
+                                "v1",
+                                "headlines"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The news search query string supporting keyword search and advanced query syntax.",
+                                  "key": "query",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Maximum number of headlines to return.",
+                                  "key": "count",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Pagination cursor for retrieving the next page of results.",
+                                  "key": "cursor",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:33:38.000Z",
+                          "updatedAt": "2026-10-21T20:33:38.000Z",
+                          "uid": "35240-ce895a35-3a92-4d40-993b-ea1e1c78361f"
+                        },
+                        {
+                          "id": "a561d6ac-53c5-438a-b9bf-563d8059517c",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/data/news/v1/headlines?query=<string>&count=<integer>&cursor=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "data",
+                                "news",
+                                "v1",
+                                "headlines"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The news search query string supporting keyword search and advanced query syntax.",
+                                  "key": "query",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Maximum number of headlines to return.",
+                                  "key": "count",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Pagination cursor for retrieving the next page of results.",
+                                  "key": "cursor",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:33:38.000Z",
+                          "updatedAt": "2026-10-21T20:33:38.000Z",
+                          "uid": "35240-a561d6ac-53c5-438a-b9bf-563d8059517c"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:33:38.000Z",
+                      "updatedAt": "2026-10-21T20:33:38.000Z",
+                      "uid": "35240-433972c5-e5b8-478f-adb0-5a4f8225a873"
                     }
                   ],
-                  "variable": []
+                  "id": "9e5c7e4d-96dc-4c3e-9072-994b91578131",
+                  "createdAt": "2026-10-21T20:33:38.000Z",
+                  "updatedAt": "2026-10-21T20:33:38.000Z",
+                  "uid": "35240-9e5c7e4d-96dc-4c3e-9072-994b91578131"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"data\": [\n    {\n      \"storyId\": \"string\",\n      \"title\": \"string\",\n      \"newsItem\": \"string\",\n      \"sourceCode\": \"string\",\n      \"versionCreated\": \"1966-03-01T04:06:34.411Z\"\n    },\n    {\n      \"storyId\": \"string\",\n      \"title\": \"string\",\n      \"newsItem\": \"string\",\n      \"sourceCode\": \"string\",\n      \"versionCreated\": \"1989-04-21T08:08:23.805Z\"\n    }\n  ],\n  \"meta\": {\n    \"count\": 6971,\n    \"next\": \"string\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "cc9c3ffe-f801-4d27-a10f-294cce08dcd1",
-              "name": "Invalid query parameters",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "data",
-                    "news",
-                    "v1",
-                    "headlines"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "name": "stories",
+                  "item": [
                     {
-                      "key": "query",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "count",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "cursor",
-                      "value": "<string>"
+                      "name": "{storyId}",
+                      "item": [
+                        {
+                          "name": "Get News Story",
+                          "id": "c25aa252-46a7-4a2a-a5ec-89a13e3d3023",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/data/news/v1/stories/:storyId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "data",
+                                "news",
+                                "v1",
+                                "stories",
+                                ":storyId"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "eb4f4837-1c48-440f-a4a4-5af2a8e8e759",
+                                  "key": "storyId",
+                                  "value": "<string>",
+                                  "description": "(Required) The unique identifier of the news story."
+                                }
+                              ]
+                            },
+                            "description": "Retrieves the full text and metadata for a specific news story identified by its story ID."
+                          },
+                          "response": [
+                            {
+                              "id": "59a124f5-cf5b-4d9d-bc0d-79a1d5a66baf",
+                              "name": "News story returned successfully",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/data/news/v1/stories/:storyId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "data",
+                                    "news",
+                                    "v1",
+                                    "stories",
+                                    ":storyId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "storyId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"storyId\": \"<string>\",\n  \"title\": \"<string>\",\n  \"body\": \"<string>\",\n  \"sourceCode\": \"<string>\",\n  \"versionCreated\": \"<dateTime>\"\n}",
+                              "createdAt": "2026-10-21T20:33:38.000Z",
+                              "updatedAt": "2026-10-21T20:33:38.000Z",
+                              "uid": "35240-59a124f5-cf5b-4d9d-bc0d-79a1d5a66baf"
+                            },
+                            {
+                              "id": "750c3276-bb8b-49e8-8ab2-65905f8f51ab",
+                              "name": "Unauthorized",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/data/news/v1/stories/:storyId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "data",
+                                    "news",
+                                    "v1",
+                                    "stories",
+                                    ":storyId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "storyId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T20:33:38.000Z",
+                              "updatedAt": "2026-10-21T20:33:38.000Z",
+                              "uid": "35240-750c3276-bb8b-49e8-8ab2-65905f8f51ab"
+                            },
+                            {
+                              "id": "47e65bc9-27cb-4f7e-a91f-fa72fdef4664",
+                              "name": "Story not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/data/news/v1/stories/:storyId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "data",
+                                    "news",
+                                    "v1",
+                                    "stories",
+                                    ":storyId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "storyId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T20:33:38.000Z",
+                              "updatedAt": "2026-10-21T20:33:38.000Z",
+                              "uid": "35240-47e65bc9-27cb-4f7e-a91f-fa72fdef4664"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T20:33:38.000Z",
+                          "updatedAt": "2026-10-21T20:33:38.000Z",
+                          "uid": "35240-c25aa252-46a7-4a2a-a5ec-89a13e3d3023"
+                        }
+                      ],
+                      "id": "eecac30d-7793-44d5-8084-5c1f66b0f558",
+                      "createdAt": "2026-10-21T20:33:38.000Z",
+                      "updatedAt": "2026-10-21T20:33:38.000Z",
+                      "uid": "35240-eecac30d-7793-44d5-8084-5c1f66b0f558"
                     }
                   ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "9c6cabd4-88c3-4917-bf8f-15caaec3be87",
+                  "createdAt": "2026-10-21T20:33:38.000Z",
+                  "updatedAt": "2026-10-21T20:33:38.000Z",
+                  "uid": "35240-9c6cabd4-88c3-4917-bf8f-15caaec3be87"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "b213cc45-de21-41dc-9163-67ad2373e624",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "data",
-                    "news",
-                    "v1",
-                    "headlines"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "query",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "count",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "cursor",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "c60a4bfd-0989-4ae7-87ff-ca6c23ed8b78",
+              "createdAt": "2026-10-21T20:33:38.000Z",
+              "updatedAt": "2026-10-21T20:33:38.000Z",
+              "uid": "35240-c60a4bfd-0989-4ae7-87ff-ca6c23ed8b78"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "aca57290-5038-434f-aa37-6dfa0f4eac55",
-          "name": "Get News Story",
-          "request": {
-            "name": "Get News Story",
-            "description": {
-              "content": "Retrieves the full text and metadata for a specific news story identified by its story ID.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "data",
-                "news",
-                "v1",
-                "stories",
-                ":storyId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "storyId",
-                  "description": "(Required) The unique identifier of the news story."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "661671bc-185c-4935-a79e-61ccaea773bf",
-              "name": "News story returned successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "data",
-                    "news",
-                    "v1",
-                    "stories",
-                    ":storyId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "storyId",
-                      "description": "(Required) The unique identifier of the news story."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"storyId\": \"string\",\n  \"title\": \"string\",\n  \"body\": \"string\",\n  \"sourceCode\": \"string\",\n  \"versionCreated\": \"1986-10-07T01:27:12.360Z\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "47a210e4-e2e3-4862-b493-4bd841cee684",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "data",
-                    "news",
-                    "v1",
-                    "stories",
-                    ":storyId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "storyId",
-                      "description": "(Required) The unique identifier of the news story."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "eb6802b3-73c3-4b98-939e-696162f81ed4",
-              "name": "Story not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "data",
-                    "news",
-                    "v1",
-                    "stories",
-                    ":storyId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "storyId",
-                      "description": "(Required) The unique identifier of the news story."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "09f416bd-a617-4f23-85f8-8541fef4ed88",
+          "createdAt": "2026-10-21T20:33:38.000Z",
+          "updatedAt": "2026-10-21T20:33:38.000Z",
+          "uid": "35240-09f416bd-a617-4f23-85f8-8541fef4ed88"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.refinitiv.com",
-      "key": "baseUrl"
+      "id": "a67a4027-e79e-4bbf-ba3b-c42ba9bbe7cf",
+      "createdAt": "2026-10-21T20:33:38.000Z",
+      "updatedAt": "2026-10-21T20:33:38.000Z",
+      "uid": "35240-a67a4027-e79e-4bbf-ba3b-c42ba9bbe7cf"
     }
   ],
   "auth": {
@@ -455,17 +467,15 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "ec9dc5b0-1bfa-4e61-a2c9-0a9b656120eb",
-    "name": "Refinitiv Data Platform (RDP) APIs Authentication News API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.\n\nContact Support:\n Name: LSEG Developer Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.refinitiv.com"
     }
-  }
+  ]
 }

@@ -1,237 +1,237 @@
 {
+  "info": {
+    "_postman_id": "1271d3fd-e0c1-4d43-872a-a36a2ff39f1a",
+    "name": "Refinitiv World-Check One Reference API",
+    "description": "RESTful API for integrating LSEG World-Check screening capabilities into existing workflows and internal systems. It enables automated customer and third-party screening for onboarding, KYC, and due diligence processes against the World-Check risk intelligence database, supporting synchronous and asynchronous screening, ongoing monitoring, case management, and audit trail capabilities.\n\nContact Support:\n Name: LSEG Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:34:10.000Z",
+    "updatedAt": "2026-10-21T20:34:10.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1271d3fd-e0c1-4d43-872a-a36a2ff39f1a"
+  },
   "item": [
     {
-      "id": "940a7d8b-53be-48ec-9c63-a5f91daa2022",
-      "name": "Reference",
-      "description": {
-        "content": "Reference data operations for retrieving profile details and resolution toolkit configurations.",
-        "type": "text/plain"
-      },
+      "name": "reference",
       "item": [
         {
-          "id": "189ca03a-93a9-4111-a524-911574221dca",
-          "name": "Get Reference Profile",
-          "request": {
-            "name": "Get Reference Profile",
-            "description": {
-              "content": "Retrieves the full reference profile details for a matched entity from the World-Check database, including biographical information, associated countries, linked entities, and source documents.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "reference",
-                "profile",
-                ":profileId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "profileId",
-                  "description": "(Required) The unique identifier of the World-Check profile."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "profile",
+          "item": [
             {
-              "id": "d0870020-32f3-44f2-b0da-0d675cf590ca",
-              "name": "Profile returned successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "reference",
-                    "profile",
-                    ":profileId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "profileId",
-                      "description": "(Required) The unique identifier of the World-Check profile."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+              "name": "{profileId}",
+              "item": [
+                {
+                  "name": "Get Reference Profile",
+                  "id": "bacab411-7ba3-44e4-9e58-581a874d96f8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"profileId\": \"string\",\n  \"primaryName\": \"string\",\n  \"entityType\": \"string\",\n  \"categories\": [\n    \"string\",\n    \"string\"\n  ],\n  \"countryLinks\": [\n    {\n      \"country\": \"string\",\n      \"countryCode\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"country\": \"string\",\n      \"countryCode\": \"string\",\n      \"type\": \"string\"\n    }\n  ],\n  \"sources\": [\n    {\n      \"name\": \"string\",\n      \"url\": \"https://pnIMxZqOQJZjIe.amjKReI2DKIGn99K0NhVAy+CAemI9a\"\n    },\n    {\n      \"name\": \"string\",\n      \"url\": \"http://dyuXeuMSINmLlMpffO.tyJmjVI9aDoKhFlFJIeN0jg4p\"\n    }\n  ],\n  \"aliases\": [\n    {\n      \"name\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "091bce35-b5bf-4fa6-8af9-47d8d9e567fa",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "reference",
-                    "profile",
-                    ":profileId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "profileId",
-                      "description": "(Required) The unique identifier of the World-Check profile."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reference/profile/:profileId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reference",
+                        "profile",
+                        ":profileId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "885c0968-d33f-44e0-894b-7e5bc27d1554",
+                          "key": "profileId",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the World-Check profile."
+                        }
+                      ]
                     },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "2666c114-4a29-4d9f-a22b-640599e32364",
-              "name": "Profile not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "reference",
-                    "profile",
-                    ":profileId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                    "description": "Retrieves the full reference profile details for a matched entity from the World-Check database, including biographical information, associated countries, linked entities, and source documents."
+                  },
+                  "response": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "profileId",
-                      "description": "(Required) The unique identifier of the World-Check profile."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
+                      "id": "e5b3380c-6d91-408e-9e10-38d16ee8bbb5",
+                      "name": "Profile returned successfully",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/reference/profile/:profileId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reference",
+                            "profile",
+                            ":profileId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "profileId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"profileId\": \"<string>\",\n  \"primaryName\": \"<string>\",\n  \"entityType\": \"<string>\",\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"countryLinks\": [\n    {\n      \"country\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"country\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"sources\": [\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<uri>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<uri>\"\n    }\n  ],\n  \"aliases\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:34:10.000Z",
+                      "updatedAt": "2026-10-21T20:34:10.000Z",
+                      "uid": "35240-e5b3380c-6d91-408e-9e10-38d16ee8bbb5"
                     },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                    {
+                      "id": "0645f558-6404-41a3-8ce1-cb38c8607c3e",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/reference/profile/:profileId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reference",
+                            "profile",
+                            ":profileId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "profileId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:34:10.000Z",
+                      "updatedAt": "2026-10-21T20:34:10.000Z",
+                      "uid": "35240-0645f558-6404-41a3-8ce1-cb38c8607c3e"
+                    },
+                    {
+                      "id": "f066a78e-e19c-4e27-90cb-f9b217c213c9",
+                      "name": "Profile not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/reference/profile/:profileId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reference",
+                            "profile",
+                            ":profileId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "profileId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:34:10.000Z",
+                      "updatedAt": "2026-10-21T20:34:10.000Z",
+                      "uid": "35240-f066a78e-e19c-4e27-90cb-f9b217c213c9"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:34:10.000Z",
+                  "updatedAt": "2026-10-21T20:34:10.000Z",
+                  "uid": "35240-bacab411-7ba3-44e4-9e58-581a874d96f8"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "3bd183f2-a2cf-4ef6-a020-3fea209dccb4",
+              "createdAt": "2026-10-21T20:34:10.000Z",
+              "updatedAt": "2026-10-21T20:34:10.000Z",
+              "uid": "35240-3bd183f2-a2cf-4ef6-a020-3fea209dccb4"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "9e9207e9-7b52-42da-9ea7-d038a85b6b12",
+          "createdAt": "2026-10-21T20:34:10.000Z",
+          "updatedAt": "2026-10-21T20:34:10.000Z",
+          "uid": "35240-9e9207e9-7b52-42da-9ea7-d038a85b6b12"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.refinitiv.com",
-      "key": "baseUrl"
+      "id": "b738c3e7-146a-49d4-9a91-2359d02c4b4f",
+      "createdAt": "2026-10-21T20:34:10.000Z",
+      "updatedAt": "2026-10-21T20:34:10.000Z",
+      "uid": "35240-b738c3e7-146a-49d4-9a91-2359d02c4b4f"
     }
   ],
   "auth": {
-    "type": "bearer",
-    "bearer": [
+    "type": "apikey",
+    "apikey": [
       {
-        "key": "token",
-        "value": "{{bearerToken}}"
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "458736b6-d7d2-4a4f-91da-13440b4702f6",
-    "name": "Refinitiv Data Platform (RDP) APIs Authentication Reference API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.\n\nContact Support:\n Name: LSEG Developer Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api-worldcheck.refinitiv.com/v2"
     }
-  }
+  ]
 }

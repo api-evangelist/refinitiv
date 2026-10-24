@@ -1,161 +1,167 @@
 {
+  "info": {
+    "_postman_id": "47b87392-c8a6-4470-aea7-9b5f8cedb610",
+    "name": "Refinitiv LSEG DataScope Select REST Schedules API",
+    "description": "Internet-hosted OData REST API for programmatic access to global pricing, corporate actions, reference data, historical data, cross-reference, and entity data. It provides fully automated extraction workflows and batch processing capabilities for large-scale data retrieval from the DataScope Select platform.\n\nContact Support:\n Name: LSEG Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:34:16.000Z",
+    "updatedAt": "2026-10-21T20:34:17.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-47b87392-c8a6-4470-aea7-9b5f8cedb610"
+  },
   "item": [
     {
-      "id": "16477d04-a998-42dc-850a-8778f190291c",
-      "name": "Schedules",
-      "description": {
-        "content": "Schedule management for recurring extraction jobs.",
-        "type": "text/plain"
-      },
+      "name": "Extractions",
       "item": [
         {
-          "id": "855ed6d7-a30e-4bc4-80db-f64d4fb4cf9e",
-          "name": "List Extraction Schedules",
-          "request": {
-            "name": "List Extraction Schedules",
-            "description": {
-              "content": "Retrieves all extraction schedules defined in the user's account.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "Extractions",
-                "Schedules"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "Schedules",
+          "item": [
             {
-              "id": "8e1fa3c5-06aa-4468-8628-788eee7fc053",
-              "name": "Schedules returned successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "Extractions",
-                    "Schedules"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+              "name": "List Extraction Schedules",
+              "id": "a5fa533b-72d7-45fe-bf0a-7a58edb5a440",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"value\": [\n    {\n      \"ScheduleId\": \"string\",\n      \"Name\": \"string\",\n      \"Trigger\": {},\n      \"ListId\": \"string\",\n      \"ReportTemplateId\": \"string\"\n    },\n    {\n      \"ScheduleId\": \"string\",\n      \"Name\": \"string\",\n      \"Trigger\": {},\n      \"ListId\": \"string\",\n      \"ReportTemplateId\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "99540d95-b7bd-4bf9-8d96-2efee5b49951",
-              "name": "Unauthorized",
-              "originalRequest": {
                 "url": {
-                  "path": [
-                    "Extractions",
-                    "Schedules"
-                  ],
+                  "raw": "{{baseUrl}}/Extractions/Schedules",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
+                  "path": [
+                    "Extractions",
+                    "Schedules"
+                  ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Retrieves all extraction schedules defined in the user's account."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "2408f97e-eefb-4fc4-9c33-c22be087658b",
+                  "name": "Schedules returned successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Extractions/Schedules",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Extractions",
+                        "Schedules"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"value\": [\n    {\n      \"ScheduleId\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"Trigger\": {},\n      \"ListId\": \"<string>\",\n      \"ReportTemplateId\": \"<string>\"\n    },\n    {\n      \"ScheduleId\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"Trigger\": {},\n      \"ListId\": \"<string>\",\n      \"ReportTemplateId\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:34:17.000Z",
+                  "updatedAt": "2026-10-21T20:34:17.000Z",
+                  "uid": "35240-2408f97e-eefb-4fc4-9c33-c22be087658b"
+                },
+                {
+                  "id": "f5ac5305-931a-4592-be6e-aa2a6e0f48ad",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Extractions/Schedules",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Extractions",
+                        "Schedules"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:34:17.000Z",
+                  "updatedAt": "2026-10-21T20:34:17.000Z",
+                  "uid": "35240-f5ac5305-931a-4592-be6e-aa2a6e0f48ad"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T20:34:17.000Z",
+              "updatedAt": "2026-10-21T20:34:17.000Z",
+              "uid": "35240-a5fa533b-72d7-45fe-bf0a-7a58edb5a440"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "8b1e95ff-e836-4e32-a9a2-a317040f3c31",
+          "createdAt": "2026-10-21T20:34:17.000Z",
+          "updatedAt": "2026-10-21T20:34:17.000Z",
+          "uid": "35240-8b1e95ff-e836-4e32-a9a2-a317040f3c31"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.refinitiv.com",
-      "key": "baseUrl"
+      "id": "ddfe642f-e0cf-4e66-910f-dfe56cfb810a",
+      "createdAt": "2026-10-21T20:34:17.000Z",
+      "updatedAt": "2026-10-21T20:34:17.000Z",
+      "uid": "35240-ddfe642f-e0cf-4e66-910f-dfe56cfb810a"
     }
   ],
   "auth": {
-    "type": "bearer",
-    "bearer": [
+    "type": "apikey",
+    "apikey": [
       {
-        "key": "token",
-        "value": "{{bearerToken}}"
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "0e0a4f86-60f1-4af2-9355-0659e033113d",
-    "name": "Refinitiv Data Platform (RDP) APIs Authentication Schedules API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.\n\nContact Support:\n Name: LSEG Developer Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://selectapi.datascope.lseg.com/RestApi/v1"
     }
-  }
+  ]
 }

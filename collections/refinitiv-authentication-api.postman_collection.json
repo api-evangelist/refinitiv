@@ -1,658 +1,570 @@
 {
+  "info": {
+    "_postman_id": "16694fa7-4694-4c56-8e4c-cc8f334d04a3",
+    "name": "Refinitiv Authentication API",
+    "description": "Operations tagged Authentication across 2 of this provider's published API definitions: refinitiv-data-platform-openapi.yml, refinitiv-datascope-select-openapi.yml. Each path carries the servers of the definition it was published in.\n\nContact Support:\n Name: LSEG Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:32:38.000Z",
+    "updatedAt": "2026-10-21T20:32:38.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-16694fa7-4694-4c56-8e4c-cc8f334d04a3"
+  },
   "item": [
     {
-      "id": "f1853dd4-235d-4a6f-85c6-597171a5d832",
-      "name": "Authentication",
-      "description": {
-        "content": "OAuth 2.0 token management for obtaining and refreshing access tokens required by all other API endpoints.",
-        "type": "text/plain"
-      },
+      "name": "auth",
       "item": [
         {
-          "id": "ebc9355d-1987-4c6e-a0e4-8334abcb1eb9",
-          "name": "Request Access Token",
-          "request": {
-            "name": "Request Access Token",
-            "description": {
-              "content": "Obtains an OAuth 2.0 access token using password grant or refresh token grant. The access token is required for all subsequent API calls and is valid for five minutes. The response also includes a refresh token that can be used to obtain new access tokens without re-authenticating.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "auth",
-                "oauth2",
-                "v1",
-                "token"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/x-www-form-urlencoded"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "disabled": false,
-                  "key": "client_id",
-                  "value": "<string>",
-                  "description": "(Required) The application client ID provided during registration."
-                },
-                {
-                  "disabled": false,
-                  "key": "grant_type",
-                  "value": "<string>",
-                  "description": "(Required) The OAuth 2.0 grant type. Use password for initial authentication or refresh_token for token renewal."
-                },
-                {
-                  "disabled": false,
-                  "key": "username",
-                  "value": "<string>",
-                  "description": "The user's machine account username. Required for password grant type."
-                },
-                {
-                  "disabled": false,
-                  "key": "password",
-                  "value": "<string>",
-                  "description": "The user's machine account password. Required for password grant type."
-                },
-                {
-                  "disabled": false,
-                  "key": "refresh_token",
-                  "value": "<string>",
-                  "description": "The refresh token from a previous authentication. Required for refresh_token grant type."
-                },
-                {
-                  "disabled": false,
-                  "key": "scope",
-                  "value": "<string>",
-                  "description": "The scope of access requested. Each RDP resource has a permission scope assigned to it."
-                },
-                {
-                  "disabled": false,
-                  "key": "takeExclusiveSignOnControl",
-                  "value": "<string>",
-                  "description": "When set to true, forces sign-on even if another session exists for the same credentials."
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "oauth2",
+          "item": [
             {
-              "id": "08309495-9754-40a0-9386-983b6bf95dab",
-              "name": "Successful authentication",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "auth",
-                    "oauth2",
-                    "v1",
-                    "token"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) The application client ID provided during registration.",
-                        "type": "text/plain"
-                      },
-                      "key": "client_id",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) The OAuth 2.0 grant type. Use password for initial authentication or refresh_token for token renewal.",
-                        "type": "text/plain"
-                      },
-                      "key": "grant_type",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "The user's machine account username. Required for password grant type.",
-                        "type": "text/plain"
-                      },
-                      "key": "username",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "The user's machine account password. Required for password grant type.",
-                        "type": "text/plain"
-                      },
-                      "key": "password",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "The refresh token from a previous authentication. Required for refresh_token grant type.",
-                        "type": "text/plain"
-                      },
-                      "key": "refresh_token",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "The scope of access requested. Each RDP resource has a permission scope assigned to it.",
-                        "type": "text/plain"
-                      },
-                      "key": "scope",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "When set to true, forces sign-on even if another session exists for the same credentials.",
-                        "type": "text/plain"
-                      },
-                      "key": "takeExclusiveSignOnControl",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "v1",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "token",
+                  "item": [
+                    {
+                      "name": "Request Access Token",
+                      "id": "a0965ad5-871d-42af-b2a3-4fa504342792",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) The application client ID provided during registration.",
+                              "key": "client_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) The OAuth 2.0 grant type. Use password for initial authentication or refresh_token for token renewal.",
+                              "key": "grant_type",
+                              "value": "refresh_token"
+                            },
+                            {
+                              "description": "The user's machine account username. Required for password grant type.",
+                              "key": "username",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The user's machine account password. Required for password grant type.",
+                              "key": "password",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The refresh token from a previous authentication. Required for refresh_token grant type.",
+                              "key": "refresh_token",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The scope of access requested. Each RDP resource has a permission scope assigned to it.",
+                              "key": "scope",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "When set to true, forces sign-on even if another session exists for the same credentials.",
+                              "key": "takeExclusiveSignOnControl",
+                              "value": "false"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/auth/oauth2/v1/token",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "auth",
+                            "oauth2",
+                            "v1",
+                            "token"
+                          ]
+                        },
+                        "description": "Obtains an OAuth 2.0 access token using password grant or refresh token grant. The access token is required for all subsequent API calls and is valid for five minutes. The response also includes a refresh token that can be used to obtain new access tokens without re-authenticating."
+                      },
+                      "response": [
+                        {
+                          "id": "b0985ab5-7646-436e-afd6-b9b92fc58abf",
+                          "name": "Successful authentication",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "urlencoded",
+                              "urlencoded": [
+                                {
+                                  "description": "(Required) The application client ID provided during registration.",
+                                  "key": "client_id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "(Required) The OAuth 2.0 grant type. Use password for initial authentication or refresh_token for token renewal.",
+                                  "key": "grant_type",
+                                  "value": "refresh_token"
+                                },
+                                {
+                                  "description": "The user's machine account username. Required for password grant type.",
+                                  "key": "username",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The user's machine account password. Required for password grant type.",
+                                  "key": "password",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The refresh token from a previous authentication. Required for refresh_token grant type.",
+                                  "key": "refresh_token",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The scope of access requested. Each RDP resource has a permission scope assigned to it.",
+                                  "key": "scope",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "When set to true, forces sign-on even if another session exists for the same credentials.",
+                                  "key": "takeExclusiveSignOnControl",
+                                  "value": "false"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/auth/oauth2/v1/token",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "auth",
+                                "oauth2",
+                                "v1",
+                                "token"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"access_token\": \"<string>\",\n  \"refresh_token\": \"<string>\",\n  \"expires_in\": \"<integer>\",\n  \"scope\": \"<string>\",\n  \"token_type\": \"<string>\"\n}",
+                          "createdAt": "2026-10-21T20:32:39.000Z",
+                          "updatedAt": "2026-10-21T20:32:39.000Z",
+                          "uid": "35240-b0985ab5-7646-436e-afd6-b9b92fc58abf"
+                        },
+                        {
+                          "id": "09669e44-1cf9-408a-bb49-70b801277c2e",
+                          "name": "Invalid request parameters",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded"
+                              }
+                            ],
+                            "body": {
+                              "mode": "urlencoded",
+                              "urlencoded": [
+                                {
+                                  "description": "(Required) The application client ID provided during registration.",
+                                  "key": "client_id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "(Required) The OAuth 2.0 grant type. Use password for initial authentication or refresh_token for token renewal.",
+                                  "key": "grant_type",
+                                  "value": "refresh_token"
+                                },
+                                {
+                                  "description": "The user's machine account username. Required for password grant type.",
+                                  "key": "username",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The user's machine account password. Required for password grant type.",
+                                  "key": "password",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The refresh token from a previous authentication. Required for refresh_token grant type.",
+                                  "key": "refresh_token",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The scope of access requested. Each RDP resource has a permission scope assigned to it.",
+                                  "key": "scope",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "When set to true, forces sign-on even if another session exists for the same credentials.",
+                                  "key": "takeExclusiveSignOnControl",
+                                  "value": "false"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/auth/oauth2/v1/token",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "auth",
+                                "oauth2",
+                                "v1",
+                                "token"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:32:39.000Z",
+                          "updatedAt": "2026-10-21T20:32:39.000Z",
+                          "uid": "35240-09669e44-1cf9-408a-bb49-70b801277c2e"
+                        },
+                        {
+                          "id": "9379730a-fb25-4b14-9c2d-ca71ff088939",
+                          "name": "Invalid credentials",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded"
+                              }
+                            ],
+                            "body": {
+                              "mode": "urlencoded",
+                              "urlencoded": [
+                                {
+                                  "description": "(Required) The application client ID provided during registration.",
+                                  "key": "client_id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "(Required) The OAuth 2.0 grant type. Use password for initial authentication or refresh_token for token renewal.",
+                                  "key": "grant_type",
+                                  "value": "refresh_token"
+                                },
+                                {
+                                  "description": "The user's machine account username. Required for password grant type.",
+                                  "key": "username",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The user's machine account password. Required for password grant type.",
+                                  "key": "password",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The refresh token from a previous authentication. Required for refresh_token grant type.",
+                                  "key": "refresh_token",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The scope of access requested. Each RDP resource has a permission scope assigned to it.",
+                                  "key": "scope",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "When set to true, forces sign-on even if another session exists for the same credentials.",
+                                  "key": "takeExclusiveSignOnControl",
+                                  "value": "false"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/auth/oauth2/v1/token",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "auth",
+                                "oauth2",
+                                "v1",
+                                "token"
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:32:39.000Z",
+                          "updatedAt": "2026-10-21T20:32:39.000Z",
+                          "uid": "35240-9379730a-fb25-4b14-9c2d-ca71ff088939"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:32:39.000Z",
+                      "updatedAt": "2026-10-21T20:32:39.000Z",
+                      "uid": "35240-a0965ad5-871d-42af-b2a3-4fa504342792"
+                    }
+                  ],
+                  "id": "9d75d786-a6dd-47c6-9c49-d3af26c9c230",
+                  "createdAt": "2026-10-21T20:32:38.000Z",
+                  "updatedAt": "2026-10-21T20:32:38.000Z",
+                  "uid": "35240-9d75d786-a6dd-47c6-9c49-d3af26c9c230"
                 }
               ],
-              "body": "{\n  \"access_token\": \"string\",\n  \"refresh_token\": \"string\",\n  \"expires_in\": 6647,\n  \"scope\": \"string\",\n  \"token_type\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "37e634db-6b0a-49e9-a3f9-453fbf6826b0",
-              "name": "Invalid request parameters",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "auth",
-                    "oauth2",
-                    "v1",
-                    "token"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) The application client ID provided during registration.",
-                        "type": "text/plain"
-                      },
-                      "key": "client_id",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) The OAuth 2.0 grant type. Use password for initial authentication or refresh_token for token renewal.",
-                        "type": "text/plain"
-                      },
-                      "key": "grant_type",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "The user's machine account username. Required for password grant type.",
-                        "type": "text/plain"
-                      },
-                      "key": "username",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "The user's machine account password. Required for password grant type.",
-                        "type": "text/plain"
-                      },
-                      "key": "password",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "The refresh token from a previous authentication. Required for refresh_token grant type.",
-                        "type": "text/plain"
-                      },
-                      "key": "refresh_token",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "The scope of access requested. Each RDP resource has a permission scope assigned to it.",
-                        "type": "text/plain"
-                      },
-                      "key": "scope",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "When set to true, forces sign-on even if another session exists for the same credentials.",
-                        "type": "text/plain"
-                      },
-                      "key": "takeExclusiveSignOnControl",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "9c56d911-a13a-42db-a565-0fb55384802e",
-              "name": "Invalid credentials",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "auth",
-                    "oauth2",
-                    "v1",
-                    "token"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) The application client ID provided during registration.",
-                        "type": "text/plain"
-                      },
-                      "key": "client_id",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) The OAuth 2.0 grant type. Use password for initial authentication or refresh_token for token renewal.",
-                        "type": "text/plain"
-                      },
-                      "key": "grant_type",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "The user's machine account username. Required for password grant type.",
-                        "type": "text/plain"
-                      },
-                      "key": "username",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "The user's machine account password. Required for password grant type.",
-                        "type": "text/plain"
-                      },
-                      "key": "password",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "The refresh token from a previous authentication. Required for refresh_token grant type.",
-                        "type": "text/plain"
-                      },
-                      "key": "refresh_token",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "The scope of access requested. Each RDP resource has a permission scope assigned to it.",
-                        "type": "text/plain"
-                      },
-                      "key": "scope",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "When set to true, forces sign-on even if another session exists for the same credentials.",
-                        "type": "text/plain"
-                      },
-                      "key": "takeExclusiveSignOnControl",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "95395283-51c2-4d9b-80f3-b7dc00227ce2",
+              "createdAt": "2026-10-21T20:32:38.000Z",
+              "updatedAt": "2026-10-21T20:32:38.000Z",
+              "uid": "35240-95395283-51c2-4d9b-80f3-b7dc00227ce2"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "b0923626-316c-48c0-b927-ffc6681c4cab",
-          "name": "Request Authentication Token",
-          "request": {
-            "name": "Request Authentication Token",
-            "description": {
-              "content": "Authenticates the user and returns a session token that must be included in all subsequent API requests. The token is included in the Authorization header as a Token value.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "Authentication",
-                "RequestToken"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"Credentials\": {\n    \"Username\": \"<string>\",\n    \"Password\": \"<string>\"\n  }\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "8f2aa17d-d644-4e75-a237-5f35792a4ed8",
-              "name": "Authentication successful",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "Authentication",
-                    "RequestToken"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"Credentials\": {\n    \"Username\": \"<string>\",\n    \"Password\": \"<string>\"\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"@odata.context\": \"string\",\n  \"value\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "40234cd3-b90b-41af-bd9f-d28935228f6b",
-              "name": "Invalid credentials",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "Authentication",
-                    "RequestToken"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"Credentials\": {\n    \"Username\": \"<string>\",\n    \"Password\": \"<string>\"\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "63e17cbe-ec8a-4cd6-a59d-609548ee24f1",
-              "name": "Authentication failed",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "Authentication",
-                    "RequestToken"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"Credentials\": {\n    \"Username\": \"<string>\",\n    \"Password\": \"<string>\"\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "e11e2030-ccb9-4f27-8eaf-7d2f06eeebb4",
+          "createdAt": "2026-10-21T20:32:38.000Z",
+          "updatedAt": "2026-10-21T20:32:38.000Z",
+          "uid": "35240-e11e2030-ccb9-4f27-8eaf-7d2f06eeebb4"
         }
       ],
-      "event": []
+      "id": "fd07e727-0d2b-43a4-a51e-17bce660223c",
+      "createdAt": "2026-10-21T20:32:38.000Z",
+      "updatedAt": "2026-10-21T20:32:38.000Z",
+      "uid": "35240-fd07e727-0d2b-43a4-a51e-17bce660223c"
+    },
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "RequestToken",
+          "item": [
+            {
+              "name": "Request Authentication Token",
+              "id": "f6fda127-95c7-4d04-809a-cc4e9ba432f6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Credentials\": {\n    \"Username\": \"<string>\",\n    \"Password\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Authentication/RequestToken",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Authentication",
+                    "RequestToken"
+                  ]
+                },
+                "description": "Authenticates the user and returns a session token that must be included in all subsequent API requests. The token is included in the Authorization header as a Token value."
+              },
+              "response": [
+                {
+                  "id": "e958e1cc-ae2d-4165-9d38-ad70f2291682",
+                  "name": "Authentication successful",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Credentials\": {\n    \"Username\": \"<string>\",\n    \"Password\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/Authentication/RequestToken",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Authentication",
+                        "RequestToken"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"@odata.context\": \"<string>\",\n  \"value\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:32:39.000Z",
+                  "updatedAt": "2026-10-21T20:32:39.000Z",
+                  "uid": "35240-e958e1cc-ae2d-4165-9d38-ad70f2291682"
+                },
+                {
+                  "id": "c911847b-4bfe-4524-9dc5-125d39b7d238",
+                  "name": "Invalid credentials",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Credentials\": {\n    \"Username\": \"<string>\",\n    \"Password\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/Authentication/RequestToken",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Authentication",
+                        "RequestToken"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:32:39.000Z",
+                  "updatedAt": "2026-10-21T20:32:39.000Z",
+                  "uid": "35240-c911847b-4bfe-4524-9dc5-125d39b7d238"
+                },
+                {
+                  "id": "f9ac6792-686b-4853-a4a6-1e23fa4b28b5",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Credentials\": {\n    \"Username\": \"<string>\",\n    \"Password\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/Authentication/RequestToken",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Authentication",
+                        "RequestToken"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:32:39.000Z",
+                  "updatedAt": "2026-10-21T20:32:39.000Z",
+                  "uid": "35240-f9ac6792-686b-4853-a4a6-1e23fa4b28b5"
+                }
+              ],
+              "createdAt": "2026-10-21T20:32:39.000Z",
+              "updatedAt": "2026-10-21T20:32:39.000Z",
+              "uid": "35240-f6fda127-95c7-4d04-809a-cc4e9ba432f6"
+            }
+          ],
+          "id": "18d7c69b-92e2-4077-923c-790671343e14",
+          "createdAt": "2026-10-21T20:32:38.000Z",
+          "updatedAt": "2026-10-21T20:32:38.000Z",
+          "uid": "35240-18d7c69b-92e2-4077-923c-790671343e14"
+        }
+      ],
+      "id": "2e7a8de0-9aed-4e28-b260-47ded1fd3386",
+      "createdAt": "2026-10-21T20:32:38.000Z",
+      "updatedAt": "2026-10-21T20:32:38.000Z",
+      "uid": "35240-2e7a8de0-9aed-4e28-b260-47ded1fd3386"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://api.refinitiv.com",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.refinitiv.com"
     }
-  ],
-  "auth": {
-    "type": "bearer",
-    "bearer": [
-      {
-        "key": "token",
-        "value": "{{bearerToken}}"
-      }
-    ]
-  },
-  "info": {
-    "_postman_id": "acb05942-efdc-4126-a7d6-c53694348f2c",
-    "name": "Refinitiv Data Platform (RDP) APIs Authentication API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.\n\nContact Support:\n Name: LSEG Developer Support",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

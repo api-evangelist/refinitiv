@@ -1,472 +1,502 @@
 {
+  "info": {
+    "_postman_id": "8f6cd1ba-3969-4d40-a609-c56a4af677ba",
+    "name": "Refinitiv Data Platform (RDP) Pricing API",
+    "description": "Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.\n\nContact Support:\n Name: LSEG Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:33:49.000Z",
+    "updatedAt": "2026-10-21T20:33:50.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8f6cd1ba-3969-4d40-a609-c56a4af677ba"
+  },
   "item": [
     {
-      "id": "df3464ab-eb88-4b43-8c52-f20e9ab319d1",
-      "name": "Pricing",
-      "description": {
-        "content": "Real-time and delayed snapshot pricing data for financial instruments and pricing chains.",
-        "type": "text/plain"
-      },
+      "name": "data",
       "item": [
         {
-          "id": "7b36d628-158d-4a6d-aa83-a1b712ceb180",
-          "name": "Get Pricing Snapshots",
-          "request": {
-            "name": "Get Pricing Snapshots",
-            "description": {
-              "content": "Retrieves real-time or delayed pricing snapshots for one or more financial instruments. Returns the latest available price data including bid, ask, last trade, and volume.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "data",
-                "pricing",
-                "snapshots",
-                "v1",
-                ""
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "universe",
-                  "value": "<string>",
-                  "description": "(Required) Comma-separated list of instrument identifiers such as RICs."
-                },
-                {
-                  "disabled": false,
-                  "key": "fields",
-                  "value": "<string>",
-                  "description": "Comma-separated list of specific fields to return."
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "pricing",
+          "item": [
             {
-              "id": "73ad8f5c-ac42-4abf-8e93-94d66e06f520",
-              "name": "Pricing snapshot data returned successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "data",
-                    "pricing",
-                    "snapshots",
-                    "v1",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+              "name": "snapshots",
+              "item": [
+                {
+                  "name": "v1",
+                  "item": [
                     {
-                      "key": "universe",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "fields",
-                      "value": "<string>"
+                      "name": "Get Pricing Snapshots",
+                      "id": "0af39c23-1b98-4ecb-9ae2-a4f7affe7eaf",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/data/pricing/snapshots/v1/?universe=<string>&fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "data",
+                            "pricing",
+                            "snapshots",
+                            "v1",
+                            ""
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Comma-separated list of instrument identifiers such as RICs.",
+                              "key": "universe",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Comma-separated list of specific fields to return.",
+                              "key": "fields",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "description": "Retrieves real-time or delayed pricing snapshots for one or more financial instruments. Returns the latest available price data including bid, ask, last trade, and volume."
+                      },
+                      "response": [
+                        {
+                          "id": "136fe7a1-ef77-45d1-a647-7963d2452f14",
+                          "name": "Pricing snapshot data returned successfully",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/data/pricing/snapshots/v1/?universe=<string>&fields=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "data",
+                                "pricing",
+                                "snapshots",
+                                "v1",
+                                ""
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) Comma-separated list of instrument identifiers such as RICs.",
+                                  "key": "universe",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Comma-separated list of specific fields to return.",
+                                  "key": "fields",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"universe\": [\n    {\n      \"ric\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"status\": \"<string>\"\n    },\n    {\n      \"ric\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"status\": \"<string>\"\n    }\n  ],\n  \"headers\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"data\": [\n    [\n      {\n        \"description\": \"Field values corresponding to the headers array.\"\n      },\n      {\n        \"description\": \"Field values corresponding to the headers array.\"\n      }\n    ],\n    [\n      {\n        \"description\": \"Field values corresponding to the headers array.\"\n      },\n      {\n        \"description\": \"Field values corresponding to the headers array.\"\n      }\n    ]\n  ]\n}",
+                          "createdAt": "2026-10-21T20:33:50.000Z",
+                          "updatedAt": "2026-10-21T20:33:50.000Z",
+                          "uid": "35240-136fe7a1-ef77-45d1-a647-7963d2452f14"
+                        },
+                        {
+                          "id": "0a283452-15c9-4abb-8104-eb8af79dc06d",
+                          "name": "Invalid request parameters",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/data/pricing/snapshots/v1/?universe=<string>&fields=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "data",
+                                "pricing",
+                                "snapshots",
+                                "v1",
+                                ""
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) Comma-separated list of instrument identifiers such as RICs.",
+                                  "key": "universe",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Comma-separated list of specific fields to return.",
+                                  "key": "fields",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:33:50.000Z",
+                          "updatedAt": "2026-10-21T20:33:50.000Z",
+                          "uid": "35240-0a283452-15c9-4abb-8104-eb8af79dc06d"
+                        },
+                        {
+                          "id": "11d7ebe1-4e5d-4537-b736-0c97a774d120",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/data/pricing/snapshots/v1/?universe=<string>&fields=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "data",
+                                "pricing",
+                                "snapshots",
+                                "v1",
+                                ""
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) Comma-separated list of instrument identifiers such as RICs.",
+                                  "key": "universe",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Comma-separated list of specific fields to return.",
+                                  "key": "fields",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:33:50.000Z",
+                          "updatedAt": "2026-10-21T20:33:50.000Z",
+                          "uid": "35240-11d7ebe1-4e5d-4537-b736-0c97a774d120"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:33:50.000Z",
+                      "updatedAt": "2026-10-21T20:33:50.000Z",
+                      "uid": "35240-0af39c23-1b98-4ecb-9ae2-a4f7affe7eaf"
                     }
                   ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "9bbca865-4b4e-4fec-8b4d-9ca9d4959b9d",
+                  "createdAt": "2026-10-21T20:33:50.000Z",
+                  "updatedAt": "2026-10-21T20:33:50.000Z",
+                  "uid": "35240-9bbca865-4b4e-4fec-8b4d-9ca9d4959b9d"
                 }
               ],
-              "body": "{\n  \"universe\": [\n    {\n      \"ric\": \"string\",\n      \"displayName\": \"string\",\n      \"status\": \"string\"\n    },\n    {\n      \"ric\": \"string\",\n      \"displayName\": \"string\",\n      \"status\": \"string\"\n    }\n  ],\n  \"headers\": [\n    {\n      \"name\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  ],\n  \"data\": [\n    [],\n    []\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "7e6189b5-d4ad-4525-91cc-6f801308bb13",
-              "name": "Invalid request parameters",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "data",
-                    "pricing",
-                    "snapshots",
-                    "v1",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "universe",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "fields",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "89d37419-29e5-4460-9df6-37aaef44fb77",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "data",
-                    "pricing",
-                    "snapshots",
-                    "v1",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "universe",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "fields",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "127fe9bd-3468-40e5-9ab3-6b9184a4a8e2",
+              "createdAt": "2026-10-21T20:33:50.000Z",
+              "updatedAt": "2026-10-21T20:33:50.000Z",
+              "uid": "35240-127fe9bd-3468-40e5-9ab3-6b9184a4a8e2"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "832d2aad-5369-43ce-a486-f949066ff765",
-          "name": "Get Pricing Chains",
-          "request": {
-            "name": "Get Pricing Chains",
-            "description": {
-              "content": "Retrieves constituent instruments for a pricing chain such as an options chain or futures chain identified by its chain RIC.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "pricing",
-                "chains",
-                "v1",
-                ""
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "universe",
-                  "value": "<string>",
-                  "description": "(Required) The chain RIC identifier."
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "5576ca17-de38-45ae-9f7d-f73628cf3d40",
-              "name": "Chain constituents returned successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "pricing",
-                    "chains",
-                    "v1",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "universe",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "f4e029ef-86c4-4642-b6d4-4908fa8106d4",
-              "name": "Invalid request parameters",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "pricing",
-                    "chains",
-                    "v1",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "universe",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "b73a4d13-4f8c-4e00-9e3e-f06c78b0d058",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "pricing",
-                    "chains",
-                    "v1",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "universe",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "8afbbc29-6680-49c2-8c82-dd2ac616d3b0",
-              "name": "Chain not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "pricing",
-                    "chains",
-                    "v1",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "universe",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "ee5cc4a4-d767-4601-b2c1-bc8a59bfd449",
+          "createdAt": "2026-10-21T20:33:50.000Z",
+          "updatedAt": "2026-10-21T20:33:50.000Z",
+          "uid": "35240-ee5cc4a4-d767-4601-b2c1-bc8a59bfd449"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
+      "id": "77bf257a-c17b-4c7f-a59e-1484f37d8fbe",
+      "createdAt": "2026-10-21T20:33:50.000Z",
+      "updatedAt": "2026-10-21T20:33:50.000Z",
+      "uid": "35240-77bf257a-c17b-4c7f-a59e-1484f37d8fbe"
+    },
     {
-      "type": "string",
-      "value": "https://api.refinitiv.com",
-      "key": "baseUrl"
+      "name": "pricing",
+      "item": [
+        {
+          "name": "chains",
+          "item": [
+            {
+              "name": "v1",
+              "item": [
+                {
+                  "name": "Get Pricing Chains",
+                  "id": "d86c8e8a-d687-4606-aafe-90373140ac64",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/pricing/chains/v1/?universe=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pricing",
+                        "chains",
+                        "v1",
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The chain RIC identifier.",
+                          "key": "universe",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves constituent instruments for a pricing chain such as an options chain or futures chain identified by its chain RIC."
+                  },
+                  "response": [
+                    {
+                      "id": "952c6d6d-2977-4e34-bcb9-64cadc03d7e8",
+                      "name": "Chain constituents returned successfully",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/pricing/chains/v1/?universe=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pricing",
+                            "chains",
+                            "v1",
+                            ""
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The chain RIC identifier.",
+                              "key": "universe",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-10-21T20:33:50.000Z",
+                      "updatedAt": "2026-10-21T20:33:50.000Z",
+                      "uid": "35240-952c6d6d-2977-4e34-bcb9-64cadc03d7e8"
+                    },
+                    {
+                      "id": "df6d01a9-173f-4d41-bf4e-539c8e1170e8",
+                      "name": "Invalid request parameters",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/pricing/chains/v1/?universe=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pricing",
+                            "chains",
+                            "v1",
+                            ""
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The chain RIC identifier.",
+                              "key": "universe",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:33:50.000Z",
+                      "updatedAt": "2026-10-21T20:33:50.000Z",
+                      "uid": "35240-df6d01a9-173f-4d41-bf4e-539c8e1170e8"
+                    },
+                    {
+                      "id": "4b700437-daa2-4d9c-90ff-3ee19d17ddd0",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/pricing/chains/v1/?universe=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pricing",
+                            "chains",
+                            "v1",
+                            ""
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The chain RIC identifier.",
+                              "key": "universe",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:33:50.000Z",
+                      "updatedAt": "2026-10-21T20:33:50.000Z",
+                      "uid": "35240-4b700437-daa2-4d9c-90ff-3ee19d17ddd0"
+                    },
+                    {
+                      "id": "a2ed31a9-9370-41d8-827f-f050cd5250e0",
+                      "name": "Chain not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/pricing/chains/v1/?universe=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pricing",
+                            "chains",
+                            "v1",
+                            ""
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The chain RIC identifier.",
+                              "key": "universe",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:33:50.000Z",
+                      "updatedAt": "2026-10-21T20:33:50.000Z",
+                      "uid": "35240-a2ed31a9-9370-41d8-827f-f050cd5250e0"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:33:50.000Z",
+                  "updatedAt": "2026-10-21T20:33:50.000Z",
+                  "uid": "35240-d86c8e8a-d687-4606-aafe-90373140ac64"
+                }
+              ],
+              "id": "4eaff605-0649-499d-88c4-d335ff049bce",
+              "createdAt": "2026-10-21T20:33:50.000Z",
+              "updatedAt": "2026-10-21T20:33:50.000Z",
+              "uid": "35240-4eaff605-0649-499d-88c4-d335ff049bce"
+            }
+          ],
+          "id": "c370f4c3-0254-47f3-b6e2-3e40ec40f9a5",
+          "createdAt": "2026-10-21T20:33:50.000Z",
+          "updatedAt": "2026-10-21T20:33:50.000Z",
+          "uid": "35240-c370f4c3-0254-47f3-b6e2-3e40ec40f9a5"
+        }
+      ],
+      "id": "27032e28-af95-4adf-8693-8e9b0ed1bc02",
+      "createdAt": "2026-10-21T20:33:50.000Z",
+      "updatedAt": "2026-10-21T20:33:50.000Z",
+      "uid": "35240-27032e28-af95-4adf-8693-8e9b0ed1bc02"
     }
   ],
   "auth": {
@@ -474,17 +504,15 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "691fe5c9-1b44-4f83-b613-841bf60c57f6",
-    "name": "Refinitiv Data Platform (RDP) APIs Authentication Pricing API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.\n\nContact Support:\n Name: LSEG Developer Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.refinitiv.com"
     }
-  }
+  ]
 }

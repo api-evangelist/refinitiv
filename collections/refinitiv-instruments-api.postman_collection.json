@@ -1,520 +1,509 @@
 {
+  "info": {
+    "_postman_id": "f7785865-d65c-4158-859e-63254b115d53",
+    "name": "Refinitiv LSEG DataScope Select REST Instruments API",
+    "description": "Internet-hosted OData REST API for programmatic access to global pricing, corporate actions, reference data, historical data, cross-reference, and entity data. It provides fully automated extraction workflows and batch processing capabilities for large-scale data retrieval from the DataScope Select platform.\n\nContact Support:\n Name: LSEG Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:33:31.000Z",
+    "updatedAt": "2026-10-21T20:33:31.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f7785865-d65c-4158-859e-63254b115d53"
+  },
   "item": [
     {
-      "id": "f6bfafc1-a4a5-419a-bd73-5b07e488999a",
-      "name": "Instruments",
-      "description": {
-        "content": "Instrument search, validation, and instrument list management operations.",
-        "type": "text/plain"
-      },
+      "name": "Extractions",
       "item": [
         {
-          "id": "24c1e76f-9ed0-440f-977a-f9cc0516bc8e",
-          "name": "Get Instrument List by Name",
-          "request": {
-            "name": "Get Instrument List by Name",
-            "description": {
-              "content": "Retrieves an instrument list by its name, returning the list metadata and contained instruments.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "Extractions",
-                "InstrumentListGetByName(ListName='{{listName}}')"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "InstrumentListGetByName(ListName='{listName}')",
+          "item": [
             {
-              "id": "077b2a24-f928-4da4-bbb3-6010cdf0553a",
-              "name": "Instrument list returned successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "Extractions",
-                    "InstrumentListGetByName(ListName='{{listName}}')"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+              "name": "Get Instrument List by Name",
+              "id": "6c74d0cc-06b3-44ab-8a61-d2f075c15f05",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"ListId\": \"string\",\n  \"Name\": \"string\",\n  \"InstrumentIdentifiers\": [\n    {\n      \"Identifier\": \"string\",\n      \"IdentifierType\": \"string\",\n      \"Description\": \"string\"\n    },\n    {\n      \"Identifier\": \"string\",\n      \"IdentifierType\": \"string\",\n      \"Description\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "4f425598-17f5-4d39-80dc-65c09f947120",
-              "name": "Unauthorized",
-              "originalRequest": {
                 "url": {
-                  "path": [
-                    "Extractions",
-                    "InstrumentListGetByName(ListName='{{listName}}')"
-                  ],
+                  "raw": "{{baseUrl}}/Extractions/InstrumentListGetByName(ListName='{{listName}}')",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "e2acac3c-ab05-4caa-807f-3abb21d29504",
-              "name": "List not found",
-              "originalRequest": {
-                "url": {
                   "path": [
                     "Extractions",
                     "InstrumentListGetByName(ListName='{{listName}}')"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
+                  ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Retrieves an instrument list by its name, returning the list metadata and contained instruments."
               },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "335a68f4-3d7a-441d-b83b-b79c55d8bc2a",
+                  "name": "Instrument list returned successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Extractions/InstrumentListGetByName(ListName='{{listName}}')",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Extractions",
+                        "InstrumentListGetByName(ListName='{{listName}}')"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"ListId\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"InstrumentIdentifiers\": [\n    {\n      \"Identifier\": \"<string>\",\n      \"IdentifierType\": \"<string>\",\n      \"Description\": \"<string>\"\n    },\n    {\n      \"Identifier\": \"<string>\",\n      \"IdentifierType\": \"<string>\",\n      \"Description\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:33:31.000Z",
+                  "updatedAt": "2026-10-21T20:33:31.000Z",
+                  "uid": "35240-335a68f4-3d7a-441d-b83b-b79c55d8bc2a"
+                },
+                {
+                  "id": "e47f6a8d-01e7-4f88-be8f-d66682691ecb",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Extractions/InstrumentListGetByName(ListName='{{listName}}')",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Extractions",
+                        "InstrumentListGetByName(ListName='{{listName}}')"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:33:31.000Z",
+                  "updatedAt": "2026-10-21T20:33:31.000Z",
+                  "uid": "35240-e47f6a8d-01e7-4f88-be8f-d66682691ecb"
+                },
+                {
+                  "id": "d0d6c67c-5577-4e54-a583-928ff15b1527",
+                  "name": "List not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Extractions/InstrumentListGetByName(ListName='{{listName}}')",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Extractions",
+                        "InstrumentListGetByName(ListName='{{listName}}')"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:33:31.000Z",
+                  "updatedAt": "2026-10-21T20:33:31.000Z",
+                  "uid": "35240-d0d6c67c-5577-4e54-a583-928ff15b1527"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T20:33:31.000Z",
+              "updatedAt": "2026-10-21T20:33:31.000Z",
+              "uid": "35240-6c74d0cc-06b3-44ab-8a61-d2f075c15f05"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "f869dc18-c103-4a2a-8f1c-97c3f12e2277",
+          "createdAt": "2026-10-21T20:33:31.000Z",
+          "updatedAt": "2026-10-21T20:33:31.000Z",
+          "uid": "35240-f869dc18-c103-4a2a-8f1c-97c3f12e2277"
         },
         {
-          "id": "51980efe-4a4b-4ac6-a0ec-04a9c572027a",
-          "name": "List Instrument Lists",
-          "request": {
-            "name": "List Instrument Lists",
-            "description": {
-              "content": "Retrieves all instrument lists defined in the user's account.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "Extractions",
-                "InstrumentLists"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "InstrumentLists",
+          "item": [
             {
-              "id": "af468f0d-41c1-4528-9895-0a68b6c9796a",
-              "name": "Instrument lists returned successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "Extractions",
-                    "InstrumentLists"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+              "name": "List Instrument Lists",
+              "id": "8ec448d2-7c3d-480b-bf3a-0fde94989fde",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"value\": [\n    {\n      \"ListId\": \"string\",\n      \"Name\": \"string\",\n      \"InstrumentIdentifiers\": [\n        {\n          \"Identifier\": \"string\",\n          \"IdentifierType\": \"string\",\n          \"Description\": \"string\"\n        },\n        {\n          \"Identifier\": \"string\",\n          \"IdentifierType\": \"string\",\n          \"Description\": \"string\"\n        }\n      ]\n    },\n    {\n      \"ListId\": \"string\",\n      \"Name\": \"string\",\n      \"InstrumentIdentifiers\": [\n        {\n          \"Identifier\": \"string\",\n          \"IdentifierType\": \"string\",\n          \"Description\": \"string\"\n        },\n        {\n          \"Identifier\": \"string\",\n          \"IdentifierType\": \"string\",\n          \"Description\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "5685dcbf-a3e2-47fd-a623-fbeae2232952",
-              "name": "Unauthorized",
-              "originalRequest": {
                 "url": {
-                  "path": [
-                    "Extractions",
-                    "InstrumentLists"
-                  ],
+                  "raw": "{{baseUrl}}/Extractions/InstrumentLists",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
+                  "path": [
+                    "Extractions",
+                    "InstrumentLists"
+                  ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Retrieves all instrument lists defined in the user's account."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "fe4aa605-d04e-4488-b06d-13d67e6ebfd3",
+                  "name": "Instrument lists returned successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Extractions/InstrumentLists",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Extractions",
+                        "InstrumentLists"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"value\": [\n    {\n      \"ListId\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"InstrumentIdentifiers\": [\n        {\n          \"Identifier\": \"<string>\",\n          \"IdentifierType\": \"<string>\",\n          \"Description\": \"<string>\"\n        },\n        {\n          \"Identifier\": \"<string>\",\n          \"IdentifierType\": \"<string>\",\n          \"Description\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"ListId\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"InstrumentIdentifiers\": [\n        {\n          \"Identifier\": \"<string>\",\n          \"IdentifierType\": \"<string>\",\n          \"Description\": \"<string>\"\n        },\n        {\n          \"Identifier\": \"<string>\",\n          \"IdentifierType\": \"<string>\",\n          \"Description\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:33:31.000Z",
+                  "updatedAt": "2026-10-21T20:33:31.000Z",
+                  "uid": "35240-fe4aa605-d04e-4488-b06d-13d67e6ebfd3"
+                },
+                {
+                  "id": "44e30168-aec7-4204-919f-89882f107d6e",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Extractions/InstrumentLists",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Extractions",
+                        "InstrumentLists"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:33:31.000Z",
+                  "updatedAt": "2026-10-21T20:33:31.000Z",
+                  "uid": "35240-44e30168-aec7-4204-919f-89882f107d6e"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T20:33:31.000Z",
+              "updatedAt": "2026-10-21T20:33:31.000Z",
+              "uid": "35240-8ec448d2-7c3d-480b-bf3a-0fde94989fde"
+            },
+            {
+              "name": "Create Instrument List",
+              "id": "91e083e4-98f3-4a30-8334-4d1ea6e0a5a9",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ListId\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"InstrumentIdentifiers\": [\n    {\n      \"Identifier\": \"<string>\",\n      \"IdentifierType\": \"<string>\",\n      \"Description\": \"<string>\"\n    },\n    {\n      \"Identifier\": \"<string>\",\n      \"IdentifierType\": \"<string>\",\n      \"Description\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Extractions/InstrumentLists",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Extractions",
+                    "InstrumentLists"
+                  ]
+                },
+                "description": "Creates a new instrument list with the specified name and instruments."
+              },
+              "response": [
+                {
+                  "id": "8de76634-fedf-4e1b-a5cd-64beb8952d2a",
+                  "name": "Instrument list created successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"ListId\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"InstrumentIdentifiers\": [\n    {\n      \"Identifier\": \"<string>\",\n      \"IdentifierType\": \"<string>\",\n      \"Description\": \"<string>\"\n    },\n    {\n      \"Identifier\": \"<string>\",\n      \"IdentifierType\": \"<string>\",\n      \"Description\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/Extractions/InstrumentLists",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Extractions",
+                        "InstrumentLists"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:33:31.000Z",
+                  "updatedAt": "2026-10-21T20:33:31.000Z",
+                  "uid": "35240-8de76634-fedf-4e1b-a5cd-64beb8952d2a"
+                },
+                {
+                  "id": "8f1d379a-2c41-4687-9654-93fc50e71be0",
+                  "name": "Invalid request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"ListId\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"InstrumentIdentifiers\": [\n    {\n      \"Identifier\": \"<string>\",\n      \"IdentifierType\": \"<string>\",\n      \"Description\": \"<string>\"\n    },\n    {\n      \"Identifier\": \"<string>\",\n      \"IdentifierType\": \"<string>\",\n      \"Description\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/Extractions/InstrumentLists",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Extractions",
+                        "InstrumentLists"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:33:31.000Z",
+                  "updatedAt": "2026-10-21T20:33:31.000Z",
+                  "uid": "35240-8f1d379a-2c41-4687-9654-93fc50e71be0"
+                },
+                {
+                  "id": "439a838e-8d1b-476a-a80a-2e92e9445eaa",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"ListId\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"InstrumentIdentifiers\": [\n    {\n      \"Identifier\": \"<string>\",\n      \"IdentifierType\": \"<string>\",\n      \"Description\": \"<string>\"\n    },\n    {\n      \"Identifier\": \"<string>\",\n      \"IdentifierType\": \"<string>\",\n      \"Description\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/Extractions/InstrumentLists",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Extractions",
+                        "InstrumentLists"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:33:31.000Z",
+                  "updatedAt": "2026-10-21T20:33:31.000Z",
+                  "uid": "35240-439a838e-8d1b-476a-a80a-2e92e9445eaa"
+                }
+              ],
+              "createdAt": "2026-10-21T20:33:31.000Z",
+              "updatedAt": "2026-10-21T20:33:31.000Z",
+              "uid": "35240-91e083e4-98f3-4a30-8334-4d1ea6e0a5a9"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "8570cd29-6216-44ca-b167-cb8f20bfe138",
-          "name": "Create Instrument List",
-          "request": {
-            "name": "Create Instrument List",
-            "description": {
-              "content": "Creates a new instrument list with the specified name and instruments.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "Extractions",
-                "InstrumentLists"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"ListId\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"InstrumentIdentifiers\": [\n    {\n      \"Identifier\": \"<string>\",\n      \"IdentifierType\": \"<string>\",\n      \"Description\": \"<string>\"\n    },\n    {\n      \"Identifier\": \"<string>\",\n      \"IdentifierType\": \"<string>\",\n      \"Description\": \"<string>\"\n    }\n  ]\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "23ab3149-ad0b-4090-9e49-a52982b3c7ad",
-              "name": "Instrument list created successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "Extractions",
-                    "InstrumentLists"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"ListId\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"InstrumentIdentifiers\": [\n    {\n      \"Identifier\": \"<string>\",\n      \"IdentifierType\": \"<string>\",\n      \"Description\": \"<string>\"\n    },\n    {\n      \"Identifier\": \"<string>\",\n      \"IdentifierType\": \"<string>\",\n      \"Description\": \"<string>\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "30b55888-ef91-4f8d-9b59-d84a2595b406",
-              "name": "Invalid request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "Extractions",
-                    "InstrumentLists"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"ListId\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"InstrumentIdentifiers\": [\n    {\n      \"Identifier\": \"<string>\",\n      \"IdentifierType\": \"<string>\",\n      \"Description\": \"<string>\"\n    },\n    {\n      \"Identifier\": \"<string>\",\n      \"IdentifierType\": \"<string>\",\n      \"Description\": \"<string>\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "1259a894-7b98-4175-9dcb-9defb2527082",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "Extractions",
-                    "InstrumentLists"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"ListId\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"InstrumentIdentifiers\": [\n    {\n      \"Identifier\": \"<string>\",\n      \"IdentifierType\": \"<string>\",\n      \"Description\": \"<string>\"\n    },\n    {\n      \"Identifier\": \"<string>\",\n      \"IdentifierType\": \"<string>\",\n      \"Description\": \"<string>\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "f9761f66-cc15-4fff-8ab4-f9719af8aaec",
+          "createdAt": "2026-10-21T20:33:31.000Z",
+          "updatedAt": "2026-10-21T20:33:31.000Z",
+          "uid": "35240-f9761f66-cc15-4fff-8ab4-f9719af8aaec"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.refinitiv.com",
-      "key": "baseUrl"
-    },
-    {
-      "disabled": false,
-      "description": {
-        "content": "(Required) The name of the instrument list.",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "<string>",
-      "key": "listName"
+      "id": "98c258f3-8819-45b3-8425-6b79439d7a80",
+      "createdAt": "2026-10-21T20:33:31.000Z",
+      "updatedAt": "2026-10-21T20:33:31.000Z",
+      "uid": "35240-98c258f3-8819-45b3-8425-6b79439d7a80"
     }
   ],
   "auth": {
-    "type": "bearer",
-    "bearer": [
+    "type": "apikey",
+    "apikey": [
       {
-        "key": "token",
-        "value": "{{bearerToken}}"
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "f06d410d-c8e3-4e74-b617-acade7a05533",
-    "name": "Refinitiv Data Platform (RDP) APIs Authentication Instruments API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.\n\nContact Support:\n Name: LSEG Developer Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://selectapi.datascope.lseg.com/RestApi/v1"
+    },
+    {
+      "key": "listName",
+      "value": "<string>"
     }
-  }
+  ]
 }

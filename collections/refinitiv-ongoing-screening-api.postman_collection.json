@@ -1,178 +1,188 @@
 {
+  "info": {
+    "_postman_id": "ed79c9d9-d202-4cfa-815e-1fb5e6fb6e60",
+    "name": "Refinitiv World-Check One Ongoing Screening API",
+    "description": "RESTful API for integrating LSEG World-Check screening capabilities into existing workflows and internal systems. It enables automated customer and third-party screening for onboarding, KYC, and due diligence processes against the World-Check risk intelligence database, supporting synchronous and asynchronous screening, ongoing monitoring, case management, and audit trail capabilities.\n\nContact Support:\n Name: LSEG Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:33:44.000Z",
+    "updatedAt": "2026-10-21T20:33:44.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ed79c9d9-d202-4cfa-815e-1fb5e6fb6e60"
+  },
   "item": [
     {
-      "id": "e7fcdc48-2558-47d8-912c-d0289d498eeb",
-      "name": "Ongoing Screening",
-      "description": {
-        "content": "Ongoing screening monitoring for cases that have been flagged for continuous surveillance against the World-Check database.",
-        "type": "text/plain"
-      },
+      "name": "cases",
       "item": [
         {
-          "id": "2c6c650f-4346-4b7a-ba55-baed7d7b8a68",
-          "name": "Get Ongoing Screening Updates",
-          "request": {
-            "name": "Get Ongoing Screening Updates",
-            "description": {
-              "content": "Retrieves all ongoing screening updates for cases that have been flagged for continuous monitoring. Returns cases where new matches have been found or existing matches have changed since the last screening cycle.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "cases",
-                "ongoingScreeningUpdates"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "since",
-                  "value": "<dateTime>",
-                  "description": "Filter updates since this date-time in ISO 8601 format."
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "ongoingScreeningUpdates",
+          "item": [
             {
-              "id": "a4b5bc52-4596-49c5-a2f1-55bbc04b9e2d",
-              "name": "Ongoing screening updates returned successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "cases",
-                    "ongoingScreeningUpdates"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "since",
-                      "value": "<dateTime>"
-                    }
-                  ],
-                  "variable": []
-                },
+              "name": "Get Ongoing Screening Updates",
+              "id": "958a0420-1c2d-4890-a15b-ea224babccdd",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"caseSystemId\": \"string\",\n    \"caseId\": \"string\",\n    \"updateDate\": \"1978-06-25T14:27:52.939Z\",\n    \"providerType\": \"string\"\n  },\n  {\n    \"caseSystemId\": \"string\",\n    \"caseId\": \"string\",\n    \"updateDate\": \"1987-01-07T21:18:56.915Z\",\n    \"providerType\": \"string\"\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "e12eac2b-e5e5-4424-818b-6a5184fca292",
-              "name": "Unauthorized",
-              "originalRequest": {
                 "url": {
+                  "raw": "{{baseUrl}}/cases/ongoingScreeningUpdates?since=<dateTime>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "cases",
                     "ongoingScreeningUpdates"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "Filter updates since this date-time in ISO 8601 format.",
                       "key": "since",
                       "value": "<dateTime>"
                     }
-                  ],
-                  "variable": []
+                  ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Retrieves all ongoing screening updates for cases that have been flagged for continuous monitoring. Returns cases where new matches have been found or existing matches have changed since the last screening cycle."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "779975c1-c86e-4ab0-bd55-459043d91192",
+                  "name": "Ongoing screening updates returned successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/cases/ongoingScreeningUpdates?since=<dateTime>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cases",
+                        "ongoingScreeningUpdates"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter updates since this date-time in ISO 8601 format.",
+                          "key": "since",
+                          "value": "<dateTime>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"caseSystemId\": \"<string>\",\n    \"caseId\": \"<string>\",\n    \"updateDate\": \"<dateTime>\",\n    \"providerType\": \"<string>\"\n  },\n  {\n    \"caseSystemId\": \"<string>\",\n    \"caseId\": \"<string>\",\n    \"updateDate\": \"<dateTime>\",\n    \"providerType\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-10-21T20:33:44.000Z",
+                  "updatedAt": "2026-10-21T20:33:44.000Z",
+                  "uid": "35240-779975c1-c86e-4ab0-bd55-459043d91192"
+                },
+                {
+                  "id": "fba141b7-9e06-4602-9fa7-a38de224de1a",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/cases/ongoingScreeningUpdates?since=<dateTime>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cases",
+                        "ongoingScreeningUpdates"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter updates since this date-time in ISO 8601 format.",
+                          "key": "since",
+                          "value": "<dateTime>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:33:44.000Z",
+                  "updatedAt": "2026-10-21T20:33:44.000Z",
+                  "uid": "35240-fba141b7-9e06-4602-9fa7-a38de224de1a"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T20:33:44.000Z",
+              "updatedAt": "2026-10-21T20:33:44.000Z",
+              "uid": "35240-958a0420-1c2d-4890-a15b-ea224babccdd"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "c68ead3b-5d47-4b89-840d-f80aab6b862e",
+          "createdAt": "2026-10-21T20:33:44.000Z",
+          "updatedAt": "2026-10-21T20:33:44.000Z",
+          "uid": "35240-c68ead3b-5d47-4b89-840d-f80aab6b862e"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.refinitiv.com",
-      "key": "baseUrl"
+      "id": "58cdc71e-cf9b-473b-b190-050575d4d4bc",
+      "createdAt": "2026-10-21T20:33:44.000Z",
+      "updatedAt": "2026-10-21T20:33:44.000Z",
+      "uid": "35240-58cdc71e-cf9b-473b-b190-050575d4d4bc"
     }
   ],
   "auth": {
-    "type": "bearer",
-    "bearer": [
+    "type": "apikey",
+    "apikey": [
       {
-        "key": "token",
-        "value": "{{bearerToken}}"
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "3f519870-e304-48d4-932c-9090b1981061",
-    "name": "Refinitiv Data Platform (RDP) APIs Authentication Ongoing Screening API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.\n\nContact Support:\n Name: LSEG Developer Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api-worldcheck.refinitiv.com/v2"
     }
-  }
+  ]
 }

@@ -1,1060 +1,1084 @@
 {
+  "info": {
+    "_postman_id": "761d2184-6faa-42fc-a4bc-73d3b90ab2e2",
+    "name": "Refinitiv Data Platform (RDP) Historical Pricing API",
+    "description": "Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.\n\nContact Support:\n Name: LSEG Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:33:24.000Z",
+    "updatedAt": "2026-10-21T20:33:24.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-761d2184-6faa-42fc-a4bc-73d3b90ab2e2"
+  },
   "item": [
     {
-      "id": "e7bde99a-5eca-425a-a394-db00605d189d",
-      "name": "Historical Pricing",
-      "description": {
-        "content": "Access to historical interday and intraday pricing data for financial instruments including summaries, events, and time series.",
-        "type": "text/plain"
-      },
+      "name": "data",
       "item": [
         {
-          "id": "debb0952-686c-4fda-b52a-c6852f0140f7",
-          "name": "Get Interday Pricing Summaries",
-          "request": {
-            "name": "Get Interday Pricing Summaries",
-            "description": {
-              "content": "Retrieves historical interday pricing summaries for a given instrument, including open, high, low, close, and volume data points. Supports date range filtering and adjustments for corporate actions.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "data",
-                "historical-pricing",
-                "v1",
-                "views",
-                "interday-summaries",
-                ":universe"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "start",
-                  "value": "<date>",
-                  "description": "Start date for the historical data range in ISO 8601 format."
-                },
-                {
-                  "disabled": false,
-                  "key": "end",
-                  "value": "<date>",
-                  "description": "End date for the historical data range in ISO 8601 format."
-                },
-                {
-                  "disabled": false,
-                  "key": "count",
-                  "value": "<integer>",
-                  "description": "Maximum number of data points to return."
-                },
-                {
-                  "disabled": false,
-                  "key": "adjustments",
-                  "value": "<string>",
-                  "description": "Comma-separated list of adjustment types to apply such as exchangeCorrection and capitalChange."
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "universe",
-                  "description": "(Required) The instrument identifier, typically a RIC such as IBM.N or AAPL.O."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "historical-pricing",
+          "item": [
             {
-              "id": "60603efa-bf50-4880-830f-6283e2ca92aa",
-              "name": "Historical pricing data returned successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "data",
-                    "historical-pricing",
-                    "v1",
-                    "views",
-                    "interday-summaries",
-                    ":universe"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "start",
-                      "value": "<date>"
-                    },
-                    {
-                      "key": "end",
-                      "value": "<date>"
-                    },
-                    {
-                      "key": "count",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "adjustments",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "universe",
-                      "description": "(Required) The instrument identifier, typically a RIC such as IBM.N or AAPL.O."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "v1",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "views",
+                  "item": [
+                    {
+                      "name": "interday-summaries",
+                      "item": [
+                        {
+                          "name": "{universe}",
+                          "item": [
+                            {
+                              "name": "Get Interday Pricing Summaries",
+                              "id": "f567218e-8050-4b29-bf59-96be26686aba",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/data/historical-pricing/v1/views/interday-summaries/:universe?start=<date>&end=<date>&count=<integer>&adjustments=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "data",
+                                    "historical-pricing",
+                                    "v1",
+                                    "views",
+                                    "interday-summaries",
+                                    ":universe"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Start date for the historical data range in ISO 8601 format.",
+                                      "key": "start",
+                                      "value": "<date>"
+                                    },
+                                    {
+                                      "description": "End date for the historical data range in ISO 8601 format.",
+                                      "key": "end",
+                                      "value": "<date>"
+                                    },
+                                    {
+                                      "description": "Maximum number of data points to return.",
+                                      "key": "count",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Comma-separated list of adjustment types to apply such as exchangeCorrection and capitalChange.",
+                                      "key": "adjustments",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "b6146863-3a36-4bd8-aa5f-238f394b3c5f",
+                                      "key": "universe",
+                                      "value": "<string>",
+                                      "description": "(Required) The instrument identifier, typically a RIC such as IBM.N or AAPL.O."
+                                    }
+                                  ]
+                                },
+                                "description": "Retrieves historical interday pricing summaries for a given instrument, including open, high, low, close, and volume data points. Supports date range filtering and adjustments for corporate actions."
+                              },
+                              "response": [
+                                {
+                                  "id": "bb65868f-4ac9-4b08-86a6-e8ec482770e5",
+                                  "name": "Historical pricing data returned successfully",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/data/historical-pricing/v1/views/interday-summaries/:universe?start=<date>&end=<date>&count=<integer>&adjustments=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "data",
+                                        "historical-pricing",
+                                        "v1",
+                                        "views",
+                                        "interday-summaries",
+                                        ":universe"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Start date for the historical data range in ISO 8601 format.",
+                                          "key": "start",
+                                          "value": "<date>"
+                                        },
+                                        {
+                                          "description": "End date for the historical data range in ISO 8601 format.",
+                                          "key": "end",
+                                          "value": "<date>"
+                                        },
+                                        {
+                                          "description": "Maximum number of data points to return.",
+                                          "key": "count",
+                                          "value": "<integer>"
+                                        },
+                                        {
+                                          "description": "Comma-separated list of adjustment types to apply such as exchangeCorrection and capitalChange.",
+                                          "key": "adjustments",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "universe"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"universe\": {\n    \"ric\": \"<string>\",\n    \"displayName\": \"<string>\"\n  },\n  \"headers\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-10-21T20:33:25.000Z",
+                                  "updatedAt": "2026-10-21T20:33:25.000Z",
+                                  "uid": "35240-bb65868f-4ac9-4b08-86a6-e8ec482770e5"
+                                },
+                                {
+                                  "id": "29be2ba4-e3fb-44ba-b054-bb41099b226a",
+                                  "name": "Invalid request parameters",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/data/historical-pricing/v1/views/interday-summaries/:universe?start=<date>&end=<date>&count=<integer>&adjustments=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "data",
+                                        "historical-pricing",
+                                        "v1",
+                                        "views",
+                                        "interday-summaries",
+                                        ":universe"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Start date for the historical data range in ISO 8601 format.",
+                                          "key": "start",
+                                          "value": "<date>"
+                                        },
+                                        {
+                                          "description": "End date for the historical data range in ISO 8601 format.",
+                                          "key": "end",
+                                          "value": "<date>"
+                                        },
+                                        {
+                                          "description": "Maximum number of data points to return.",
+                                          "key": "count",
+                                          "value": "<integer>"
+                                        },
+                                        {
+                                          "description": "Comma-separated list of adjustment types to apply such as exchangeCorrection and capitalChange.",
+                                          "key": "adjustments",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "universe"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-21T20:33:25.000Z",
+                                  "updatedAt": "2026-10-21T20:33:25.000Z",
+                                  "uid": "35240-29be2ba4-e3fb-44ba-b054-bb41099b226a"
+                                },
+                                {
+                                  "id": "aea121a4-ec67-425b-bb82-aa499f5f4082",
+                                  "name": "Unauthorized",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/data/historical-pricing/v1/views/interday-summaries/:universe?start=<date>&end=<date>&count=<integer>&adjustments=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "data",
+                                        "historical-pricing",
+                                        "v1",
+                                        "views",
+                                        "interday-summaries",
+                                        ":universe"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Start date for the historical data range in ISO 8601 format.",
+                                          "key": "start",
+                                          "value": "<date>"
+                                        },
+                                        {
+                                          "description": "End date for the historical data range in ISO 8601 format.",
+                                          "key": "end",
+                                          "value": "<date>"
+                                        },
+                                        {
+                                          "description": "Maximum number of data points to return.",
+                                          "key": "count",
+                                          "value": "<integer>"
+                                        },
+                                        {
+                                          "description": "Comma-separated list of adjustment types to apply such as exchangeCorrection and capitalChange.",
+                                          "key": "adjustments",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "universe"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-21T20:33:25.000Z",
+                                  "updatedAt": "2026-10-21T20:33:25.000Z",
+                                  "uid": "35240-aea121a4-ec67-425b-bb82-aa499f5f4082"
+                                },
+                                {
+                                  "id": "d806e80b-725a-443a-840f-aeafe1e5eece",
+                                  "name": "Instrument not found",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/data/historical-pricing/v1/views/interday-summaries/:universe?start=<date>&end=<date>&count=<integer>&adjustments=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "data",
+                                        "historical-pricing",
+                                        "v1",
+                                        "views",
+                                        "interday-summaries",
+                                        ":universe"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Start date for the historical data range in ISO 8601 format.",
+                                          "key": "start",
+                                          "value": "<date>"
+                                        },
+                                        {
+                                          "description": "End date for the historical data range in ISO 8601 format.",
+                                          "key": "end",
+                                          "value": "<date>"
+                                        },
+                                        {
+                                          "description": "Maximum number of data points to return.",
+                                          "key": "count",
+                                          "value": "<integer>"
+                                        },
+                                        {
+                                          "description": "Comma-separated list of adjustment types to apply such as exchangeCorrection and capitalChange.",
+                                          "key": "adjustments",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "universe"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-21T20:33:25.000Z",
+                                  "updatedAt": "2026-10-21T20:33:25.000Z",
+                                  "uid": "35240-d806e80b-725a-443a-840f-aeafe1e5eece"
+                                }
+                              ],
+                              "createdAt": "2026-10-21T20:33:25.000Z",
+                              "updatedAt": "2026-10-21T20:33:25.000Z",
+                              "uid": "35240-f567218e-8050-4b29-bf59-96be26686aba"
+                            }
+                          ],
+                          "id": "611466db-8cc2-4c89-8d52-51ff17ab5ed4",
+                          "createdAt": "2026-10-21T20:33:25.000Z",
+                          "updatedAt": "2026-10-21T20:33:25.000Z",
+                          "uid": "35240-611466db-8cc2-4c89-8d52-51ff17ab5ed4"
+                        }
+                      ],
+                      "id": "02776f45-caa3-4e91-b1c2-1e14b74237d3",
+                      "createdAt": "2026-10-21T20:33:25.000Z",
+                      "updatedAt": "2026-10-21T20:33:25.000Z",
+                      "uid": "35240-02776f45-caa3-4e91-b1c2-1e14b74237d3"
+                    },
+                    {
+                      "name": "intraday-summaries",
+                      "item": [
+                        {
+                          "name": "{universe}",
+                          "item": [
+                            {
+                              "name": "Get Intraday Pricing Summaries",
+                              "id": "f8b39391-3693-4bf7-9a47-7a6616689c10",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/data/historical-pricing/v1/views/intraday-summaries/:universe?start=<dateTime>&end=<dateTime>&interval=<string>&count=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "data",
+                                    "historical-pricing",
+                                    "v1",
+                                    "views",
+                                    "intraday-summaries",
+                                    ":universe"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Start date-time for the data range in ISO 8601 format.",
+                                      "key": "start",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "End date-time for the data range in ISO 8601 format.",
+                                      "key": "end",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "The interval between data points such as PT1M, PT5M, PT1H.",
+                                      "key": "interval",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Maximum number of data points to return.",
+                                      "key": "count",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "b4bde6cb-7f94-477a-baef-9f24c003df08",
+                                      "key": "universe",
+                                      "value": "<string>",
+                                      "description": "(Required) The instrument identifier, typically a RIC such as IBM.N or AAPL.O."
+                                    }
+                                  ]
+                                },
+                                "description": "Retrieves historical intraday pricing summaries for a given instrument at configurable intervals. Returns time-stamped OHLCV bars for the requested period."
+                              },
+                              "response": [
+                                {
+                                  "id": "1bfbcca4-e575-4ab1-a0e1-6513a6ea1e39",
+                                  "name": "Intraday pricing data returned successfully",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/data/historical-pricing/v1/views/intraday-summaries/:universe?start=<dateTime>&end=<dateTime>&interval=<string>&count=<integer>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "data",
+                                        "historical-pricing",
+                                        "v1",
+                                        "views",
+                                        "intraday-summaries",
+                                        ":universe"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Start date-time for the data range in ISO 8601 format.",
+                                          "key": "start",
+                                          "value": "<dateTime>"
+                                        },
+                                        {
+                                          "description": "End date-time for the data range in ISO 8601 format.",
+                                          "key": "end",
+                                          "value": "<dateTime>"
+                                        },
+                                        {
+                                          "description": "The interval between data points such as PT1M, PT5M, PT1H.",
+                                          "key": "interval",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Maximum number of data points to return.",
+                                          "key": "count",
+                                          "value": "<integer>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "universe"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"universe\": {\n    \"ric\": \"<string>\",\n    \"displayName\": \"<string>\"\n  },\n  \"headers\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-10-21T20:33:25.000Z",
+                                  "updatedAt": "2026-10-21T20:33:25.000Z",
+                                  "uid": "35240-1bfbcca4-e575-4ab1-a0e1-6513a6ea1e39"
+                                },
+                                {
+                                  "id": "8a027c82-ac21-452b-a87a-e0b4fc9c51be",
+                                  "name": "Invalid request parameters",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/data/historical-pricing/v1/views/intraday-summaries/:universe?start=<dateTime>&end=<dateTime>&interval=<string>&count=<integer>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "data",
+                                        "historical-pricing",
+                                        "v1",
+                                        "views",
+                                        "intraday-summaries",
+                                        ":universe"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Start date-time for the data range in ISO 8601 format.",
+                                          "key": "start",
+                                          "value": "<dateTime>"
+                                        },
+                                        {
+                                          "description": "End date-time for the data range in ISO 8601 format.",
+                                          "key": "end",
+                                          "value": "<dateTime>"
+                                        },
+                                        {
+                                          "description": "The interval between data points such as PT1M, PT5M, PT1H.",
+                                          "key": "interval",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Maximum number of data points to return.",
+                                          "key": "count",
+                                          "value": "<integer>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "universe"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-21T20:33:25.000Z",
+                                  "updatedAt": "2026-10-21T20:33:25.000Z",
+                                  "uid": "35240-8a027c82-ac21-452b-a87a-e0b4fc9c51be"
+                                },
+                                {
+                                  "id": "fadf7ee3-0e1d-4090-8efb-a2b82dcc1ad0",
+                                  "name": "Unauthorized",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/data/historical-pricing/v1/views/intraday-summaries/:universe?start=<dateTime>&end=<dateTime>&interval=<string>&count=<integer>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "data",
+                                        "historical-pricing",
+                                        "v1",
+                                        "views",
+                                        "intraday-summaries",
+                                        ":universe"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Start date-time for the data range in ISO 8601 format.",
+                                          "key": "start",
+                                          "value": "<dateTime>"
+                                        },
+                                        {
+                                          "description": "End date-time for the data range in ISO 8601 format.",
+                                          "key": "end",
+                                          "value": "<dateTime>"
+                                        },
+                                        {
+                                          "description": "The interval between data points such as PT1M, PT5M, PT1H.",
+                                          "key": "interval",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Maximum number of data points to return.",
+                                          "key": "count",
+                                          "value": "<integer>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "universe"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-21T20:33:25.000Z",
+                                  "updatedAt": "2026-10-21T20:33:25.000Z",
+                                  "uid": "35240-fadf7ee3-0e1d-4090-8efb-a2b82dcc1ad0"
+                                },
+                                {
+                                  "id": "7e40cf7f-20d7-46ee-8e6a-744c3a70bc1a",
+                                  "name": "Instrument not found",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/data/historical-pricing/v1/views/intraday-summaries/:universe?start=<dateTime>&end=<dateTime>&interval=<string>&count=<integer>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "data",
+                                        "historical-pricing",
+                                        "v1",
+                                        "views",
+                                        "intraday-summaries",
+                                        ":universe"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Start date-time for the data range in ISO 8601 format.",
+                                          "key": "start",
+                                          "value": "<dateTime>"
+                                        },
+                                        {
+                                          "description": "End date-time for the data range in ISO 8601 format.",
+                                          "key": "end",
+                                          "value": "<dateTime>"
+                                        },
+                                        {
+                                          "description": "The interval between data points such as PT1M, PT5M, PT1H.",
+                                          "key": "interval",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Maximum number of data points to return.",
+                                          "key": "count",
+                                          "value": "<integer>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "universe"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-21T20:33:25.000Z",
+                                  "updatedAt": "2026-10-21T20:33:25.000Z",
+                                  "uid": "35240-7e40cf7f-20d7-46ee-8e6a-744c3a70bc1a"
+                                }
+                              ],
+                              "createdAt": "2026-10-21T20:33:25.000Z",
+                              "updatedAt": "2026-10-21T20:33:25.000Z",
+                              "uid": "35240-f8b39391-3693-4bf7-9a47-7a6616689c10"
+                            }
+                          ],
+                          "id": "73819ace-94d9-474a-8e1a-4df2ec2f8566",
+                          "createdAt": "2026-10-21T20:33:25.000Z",
+                          "updatedAt": "2026-10-21T20:33:25.000Z",
+                          "uid": "35240-73819ace-94d9-474a-8e1a-4df2ec2f8566"
+                        }
+                      ],
+                      "id": "4575393d-e353-4d53-b485-2b4f24d762e3",
+                      "createdAt": "2026-10-21T20:33:25.000Z",
+                      "updatedAt": "2026-10-21T20:33:25.000Z",
+                      "uid": "35240-4575393d-e353-4d53-b485-2b4f24d762e3"
+                    },
+                    {
+                      "name": "events",
+                      "item": [
+                        {
+                          "name": "{universe}",
+                          "item": [
+                            {
+                              "name": "Get Historical Pricing Events",
+                              "id": "19d8752f-83ae-4a52-a9f4-fb8898ab752a",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/data/historical-pricing/v1/views/events/:universe?start=<dateTime>&end=<dateTime>&count=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "data",
+                                    "historical-pricing",
+                                    "v1",
+                                    "views",
+                                    "events",
+                                    ":universe"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Start date-time for the data range in ISO 8601 format.",
+                                      "key": "start",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "End date-time for the data range in ISO 8601 format.",
+                                      "key": "end",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "Maximum number of events to return.",
+                                      "key": "count",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "9788f1d9-c82b-4935-96c9-b413fa9b5447",
+                                      "key": "universe",
+                                      "value": "<string>",
+                                      "description": "(Required) The instrument identifier, typically a RIC such as IBM.N or AAPL.O."
+                                    }
+                                  ]
+                                },
+                                "description": "Retrieves historical trade and quote events for a given instrument, providing tick-level data for detailed analysis of market activity."
+                              },
+                              "response": [
+                                {
+                                  "id": "adb70c50-b0a3-4943-9116-88884710a5f5",
+                                  "name": "Historical pricing events returned successfully",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/data/historical-pricing/v1/views/events/:universe?start=<dateTime>&end=<dateTime>&count=<integer>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "data",
+                                        "historical-pricing",
+                                        "v1",
+                                        "views",
+                                        "events",
+                                        ":universe"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Start date-time for the data range in ISO 8601 format.",
+                                          "key": "start",
+                                          "value": "<dateTime>"
+                                        },
+                                        {
+                                          "description": "End date-time for the data range in ISO 8601 format.",
+                                          "key": "end",
+                                          "value": "<dateTime>"
+                                        },
+                                        {
+                                          "description": "Maximum number of events to return.",
+                                          "key": "count",
+                                          "value": "<integer>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "universe"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"universe\": {\n    \"ric\": \"<string>\",\n    \"displayName\": \"<string>\"\n  },\n  \"headers\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-10-21T20:33:25.000Z",
+                                  "updatedAt": "2026-10-21T20:33:25.000Z",
+                                  "uid": "35240-adb70c50-b0a3-4943-9116-88884710a5f5"
+                                },
+                                {
+                                  "id": "187875a2-4ac3-4d24-b6b4-6d477d74d2fa",
+                                  "name": "Invalid request parameters",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/data/historical-pricing/v1/views/events/:universe?start=<dateTime>&end=<dateTime>&count=<integer>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "data",
+                                        "historical-pricing",
+                                        "v1",
+                                        "views",
+                                        "events",
+                                        ":universe"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Start date-time for the data range in ISO 8601 format.",
+                                          "key": "start",
+                                          "value": "<dateTime>"
+                                        },
+                                        {
+                                          "description": "End date-time for the data range in ISO 8601 format.",
+                                          "key": "end",
+                                          "value": "<dateTime>"
+                                        },
+                                        {
+                                          "description": "Maximum number of events to return.",
+                                          "key": "count",
+                                          "value": "<integer>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "universe"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-21T20:33:25.000Z",
+                                  "updatedAt": "2026-10-21T20:33:25.000Z",
+                                  "uid": "35240-187875a2-4ac3-4d24-b6b4-6d477d74d2fa"
+                                },
+                                {
+                                  "id": "d64f41e6-0f22-4199-a79d-d42b2e2d7493",
+                                  "name": "Unauthorized",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/data/historical-pricing/v1/views/events/:universe?start=<dateTime>&end=<dateTime>&count=<integer>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "data",
+                                        "historical-pricing",
+                                        "v1",
+                                        "views",
+                                        "events",
+                                        ":universe"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Start date-time for the data range in ISO 8601 format.",
+                                          "key": "start",
+                                          "value": "<dateTime>"
+                                        },
+                                        {
+                                          "description": "End date-time for the data range in ISO 8601 format.",
+                                          "key": "end",
+                                          "value": "<dateTime>"
+                                        },
+                                        {
+                                          "description": "Maximum number of events to return.",
+                                          "key": "count",
+                                          "value": "<integer>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "universe"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-21T20:33:25.000Z",
+                                  "updatedAt": "2026-10-21T20:33:25.000Z",
+                                  "uid": "35240-d64f41e6-0f22-4199-a79d-d42b2e2d7493"
+                                },
+                                {
+                                  "id": "8bde8274-d21f-4a9e-b346-2a27da76ffe8",
+                                  "name": "Instrument not found",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/data/historical-pricing/v1/views/events/:universe?start=<dateTime>&end=<dateTime>&count=<integer>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "data",
+                                        "historical-pricing",
+                                        "v1",
+                                        "views",
+                                        "events",
+                                        ":universe"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Start date-time for the data range in ISO 8601 format.",
+                                          "key": "start",
+                                          "value": "<dateTime>"
+                                        },
+                                        {
+                                          "description": "End date-time for the data range in ISO 8601 format.",
+                                          "key": "end",
+                                          "value": "<dateTime>"
+                                        },
+                                        {
+                                          "description": "Maximum number of events to return.",
+                                          "key": "count",
+                                          "value": "<integer>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "universe"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-21T20:33:25.000Z",
+                                  "updatedAt": "2026-10-21T20:33:25.000Z",
+                                  "uid": "35240-8bde8274-d21f-4a9e-b346-2a27da76ffe8"
+                                }
+                              ],
+                              "createdAt": "2026-10-21T20:33:25.000Z",
+                              "updatedAt": "2026-10-21T20:33:25.000Z",
+                              "uid": "35240-19d8752f-83ae-4a52-a9f4-fb8898ab752a"
+                            }
+                          ],
+                          "id": "d141a0f7-ca13-4dcd-981a-93cbc0d49ee8",
+                          "createdAt": "2026-10-21T20:33:25.000Z",
+                          "updatedAt": "2026-10-21T20:33:25.000Z",
+                          "uid": "35240-d141a0f7-ca13-4dcd-981a-93cbc0d49ee8"
+                        }
+                      ],
+                      "id": "51ae3b9f-534b-452b-94ed-902f9768d814",
+                      "createdAt": "2026-10-21T20:33:25.000Z",
+                      "updatedAt": "2026-10-21T20:33:25.000Z",
+                      "uid": "35240-51ae3b9f-534b-452b-94ed-902f9768d814"
+                    }
+                  ],
+                  "id": "78138568-3fd1-4017-99d3-6839275ff6e4",
+                  "createdAt": "2026-10-21T20:33:25.000Z",
+                  "updatedAt": "2026-10-21T20:33:25.000Z",
+                  "uid": "35240-78138568-3fd1-4017-99d3-6839275ff6e4"
                 }
               ],
-              "body": "{\n  \"universe\": {\n    \"ric\": \"string\",\n    \"displayName\": \"string\"\n  },\n  \"headers\": [\n    {\n      \"name\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "4243a3f9-1a2b-4f17-9396-509537dd9d9d",
-              "name": "Invalid request parameters",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "data",
-                    "historical-pricing",
-                    "v1",
-                    "views",
-                    "interday-summaries",
-                    ":universe"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "start",
-                      "value": "<date>"
-                    },
-                    {
-                      "key": "end",
-                      "value": "<date>"
-                    },
-                    {
-                      "key": "count",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "adjustments",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "universe",
-                      "description": "(Required) The instrument identifier, typically a RIC such as IBM.N or AAPL.O."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "accf945c-104f-4378-9546-819eb0b8a68a",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "data",
-                    "historical-pricing",
-                    "v1",
-                    "views",
-                    "interday-summaries",
-                    ":universe"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "start",
-                      "value": "<date>"
-                    },
-                    {
-                      "key": "end",
-                      "value": "<date>"
-                    },
-                    {
-                      "key": "count",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "adjustments",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "universe",
-                      "description": "(Required) The instrument identifier, typically a RIC such as IBM.N or AAPL.O."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "aa105281-0d0f-410c-8ea3-0d57d9776cb5",
-              "name": "Instrument not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "data",
-                    "historical-pricing",
-                    "v1",
-                    "views",
-                    "interday-summaries",
-                    ":universe"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "start",
-                      "value": "<date>"
-                    },
-                    {
-                      "key": "end",
-                      "value": "<date>"
-                    },
-                    {
-                      "key": "count",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "adjustments",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "universe",
-                      "description": "(Required) The instrument identifier, typically a RIC such as IBM.N or AAPL.O."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "99e34e6e-3960-4606-bc20-2a5e94fa5397",
+              "createdAt": "2026-10-21T20:33:25.000Z",
+              "updatedAt": "2026-10-21T20:33:25.000Z",
+              "uid": "35240-99e34e6e-3960-4606-bc20-2a5e94fa5397"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "b44c2e27-8d13-4f83-ad0d-927ad4591d0e",
-          "name": "Get Intraday Pricing Summaries",
-          "request": {
-            "name": "Get Intraday Pricing Summaries",
-            "description": {
-              "content": "Retrieves historical intraday pricing summaries for a given instrument at configurable intervals. Returns time-stamped OHLCV bars for the requested period.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "data",
-                "historical-pricing",
-                "v1",
-                "views",
-                "intraday-summaries",
-                ":universe"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "start",
-                  "value": "<dateTime>",
-                  "description": "Start date-time for the data range in ISO 8601 format."
-                },
-                {
-                  "disabled": false,
-                  "key": "end",
-                  "value": "<dateTime>",
-                  "description": "End date-time for the data range in ISO 8601 format."
-                },
-                {
-                  "disabled": false,
-                  "key": "interval",
-                  "value": "<string>",
-                  "description": "The interval between data points such as PT1M, PT5M, PT1H."
-                },
-                {
-                  "disabled": false,
-                  "key": "count",
-                  "value": "<integer>",
-                  "description": "Maximum number of data points to return."
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "universe",
-                  "description": "(Required) The instrument identifier, typically a RIC such as IBM.N or AAPL.O."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "7bb4341d-fb36-42e4-8a98-73e0f15c81ea",
-              "name": "Intraday pricing data returned successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "data",
-                    "historical-pricing",
-                    "v1",
-                    "views",
-                    "intraday-summaries",
-                    ":universe"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "start",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "end",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "interval",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "count",
-                      "value": "<integer>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "universe",
-                      "description": "(Required) The instrument identifier, typically a RIC such as IBM.N or AAPL.O."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"universe\": {\n    \"ric\": \"string\",\n    \"displayName\": \"string\"\n  },\n  \"headers\": [\n    {\n      \"name\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "89f55ac4-171b-4c62-8cc2-0aaa7f20477f",
-              "name": "Invalid request parameters",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "data",
-                    "historical-pricing",
-                    "v1",
-                    "views",
-                    "intraday-summaries",
-                    ":universe"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "start",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "end",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "interval",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "count",
-                      "value": "<integer>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "universe",
-                      "description": "(Required) The instrument identifier, typically a RIC such as IBM.N or AAPL.O."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "7acf30b4-01c9-4e6e-b726-b18bcddaaa60",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "data",
-                    "historical-pricing",
-                    "v1",
-                    "views",
-                    "intraday-summaries",
-                    ":universe"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "start",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "end",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "interval",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "count",
-                      "value": "<integer>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "universe",
-                      "description": "(Required) The instrument identifier, typically a RIC such as IBM.N or AAPL.O."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "8e2a8213-80ed-40e3-bfdc-3ba7549b36ae",
-              "name": "Instrument not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "data",
-                    "historical-pricing",
-                    "v1",
-                    "views",
-                    "intraday-summaries",
-                    ":universe"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "start",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "end",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "interval",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "count",
-                      "value": "<integer>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "universe",
-                      "description": "(Required) The instrument identifier, typically a RIC such as IBM.N or AAPL.O."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "33c917e0-8995-4241-95f5-61ac8a8e42a3",
-          "name": "Get Historical Pricing Events",
-          "request": {
-            "name": "Get Historical Pricing Events",
-            "description": {
-              "content": "Retrieves historical trade and quote events for a given instrument, providing tick-level data for detailed analysis of market activity.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "data",
-                "historical-pricing",
-                "v1",
-                "views",
-                "events",
-                ":universe"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "start",
-                  "value": "<dateTime>",
-                  "description": "Start date-time for the data range in ISO 8601 format."
-                },
-                {
-                  "disabled": false,
-                  "key": "end",
-                  "value": "<dateTime>",
-                  "description": "End date-time for the data range in ISO 8601 format."
-                },
-                {
-                  "disabled": false,
-                  "key": "count",
-                  "value": "<integer>",
-                  "description": "Maximum number of events to return."
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "universe",
-                  "description": "(Required) The instrument identifier, typically a RIC such as IBM.N or AAPL.O."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "b3a8d8a4-2595-48c0-a336-e53f0527b78e",
-              "name": "Historical pricing events returned successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "data",
-                    "historical-pricing",
-                    "v1",
-                    "views",
-                    "events",
-                    ":universe"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "start",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "end",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "count",
-                      "value": "<integer>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "universe",
-                      "description": "(Required) The instrument identifier, typically a RIC such as IBM.N or AAPL.O."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"universe\": {\n    \"ric\": \"string\",\n    \"displayName\": \"string\"\n  },\n  \"headers\": [\n    {\n      \"name\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "5628c19b-ba10-457d-b3de-d1d610594c7e",
-              "name": "Invalid request parameters",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "data",
-                    "historical-pricing",
-                    "v1",
-                    "views",
-                    "events",
-                    ":universe"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "start",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "end",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "count",
-                      "value": "<integer>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "universe",
-                      "description": "(Required) The instrument identifier, typically a RIC such as IBM.N or AAPL.O."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "f4ba9c37-3be3-4784-a62a-de46afe1927b",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "data",
-                    "historical-pricing",
-                    "v1",
-                    "views",
-                    "events",
-                    ":universe"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "start",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "end",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "count",
-                      "value": "<integer>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "universe",
-                      "description": "(Required) The instrument identifier, typically a RIC such as IBM.N or AAPL.O."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "9b103051-6bb8-44ca-b208-3019d07e7034",
-              "name": "Instrument not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "data",
-                    "historical-pricing",
-                    "v1",
-                    "views",
-                    "events",
-                    ":universe"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "start",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "end",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "count",
-                      "value": "<integer>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "universe",
-                      "description": "(Required) The instrument identifier, typically a RIC such as IBM.N or AAPL.O."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "460b274a-d501-489f-8ec9-24ef5a812183",
+          "createdAt": "2026-10-21T20:33:25.000Z",
+          "updatedAt": "2026-10-21T20:33:25.000Z",
+          "uid": "35240-460b274a-d501-489f-8ec9-24ef5a812183"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.refinitiv.com",
-      "key": "baseUrl"
+      "id": "e077e2d8-0dcf-4e27-8792-b5ca40f8e9f5",
+      "createdAt": "2026-10-21T20:33:25.000Z",
+      "updatedAt": "2026-10-21T20:33:25.000Z",
+      "uid": "35240-e077e2d8-0dcf-4e27-8792-b5ca40f8e9f5"
     }
   ],
   "auth": {
@@ -1062,17 +1086,15 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "4f6892fb-7bb9-44f2-92bb-5611e821edd0",
-    "name": "Refinitiv Data Platform (RDP) APIs Authentication Historical Pricing API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.\n\nContact Support:\n Name: LSEG Developer Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.refinitiv.com"
     }
-  }
+  ]
 }

@@ -1,546 +1,509 @@
 {
+  "info": {
+    "_postman_id": "439c5120-06f2-4806-bb1b-7e14fddb46d4",
+    "name": "Refinitiv World-Check One Groups API",
+    "description": "RESTful API for integrating LSEG World-Check screening capabilities into existing workflows and internal systems. It enables automated customer and third-party screening for onboarding, KYC, and due diligence processes against the World-Check risk intelligence database, supporting synchronous and asynchronous screening, ongoing monitoring, case management, and audit trail capabilities.\n\nContact Support:\n Name: LSEG Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:33:17.000Z",
+    "updatedAt": "2026-10-21T20:33:18.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-439c5120-06f2-4806-bb1b-7e14fddb46d4"
+  },
   "item": [
     {
-      "id": "01f4fa57-a68e-4dc5-b300-29fe70cc8b65",
-      "name": "Groups",
-      "description": {
-        "content": "Group management operations for organizing cases and configuring screening parameters per group.",
-        "type": "text/plain"
-      },
+      "name": "groups",
       "item": [
         {
-          "id": "db9af61d-a82d-40c6-9509-ee9b9665a703",
-          "name": "List Groups",
-          "request": {
-            "name": "List Groups",
-            "description": {
-              "content": "Retrieves all groups available in the account. Groups are used to organize cases and configure screening parameters such as provider types, match thresholds, and resolution toolkits.",
-              "type": "text/plain"
+          "name": "{groupId}",
+          "item": [
+            {
+              "name": "resolutionToolkit",
+              "item": [
+                {
+                  "name": "Get Resolution Toolkit",
+                  "id": "52392bc7-0d7e-441f-bd83-246c1716dfae",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/:groupId/resolutionToolkit",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        ":groupId",
+                        "resolutionToolkit"
+                      ],
+                      "variable": [
+                        {
+                          "id": "a0c0670e-56a6-4e5d-a904-43949ea7ba8d",
+                          "key": "groupId",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the group."
+                        }
+                      ]
+                    },
+                    "description": "Retrieves the resolution toolkit configuration for a specific group. The toolkit defines the valid resolution statuses, risk levels, and reasons that can be applied to screening results for cases belonging to the group."
+                  },
+                  "response": [
+                    {
+                      "id": "5e8583a8-e95e-437d-87de-f20db6b1addc",
+                      "name": "Resolution toolkit returned successfully",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/resolutionToolkit",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "resolutionToolkit"
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"groupId\": \"<string>\",\n  \"statuses\": [\n    {\n      \"id\": \"<string>\",\n      \"label\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"label\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"risks\": [\n    {\n      \"id\": \"<string>\",\n      \"label\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"label\": \"<string>\"\n    }\n  ],\n  \"reasons\": [\n    {\n      \"id\": \"<string>\",\n      \"label\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"label\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:33:18.000Z",
+                      "updatedAt": "2026-10-21T20:33:18.000Z",
+                      "uid": "35240-5e8583a8-e95e-437d-87de-f20db6b1addc"
+                    },
+                    {
+                      "id": "b6e3f022-e747-459a-b54d-05cadcc6bccd",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/resolutionToolkit",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "resolutionToolkit"
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:33:18.000Z",
+                      "updatedAt": "2026-10-21T20:33:18.000Z",
+                      "uid": "35240-b6e3f022-e747-459a-b54d-05cadcc6bccd"
+                    },
+                    {
+                      "id": "16456c3e-bb5f-4059-96f4-343fc09e21b3",
+                      "name": "Group not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/resolutionToolkit",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "resolutionToolkit"
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:33:18.000Z",
+                      "updatedAt": "2026-10-21T20:33:18.000Z",
+                      "uid": "35240-16456c3e-bb5f-4059-96f4-343fc09e21b3"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:33:18.000Z",
+                  "updatedAt": "2026-10-21T20:33:18.000Z",
+                  "uid": "35240-52392bc7-0d7e-441f-bd83-246c1716dfae"
+                }
+              ],
+              "id": "02dcd650-6b33-44a2-976b-ade373935cd5",
+              "createdAt": "2026-10-21T20:33:18.000Z",
+              "updatedAt": "2026-10-21T20:33:18.000Z",
+              "uid": "35240-02dcd650-6b33-44a2-976b-ade373935cd5"
             },
+            {
+              "name": "Get Group Details",
+              "id": "2451795a-7692-47a1-ab77-3197f8454eda",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/groups/:groupId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "groups",
+                    ":groupId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "d822a798-1e42-459c-9261-2620e6870210",
+                      "key": "groupId",
+                      "value": "<string>",
+                      "description": "(Required) The unique identifier of the group."
+                    }
+                  ]
+                },
+                "description": "Retrieves the details and configuration of a specific group including its screening settings and resolution toolkit."
+              },
+              "response": [
+                {
+                  "id": "e4e25a60-037e-46ce-832d-e4564b057aa2",
+                  "name": "Group details returned successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/:groupId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        ":groupId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "groupId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"groupId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"parentId\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:33:18.000Z",
+                  "updatedAt": "2026-10-21T20:33:18.000Z",
+                  "uid": "35240-e4e25a60-037e-46ce-832d-e4564b057aa2"
+                },
+                {
+                  "id": "efd7e062-f5a8-42df-9875-324ab3a0220b",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/:groupId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        ":groupId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "groupId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:33:18.000Z",
+                  "updatedAt": "2026-10-21T20:33:18.000Z",
+                  "uid": "35240-efd7e062-f5a8-42df-9875-324ab3a0220b"
+                },
+                {
+                  "id": "f6c78a94-495c-4951-83fb-9461189d7438",
+                  "name": "Group not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/:groupId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        ":groupId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "groupId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:33:18.000Z",
+                  "updatedAt": "2026-10-21T20:33:18.000Z",
+                  "uid": "35240-f6c78a94-495c-4951-83fb-9461189d7438"
+                }
+              ],
+              "createdAt": "2026-10-21T20:33:18.000Z",
+              "updatedAt": "2026-10-21T20:33:18.000Z",
+              "uid": "35240-2451795a-7692-47a1-ab77-3197f8454eda"
+            }
+          ],
+          "id": "79cc7fa6-fdea-4352-affa-c98fa2f4cad3",
+          "createdAt": "2026-10-21T20:33:18.000Z",
+          "updatedAt": "2026-10-21T20:33:18.000Z",
+          "uid": "35240-79cc7fa6-fdea-4352-affa-c98fa2f4cad3"
+        },
+        {
+          "name": "List Groups",
+          "id": "0891c595-0f68-4cc8-a569-a642a86c9676",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
+              "raw": "{{baseUrl}}/groups",
+              "host": [
+                "{{baseUrl}}"
+              ],
               "path": [
                 "groups"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
+              ]
             },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
+            "description": "Retrieves all groups available in the account. Groups are used to organize cases and configure screening parameters such as provider types, match thresholds, and resolution toolkits."
           },
           "response": [
             {
-              "id": "3a5be5c2-6621-4102-b422-a6e49485e4c5",
+              "id": "921ad335-7675-4ce8-b29f-91212a23ba3b",
               "name": "Groups returned successfully",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/groups",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "groups"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "[\n  {\n    \"groupId\": \"string\",\n    \"name\": \"string\",\n    \"parentId\": \"string\",\n    \"status\": \"string\"\n  },\n  {\n    \"groupId\": \"string\",\n    \"name\": \"string\",\n    \"parentId\": \"string\",\n    \"status\": \"string\"\n  }\n]",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "[\n  {\n    \"groupId\": \"<string>\",\n    \"name\": \"<string>\",\n    \"parentId\": \"<string>\",\n    \"status\": \"<string>\"\n  },\n  {\n    \"groupId\": \"<string>\",\n    \"name\": \"<string>\",\n    \"parentId\": \"<string>\",\n    \"status\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-10-21T20:33:18.000Z",
+              "updatedAt": "2026-10-21T20:33:18.000Z",
+              "uid": "35240-921ad335-7675-4ce8-b29f-91212a23ba3b"
             },
             {
-              "id": "81b32b82-9240-4860-80ae-4e650665ccd4",
+              "id": "fc70e1e1-24de-4b7e-9877-fbf58c2b8fd6",
               "name": "Unauthorized",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/groups",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "groups"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                  ]
+                }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:33:18.000Z",
+              "updatedAt": "2026-10-21T20:33:18.000Z",
+              "uid": "35240-fc70e1e1-24de-4b7e-9877-fbf58c2b8fd6"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "ff27fc1b-7faf-40b6-b49e-590762012f6d",
-          "name": "Get Group Details",
-          "request": {
-            "name": "Get Group Details",
-            "description": {
-              "content": "Retrieves the details and configuration of a specific group including its screening settings and resolution toolkit.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "groups",
-                ":groupId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "groupId",
-                  "description": "(Required) The unique identifier of the group."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "f07485a7-4e95-474d-96ac-afac2a72bbbc",
-              "name": "Group details returned successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "groups",
-                    ":groupId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "groupId",
-                      "description": "(Required) The unique identifier of the group."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"groupId\": \"string\",\n  \"name\": \"string\",\n  \"parentId\": \"string\",\n  \"status\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "edb04b13-6a30-4dce-9f79-441be30d1500",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "groups",
-                    ":groupId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "groupId",
-                      "description": "(Required) The unique identifier of the group."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "d3987c61-5633-4000-a496-723740a9f4e7",
-              "name": "Group not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "groups",
-                    ":groupId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "groupId",
-                      "description": "(Required) The unique identifier of the group."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "0bd858e9-621e-4fa7-aa3a-b3032f921086",
-          "name": "Get Resolution Toolkit",
-          "request": {
-            "name": "Get Resolution Toolkit",
-            "description": {
-              "content": "Retrieves the resolution toolkit configuration for a specific group. The toolkit defines the valid resolution statuses, risk levels, and reasons that can be applied to screening results for cases belonging to the group.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "groups",
-                ":groupId",
-                "resolutionToolkit"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "groupId",
-                  "description": "(Required) The unique identifier of the group."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "0447db8f-6e9a-4865-b1ea-2695c71771ee",
-              "name": "Resolution toolkit returned successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "groups",
-                    ":groupId",
-                    "resolutionToolkit"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "groupId",
-                      "description": "(Required) The unique identifier of the group."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"groupId\": \"string\",\n  \"statuses\": [\n    {\n      \"id\": \"string\",\n      \"label\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"label\": \"string\",\n      \"type\": \"string\"\n    }\n  ],\n  \"risks\": [\n    {\n      \"id\": \"string\",\n      \"label\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"label\": \"string\"\n    }\n  ],\n  \"reasons\": [\n    {\n      \"id\": \"string\",\n      \"label\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"label\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "eefe18d9-0ccc-4376-80bf-14da7782c037",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "groups",
-                    ":groupId",
-                    "resolutionToolkit"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "groupId",
-                      "description": "(Required) The unique identifier of the group."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "d5f01e09-8543-4926-a749-784ffe61ea6b",
-              "name": "Group not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "groups",
-                    ":groupId",
-                    "resolutionToolkit"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "groupId",
-                      "description": "(Required) The unique identifier of the group."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:33:18.000Z",
+          "updatedAt": "2026-10-21T20:33:18.000Z",
+          "uid": "35240-0891c595-0f68-4cc8-a569-a642a86c9676"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.refinitiv.com",
-      "key": "baseUrl"
+      "id": "c8a88744-4bc1-423d-bbe9-f22e3f866580",
+      "createdAt": "2026-10-21T20:33:18.000Z",
+      "updatedAt": "2026-10-21T20:33:18.000Z",
+      "uid": "35240-c8a88744-4bc1-423d-bbe9-f22e3f866580"
     }
   ],
   "auth": {
-    "type": "bearer",
-    "bearer": [
+    "type": "apikey",
+    "apikey": [
       {
-        "key": "token",
-        "value": "{{bearerToken}}"
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "f970e183-8ecc-4dbe-8d52-ed759d4df7c8",
-    "name": "Refinitiv Data Platform (RDP) APIs Authentication Groups API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Cloud-enabled RESTful API providing access to streaming and non-streaming financial data, news, research, and analytics. It serves as the primary programmatic interface to the breadth of Refinitiv content on the LSEG Data Platform, including historical pricing, ESG data, news, quantitative analytics, symbology, and search services.\n\nContact Support:\n Name: LSEG Developer Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api-worldcheck.refinitiv.com/v2"
     }
-  }
+  ]
 }
